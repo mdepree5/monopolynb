@@ -33,10 +33,23 @@ router.post(
 );
 
 
+router.delete(
+  '/',
+  (_req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: 'success' });
+  }
+);
 
 
-
-
+// fetch('/api/session', {
+//   method: 'POST',
+//   headers: {
+//     "Content-Type": "application/json",
+//     "XSRF-TOKEN": `Lh2ObvS1-UWftESa5wxo3N4yDw-BTvDKN6AM`
+//   },
+//   body: JSON.stringify({ credential: 'demo@user.io', password: 'demo8' })
+// }).then(res => res.json()).then(data => console.log(data));
 
 
 
