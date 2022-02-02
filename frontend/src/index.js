@@ -1,34 +1,37 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
 
-import './index.css';
-import configureStore from './store';
-import { restoreCSRF, csrfFetch } from './store/csrf';
-
-import App from './App';
-
+import { ModalProvider } from "./context/Modal";
+import { restoreCSRF, csrfFetch } from "./store/csrf";
+import configureStore from "./store";
+import * as sessionActions from "./store/session";
+import App from "./App";
+import "./index.css";
 
 
 const store = configureStore();
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   restoreCSRF();
 
   window.csrfFetch = csrfFetch;
   window.store = store;
+  window.sessionActions = sessionActions;
 }
 
-
-const Root = () => (
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
-)
-
+function Root() {
+  return (
+    <Provider store={store}>
+      <ModalProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ModalProvider>
+    </Provider>
+  );
+}
 
 ReactDOM.render(
   <React.StrictMode>
