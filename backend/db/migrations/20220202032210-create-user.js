@@ -8,16 +8,16 @@ module.exports = {
       type: Sequelize.INTEGER
     },
     username: {
-      type: Sequelize.STRING(50),
+      type: Sequelize.STRING(25),
       allowNull: false,
       unique: true,
     },
     firstName: {
-      type: Sequelize.STRING(50),
+      type: Sequelize.STRING(25),
       allowNull: false,
     },
     lastName: {
-      type: Sequelize.STRING(50),
+      type: Sequelize.STRING(25),
       allowNull: false,
     },
     email: {

@@ -24,7 +24,7 @@ module.exports = {
     {
       username: 'randomGirl',
       firstName: 'Liz',
-      lastName: 'BrothersGirlfriendFromCollege',
+      lastName: 'BrothersCollegeGF',
       email: 'lizzz@genericuniversity.edu',
       hashedPassword: bcrypt.hashSync('iLovetheLiberalArt5'),
       bio: 'Call me Clu! Ready to come stay at one of my fabulous properties?',
