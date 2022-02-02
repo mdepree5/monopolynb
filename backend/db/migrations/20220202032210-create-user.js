@@ -26,10 +26,11 @@ module.exports = {
     },
     bio: {
       type: Sequelize.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     isHost: {
       type: Sequelize.BOOLEAN,
+      allowNull: false,
       defaultValue: false,
     },
     createdAt: {
