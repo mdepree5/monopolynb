@@ -17,8 +17,8 @@ app.use(express.json());
 
 
 
-
-//todo Pre-Request Security Middleware
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo Pre-Request Security Middleware
 // cors only in development
 if (!isProduction) app.use(cors());
 
@@ -40,8 +40,52 @@ app.use(
   })
 );
 
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo Routes
 
 app.use(routes); // Connect all the routes
+
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo Error Handling
+
+// Resource Not Foun Error Handler
+app.use((_req, _res, next) => {
+  const err = new Error("The requested resource couldn't be found.");
+  err.title = "Resource Not Found";
+  err.errors = ["The requested resource couldn't be found."];
+  err.status = 404;
+  next(err);
+});
+
+// Sequelize Error Handler
+const { ValidationError } = require('sequelize');
+app.use((err, _req, _res, next) => {
+  // check if error is a Sequelize error:
+  if (err instanceof ValidationError) {
+    err.errors = err.errors.map((e) => e.message);
+    err.title = 'Validation error';
+  }
+  next(err);
+});
+
+// Error Formatter Error Handler
+app.use((err, _req, res, _next) => {
+  res.status(err.status || 500);
+  console.error(err);
+  res.json({
+    title: err.title || 'Server Error',
+    message: err.message,
+    errors: err.errors,
+    stack: isProduction ? null : err.stack
+  });
+});
+
+
+
+
+
+
+
 
 
 module.exports = app;
