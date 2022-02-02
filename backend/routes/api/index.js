@@ -1,7 +1,46 @@
 const router = require('express').Router();
+const sessionRouter = require('./session.js');
+const usersRouter = require('./users.js');
+
+
+router.use('/session', sessionRouter);
+router.use('/users', usersRouter);
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
+
+
+router.post('/test', function(req, res) {
+  res.json({ requestBody: req.body });
+});
+
+
+
+
+module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+/*
+// todo ——————————————————————————————————————————————————————————————————————————————————
 //todo Testing API routes
+
+fetch('/api/test', {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "XSRF-TOKEN": `Lh2ObvS1-UWftESa5wxo3N4yDw-BTvDKN6AM`
+  },
+  body: JSON.stringify({ hello: 'world' })
+}).then(res => res.json()).then(data => console.log(data));
+
 
 // GET /api/set-token-cookie
 const asyncHandler = require('express-async-handler');
@@ -33,29 +72,4 @@ router.get(
   requireAuth,
   (req, res) => res.json(req.user)
 );
-
-
-// POST /api/test
-router.post('/test', function(req, res) {
-  res.json({ requestBody: req.body });
-});
-
-
-// todo ——————————————————————————————————————————————————————————————————————————————————
-
-
-
-
-module.exports = router;
-
-
-
-
-// fetch('/api/test', {
-//   method: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//     "XSRF-TOKEN": `Lh2ObvS1-UWftESa5wxo3N4yDw-BTvDKN6AM`
-//   },
-//   body: JSON.stringify({ hello: 'world' })
-// }).then(res => res.json()).then(data => console.log(data));
+ */
