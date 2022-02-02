@@ -9,8 +9,8 @@ const router = express.Router();
 
 
 
-router.post(
-  '/',
+router.route('/')
+.post(
   asyncHandler(async (req, res, next) => {
     const { credential, password } = req.body;
 
@@ -30,11 +30,20 @@ router.post(
       user
     });
   })
-);
-
-
-router.delete(
-  '/',
+)
+.get(
+  restoreUser,
+  (req, res) => {
+    const { user } = req;
+    if (user) {
+      return res.json({
+        user: user.toSafeObject()
+      });
+    }
+    return res.json({});
+  }
+)
+.delete(
   (_req, res) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
