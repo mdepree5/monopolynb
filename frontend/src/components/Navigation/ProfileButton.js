@@ -1,5 +1,5 @@
 const ProfileButton = () => (
-  <i class="fas fa-home" />
+  <i class="far fa-user" />
 )
 
 export default ProfileButton;
