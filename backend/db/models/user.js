@@ -4,6 +4,18 @@ const { Validator } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
+    userName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 50],
+        isNotEmail(value) {
+          if(Validator.isEmail(value)) {
+            throw new Error('Cannot be an email.');
+          }
+        }
+      }
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -68,3 +80,9 @@ module.exports = (sequelize, DataTypes) => {
   };
   return User;
 };
+
+User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
+  const { id, username, email } = this; // context will be the User instance
+  return { id, username, email };
+};
+

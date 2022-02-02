@@ -2,34 +2,35 @@
 const bcrypt = require('bcryptjs');
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Users', [
-      {
-        firstName: 'Demo',
-        lastName: 'User',
-        email: 'demo@user.io',
-        hashedPassword: bcrypt.hashSync('demo8'),
-        bio: 'Hello, I am a demo user',
-        isHost: true,
-      },
-      {
-        firstName: 'Unger',
-        lastName: 'CousinWhoAlwaysCheats',
-        email: 'cheaters@neverprosper.com',
-        hashedPassword: bcrypt.hashSync('loadedDie'),
-        bio: 'See you again, soon!',
-        isHost: true,
-      },
-      {
-        firstName: 'Liz',
-        lastName: 'BrothersGirlfriendFromCollege',
-        email: 'lizzz@genericuniversity.edu',
-        hashedPassword: bcrypt.hashSync('iLovetheLiberalArt5'),
-        bio: 'Call me Clu! Ready to come stay at one of my fabulous properties?',
-        isHost: true,
-      },
-    ], {});
-  },
+  up: (queryInterface, Sequelize) => queryInterface.bulkInsert('Users', [
+    {
+      userName: 'demoUser1',
+      firstName: 'Demo',
+      lastName: 'User',
+      email: 'demo@user.io',
+      hashedPassword: bcrypt.hashSync('demo8'),
+      bio: 'Hello, I am a demo user',
+      isHost: true,
+    },
+    {
+      userName: 'yourCousin',
+      firstName: 'Unger',
+      lastName: 'CousinWhoAlwaysCheats',
+      email: 'cheaters@neverprosper.com',
+      hashedPassword: bcrypt.hashSync('loadedDie'),
+      bio: 'See you again, soon!',
+      isHost: true,
+    },
+    {
+      userName: 'randomGirl',
+      firstName: 'Liz',
+      lastName: 'BrothersGirlfriendFromCollege',
+      email: 'lizzz@genericuniversity.edu',
+      hashedPassword: bcrypt.hashSync('iLovetheLiberalArt5'),
+      bio: 'Call me Clu! Ready to come stay at one of my fabulous properties?',
+      isHost: true,
+    },
+  ], {}),
 
   down: (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
