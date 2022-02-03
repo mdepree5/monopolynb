@@ -38,17 +38,17 @@ const deleteOneProperty = property => ({
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
-export const addPokemon = property => async (dispatch) => {
+export const createProperty = property => async (dispatch) => {
   const response = await fetch(`/api/properties`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(pokemon)
+    body: JSON.stringify(property)
   });
 
   if (response.ok) {
-    const pokemon = await response.json();
-    dispatch(addOnePokemon(pokemon));
-    return pokemon;
+    const property = await response.json();
+    dispatch(createOneProperty(property));
+    return property;
   }
 };
 
@@ -69,42 +69,102 @@ export const getProperty = id => async (dispatch) => {
 
   if (response.ok) {
     const property = await response.json();
-    console.log('hello one', property);
     dispatch(getOneProperty(property));
   }
 };
 
 
-export const updatePokemon = property => async (dispatch) => {
-  const response = await fetch(`/api/properties/${pokemon.id}`, {
+export const updateProperty = property => async (dispatch) => {
+  const response = await fetch(`/api/properties/${property.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(pokemon)
+    body: JSON.stringify(property)
   });
 
   if (response.ok) {
-    const editedPokemon = await response.json();
-    dispatch(updateOnePokemon(editedPokemon));
-    return editedPokemon;
+    const updatedProperty = await response.json();
+    dispatch(updateOneProperty(updatedProperty));
+    return updatedProperty;
   }
 };
 
-const initialState = {
-  list: [],
-  types: []
-};
 
-const sortList = (list) => {
-  return list
-    .sort((pokemonA, pokemonB) => {
-      return pokemonA.number - pokemonB.number;
-    })
-    .map(propertyokemon) => pokemon.id);
-};
+export const deleteProperty = property => async (dispatch) => {
+  const response = await fetch(`/api/properties/${property.id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
 
+  if (response.ok) {
+    const property = await response.json();
+    dispatch(remove(property.id));
+  }
+};
 
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
+const initialState = { listOfProperties: [] };
+
+const sortList = list => list
+.sort((propertyA, propertyB) => propertyA.price - propertyB.price)
+.map((property) => property.id);
+
+const propertyReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case CREATE_ONE:
+      // if (!state[action.pokemon.id]) {
+      const newState = {
+        ...state,
+        [action.property.id]: action.property
+      };
+      const pokemonList = newState.list.map((id) => newState[id]);
+      pokemonList.push(action.pokemon);
+      newState.list = sortList(pokemonList);
+      return newState;
+// todo ——————————————————————————————————————————————————————————————————————————————————
+    case GET_ALL:
+      const properties = {};
+      action.listOfProperties.forEach(property => {
+        properties[property.id] = property;
+      });
+      return {
+        ...properties,
+        ...state,
+        listOfProperties: sortList(action.listOfProperties)
+      };
+// todo ——————————————————————————————————————————————————————————————————————————————————
+    case GET_ONE:
+      return {
+        ...state,
+        [action.property.id]: {
+          ...state[action.property.id],
+          ...action.property
+        }
+      };
+// todo ——————————————————————————————————————————————————————————————————————————————————
+    case UPDATE_ONE:
+      return {
+        ...state,
+        [action.property.id]: action.property
+      }
+// todo ——————————————————————————————————————————————————————————————————————————————————
+    case DELETE_ONE:
+      const newState = {...state};  
+      return {
+        
+        [action.pokemonId]: {
+          ...state[action.pokemonId],
+          items: state[action.pokemonId].items.filter(
+            (itemId) => itemId !== action.itemId
+          )
+        }
+      };
+    default:
+      return state;
+  }
+};
+
+export default propertyReducer;
