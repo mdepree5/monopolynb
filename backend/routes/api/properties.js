@@ -1,11 +1,12 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const Property = require('../../db/models/property'); //todo ******* does not exist yet
-const {validateProperties, validatePUT} = require('../middleware/formValidators');
+const {validateProperty, validatePUT} = require('../middleware/formValidators');
 
+const Property = require('../../db/models/property'); //todo ******* does not exist yet
 
 const router = express.Router();
+
 
 router.route('/')
 .get(asyncHandler(async function(_req, res) {
@@ -13,13 +14,13 @@ router.route('/')
   return res.json(property);
 }))
 .post(
-  validateProperties,
+  validateProperty,
   asyncHandler(async function (req, res) {
     const id = await Property.create(req.body); //todo define Property.method() in Property model
     return res.redirect(`${req.baseUrl}/${id}`);
   }))
 .put(
-  validateProperties,
+  validateProperty,
   validatePUT,
   asyncHandler(async function (req, res) {
     const id = await Property.update(req.body); //todo define Property.method() in Property model
