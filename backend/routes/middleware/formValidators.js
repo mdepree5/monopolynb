@@ -29,7 +29,7 @@ const validateLogin = [
 ];
 
 // ! —————————————————————————————————————————————————————————————————————————————————————
-// todo Elaborate express-validator validators
+// todo Elaborate validators
 const validateSignup = [
   check('username')
     .exists({ checkFalsy: true })
@@ -69,8 +69,21 @@ const validateSignup = [
 
 
 // !!!! ——————————————————————————————————————————————————————————————————————————————————
-// todo Elaborate express-validator validators
+// todo Elaborate validators
 const validateProperty = [
+  check('credential')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a valid email or username.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a password.'),
+  handleValidationErrors
+];
+
+// !!!! ——————————————————————————————————————————————————————————————————————————————————
+// todo Elaborate validators
+const validateReview = [
   check('credential')
     .exists({ checkFalsy: true })
     .notEmpty()
@@ -96,5 +109,6 @@ module.exports = {
   validateLogin,
   validateSignup,
   validateProperty,
+  validateReview,
   validatePUT,
 };
