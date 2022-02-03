@@ -11,7 +11,7 @@ const router = express.Router();
 
 
 // ! —————————————————————————————————————————————————————————————————————————————————————
-// ! Elaborate express-validator validators!!!
+// ! Elaborate express-validator validators?
 const validateSignup = [
   check('username')
     .exists({ checkFalsy: true })
