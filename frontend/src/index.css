@@ -18,7 +18,6 @@ form{
   flex-direction: column;
 }
 
-
 .cards{
   display: flex;
   flex-direction: row;

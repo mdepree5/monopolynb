@@ -16,11 +16,13 @@ const colors = ['brown', 'skyblue', 'orchid', 'orange', 'red', 'yellow', 'green'
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+      <div className='nav-bar'>
+        <Navigation isLoaded={isLoaded} />
+      </div>
       <div className='cards'>
         {colors.map(color => (
-          <div className='card'>
-            <div className='card-header' id={color} />
+          <div className='card' key={color}>
+            <div className='card-header'id={color}/>
             <div>{color}</div>
           </div>
         ))
