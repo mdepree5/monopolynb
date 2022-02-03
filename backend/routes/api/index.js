@@ -10,16 +10,9 @@ const reviewsRouter = require('./reviews.js');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
-router.use('/users', usersRouter);
+router.use('/properties', propertiesRouter);
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
-
-
-router.post('/test', function(req, res) {
-  res.json({ requestBody: req.body });
-});
-
-
 
 
 module.exports = router;

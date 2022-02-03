@@ -1,21 +1,9 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
-const { check, validationResult } = require('express-validator');
 
 const Property = require('../../db/models/property'); //todo ******* does not exist yet
+const {validateProperties, validatePUT} = require('../middleware/formValidators');
 
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-// todo Create Property Validations
-const validateProperties = [
-  check('credential')
-    .exists({ checkFalsy: true })
-    .notEmpty()
-    .withMessage('Please provide a valid email or username.'),
-  check('password')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a password.'),
-  handleValidationErrors
-];
 
 const router = express.Router();
 
@@ -32,6 +20,7 @@ router.route('/')
   }))
 .put(
   validateProperties,
+  validatePUT,
   asyncHandler(async function (req, res) {
     const id = await Property.update(req.body); //todo define Property.method() in Property model
     const property = await Property.one(id); //todo define Property.method() in Property model
