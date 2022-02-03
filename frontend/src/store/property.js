@@ -97,7 +97,7 @@ export const deleteProperty = property => async (dispatch) => {
 
   if (response.ok) {
     const property = await response.json();
-    dispatch(remove(property.id));
+    dispatch(deleteOneProperty(property.id));
   }
 };
 
@@ -108,32 +108,30 @@ export const deleteProperty = property => async (dispatch) => {
 
 const initialState = { listOfProperties: [] };
 
-const sortList = list => list
-.sort((propertyA, propertyB) => propertyA.price - propertyB.price)
-.map((property) => property.id);
+// const sortList = list => list
+// .sort((propertyA, propertyB) => propertyA.price - propertyB.price)
+// .map((property) => property.id);
 
 const propertyReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_ONE:
-      // if (!state[action.pokemon.id]) {
-      const newState = {
+    case CREATE_ONE: 
+      return {
         ...state,
-        [action.property.id]: action.property
+        listOfProperties: {
+          ...state.listOfProperties,
+          [action.property.id]: action.property
+        }
       };
-      const pokemonList = newState.list.map((id) => newState[id]);
-      pokemonList.push(action.pokemon);
-      newState.list = sortList(pokemonList);
-      return newState;
+
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL:
       const properties = {};
-      action.listOfProperties.forEach(property => {
+      action.properties.forEach(property => {
         properties[property.id] = property;
       });
       return {
         ...properties,
         ...state,
-        listOfProperties: sortList(action.listOfProperties)
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ONE:
@@ -151,9 +149,9 @@ const propertyReducer = (state = initialState, action) => {
         [action.property.id]: action.property
       }
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case DELETE_ONE:
-      const newState = {...state};  
-      return {
+    case DELETE_ONE: 
+
+    return {
         
         [action.pokemonId]: {
           ...state[action.pokemonId],
