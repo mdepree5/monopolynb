@@ -10,9 +10,55 @@ nav{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  box-shadow: 0 1px 10px gray;
 }
 
 form{
   display: flex;
   flex-direction: column;
 }
+
+
+.cards{
+  display: flex;
+  flex-direction: row;
+}
+
+.card{
+  width: 100px;
+  height: 150px;
+  border: solid black 1px;
+  text-align: center;
+}
+
+.card-header{
+  width: 100px;
+  height: 50px;
+  border: solid black 1px;
+}
+
+#brown {
+  background-color: saddlebrown;
+}
+#skyblue {
+  background-color: skyblue;
+}
+#orchid {
+
+  background-color: darkorchid;}
+#orange {
+
+  background-color: orange;
+}#red {
+
+  background-color: red;
+}
+#yellow {
+  background-color: yellow;
+}
+#green {
+  background-color: green;
+}
+#blue {
+
+  background-color: blue;}

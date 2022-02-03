@@ -12,10 +12,20 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+const colors = ['brown', 'skyblue', 'orchid', 'orange', 'red', 'yellow', 'green', 'blue'];
+
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <h1>Hello World</h1>
+      <div className='cards'>
+        {colors.map(color => (
+          <div className='card'>
+            <div className='card-header' id={color} />
+            <div>{color}</div>
+          </div>
+        ))
+        }
+      </div>
     </>
   );
 }
