@@ -4,7 +4,7 @@ const asyncHandler = require('express-async-handler');
 const {validateProperty, validatePUT} = require('../middleware/formValidators');
 
 const Property = require('../../db/models/property'); //todo ******* does not exist yet
-const Reviews = require('../../db/models/review'); //todo ******* does not exist yet
+const Review = require('../../db/models/review'); //todo ******* does not exist yet
 
 const router = express.Router();
 
@@ -40,6 +40,7 @@ router.route('/:id')
   }))
 .delete(
   asyncHandler(async (req, res) => {
+    const property = await Property.one(id); //todo define Property.method() in Property model
     
   })
 )
@@ -52,25 +53,61 @@ router.route('/:id')
 router.route('/:id/reviews')
 .get(asyncHandler(async function(req, res) {
   const reviews = await Property.getReviewsByPropertyId(req.params.id); //* Decide whether to add the method in the Property method or Reviews method
-  const reviews = await Reviews.getReviewsByPropertyId(req.params.id); //* Decide whether to add the method in the Property method or Reviews method
+  const reviews = await Review.getReviewsByPropertyId(req.params.id); //* Decide whether to add the method in the Property method or Reviews method
   return res.json(reviews);
 }))
 .post(
   itemValidations.validateCreate,
   asyncHandler(async function(req, res) {
-    const item = await ItemsRepository.addItem(req.body, req.params.id);
-    return res.json(item);
+    const review = await Review.addReview(req.body, req.params.id);
+    return res.json(review); //* return json? OR do I redirect?
+    return res.redirect(`${req.baseUrl}/${req.paramsid}`); //* redirect/return to post page???
   })
 );
+
+router.route('/:id/reviews/:id')
+.get(asyncHandler(async (req, res) => {
+  const property = await Review.one(req.params.id); //todo define Property.method() in Property model
+  return res.json(property);
+}))
+.put(
+  validateProperty,
+  validatePUT,
+  asyncHandler(async (req, res) => {
+    const id = await Property.update(req.body); //todo define Property.method() in Property model
+    const property = await Property.one(id); //todo define Property.method() in Property model
+    return res.json(property);
+  }))
+.delete(
+  asyncHandler(async (req, res) => {
+    const property = await Property.one(id); //todo define Property.method() in Property model
+    
+  })
+)
+
+
 
 module.exports = router;
 
 
+
 // todo ——————————————————————————————————————————————————————————————————————————————————
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                               Review methods
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo ——————————————————————————————————————————————————————————————————————————————————
+
+async function addReview(details, propertyId) {
+  const review = await Review.create({
+    ...details,
+    propertyId,
+  });
+  return await Review.findByPk(review.id);
+}
+
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                               Property methods
-// todo ——————————————————————————————————————————————————————————————————————————————————
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
