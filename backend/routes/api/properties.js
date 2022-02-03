@@ -140,8 +140,9 @@ const deleteReview = async(reviewId) => {
 }
 
 module.exports = {
-  addReview,
   getReviewsByPropertyId,
+  getReviewById,
+  createReview,
   updateReview,
   deleteReview,
 };
@@ -190,8 +191,10 @@ const deleteProperty = async(propertyId) => {
 
 
 module.exports = {
-  create,
-  update,
-  list,
-  one,
+  getReviewsByPropertyId,
+  listAllProperties,
+  getPropertyById,
+  createProperty,
+  updateProperty,
+  deleteProperty,
 };

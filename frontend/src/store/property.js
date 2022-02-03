@@ -1,22 +1,24 @@
-import { LOAD_ITEMS, REMOVE_ITEM, ADD_ITEM } from './items';
-
 const GET_ALL = 'property/get_all';
 const CREATE_ONE = 'property/create';
 const GET_ONE = 'property/get_one';
 const UPDATE_ONE = 'property/update';
 const DELETE_ONE = 'property/delete';
 
-const load = list => ({
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                                 Action Creators
+// todo ——————————————————————————————————————————————————————————————————————————————————
+
+const getAllProperties = properties => ({
   type: GET_ALL,
-  list
+  properties
 });
 
-const addOneProperty = property => ({
+const createOneProperty = property => ({
   type: CREATE_ONE,
   property
 });
 
-const getSingleProperty = property => ({
+const getOneProperty = property => ({
   type: GET_ONE,
   property
 });
@@ -26,17 +28,25 @@ const updateOneProperty = property => ({
   property
 });
 
-const deleteSingleProperty = property => ({
-  type: GET_ONE,
+const deleteOneProperty = property => ({
+  type: DELETE_ONE,
   property
 });
 
-export const getAllProperties = () => async (dispatch) => {
-  const response = await fetch(`/api/properties`);
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                                 Thunks
+// todo ——————————————————————————————————————————————————————————————————————————————————
+
+
+export const getProperties = () => async (dispatch) => {
+  const response = await fetch(`/api/properties`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
 
   if (response.ok) {
-    const list = await response.json();
-    dispatch(load(list));
+    const properties = await response.json();
+    dispatch(getAllProperties(properties));
   }
 };
 
@@ -49,6 +59,9 @@ export const getOneProperty = (id) => async (dispatch) => {
     dispatch(getSinglePokemon(pokemon));
   }
 };
+
+const client = (endpoint, {})
+
 
 export const addPokemon = property => async (dispatch) => {
   const response = await fetch(`/api/properties`, {
@@ -90,6 +103,15 @@ const sortList = (list) => {
     })
     .map(propertyokemon) => pokemon.id);
 };
+
+
+
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                                 Reducer
+// todo ——————————————————————————————————————————————————————————————————————————————————
+
+
+
 
 const pokemonReducer = (state = initialState, action) => {
   switch (action.type) {
