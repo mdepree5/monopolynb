@@ -15,15 +15,17 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route path="/signup">
-            <SignupFormPage />
-          </Route>
-        </Switch>
-      )}
+      <h1>Hello World</h1>
     </>
   );
 }
+// {isLoaded && (
+//   <Switch>
+//     <Route path="/signup">
+//       <SignupFormPage />
+//     </Route>
+//   </Switch>
+// )}
+
 
 export default App;
