@@ -37,10 +37,10 @@ const validateSignup = [
   check('email')
     .exists({ checkFalsy: true })
     .isEmail()
-    .withMessage('Please provide a valid email.')
-    .custom(value => User.findByEmail(value).then(user => {
-      if(user) return Promise.reject('Email already in use')
-    })),
+    .withMessage('Please provide a valid email.'),
+    // .custom(value => User.findByEmail(value).then(user => {
+    //   if(user) return Promise.reject('Email already in use')
+    // })),
   check('password')
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
