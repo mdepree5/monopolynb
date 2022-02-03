@@ -1,7 +1,7 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const {validateProperty, validatePUT} = require('../middleware/formValidators');
+const {validateReview, validateProperty, validatePUT} = require('../middleware/formValidators');
 
 const Property = require('../../db/models/property'); //todo ******* does not exist yet
 const Review = require('../../db/models/review'); //todo ******* does not exist yet
@@ -14,16 +14,16 @@ const router = express.Router();
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 router.route('/')
-.get(asyncHandler(async (req, res) => {
-  const properties = await Property.listAllProperties();
-  return res.json(properties);
-}))
 .post(
   validateProperty,
   asyncHandler(async (req, res) => {
     const id = await Property.createProperty(req.body);
     return res.redirect(`${req.baseUrl}/${id}`);
   }))
+.get(asyncHandler(async (req, res) => {
+  const properties = await Property.listAllProperties();
+  return res.json(properties);
+}))
 
 router.route('/:propertyId')
 .get(asyncHandler(async (req, res) => {
@@ -53,19 +53,19 @@ router.route('/:propertyId')
 
 
 router.route('/:propertyId/reviews')
-.get(asyncHandler(async function(req, res) {
-  // const reviews = await Property.getReviewsByPropertyId(req.params.id); //* Decide whether to add the method in the Property method or Reviews method
-  const reviews = await Review.getReviewsByPropertyId(req.params.propertyId); //* Decide whether to add the method in the Property method or Reviews method
-  return res.json(reviews);
-}))
 .post(
-  itemValidations.validateCreate,
+  validateReview,
   asyncHandler(async function(req, res) {
     const review = await Review.createReview(req.body, req.params.propertyId);
     return res.json(review); //* return json? OR do I redirect?
     return res.redirect(`${req.baseUrl}/${req.paramsid}`); //* redirect/return to post page???
   })
-);
+)
+.get(asyncHandler(async function(req, res) {
+  // const reviews = await Property.getReviewsByPropertyId(req.params.id); //* Decide whether to add the method in the Property method or Reviews method
+  const reviews = await Review.getReviewsByPropertyId(req.params.propertyId); //* Decide whether to add the method in the Property method or Reviews method
+  return res.json(reviews);
+}))
 
 router.route('/:propertyId/reviews/:reviewId')
 .get(asyncHandler(async (req, res) => {
@@ -100,14 +100,6 @@ module.exports = router;
 // todo                               Review methods
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo ——————————————————————————————————————————————————————————————————————————————————
-
-//! Define this in the Reviews model or in the Property model????
-const getReviewsByPropertyId = async(propertyId) => await Review.findAll({
-  where: { propertyId },
-});
-
-const getReviewById = async(id) => await Property.scope("detailed").findByPk(id);
-
 const createReview = async(details, propertyId) => {
   const review = await Review.create({
     ...details,
@@ -115,6 +107,13 @@ const createReview = async(details, propertyId) => {
   });
   return await Review.findByPk(review.id);
 }
+
+//! Define this in the Reviews model or in the Property model????
+const getReviewsByPropertyId = async(propertyId) => await Review.findAll({
+  where: { propertyId },
+});
+
+const getReviewById = async(id) => await Property.scope("detailed").findByPk(id);
 
 const updateReview = async(details) => {
   const id = details.id;
@@ -153,6 +152,10 @@ module.exports = {
 // todo                               Property methods
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo ——————————————————————————————————————————————————————————————————————————————————
+const createProperty = async(details) => {
+  const property = await Property.create(details);
+  return property.id;
+}
 
 //! Define this in the Reviews model or in the Property model????
 const getReviewsByPropertyId = async(id) => await Property.scope('reviews').findByPk(id) //* create custom reviews scope???
@@ -160,11 +163,6 @@ const getReviewsByPropertyId = async(id) => await Property.scope('reviews').find
 const listAllProperties = async() => await Property.findAll()
 
 const getPropertyById = async(id) => await Property.scope("detailed").findByPk(id);
-
-const createProperty = async(details) => {
-  const property = await Property.create(details);
-  return property.id;
-}
 
 const updateProperty = async(details) => {
   const id = details.id; //* need to be details.propertyId???
