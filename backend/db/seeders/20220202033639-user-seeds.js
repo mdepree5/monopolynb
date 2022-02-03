@@ -22,7 +22,7 @@ module.exports = {
       isHost: true,
     },
     {
-      username: 'randomGirl',
+      username: 'cluLiz',
       firstName: 'Liz',
       lastName: 'BrothersCollegeGF',
       email: 'lizzz@genericuniversity.edu',
