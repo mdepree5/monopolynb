@@ -102,16 +102,21 @@ export const deleteProperty = property => async (dispatch) => {
 };
 
 
+// **** ——————————————————————————————————————————————————————————————————————————————————
+// **** ——————————————————————————————————————————————————————————————————————————————————
+// ****                                 EXPLAIN
+// ****                                 
+// ****                   Why merge different reducers? 
+// ****                   Reviews to Properties as items to Pokemon
+// ****                                 
+// **** ——————————————————————————————————————————————————————————————————————————————————
+// **** ——————————————————————————————————————————————————————————————————————————————————
+
+
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
-
 const initialState = { listOfProperties: {} };
-
-// !!!! Is it necessary for me to order properties in state?
-// const sortList = list => list
-// .sort((propertyA, propertyB) => propertyA.price - propertyB.price)
-// .map((property) => property.id);
 
 const propertyReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -126,7 +131,7 @@ const propertyReducer = (state = initialState, action) => {
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL:
-      const properties = {};
+      const properties = {}; //* Conceptual: Declare new object 1. avoid mutation, 2. control specific slices of state
       action.properties.forEach(property => {
         properties[property.id] = property;
       });
@@ -153,11 +158,8 @@ const propertyReducer = (state = initialState, action) => {
     case DELETE_ONE: 
       const newState = {...state, listOfProperties: {...state.listOfProperties}};
       delete newState.listOfProperties[action.property.id];
+      return newState
 
-    return {
-        //! ??
-        newState
-      };
     default:
       return state;
   }
