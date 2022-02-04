@@ -17,7 +17,7 @@ router.route('/')
 .post(
   validateProperty,
   asyncHandler(async (req, res) => {
-    const id = await Property.createProperty(req.body);
+    const id = await Property.createProperty(req.body); // createProperty() method returns an id
     return res.redirect(`${req.baseUrl}/${id}`);
   }))
 .get(asyncHandler(async (req, res) => {
@@ -42,8 +42,8 @@ router.route('/:propertyId')
 .delete(
   asyncHandler(async (req, res) => {
     const propertyId = await Property.deleteProperty(req.params.propertyId);
-    return res.json({ propertyId });
-    return res.redirect(`${req.baseUrl}/${id}`); //* where do you want to return after deleting a property?? user home page? 
+    return res.json({ propertyId }); //* option 1: manipualte res.json(), display confirmation page?
+    return res.redirect(`${req.baseUrl}/${id}`); //* option 2: immediately redirect. Both op 1 and op 2 are design choice
   })
 )
 
@@ -103,7 +103,7 @@ module.exports = router;
 const createReview = async(details, propertyId) => {
   const review = await Review.create({
     ...details,
-    propertyId,
+    propertyId, //* because my review API routes nestin properties, elabaorate the createReview method
   });
   return await Review.findByPk(review.id);
 }

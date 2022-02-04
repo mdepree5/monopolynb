@@ -29,9 +29,7 @@ router.route('/')
 
     await setTokenCookie(res, user);
 
-    return res.json({
-      user
-    });
+    return res.json({user});
   })
 )
 .get(
