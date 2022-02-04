@@ -1,48 +1,52 @@
 'use strict';
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Properties', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      hostId: {
-        type: Sequelize.INTEGER
-      },
-      title: {
-        type: Sequelize.STRING
-      },
-      description: {
-        type: Sequelize.TEXT
-      },
-      numberOfBeds: {
-        type: Sequelize.INTEGER
-      },
-      price: {
-        type: Sequelize.INTEGER
-      },
-      address: {
-        type: Sequelize.STRING
-      },
-      state: {
-        type: Sequelize.STRING
-      },
-      zipcode: {
-        type: Sequelize.INTEGER
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
-    });
-  },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Properties');
-  }
+  up: (queryInterface, Sequelize) => queryInterface.createTable('Properties', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER
+    },
+    hostId: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    title: {
+      type: Sequelize.STRING(100),
+      allowNull: false,
+    },
+    description: {
+      type: Sequelize.TEXT,
+      allowNull: false,
+    },
+    numberOfBeds: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    price: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    address: {
+      type: Sequelize.STRING(100),
+      allowNull: false,
+    },
+    state: {
+      type: Sequelize.STRING(100),
+      allowNull: false,
+    },
+    zipcode: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+    },
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+    updatedAt: {
+      allowNull: true,
+      type: Sequelize.DATE,
+    }
+  }),
+  down: (queryInterface, Sequelize) => queryInterface.dropTable('Properties')
 };
