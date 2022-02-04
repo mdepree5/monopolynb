@@ -1,7 +1,7 @@
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Variables
 // todo ——————————————————————————————————————————————————————————————————————————————————
-import {CREATE_REVIEW, GET_ALL_REVIEWS, DELETE_REVIEW} from './review'
+import {CREATE_REVIEW, GET_ALL_REVIEWS, UPDATE_REVIEW, DELETE_REVIEW} from './review';
 const CREATE_ONE = 'property/create';
 const GET_ALL = 'property/get_all';
 const GET_ONE = 'property/get_one';
@@ -167,6 +167,14 @@ const propertyReducer = (state = initialState, action) => {
 
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
+    case CREATE_REVIEW:
+      return {
+        ...state,
+        [action.review.propertyId]: {
+          ...state[action.review.propertyId],
+          reviews: [...state[action.review.propertyId].reviews, action.review.id]
+        }
+      };    
     case GET_ALL_REVIEWS:
       return {
         ...state,
@@ -175,25 +183,15 @@ const propertyReducer = (state = initialState, action) => {
           reviews: action.reviews.map(review => review.id)
         }
       };
-    case REMOVE_ITEM:
+    case DELETE_REVIEW:
       return {
         ...state,
-        [action.pokemonId]: {
-          ...state[action.pokemonId],
-          items: state[action.pokemonId].items.filter(
-            (itemId) => itemId !== action.itemId
-          )
+        [action.propertyId]: {
+          ...state[action.propertyId],
+          reviews: state[action.propertyId].items.filter(reviewId => reviewId !== action.reviewId)
         }
       };
-    case ADD_ITEM:
-      console.log(action.item);
-      return {
-        ...state,
-        [action.item.pokemonId]: {
-          ...state[action.item.pokemonId],
-          items: [...state[action.item.pokemonId].items, action.item.id]
-        }
-      };
+
 
 
 
