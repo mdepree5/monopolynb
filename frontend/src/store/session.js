@@ -1,8 +1,14 @@
 import { csrfFetch } from './csrf';
 
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                                 Variables
+// todo ——————————————————————————————————————————————————————————————————————————————————
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
 
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                              Action Creators
+// todo ——————————————————————————————————————————————————————————————————————————————————
 const setUser = user => ({
   type: SET_USER,
   payload: user,
@@ -12,6 +18,9 @@ const removeUser = () => ({
   type: REMOVE_USER,
 });
 
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                                 Thunks
+// todo ——————————————————————————————————————————————————————————————————————————————————
 export const login = user => async (dispatch) => {
   const { credential, password } = user;
   const response = await csrfFetch('/api/session', {
@@ -62,9 +71,9 @@ export const logout = () => async (dispatch) => {
 };
 
 
-
-
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                                 Reducer
+// todo ——————————————————————————————————————————————————————————————————————————————————
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
