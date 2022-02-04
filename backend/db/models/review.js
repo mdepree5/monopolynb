@@ -29,7 +29,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-  }, {});
+  }, {
+    scopes: {
+      reviewDataOnly: {
+        attributes: {exclude: ['guestId', 'content'] }
+      },
+    }
+  });
+
+  Review.getAllReviewDataByPropertyId = async function (propertyId) {
+    return await Review.scope('reviewDataOnly').findByPk(propertyId);
+  };
+
   Review.associate = function(models) {
     // associations can be defined here
   };
