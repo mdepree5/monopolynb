@@ -14,9 +14,10 @@ const createOnereview = review => ({
   review
 });
 
-const getAllReviews = reviews => ({
+const getAllReviews = (reviews, propertyId) => ({
   type: GET_ALL_REVIEWS,
-  reviews
+  reviews,
+  propertyId
 });
 
 const updateOneReview = review => ({
@@ -32,11 +33,11 @@ const deleteOneReview = review => ({
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
-export const createReview = review => async (dispatch) => {
-  const response = await fetch(`/api/reviews`, {
+export const createReview = (newReviewData, propertyId) => async (dispatch) => {
+  const response = await fetch(`/api/properties/${propertyId}/reviews`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(review)
+    body: JSON.stringify(newReviewData)
   });
 
   if (response.ok) {
@@ -46,36 +47,34 @@ export const createReview = review => async (dispatch) => {
   }
 };
 
-export const getReviews = () => async (dispatch) => {
-  const response = await fetch(`/api/reviews`, {
+export const getReviewsByPropertyId = propertyId => async (dispatch) => {
+  const response = await fetch(`/api/properties/${propertyId}/reviews`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
   });
 
   if (response.ok) {
     const reviews = await response.json();
-    dispatch(getAllReviews(reviews));
+    dispatch(getAllReviews(reviews, propertyId));
   }
 };
 
-
-export const updateReview = review => async (dispatch) => {
-  const response = await fetch(`/api/reviews/${review.id}`, {
+export const updateReview = updatedReviewData => async (dispatch) => {
+  const response = await fetch(`/api/reviews/${updatedReviewData.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(review)
+    body: JSON.stringify(updatedReviewData)
   });
 
   if (response.ok) {
-    const updatedreview = await response.json();
-    dispatch(updateOneReview(updatedreview));
-    return updatedreview;
+    const updatedReview = await response.json();
+    dispatch(updateOneReview(updatedReview));
+    return updatedReview;
   }
 };
 
-
-export const deleteReview = review => async (dispatch) => {
-  const response = await fetch(`/api/reviews/${review.id}`, {
+export const deleteReview = reviewId => async (dispatch) => {
+  const response = await fetch(`/api/reviews/${reviewId}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -85,18 +84,6 @@ export const deleteReview = review => async (dispatch) => {
     dispatch(deleteOneReview(review.id));
   }
 };
-
-
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-// !!!!                                 EXPLAIN
-// !!!!                                 
-// !!!!                   Do I want to make review api routes separate?
-// !!!!                   If so, how might I pass along the relevant 'propertyID' ????
-// !!!!                                 
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer

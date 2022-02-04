@@ -74,7 +74,6 @@ export const getProperty = id => async (dispatch) => {
   }
 };
 
-
 export const updateProperty = property => async (dispatch) => {
   const response = await fetch(`/api/properties/${property.id}`, {
     method: 'PUT',
@@ -89,9 +88,8 @@ export const updateProperty = property => async (dispatch) => {
   }
 };
 
-
-export const deleteProperty = property => async (dispatch) => {
-  const response = await fetch(`/api/properties/${property.id}`, {
+export const deleteProperty = propertyId => async (dispatch) => {
+  const response = await fetch(`/api/properties/${propertyId}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -101,18 +99,6 @@ export const deleteProperty = property => async (dispatch) => {
     dispatch(deleteOneProperty(property.id));
   }
 };
-
-
-// **** ——————————————————————————————————————————————————————————————————————————————————
-// **** ——————————————————————————————————————————————————————————————————————————————————
-// ****                                 EXPLAIN
-// ****                                 
-// ****                   Why merge different reducers? 
-// ****                   Reviews to Properties as items to Pokemon
-// ****                                 
-// **** ——————————————————————————————————————————————————————————————————————————————————
-// **** ——————————————————————————————————————————————————————————————————————————————————
-
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
@@ -162,10 +148,8 @@ const propertyReducer = (state = initialState, action) => {
       return newState
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // **** ——————————————————————————————————————————————————————————————————————————————————
-// ****                                 REVIEWS
+// ****                                 REVIEW CASES
 // **** ——————————————————————————————————————————————————————————————————————————————————
-
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case CREATE_REVIEW:
       return {
@@ -191,9 +175,6 @@ const propertyReducer = (state = initialState, action) => {
           reviews: state[action.propertyId].items.filter(reviewId => reviewId !== action.reviewId)
         }
       };
-
-
-
 
 
 
