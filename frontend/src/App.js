@@ -8,15 +8,25 @@ import Navigation from "./components/Navigation";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [navColor, setNavColor] = useState('blu');
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-const colors = ['brown', 'skyblue', 'orchid', 'orange', 'red', 'yellow', 'green', 'blue'];
+  const colors = ['brown', 'skyblue', 'orchid', 'orange', 'red', 'yellow', 'green', 'blue'];
+
+  useEffect(() => {
+    document.addEventListener('scroll', () => {
+      if(window.scrollY > 1) setNavColor('wheat')
+      setNavColor('blu');
+    })
+  })
+
 
   return (
     <>
-      <div className='nav-bar'>
+      <div className={`nav-bar ${navColor}`}>
         <Navigation isLoaded={isLoaded} />
       </div>
       <div className='cards'>
