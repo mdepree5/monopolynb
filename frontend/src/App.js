@@ -9,12 +9,33 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [navColor, setNavColor] = useState('blu');
+  const [meter, setMeter] = useState(0);
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   const colors = ['brown', 'skyblue', 'orchid', 'orange', 'red', 'yellow', 'green', 'blue'];
+
+  const Meter = () => {
+    for(let i = 0; i < 10; i++) {
+      setTimeout(() => {
+        setMeter(meter => meter + 10)
+      }, 1000);
+    }
+
+    return (
+      <>
+        <label for="fuel">Fuel level:</label>
+        <meter id="fuel"
+          min="0" max="100"
+          low="33" high="66" optimum="80"
+          value={meter}
+        > at 50/100
+        </meter>
+      </>
+    )
+  }
 
   useEffect(() => {
     document.addEventListener('scroll', () => {
@@ -29,6 +50,7 @@ function App() {
       <div className={`nav-bar ${navColor}`}>
         <Navigation isLoaded={isLoaded} />
       </div>
+      <Meter/ >
       <div className='cards'>
         {colors.map(color => (
           <div className='card' key={color}>
