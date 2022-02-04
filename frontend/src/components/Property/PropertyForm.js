@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import * as propertyActions from "../../store/property";
 import { useDispatch } from "react-redux";
-import FormInput from '../Form';
+import Form, FormInput from '../Form';
+
 
 const PropertyForm = () => {
   const dispatch = useDispatch();
@@ -29,26 +30,14 @@ const PropertyForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
+    <Form onSub={handleSubmit} errors={errors} buttonName={'Host Your Property!'} >
       <FormInput name='Title' state={title} setState={setTitle} />
-      <FormInput name='Description' state={description} setState={setDescription} required={false}/>
-      <div>
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-      </div>
-
-
-    </form>
+      <FormInput name='Description' state={description} setState={setDescription} />
+      <FormInput name='Price' state={price} setState={setPrice} />
+      <FormInput name='Address' state={address} setState={setAddress} />
+      <FormInput name='State' state={state} setState={setState} />
+      <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
+    </Form>
   )
 };
 
