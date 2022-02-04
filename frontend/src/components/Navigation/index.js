@@ -23,7 +23,7 @@ function Navigation({ isLoaded }){
   );
 
   return (
-    <nav>
+    <>
       <ul className='left-nav'>
           <NavLink exact to="/">Home</NavLink>
       </ul>
@@ -32,7 +32,7 @@ function Navigation({ isLoaded }){
           {isLoaded && sessionLinks}
         </li>
       </ul>
-    </nav>
+    </>
   );
 }
 
