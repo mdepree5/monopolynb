@@ -159,6 +159,44 @@ const propertyReducer = (state = initialState, action) => {
       const newState = {...state, listOfProperties: {...state.listOfProperties}};
       delete newState.listOfProperties[action.property.id];
       return newState
+// todo ——————————————————————————————————————————————————————————————————————————————————
+  export const ADD_ITEM = 'items/ADD_ITEM';
+  export const LOAD_ITEMS = 'items/LOAD_ITEMS';
+  export const REMOVE_ITEM = 'items/REMOVE_ITEM';
+  export const UPDATE_ITEM = 'items/UPDATE_ITEM';
+
+// todo ——————————————————————————————————————————————————————————————————————————————————
+    case LOAD_ITEMS:
+      return {
+        ...state,
+        [action.pokemonId]: {
+          ...state[action.pokemonId],
+          items: action.items.map((item) => item.id)
+        }
+      };
+    case REMOVE_ITEM:
+      return {
+        ...state,
+        [action.pokemonId]: {
+          ...state[action.pokemonId],
+          items: state[action.pokemonId].items.filter(
+            (itemId) => itemId !== action.itemId
+          )
+        }
+      };
+    case ADD_ITEM:
+      console.log(action.item);
+      return {
+        ...state,
+        [action.item.pokemonId]: {
+          ...state[action.item.pokemonId],
+          items: [...state[action.item.pokemonId].items, action.item.id]
+        }
+      };
+
+
+
+
 
     default:
       return state;

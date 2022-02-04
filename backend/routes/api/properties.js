@@ -24,7 +24,7 @@ router.route('/')
   const properties = await Property.listAllProperties();
   return res.json(properties);
 }))
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 router.route('/:propertyId')
 .get(asyncHandler(async (req, res) => {
   const property = await Property.getPropertyById(req.params.propertyId);
@@ -66,7 +66,7 @@ router.route('/:propertyId/reviews')
   const reviews = await Review.getReviewsByPropertyId(req.params.propertyId); //* Decide whether to add the method in the Property method or Reviews method
   return res.json(reviews);
 }))
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 router.route('/:propertyId/reviews/:reviewId')
 .get(asyncHandler(async (req, res) => {
   const review = await Review.getReviewById(req.params.reviewId);

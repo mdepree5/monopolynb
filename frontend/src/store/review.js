@@ -131,7 +131,7 @@ const reviewReducer = (state = initialState, action) => {
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_BY_PROPERTY_ID:
-      const reviews = {}; //* Conceptual: Declare new object 1. avoid mutation, 2. control specific slices of state
+      const reviews = {}; 
       action.reviews.forEach(review => {
         reviews[review.id] = review;
       });
