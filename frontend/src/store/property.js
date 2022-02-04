@@ -115,10 +115,9 @@ const propertyReducer = (state = initialState, action) => {
           [action.property.id]: action.property
         }
       };
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL:
-      const properties = {}; //* Conceptual: Declare new object 1. avoid mutation, 2. control specific slices of state
+      const properties = {}; //* Declare new object 1. avoid mutation, 2. control specific slices of state
       action.properties.forEach(property => {
         properties[property.id] = property;
       });
@@ -145,7 +144,7 @@ const propertyReducer = (state = initialState, action) => {
     case DELETE_ONE: 
       const newState = {...state, listOfProperties: {...state.listOfProperties}};
       delete newState.listOfProperties[action.property.id];
-      return newState
+      return newState;
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // **** ——————————————————————————————————————————————————————————————————————————————————
 // ****                                 REVIEW CASES
@@ -158,7 +157,8 @@ const propertyReducer = (state = initialState, action) => {
           ...state[action.review.propertyId],
           reviews: [...state[action.review.propertyId].reviews, action.review.id]
         }
-      };    
+      };
+// **** ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS:
       return {
         ...state,
@@ -167,6 +167,7 @@ const propertyReducer = (state = initialState, action) => {
           reviews: action.reviews.map(review => review.id)
         }
       };
+// **** ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_REVIEW:
       return {
         ...state,
@@ -175,9 +176,7 @@ const propertyReducer = (state = initialState, action) => {
           reviews: state[action.propertyId].items.filter(reviewId => reviewId !== action.reviewId)
         }
       };
-
-
-
+// **** ——————————————————————————————————————————————————————————————————————————————————
     default:
       return state;
   }
