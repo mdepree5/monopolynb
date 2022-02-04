@@ -26,7 +26,6 @@ return (
     <FormInput name='Password' state={password} setState={setPassword} />
   </Form>
 )
-
 }
 
 export default LoginForm;

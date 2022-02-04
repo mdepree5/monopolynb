@@ -26,7 +26,16 @@ function SignupFormPage() {
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };
 
-
+  return (
+    <Form onSub={handleSubmit} errors={errors} buttonName={'Log In'} >
+      <FormInput name='Email' state={email} setState={setEmail} />
+      <FormInput name='Username' state={username} setState={setUsername} />
+      <FormInput name='First Name' state={firstName} setState={setFirstName} />
+      <FormInput name='Last Name' state={lastName} setState={setLastName} />
+      <FormInput name='Password' state={password} setState={setPassword} />
+      <FormInput name='Confirm Password' state={confirmPassword} setState={setConfirmPassword} />
+    </Form>
+  )
 }
 
 export default SignupFormPage;
