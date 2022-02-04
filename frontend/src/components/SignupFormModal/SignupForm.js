@@ -27,7 +27,7 @@ function SignupFormPage() {
   };
 
   return (
-    <Form onSub={handleSubmit} errors={errors} buttonName={'Log In'} >
+    <Form onSub={handleSubmit} errors={errors} buttonName={'Sign Up'} >
       <FormInput name='Email' state={email} setState={setEmail} />
       <FormInput name='Username' state={username} setState={setUsername} />
       <FormInput name='First Name' state={firstName} setState={setFirstName} />
