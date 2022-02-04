@@ -2,7 +2,7 @@
 
 //! Do I need to spread children here???
 
-export const Form = ({onSub, errors, buttonName, ...children}) => (
+export const Form = ({onSub, errors, buttonName, children}) => (
   <form onSubmit={onSub}>
     <ul className='form-errors'>
       {errors.map((error, idx) => (
@@ -29,6 +29,7 @@ export const FormInput = ({name, state, setState, required = true}) => {
       value={state}
       onChange={e => setState(e.target.value)}
       required
+      placeholder={`${name}`}
       />
   </div>
   ) 

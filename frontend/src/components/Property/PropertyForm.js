@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as propertyActions from "../../store/property";
 import { useDispatch } from "react-redux";
-import Form, FormInput from '../Form';
+import {Form, FormInput} from '../Form';
 
 
 const PropertyForm = () => {
@@ -17,8 +17,9 @@ const PropertyForm = () => {
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = event => {
-    event.preventDefault()
+    event.preventDefault();
 
+    setErrors([]); //* is this necessary? Why is it important in LoginForm handleSubmit?
     return dispatch(propertyActions.createProperty(
       {title, description, numberOfBeds, price, address, state, zipcode}
     )).catch(
@@ -33,6 +34,7 @@ const PropertyForm = () => {
     <Form onSub={handleSubmit} errors={errors} buttonName={'Host Your Property!'} >
       <FormInput name='Title' state={title} setState={setTitle} />
       <FormInput name='Description' state={description} setState={setDescription} />
+      <FormInput name='Description' state={numberOfBeds} setState={setNumberOfBeds} />
       <FormInput name='Price' state={price} setState={setPrice} />
       <FormInput name='Address' state={address} setState={setAddress} />
       <FormInput name='State' state={state} setState={setState} />
