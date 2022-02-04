@@ -3,25 +3,41 @@
 
 
 
-const ReviewDataLine = () => (
+
+const ReviewDataLine = ({datum}) => (
   <div>
+    <div>{datum.name}</div>
     <div>
-      Hello
+      <span className='review-bar' style={{width: (100*datum.rating/5)}}/>
     </div>
+    <div>{datum.rating}</div>
   </div>
 )
 
 
-
-
-
-const ReviewData = ({ review }) => {
+// const ReviewData = ({ reviewData }) => { //TODO USE ACTUAL
+const ReviewData = () => { //!!!! FOR TESTING
   
-  return (
+  const reviewData = [
+    {name: 'Cleanliness', rating: 5.0},
+    {name: 'Communication', rating: 5.0},
+    {name: 'Check-In', rating: 4.0},
+    {name: 'Accuracy', rating: 4.0},
+    {name: 'Location', rating: 4.0},
+    {name: 'Value', rating: 4.4},
+  ];
+
+  console.log(reviewData);
+  
+  return (    
     <div>
-      <ReviewDataLine />
+      {reviewData.map(datum => (
+        <ReviewDataLine datum={datum}/>
+      ))
+      }
     </div>
   )
 }
+
 
 export default ReviewData;
