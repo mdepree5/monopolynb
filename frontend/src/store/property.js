@@ -106,8 +106,9 @@ export const deleteProperty = property => async (dispatch) => {
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
-const initialState = { listOfProperties: [] };
+const initialState = { listOfProperties: {} };
 
+// !!!! Is it necessary for me to order properties in state?
 // const sortList = list => list
 // .sort((propertyA, propertyB) => propertyA.price - propertyB.price)
 // .map((property) => property.id);
@@ -150,15 +151,12 @@ const propertyReducer = (state = initialState, action) => {
       }
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_ONE: 
+      const newState = {...state, listOfProperties: {...state.listOfProperties}};
+      delete newState.listOfProperties[action.property.id];
 
     return {
-        
-        [action.pokemonId]: {
-          ...state[action.pokemonId],
-          items: state[action.pokemonId].items.filter(
-            (itemId) => itemId !== action.itemId
-          )
-        }
+        //! ??
+        newState
       };
     default:
       return state;
