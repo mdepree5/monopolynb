@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import PropertyForm from './PropertyForm';
+import Review from '../Review';
 
 function PropertyFormModal() {
   const [showModal, setShowModal] = useState(false);
@@ -13,6 +14,7 @@ function PropertyFormModal() {
           <PropertyForm />
         </Modal>
       )}
+      <Review />
     </>
   );
 }
