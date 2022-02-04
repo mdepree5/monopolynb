@@ -10,7 +10,7 @@ export const Form = ({onSub, errors, buttonName, children}) => (
       ))}
     </ul>
     {children}
-    <button type='submit' >{buttonName}</button>
+    <button className='form-button' type='submit' >{buttonName}</button>
   </form>
 )
 
@@ -21,7 +21,7 @@ export const FormInput = ({name, state, setState, required = true}) => {
   const formatName = name.toLowerCase().split(' ').join('-');
 
   return (
-  <div className={`${formatName}-input`}>
+  <div className={`${formatName}-input form-input`}>
     <label htmlFor={`${formatName}`}>{`${name}: `}</label>
     <input 
       type='text' 
