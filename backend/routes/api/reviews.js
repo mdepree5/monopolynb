@@ -13,10 +13,6 @@ const router = express.Router();
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 router.route('/:reviewId')
-.get(asyncHandler(async (req, res) => { //! Is it logical to 'get one' review???
-  const review = await Review.getReviewById(req.params.reviewId);
-  return res.json(review);
-}))
 .put(
   validateReview,
   validatePUT,

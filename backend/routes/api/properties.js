@@ -68,10 +68,6 @@ router.route('/:propertyId/reviews')
 }))
 // todo ——————————————————————————————————————————————————————————————————————————————————
 router.route('/:propertyId/reviews/:reviewId')
-.get(asyncHandler(async (req, res) => {
-  const review = await Review.getReviewById(req.params.reviewId);
-  return res.json(review);
-}))
 .put(
   validateReview,
   validatePUT,
@@ -93,59 +89,17 @@ router.route('/:propertyId/reviews/:reviewId')
 
 module.exports = router;
 
-
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                               Deprecated
 // todo ——————————————————————————————————————————————————————————————————————————————————
-// todo                               Review methods
-// todo ——————————————————————————————————————————————————————————————————————————————————
-// todo ——————————————————————————————————————————————————————————————————————————————————
-const createReview = async(details, propertyId) => {
-  const review = await Review.create({
-    ...details,
-    propertyId, //* because my review API routes nestin properties, elabaorate the createReview method
-  });
-  return await Review.findByPk(review.id);
-}
-
-//! Define this in the Reviews model or in the Property model????
-const getReviewsByPropertyId = async(propertyId) => await Review.findAll({
-  where: { propertyId },
-});
+/* 
+.get(asyncHandler(async (req, res) => {
+  const review = await Review.getReviewById(req.params.reviewId);
+  return res.json(review);
+}))
 
 const getReviewById = async(id) => await Property.scope("detailed").findByPk(id);
-
-const updateReview = async(details) => {
-  const id = details.id;
-  delete details.id;
-
-  await Review.update(
-    details,
-    {
-      where: { id },
-      returning: true,
-      plain: true,
-    }
-  );
-  return await Review.findByPk(id);
-}
-
-const deleteReview = async(reviewId) => {
-  const review = await Review.findByPk(reviewId);
-  if (!review) throw new Error('Cannot find review');
-
-  await Review.destroy({ where: { id: review.id }});
-  return review.id;
-}
-
-module.exports = {
-  getReviewsByPropertyId,
-  getReviewById,
-  createReview,
-  updateReview,
-  deleteReview,
-};
-
+*/
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -185,6 +139,63 @@ const deleteProperty = async(propertyId) => {
   await Property.destroy({ where: { id: property.id }});
   return property.id;
 }
+
+
+
+
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                               Review methods
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo ——————————————————————————————————————————————————————————————————————————————————
+const createReview = async(details, propertyId) => {
+  const review = await Review.create({
+    ...details,
+    propertyId, //* because my review API routes nestin properties, elabaorate the createReview method
+  });
+  return await Review.findByPk(review.id);
+}
+
+//! Define this in the Reviews model or in the Property model????
+const getReviewsByPropertyId = async(propertyId) => await Review.findAll({
+  where: { propertyId },
+});
+
+const updateReview = async(details) => {
+  const id = details.id;
+  delete details.id;
+
+  await Review.update(
+    details,
+    {
+      where: { id },
+      returning: true,
+      plain: true,
+    }
+  );
+  return await Review.findByPk(id);
+}
+
+const deleteReview = async(reviewId) => {
+  const review = await Review.findByPk(reviewId);
+  if (!review) throw new Error('Cannot find review');
+
+  await Review.destroy({ where: { id: review.id }});
+  return review.id;
+}
+
+module.exports = {
+  getReviewsByPropertyId,
+  getReviewById,
+  createReview,
+  updateReview,
+  deleteReview,
+};
+
+
+
+
+
 
 
 
