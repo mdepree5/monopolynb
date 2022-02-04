@@ -161,6 +161,7 @@ const getReviewsByPropertyId = async(propertyId) => await Review.findAll({
   where: { propertyId },
 });
 
+
 const updateReview = async(details) => {
   const id = details.id;
   delete details.id;

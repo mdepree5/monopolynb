@@ -7,7 +7,7 @@ import {Link} from 'react-dom-router';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 const ReviewDetail = ({ review }) => (
-  <>
+  <li>
     <div className='review-user-info'>
       <div className='user-picture'> 
         <Link to={`/users/${review.guestId}`}/>
@@ -16,7 +16,7 @@ const ReviewDetail = ({ review }) => (
       <div className='review-date'>{`January 2022`}</div>
     </div>
     <div className='review-body'>{`Hello World`}</div>
-  </>
+  </li>
 )
 
 export default ReviewDetail;

@@ -1,9 +1,4 @@
 
-
-
-
-
-
 const ReviewDataLine = ({datum}) => (
   <div>
     <div>{datum.name}</div>
@@ -15,7 +10,7 @@ const ReviewDataLine = ({datum}) => (
 )
 
 
-// const ReviewData = ({ reviewData }) => { //TODO USE ACTUAL
+// const ReviewData = ({ reviewData }) => { //TODO USE ACTUAL, will have to parse data from reviews??
 const ReviewData = () => { //!!!! FOR TESTING
   
   const reviewData = [
