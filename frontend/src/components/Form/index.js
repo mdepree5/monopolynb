@@ -20,9 +20,10 @@ export const Form = ({onSub, errors, buttonName, children}) => (
 export const FormInput = ({name, state, setState, required = true}) => {
   const formatName = name.toLowerCase().split(' ').join('-');
 
+  // <label htmlFor={`${formatName}`}>{`${name}: `}</label>
   return (
   <div className={`${formatName}-input form-input`}>
-    <label htmlFor={`${formatName}`}>{`${name}: `}</label>
+    <label htmlFor={`${formatName}`} />
     <input 
       type='text' 
       id={`${formatName}`} 
