@@ -39,10 +39,53 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  Review.getAllReviewDataByPropertyId = async function (propertyId) {
-    return await Review.scope('reviewDataOnly').findByPk(propertyId);
+  // todo ————————————————————————————————————————————————————————————————————————————————
+  // todo                               Review Methods
+  // todo ————————————————————————————————————————————————————————————————————————————————
+
+  const createReview = async(details, propertyId) => {
+    const review = await Review.create({
+      ...details,
+      propertyId, //* because my review API routes nestin properties, elabaorate the createReview method
+    });
+    return await Review.findByPk(review.id);
+  };
+  
+  const getReviewsByPropertyId = async(propertyId) => await Review.findAll({
+    where: { propertyId },
+  });
+  
+  const getAllReviewDataByPropertyId = async (propertyId) => await Review.scope(
+    'reviewDataOnly'
+    ).findAll({where: {propertyId}});
+  
+  const updateReview = async(details) => {
+    const id = details.id;
+    delete details.id;
+  
+    await Review.update(
+      details,
+      {
+        where: { id },
+        returning: true,
+        plain: true,
+      }
+    );
+    return await Review.findByPk(id);
+  };
+  
+  const deleteReview = async(reviewId) => {
+    const review = await Review.findByPk(reviewId);
+    if (!review) throw new Error('Cannot find review');
+  
+    await Review.destroy({ where: { id: review.id }});
+    return review.id;
   };
 
+
+  // todo ————————————————————————————————————————————————————————————————————————————————
+  // todo                               Review Associations
+  // todo ————————————————————————————————————————————————————————————————————————————————
   Review.associate = function(models) {
 
     Review.belongsTo(models.User, {
