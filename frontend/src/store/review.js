@@ -1,37 +1,31 @@
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Variables
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const CREATE_ONE = 'review/create';
-const GET_ALL_BY_PROPERTY_ID = 'review/get_all';
-const GET_ONE = 'review/get_one';
-const UPDATE_ONE = 'review/update';
-const DELETE_ONE = 'review/delete';
+export const CREATE_REVIEW = 'review/create';
+export const GET_ALL_REVIEWS = 'review/get_all';
+export const UPDATE_REVIEW = 'review/update';
+export const DELETE_REVIEW = 'review/delete';
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                              Action Creators
 // todo ——————————————————————————————————————————————————————————————————————————————————
 const createOnereview = review => ({
-  type: CREATE_ONE,
+  type: CREATE_REVIEW,
   review
 });
 
 const getAllReviews = reviews => ({
-  type: GET_ALL_BY_PROPERTY_ID,
+  type: GET_ALL_REVIEWS,
   reviews
 });
 
-const getOneReview = review => ({
-  type: GET_ONE,
-  review
-});
-
 const updateOneReview = review => ({
-  type: UPDATE_ONE,
+  type: UPDATE_REVIEW,
   review
 });
 
 const deleteOneReview = review => ({
-  type: DELETE_ONE,
+  type: DELETE_REVIEW,
   review
 });
 
@@ -61,15 +55,6 @@ export const getReviews = () => async (dispatch) => {
   if (response.ok) {
     const reviews = await response.json();
     dispatch(getAllReviews(reviews));
-  }
-};
-
-export const getReview = id => async (dispatch) => {
-  const response = await fetch(`/api/reviews/${id}`);
-
-  if (response.ok) {
-    const review = await response.json();
-    dispatch(getOneReview(review));
   }
 };
 
@@ -120,7 +105,7 @@ const initialState = { listOfReviews: {} };
 
 const reviewReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_ONE: 
+    case CREATE_REVIEW: 
       return {
         ...state,
         listOfReviews: {
@@ -130,7 +115,7 @@ const reviewReducer = (state = initialState, action) => {
       };
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case GET_ALL_BY_PROPERTY_ID:
+    case GET_ALL_REVIEWS:
       const reviews = {}; 
       action.reviews.forEach(review => {
         reviews[review.id] = review;
@@ -140,22 +125,13 @@ const reviewReducer = (state = initialState, action) => {
         ...state,
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case GET_ONE:
-      return {
-        ...state,
-        [action.review.id]: {
-          ...state[action.review.id],
-          ...action.review
-        }
-      };
-// todo ——————————————————————————————————————————————————————————————————————————————————
-    case UPDATE_ONE:
+    case UPDATE_REVIEW:
       return {
         ...state,
         [action.review.id]: action.review
       }
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case DELETE_ONE: 
+    case DELETE_REVIEW: 
       const newState = {...state, listOfReviews: {...state.listOfReviews}};
       delete newState.listOfReviews[action.review.id];
       return newState

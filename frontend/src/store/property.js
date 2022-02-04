@@ -1,6 +1,7 @@
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Variables
 // todo ——————————————————————————————————————————————————————————————————————————————————
+import {CREATE_REVIEW, GET_ALL_REVIEWS, DELETE_REVIEW} from './review'
 const CREATE_ONE = 'property/create';
 const GET_ALL = 'property/get_all';
 const GET_ONE = 'property/get_one';
@@ -160,18 +161,18 @@ const propertyReducer = (state = initialState, action) => {
       delete newState.listOfProperties[action.property.id];
       return newState
 // todo ——————————————————————————————————————————————————————————————————————————————————
-  export const ADD_ITEM = 'items/ADD_ITEM';
-  export const LOAD_ITEMS = 'items/LOAD_ITEMS';
-  export const REMOVE_ITEM = 'items/REMOVE_ITEM';
-  export const UPDATE_ITEM = 'items/UPDATE_ITEM';
+// **** ——————————————————————————————————————————————————————————————————————————————————
+// ****                                 REVIEWS
+// **** ——————————————————————————————————————————————————————————————————————————————————
+
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case LOAD_ITEMS:
+    case GET_ALL_REVIEWS:
       return {
         ...state,
-        [action.pokemonId]: {
-          ...state[action.pokemonId],
-          items: action.items.map((item) => item.id)
+        [action.propertyId]: {
+          ...state[action.propertyId],
+          reviews: action.reviews.map(review => review.id)
         }
       };
     case REMOVE_ITEM:
