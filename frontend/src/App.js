@@ -26,11 +26,8 @@ function App() {
     <div className='meter'>
       <label for="fuel">Progress Bar beta</label>
       <meter id="fuel"
-        min="0" max="100"
-        low="33" high="66" optimum="80"
-        value={meter}
-      > at 50/100
-      </meter>
+      min="0" max="100"
+      value={meter} />
     </div>
   )
   }
