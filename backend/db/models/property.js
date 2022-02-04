@@ -4,6 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     hostId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: { model: 'Users'},
     },
     title: {
       type: DataTypes.STRING,
@@ -38,7 +39,17 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Property.associate = function(models) {
-    // associations can be defined here
+
+    Property.belongsTo(models.User, {
+      as: 'users',
+      foreignKey: 'hostId'
+    });
+
+    Property.hasMany(models.Review, {
+      as: 'reviews',
+      foreignKey: 'propertyId',
+    });
+
   };
   return Property;
 };

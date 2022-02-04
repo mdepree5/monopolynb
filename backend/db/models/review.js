@@ -4,10 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     guestId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: { model: 'Users'}
     },
     propertyId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      references: { model: 'Properties'}
     },
     content: {
       type: DataTypes.TEXT,
@@ -42,7 +44,17 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Review.associate = function(models) {
-    // associations can be defined here
+
+    Review.belongsTo(models.User, {
+      as: 'users',
+      foreignKey: 'guestId'
+    });
+
+    Review.belongsTo(models.Property, {
+      as: 'properties',
+      foreignKey: 'propertyId'
+    });
+
   };
   return Review;
 };
