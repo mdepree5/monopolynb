@@ -51,5 +51,17 @@ router.route('/')
   }
 );
 
+router.route('/demo')
+.post(
+  validateLogin,
+  asyncHandler(async (req, res) => {
+    const user = await User.demoLogin();
+
+    await setTokenCookie(res, user);
+
+    return res.json({user});
+  })
+)
+
 
 module.exports = router;

@@ -3,6 +3,15 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import {Form, FormInput} from '../Form';
 
+
+
+const DemoLogin = () => {
+  return (
+    <div>Hello</div>
+  )
+}
+
+
 const LoginForm = () => {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
@@ -21,10 +30,13 @@ const LoginForm = () => {
   };
 
 return (
-  <Form onSub={handleSubmit} errors={errors} buttonName={'Log In'} >
-    <FormInput name='Username or Email' state={credential} setState={setCredential} />
-    <FormInput name='Password' state={password} setState={setPassword} />
-  </Form>
+  <>
+    <Form onSub={handleSubmit} errors={errors} buttonName={'Log In'} >
+      <FormInput name='Username or Email' state={credential} setState={setCredential} />
+      <FormInput name='Password' state={password} setState={setPassword} />
+    </Form>
+    <DemoLogin onSub={()=> dispatch(sessionActions.demoLogin())}/>
+  </>
 )
 }
 
