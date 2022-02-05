@@ -5,13 +5,6 @@ import {Form, FormInput} from '../Form';
 
 
 
-const DemoLogin = () => {
-  return (
-    <div>Hello</div>
-  )
-}
-
-
 const LoginForm = () => {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
@@ -29,13 +22,28 @@ const LoginForm = () => {
     );
   };
 
+  const DemoLogin = () => {
+    const onClick = () => dispatch(sessionActions.login({ credential, password })).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    );
+  
+    return (
+      <button onClick={onClick}> 
+        Demo Login
+      </button>
+    )
+  }
+
 return (
   <>
     <Form onSub={handleSubmit} errors={errors} buttonName={'Log In'} >
       <FormInput name='Username or Email' state={credential} setState={setCredential} />
       <FormInput name='Password' state={password} setState={setPassword} />
     </Form>
-    <DemoLogin onSub={()=> dispatch(sessionActions.demoLogin())}/>
+    <DemoLogin/>
   </>
 )
 }

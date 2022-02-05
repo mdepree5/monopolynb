@@ -24,7 +24,7 @@ function App() {
 
     return (
     <div className='meter'>
-      <label for="fuel">Progress Bar beta</label>
+      <label htmlFor="fuel">Progress Bar beta</label>
       <meter id="fuel"
       min="0" max="100"
       value={meter} />
