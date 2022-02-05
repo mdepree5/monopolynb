@@ -1,7 +1,7 @@
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Variables
 // todo ——————————————————————————————————————————————————————————————————————————————————
-import {CREATE_REVIEW, GET_ALL_REVIEWS, UPDATE_REVIEW, DELETE_REVIEW} from './review';
+import {CREATE_REVIEW, GET_ALL_REVIEWS, DELETE_REVIEW} from './review';
 const CREATE_ONE = 'property/create';
 const GET_ALL = 'property/get_all';
 const GET_ONE = 'property/get_one';
