@@ -101,4 +101,3 @@ module.exports = router;
 const getReviewById = async(id) => await Property.scope("detailed").findByPk(id);
 */
 
-
