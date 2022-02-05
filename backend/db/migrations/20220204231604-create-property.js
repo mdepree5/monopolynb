@@ -42,10 +42,12 @@ module.exports = {
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,
+      defaultValue: Sequelize.fn('now'),
     },
     updatedAt: {
       allowNull: true,
       type: Sequelize.DATE,
+      defaultValue: Sequelize.fn('now'),
     }
   }),
   down: (queryInterface, Sequelize) => queryInterface.dropTable('Properties')
