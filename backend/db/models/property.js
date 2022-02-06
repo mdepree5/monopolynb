@@ -28,13 +28,18 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {len: [1, 100]}
     },
+    city: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {len: [1, 100]}
+    },
     state: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {len: [1, 100]}
     },
     zipcode: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
   }, {});

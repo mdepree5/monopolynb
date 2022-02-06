@@ -31,12 +31,16 @@ module.exports = {
       type: Sequelize.STRING(100),
       allowNull: false,
     },
+    city: {
+      type: Sequelize.STRING(100),
+      allowNull: false,
+    },
     state: {
       type: Sequelize.STRING(100),
       allowNull: false,
     },
     zipcode: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
       allowNull: false,
     },
     createdAt: {
