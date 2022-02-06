@@ -36,7 +36,7 @@ function App() {
         <Navigation isLoaded={isLoaded} />
       </div>
       <Meter rating={80}/>
-      <div className='cards'>
+      <div className='cards-container'>
         {colors.map(color => (
           <div className='card' key={color}>
             <div className='card-header'id={color}/>

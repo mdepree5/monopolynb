@@ -38,7 +38,7 @@ form{
   flex-direction: column;
 }
 
-.cards{
+.cards-container{
   display: flex;
   flex-direction: row;
 }
@@ -53,13 +53,38 @@ form{
 }
 
 
-.property-card{
+.property-list-container{
+  border: solid black 2px;
+  border-radius: 3px;
+  overflow: auto;
+  white-space: normal;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+}
+
+.image-card-placeholder{
   width: 200px;
-  height: 150px;
+  height: 200px;
+  background-color: red;
   border: solid black 2px;
   border-radius: 3px;
   text-align: center;
+}
+
+.property-card{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  height: 400px;
+  text-align: center;
   margin: 5px;
+}
+.property-card:hover {
+  border: solid white 2px;
+  box-shadow: 0 1px 10px white;
+  color: white;
+  transform: translateY(-20px);
 }
 
 .card:hover {
@@ -82,13 +107,11 @@ form{
   background-color: skyblue;
 }
 #orchid {
-
   background-color: darkorchid;}
 #orange {
-
   background-color: orange;
-}#red {
-
+}
+#red {
   background-color: red;
 }
 #yellow {

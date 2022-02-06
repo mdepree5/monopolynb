@@ -7,9 +7,9 @@ const PropertyList = () => {
   const dispatch = useDispatch();
 
   const properties = useSelector(state => state.property.listOfProperties);
-  console.log('debugger-component');
-  console.log(properties);
-  console.log('debugger-component');
+  // console.log('debugger-component');
+  // console.log(properties);
+  // console.log('debugger-component');
 
   useEffect(() => {
     dispatch(getProperties());
@@ -17,7 +17,7 @@ const PropertyList = () => {
 
   return (
     <div>
-      <ul>
+      <ul className='property-list-container'>
         {
           properties.map(property => (
           <PropertyCard key={property.id} id={`property-${property.id}`} title={property.title} property={property}/>
