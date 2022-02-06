@@ -15,10 +15,6 @@ const PropertyList = () => {
     dispatch(getProperties());
   }, [dispatch]);
 
-  // return (
-  //   <div>Property List</div>
-  // )
-
   return (
     <div>
       <ul>

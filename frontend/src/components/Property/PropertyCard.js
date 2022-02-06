@@ -4,13 +4,15 @@ const PropertyCard = ({ property }) => (
 
 <li>
   <div className='property-card'>
-    <div className='property-host'> 
-      <Link to={`/users/${property.hostId}`}/>
-    </div>
     <h4 className='property-title'>{property.title}</h4>
-    <div className='property-description'>{`Description: ${property.description}`}</div>
-    <div className='property-number-of-beds'>{`Number of Beds: ${property.numberOfBeds}`}</div>
-    <div className='property-price'>{`Price: ${property.price}`}</div>
+    <div className='property-location'>{`${property.city}, ${property.state}`}</div>
+    <div className='property-price'>{`$${property.price} / night`}</div>
+    <div className='property-host'> 
+      <Link to={`/users/${property.hostId}`}>Link to host</Link>
+    </div>
+    <div className='property-host'> 
+      <Link to={`/properties/${property.id}`}>Link to Property Page</Link>
+    </div>
   </div>
 </li>
 )
