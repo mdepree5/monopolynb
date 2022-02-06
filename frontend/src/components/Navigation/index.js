@@ -15,9 +15,12 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   sessionLinks = sessionUser ? (
     <>
-      <div>{`Hello ${sessionUser.username}`}</div>
-      <div>{`Hello ${sessionUser.firstName}`}</div>
-      <ProfileButton user={sessionUser} />
+      <li>
+        <div>{`Hello ${sessionUser.firstName}`}</div>
+      </li>
+      <li>
+        <ProfileButton user={sessionUser} />
+      </li>
     </>
   ) : (
     <>
@@ -32,9 +35,7 @@ function Navigation({ isLoaded }){
           <NavLink exact to="/">Home</NavLink>
       </ul>
       <ul className='right-nav'>
-        <li>
-          {isLoaded && sessionLinks}
-        </li>
+        {isLoaded && sessionLinks}
       </ul>
     </>
   );
