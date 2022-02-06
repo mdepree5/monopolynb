@@ -7,7 +7,7 @@ const ReviewDataLine = ({datum}) => (
     <div>{datum.name}</div>
     <div>
       <span className='review-bar' style={{width: (100*datum.rating/5)}}/>
-      <Meter />
+      <Meter rating={100*datum.rating/5}/>
     </div>
     <div>{datum.rating}</div>
   </div>

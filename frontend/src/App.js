@@ -34,7 +34,7 @@ function App() {
       <div className={`nav-bar ${navColor}`}>
         <Navigation isLoaded={isLoaded} />
       </div>
-      <Meter />
+      <Meter rating={80}/>
       <div className='cards'>
         {colors.map(color => (
           <div className='card' key={color}>

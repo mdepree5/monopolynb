@@ -2,7 +2,7 @@ import { useState } from "react";
 
 
 
-const Meter = () => {
+const Meter = ({rating}) => {
   const [meter, setMeter] = useState(0);
 
   setInterval(() => {
@@ -11,9 +11,9 @@ const Meter = () => {
 
   return (
   <div className='meter'>
-    <label htmlFor="fuel">Progress Bar beta</label>
-    <meter id="fuel"
-    min="0" max="100"
+    <label htmlFor="meter">Progress Bar beta</label>
+    <meter id="meter"
+    min="0" max='500'
     value={meter} />
   </div>
 )
