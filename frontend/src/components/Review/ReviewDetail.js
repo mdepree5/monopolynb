@@ -6,17 +6,19 @@ import {Link} from 'react-dom-router';
 // import { session } from '../../store/'; //* Session Boolean && 'updateReview()' method available
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
-const ReviewDetail = ({ review }) => (
-  <li>
-    <div className='review-user-info'>
-      <div className='user-picture'> 
-        <Link to={`/users/${review.guestId}`}/>
-      </div>
-      <div className='user-first-name'>{`Edison`}</div>
-      <div className='review-date'>{`January 2022`}</div>
-    </div>
-    <div className='review-body'>{`Hello World`}</div>
-  </li>
-)
 
+const reviewDate = date => `${date.toString().split(' ')[1]} ${date.toString().split(' ')[3]}`;
+
+const ReviewDetail = ({ review }) => (
+<li>
+  <div className='review-user-info'>
+    <div className='user-picture'> 
+      <Link to={`/users/${review.guestId}`}/>
+    </div>
+    <div className='user-first-name'>{review.firstName}</div>
+    <div className='review-date'>{reviewDate(review.updatedAt ? review.updatedAt : review.createdAt)}</div>
+  </div>
+  <div className='review-body'>{`Hello World`}</div>
+</li>
+)
 export default ReviewDetail;
