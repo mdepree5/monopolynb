@@ -19,13 +19,14 @@ function App() {
   const colors = ['brown', 'skyblue', 'orchid', 'orange', 'red', 'yellow', 'green', 'blue'];
 
 
-
+// !!!! ——————————————————————————————————————————————————————————————————————————————————
   useEffect(() => {
     document.addEventListener('scroll', () => {
       if(window.scrollY > 1) setNavColor('wheat')
       setNavColor('blu');
     })
   })
+// !!!! ——————————————————————————————————————————————————————————————————————————————————
 
 
   return (
@@ -46,13 +47,6 @@ function App() {
     </>
   );
 }
-// {isLoaded && (
-//   <Switch>
-//     <Route path="/signup">
-//       <SignupFormPage />
-//     </Route>
-//   </Switch>
-// )}
 
 
 export default App;
