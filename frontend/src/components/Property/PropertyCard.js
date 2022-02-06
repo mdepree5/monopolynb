@@ -1,12 +1,5 @@
 import {Link} from 'react-dom-router';
 
-// import { useDispatch, useSelector } from 'react-redux';
-// import { updateproperty } from '../../store/';
-// todo ——————————————————————————————————————————————————————————————————————————————————
-// import { session } from '../../store/'; //* Session Boolean && 'updateproperty()' method available
-// todo ——————————————————————————————————————————————————————————————————————————————————
-
-
 const propertyDate = date => `${date.toString().split(' ')[1]} ${date.toString().split(' ')[3]}`;
 
 const PropertyCard = ({ property }) => (
