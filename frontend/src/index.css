@@ -52,6 +52,14 @@ form{
   margin: 5px;
 }
 
+
+.property-card{
+  border: solid black 2px;
+  border-radius: 3px;
+  text-align: center;
+  margin: 5px;
+}
+
 .card:hover {
   border: solid white 2px;
   box-shadow: 0 1px 10px white;

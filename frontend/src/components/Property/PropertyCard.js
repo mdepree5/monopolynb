@@ -1,19 +1,16 @@
 import {Link} from 'react-router-dom';
 
-const propertyDate = date => `${date.toString().split(' ')[1]} ${date.toString().split(' ')[3]}`;
-
 const PropertyCard = ({ property }) => (
 
 <li>
-  <div className='property-user-info'>
+  <div className='property-card'>
     <div className='property-host'> 
       <Link to={`/users/${property.hostId}`}/>
     </div>
-    <div className='property-title'>{property.title}</div>
-    <div className='property-description'>{property.description}</div>
-    <div className='property-number-of-beds'>{property.numberOfBeds}</div>
-    <div className='property-price'>{property.price}</div>
-    <div className='property-date'>{propertyDate(property.updatedAt ? property.updatedAt : property.createdAt)}</div>
+    <div className='property-title'>{`Title: ${property.title}`}</div>
+    <div className='property-description'>{`Description: ${property.description}`}</div>
+    <div className='property-number-of-beds'>{`Number of Beds: ${property.numberOfBeds}`}</div>
+    <div className='property-price'>{`Price: ${property.price}`}</div>
   </div>
 </li>
 )
