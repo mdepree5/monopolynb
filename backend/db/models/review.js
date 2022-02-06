@@ -49,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
   // todo                               Review Methods
   // todo ————————————————————————————————————————————————————————————————————————————————
 
-  const createReview = async(details, propertyId) => {
+  Review.createReview = async function (details, propertyId) {
     const review = await Review.create({
       ...details,
       propertyId, //* because my review API routes nestin properties, elabaorate the createReview method
@@ -58,20 +58,24 @@ module.exports = (sequelize, DataTypes) => {
   };
   
   //! Is this the right way?
-  const getReviewsByPropertyId = async(propertyId) => await Review.scope('reviewContentOnly').findAll({
-    where: { propertyId },
-    order: [['createdAt', 'DESC']],
-    include: {
-      model: User,
-      as: 'users',
-    }
-  });
-  
-  const getAllReviewDataByPropertyId = async (propertyId) => await Review.scope(
+  Review.getReviewsByPropertyId = async function (propertyId) {
+    await Review.scope('reviewContentOnly').findAll({
+      where: { propertyId },
+      order: [['createdAt', 'DESC']],
+      include: {
+        model: User,
+        as: 'users',
+      }
+    });
+  };
+
+  Review.getAllReviewDataByPropertyId = async function (propertyId) {
+    return await Review.scope(
     'reviewDataOnly'
     ).findAll({where: {propertyId}});
+  };
   
-  const updateReview = async(details) => {
+  Review.updateReview = async function (details) {
     const id = details.id;
     delete details.id;
   
@@ -86,7 +90,7 @@ module.exports = (sequelize, DataTypes) => {
     return await Review.findByPk(id);
   };
   
-  const deleteReview = async(reviewId) => {
+  Review.deleteReview = async function (reviewId) {
     const review = await Review.findByPk(reviewId);
     if (!review) throw new Error('Cannot find review');
   

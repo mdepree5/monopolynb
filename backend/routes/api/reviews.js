@@ -17,9 +17,9 @@ router.route('/:reviewId')
   validateReview,
   validatePUT,
   asyncHandler(async (req, res) => {
-    // const review = await Review.getReviewById(req.params.reviewId); //* am I not getting it from req.params.id??
+    // const review = await Review.getReviewsByPropertyId(req.params.reviewId); //* am I not getting it from req.params.id??
     const id = await Review.updateReview(req.body);
-    const review = await Property.getReviewById(id);
+    const review = await Property.getReviewsByPropertyId(id);
     return res.json(review);
   }))
 .delete(
