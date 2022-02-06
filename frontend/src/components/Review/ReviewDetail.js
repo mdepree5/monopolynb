@@ -18,7 +18,7 @@ const ReviewDetail = ({ review }) => (
     <div className='user-first-name'>{review.firstName}</div>
     <div className='review-date'>{reviewDate(review.updatedAt ? review.updatedAt : review.createdAt)}</div>
   </div>
-  <div className='review-body'>{`Hello World`}</div>
+  <div className='review-body'>{review.content}</div>
 </li>
 )
 export default ReviewDetail;

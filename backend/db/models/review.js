@@ -1,4 +1,7 @@
 'use strict';
+
+const {User} = require('./user')
+
 module.exports = (sequelize, DataTypes) => {
   const Review = sequelize.define('Review', {
     guestId: {
@@ -36,6 +39,9 @@ module.exports = (sequelize, DataTypes) => {
       reviewDataOnly: {
         attributes: {exclude: ['guestId', 'content'] }
       },
+      reviewContentOnly: {
+        attributes: {exclude: ['propertyId', 'rating', 'communicaiton', 'checkIn', 'cleanliness'] }
+      },
     }
   });
 
@@ -51,8 +57,14 @@ module.exports = (sequelize, DataTypes) => {
     return await Review.findByPk(review.id);
   };
   
-  const getReviewsByPropertyId = async(propertyId) => await Review.findAll({
+  //! Is this the right way?
+  const getReviewsByPropertyId = async(propertyId) => await Review.scope('reviewContentOnly').findAll({
     where: { propertyId },
+    order: [['createdAt', 'DESC']],
+    include: {
+      model: User,
+      as: 'users',
+    }
   });
   
   const getAllReviewDataByPropertyId = async (propertyId) => await Review.scope(
