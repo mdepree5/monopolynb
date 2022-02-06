@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProperties } from '../../store/property';
+import { getProperties } from '../../store/property'
 import PropertyCard from './PropertyCard';
 
 const PropertyList = () => {

@@ -1,4 +1,4 @@
-import {Link} from 'react-dom-router';
+import {Link} from 'react-router-dom';
 
 // import { useDispatch, useSelector } from 'react-redux';
 // import { updateReview } from '../../store/';

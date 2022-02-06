@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 // import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import PropertyList from "./components/Property/PropertyList";
 import Meter from './context/Meter';
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
           </div>
         ))
         }
+      </div>
+      <div>
+        <PropertyList />
       </div>
     </>
   );

@@ -1,8 +1,9 @@
-import {Link} from 'react-dom-router';
+import {Link} from 'react-router-dom';
 
 const propertyDate = date => `${date.toString().split(' ')[1]} ${date.toString().split(' ')[3]}`;
 
 const PropertyCard = ({ property }) => (
+
 <li>
   <div className='property-user-info'>
     <div className='property-host'> 
@@ -16,4 +17,5 @@ const PropertyCard = ({ property }) => (
   </div>
 </li>
 )
+
 export default PropertyCard;
