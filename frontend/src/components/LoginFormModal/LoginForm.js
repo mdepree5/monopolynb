@@ -23,7 +23,7 @@ const LoginForm = () => {
   };
 
   const DemoLogin = () => {
-    const onClick = () => dispatch(sessionActions.login({ credential, password })).catch(
+    const onClick = () => dispatch(sessionActions.demoLogin()).catch(
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);

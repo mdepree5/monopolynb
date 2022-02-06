@@ -53,9 +53,8 @@ router.route('/')
 
 router.route('/demo')
 .post(
-  validateLogin,
   asyncHandler(async (req, res) => {
-    const user = await User.demoLogin();
+    const user = await User.loginDemo();
 
     await setTokenCookie(res, user);
 
