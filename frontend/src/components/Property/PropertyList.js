@@ -8,16 +8,16 @@ const PropertyList = () => {
 
   const properties = useSelector(state => state.property);
   // const properties = useSelector(state => state.property.listOfProperties);
-  console.log('debugger');
+  console.log('debugger-component');
   console.log(properties);
 
   useEffect(() => {
     dispatch(getProperties());
   }, [dispatch]);
 
-  return (
-    <div>Property List</div>
-  )
+  // return (
+  //   <div>Property List</div>
+  // )
 
   return (
     <div>

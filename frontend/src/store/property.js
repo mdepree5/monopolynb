@@ -122,6 +122,9 @@ const propertyReducer = (state = initialState, action) => {
         properties[property.id] = property;
       });
       return {
+        listOfProperties:{
+          ...properties
+        },
         ...properties,
         ...state,
       };

@@ -22,8 +22,6 @@ router.route('/')
   }))
 .get(asyncHandler(async (req, res) => {
   const properties = await Property.getAllProperties();
-  
-  console.log('debugger');
 
   return res.json({properties});
 }))
