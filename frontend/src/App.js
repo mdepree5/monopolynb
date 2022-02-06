@@ -4,12 +4,13 @@ import { useDispatch } from "react-redux";
 // import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import Meter from './context/Meter';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [navColor, setNavColor] = useState('blu');
-  const [meter, setMeter] = useState(0);
+
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -17,20 +18,7 @@ function App() {
 
   const colors = ['brown', 'skyblue', 'orchid', 'orange', 'red', 'yellow', 'green', 'blue'];
 
-  const Meter = () => {
-    setInterval(() => {
-        setMeter(meter => meter + 1)
-    }, 100);
 
-    return (
-    <div className='meter'>
-      <label htmlFor="fuel">Progress Bar beta</label>
-      <meter id="fuel"
-      min="0" max="100"
-      value={meter} />
-    </div>
-  )
-  }
 
   useEffect(() => {
     document.addEventListener('scroll', () => {
