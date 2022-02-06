@@ -20,7 +20,7 @@ router.route('/:reviewId')
     // const review = await Review.getReviewsByPropertyId(req.params.reviewId); //* am I not getting it from req.params.id??
     const id = await Review.updateReview(req.body);
     const review = await Property.getReviewsByPropertyId(id);
-    return res.json(review);
+    return res.json({review});
   }))
 .delete(
   asyncHandler(async (req, res) => {
