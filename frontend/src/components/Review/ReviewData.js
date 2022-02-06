@@ -1,9 +1,13 @@
+import Meter from '../../context/Meter';
+
+
 
 const ReviewDataLine = ({datum}) => (
   <div>
     <div>{datum.name}</div>
     <div>
       <span className='review-bar' style={{width: (100*datum.rating/5)}}/>
+      <Meter />
     </div>
     <div>{datum.rating}</div>
   </div>

@@ -14,7 +14,11 @@ function Navigation({ isLoaded }){
 
   let sessionLinks;
   sessionLinks = sessionUser ? (
-    <ProfileButton user={sessionUser} />
+    <>
+      <div>{`Hello ${sessionUser.username}`}</div>
+      <div>{`Hello ${sessionUser.firstName}`}</div>
+      <ProfileButton user={sessionUser} />
+    </>
   ) : (
     <>
       <LoginFormModal />
