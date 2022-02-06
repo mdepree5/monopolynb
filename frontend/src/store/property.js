@@ -108,13 +108,31 @@ const initialState = { listOfProperties: [] };
 const propertyReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_ONE: 
-      return {
+    return {
         ...state,
         listOfProperties: {
           ...state.listOfProperties,
           [action.property.id]: action.property
         }
       };
+      // Refactored CREATE_ONE case for listOfProperties = [];
+      // switch (action.type) {
+      //   case CREATE_ONE: 
+      //   const newState = {
+      //     ...state,
+      //     [action.property.id]: action.property
+      //   };
+      //   const newPropertyList = newState.listOfProperties.map(id => newState[id]);
+      //   newPropertyList.push(action.property);
+      //   newState.listOfProperties = action.properties.properties
+      //   return newState;  
+      //     return {
+      //       ...state,
+      //       listOfProperties: {
+      //         ...state.listOfProperties,
+      //         [action.property.id]: action.property
+      //       }
+      //     };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL:
       const properties = {}; //* Declare new object 1. avoid mutation, 2. control specific slices of state
