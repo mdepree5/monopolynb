@@ -3,8 +3,8 @@ const asyncHandler = require('express-async-handler');
 
 const {validateReview, validateProperty, validatePUT} = require('../middleware/formValidators');
 
-const {Property} = require('../../db/models/property');
-const {Review} = require('../../db/models/review'); 
+const {Property} = require('../../db/models');
+// const {Review} = require('../../db/models'); 
 
 const router = express.Router();
 

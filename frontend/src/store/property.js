@@ -118,15 +118,19 @@ const propertyReducer = (state = initialState, action) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL:
       const properties = {}; //* Declare new object 1. avoid mutation, 2. control specific slices of state
-      action.properties.forEach(property => {
+      action.properties.properties.forEach(property => {
         properties[property.id] = property;
       });
+      console.log('debugger-reducer');
+      console.log(properties);
+      console.log('debugger-reducer');
       return {
-        listOfProperties:{
-          ...properties
-        },
         ...properties,
         ...state,
+        listOfProperties: {
+          ...state.listOfProperties,
+          ...properties
+        }
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ONE:
