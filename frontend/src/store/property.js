@@ -103,7 +103,7 @@ export const deleteProperty = propertyId => async (dispatch) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const initialState = { listOfProperties: {} };
+const initialState = { listOfProperties: [] };
 
 const propertyReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -127,10 +127,7 @@ const propertyReducer = (state = initialState, action) => {
       return {
         ...properties,
         ...state,
-        listOfProperties: {
-          ...state.listOfProperties,
-          ...properties
-        }
+        listOfProperties: action.properties.properties
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ONE:
