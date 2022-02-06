@@ -12,6 +12,7 @@ const PropertyForm = () => {
   const [numberOfBeds, setNumberOfBeds] = useState(2);
   const [price, setPrice] = useState(20);
   const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zipcode, setZipcode] = useState('');
   const [errors, setErrors] = useState([]);
@@ -37,6 +38,7 @@ const PropertyForm = () => {
       <FormInput name='Description' state={numberOfBeds} setState={setNumberOfBeds} />
       <FormInput name='Price' state={price} setState={setPrice} />
       <FormInput name='Address' state={address} setState={setAddress} />
+      <FormInput name='City' state={city} setState={setCity} />
       <FormInput name='State' state={state} setState={setState} />
       <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
     </Form>
