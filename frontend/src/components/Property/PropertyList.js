@@ -7,10 +7,16 @@ const PropertyList = () => {
   const dispatch = useDispatch();
 
   const properties = useSelector(state => state.property.listOfProperties);
+  console.log('debugger')
+  console.log(properties)
 
   useEffect(() => {
     dispatch(getProperties());
-  }, [dispatch,]);
+  }, [dispatch]);
+
+  return (
+    <div>Property List</div>
+  )
 
   return (
     <div>
