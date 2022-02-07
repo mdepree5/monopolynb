@@ -43,7 +43,7 @@ const PropertyPage = () => {
         </div>
       </li>
       <br />
-      {/* <Review property={property} /> */}
+      <Review property={property} />
     </div>
   );
 }
