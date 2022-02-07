@@ -24,7 +24,7 @@ const PropertyCard = ({ property }) => {
             <NavLink to={`/users/${property.hostId}`}>Link to host</NavLink>
           </div>
           <div className='property-page'> 
-            <NavLink to={`/properties/${property.id}`}>Link to Property Page</NavLink>
+            <NavLink to={`/properties/${property.id}`}>{property.title}</NavLink>
           </div>
         </div>
       </div>

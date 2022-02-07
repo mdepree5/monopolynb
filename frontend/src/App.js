@@ -1,12 +1,11 @@
 import {Switch, Route} from 'react-router-dom';
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 // import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation';
 import Splash from './components/Splash';
-import PropertyPage from './components/Property/PropertyPage';
-import UserPage from './components/User/UserPage';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -36,15 +35,27 @@ function App() {
       </div>
 
       <Switch>
-        <Route exact path={'/'}><Splash /></Route>
-        <Route path='/users/:userId'><UserPage /></Route>
-        <Route path='/properties/:propertyId'><PropertyPage /></Route>
+        <Route exact path={['/', 'users/:userId', '/properties/:propertyId']}>
+          <Splash />
+        </Route>
         <Route><h2>Page Not Found</h2></Route>
-        
       </Switch>
     </>
   );
 }
 
+/* 
+
+import PropertyPage from './components/Property/PropertyPage';
+import UserPage from './components/User/UserPage';
+
+<Switch>
+  <Route exact path={'/'}><Splash /></Route>
+  <Route path='/users/:userId'><UserPage /></Route>
+  <Route path='/properties/:propertyId'><PropertyPage /></Route>
+  <Route><h2>Page Not Found</h2></Route>
+
+</Switch>
+ */
 
 export default App;
