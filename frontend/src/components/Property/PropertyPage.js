@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import {NavLink} from 'react-router-dom';
-import {useParams} from 'react-router-dom';
+import {NavLink, useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
-// import Review from '../Review';
+import Review from '../Review';
 // import { getReviewsByPropertyId } from '../../store/review';
 
 import './Property.css';
@@ -35,6 +34,7 @@ const PropertyPage = () => {
   
 
   return (
+    <>
     <div className='property-page'>
       <div>Property Page</div>
       <li>
@@ -51,6 +51,8 @@ const PropertyPage = () => {
       </li>
       <br />
     </div>
+    <Review />
+    </>
   );
 }
 
