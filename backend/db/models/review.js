@@ -57,6 +57,8 @@ module.exports = (sequelize, DataTypes) => {
     return await Review.findByPk(review.id);
   };
   
+  // todo ——————————————————————————————————————————————————————————————————————————————————
+  // todo           Possibly irrelevant if I am pulling reviews in my getPropertyById query (a Property method)
   //! Is this the right way?
   Review.getReviewsByPropertyId = async function (propertyId) {
     await Review.scope('reviewContentOnly').findAll({
@@ -74,7 +76,8 @@ module.exports = (sequelize, DataTypes) => {
     'reviewDataOnly'
     ).findAll({where: {propertyId}});
   };
-  
+  // todo ——————————————————————————————————————————————————————————————————————————————————
+
   Review.updateReview = async function (details) {
     const id = details.id;
     delete details.id;

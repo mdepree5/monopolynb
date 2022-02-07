@@ -66,7 +66,13 @@ module.exports = (sequelize, DataTypes) => {
   };
   
   Property.getPropertyById = async function (id) {
-    return await Property.findByPk(id);
+    return await Property.findByPk(id, {
+      include: {
+        model: Review,
+        as: 'reviews',
+        order: [['createdAt', 'DESC']],
+      }
+    });
   };
   
   Property.updateProperty = async function (details) {

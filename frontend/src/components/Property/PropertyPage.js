@@ -34,7 +34,7 @@ const PropertyPage = () => {
             </div>
           <h3 className='property-title'>{property.title}</h3>
           <div className='property-description'>Description: {property.description}</div>
-          <div className='property-number-of-beds'>Number of beds {property.numberOfBeds}</div>
+          <div className='property-number-of-beds'>{`${property.numberOfBeds} Bed${property.numberOfBeds === 1 ? '' : 's'}`}</div>
           <div className='property-price'>{property.price}</div>
           <div className='property-location'>{`${property.city}, ${property.state}`}</div>
         </div>
