@@ -1,5 +1,28 @@
 
 
+
+
+/* 
+components/property/propertypage
+  const state = useSelector(state => state.property);
+  const property = useSelector(state => state.property[propertyId]);
+
+  console.log('state', state)
+  console.log('property', property);
+  
+
+
+store/property
+case GET_ONE:
+  return {
+    ...state,
+    [action.property.property.id]: {
+      ...state[action.property.property.id],
+      ...action.property.property
+    }
+  };
+  
+ */
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                             MORE DATABASE / AWS TABLES
 // todo ——————————————————————————————————————————————————————————————————————————————————

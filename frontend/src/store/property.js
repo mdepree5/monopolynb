@@ -148,9 +148,10 @@ const propertyReducer = (state = initialState, action) => {
     case GET_ONE:
       return {
         ...state,
-        [action.property.id]: {
-          ...state[action.property.id],
-          ...action.property
+        
+        [action.property.property.id]: {
+          ...state[action.property.property.id],
+          ...action.property.property
         }
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
