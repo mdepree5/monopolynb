@@ -1,34 +1,57 @@
-import { useEffect } from 'react';
-import {useParams, NavLink} from 'react-router-dom';
+// import { useEffect } from 'react';
+import {useProperty} from '../../context/Property';
+// import {useParams} from 'react-router-dom';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { getProperty } from '../../store/property'
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getProperty } from '../../store/property'
 
 // import Review from '../Review';
 
+
+
+const PropertyPage = () => {
+  const {currProperty} = useProperty();
+
+  // const sign = horoscopeObj[currSign];
+
+  return (
+    <div className="details">
+      <div>Property Page</div>
+      <div>{currProperty}</div>
+    </div>
+  )
+}
+
+
+
+/* 
 const PropertyPage = () => {
   const {propertyId} = useParams();
-
   const dispatch = useDispatch();
-  
+
   console.log('property-page-debugger');
+  console.log(propertyId);
 
   const property = useSelector(state => state.property.listOfProperties[propertyId]);
   
-  // console.log('debugger-component');
-  // console.log(properties);
-  // console.log('debugger-component');
+  console.log('debugger-component');
+  console.log(properties);
+  console.log('debugger-component');
 
   useEffect(() => {
-    console.log('hello')
     dispatch(getProperty(propertyId));
   }, [dispatch, propertyId]);
 
 
+
+
   return (
-    <div>Property Page</div>
+    <div>
+      <div>Property Page</div>
+      <div>{propertyId}</div>
+    </div>
   )
-  
+
   return (
     <>
       <div>Property Page</div>
@@ -49,6 +72,7 @@ const PropertyPage = () => {
   );
 }
 //<Review propertyId={propertyId}/>
+ */
 
 export default PropertyPage;
 

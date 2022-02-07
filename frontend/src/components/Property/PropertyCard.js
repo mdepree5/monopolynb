@@ -1,5 +1,4 @@
 import {NavLink} from 'react-router-dom';
-import PropertyPage from './PropertyPage';
 
 const PropertyCard = ({ property }) => {
   let propertyColor;
@@ -26,7 +25,6 @@ const PropertyCard = ({ property }) => {
           </div>
           <div className='property-host'> 
             <NavLink to={`/properties/${property.id}`}>Link to Property Page</NavLink>
-            <PropertyPage/>
           </div>
         </div>
       </div>
