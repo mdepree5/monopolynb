@@ -1,5 +1,4 @@
 'use strict';
-const {Review} = require('./review')
 
 module.exports = (sequelize, DataTypes) => {
   const Property = sequelize.define('Property', {
@@ -64,13 +63,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   
   Property.getPropertyById = async function (id) {
-    return await Property.findByPk(id, {
-      include: {
-        model: Review,
-        as: 'reviews',
-        order: [['createdAt', 'DESC']],
-      }
-    });
+    return await Property.findByPk(id);
   };
   
   Property.updateProperty = async function (details) {
