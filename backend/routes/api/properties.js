@@ -22,7 +22,6 @@ router.route('/')
   }))
 .get(asyncHandler(async (req, res) => {
   const properties = await Property.getAllProperties();
-
   return res.json({properties});
 }))
 // todo ——————————————————————————————————————————————————————————————————————————————————

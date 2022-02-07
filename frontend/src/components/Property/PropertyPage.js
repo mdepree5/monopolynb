@@ -3,9 +3,8 @@ import {NavLink} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
-import Review from '../Review';
-import { getReviewsByPropertyId } from '../../store/review';
-
+// import Review from '../Review';
+// import { getReviewsByPropertyId } from '../../store/review';
 
 import './Property.css';
 // import Review from '../Review';
@@ -31,7 +30,6 @@ const PropertyPage = () => {
   
   useEffect(() => {
     dispatch(getProperty(propertyId));
-    dispatch(getReviewsByPropertyId(propertyId));
   }, [dispatch, propertyId]);
   
   
@@ -42,7 +40,7 @@ const PropertyPage = () => {
       <li>
         <div className='property-info'>
             <div className='property-host'> 
-              <NavLink to={`/users/${property?.hostId}`}/>
+              <NavLink to={`/users/${property?.hostId}`}>Host</NavLink>
             </div>
           <h3 className='property-title'>{property?.title}</h3>
           <div className='property-location'>{`${property?.city}, ${property?.state}`}</div>
@@ -55,7 +53,7 @@ const PropertyPage = () => {
     </div>
   );
 }
-// <Review property={property} /> 
+
 
 
 export default PropertyPage;
