@@ -25,7 +25,7 @@ const Reviews = ({property}) => {
     <>
       <h3>Reviews</h3>
       <ReviewData />
-      <ReviewList />
+      <ReviewList propertyId={property.id}/>
     </>
   )
 }
