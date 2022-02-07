@@ -110,6 +110,7 @@ const reviewReducer = (state = initialState, action) => {
       return {
         ...reviews,
         ...state,
+        listOfReviews: action.reviews.reviews
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_REVIEW:

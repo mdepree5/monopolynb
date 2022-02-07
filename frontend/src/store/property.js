@@ -103,7 +103,7 @@ export const deleteProperty = propertyId => async (dispatch) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const initialState = { listOfProperties: [] };
+const initialState = { listOfProperties: [], listOfReviews: [] };
 
 const propertyReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -178,8 +178,6 @@ const propertyReducer = (state = initialState, action) => {
       };
 // **** ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS:
-      // const reviews = {};
-      // action.proper
       const reviews = {};
       action.reviews.reviews.forEach(review => {
         reviews[review.id] = review;
@@ -187,14 +185,8 @@ const propertyReducer = (state = initialState, action) => {
       return {
         ...reviews,
         ...state,
+        listOfReviews: action.reviews.reviews
       }
-      // return {
-      //   ...state,
-      //   // [action.propertyId]: {
-      //   //   ...state[action.propertyId],
-      //   //   reviews: action.reviews.map(review => review.id)
-      //   // }
-      // };
 // **** ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_REVIEW:
       return {
