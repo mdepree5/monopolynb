@@ -13,14 +13,13 @@ const PropertyPage = () => {
   const dispatch = useDispatch();
   const {propertyId} = useParams();
 
+  // console.log('debugger-component');
+  // const state = useSelector(state => state.property);
+  // console.log('state', state)
+  // console.log('property', property);
 
-  console.log('debugger-component');
-  
-  const state = useSelector(state => state.property);
   const property = useSelector(state => state.property[propertyId]);
-
-  console.log('state', state)
-  console.log('property', property);
+  
   
   useEffect(() => {
     dispatch(getProperty(propertyId));
@@ -48,20 +47,6 @@ const PropertyPage = () => {
     </div>
   );
 }
-
-/* 
-
-<li>
-        <div className='review-user-info'>
-          <div className='user-picture'> 
-            <NavLink to={`/users/${property.reviews.guestId}`}/>
-          </div>
-          <div className='user-first-name'>{property.reviews[0].firstName}</div>
-        </div>
-        <div className='review-body'>{property.reviews[0].content}</div>
-      </li>
-
-*/
 
 
 export default PropertyPage;
