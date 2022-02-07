@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviewsByPropertyId } from '../../store/review';
-import ReviewDetail from '../ReviewDetail';
+import ReviewDetail from './ReviewDetail';
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo ——————————————————————————————————————————————————————————————————————————————————
