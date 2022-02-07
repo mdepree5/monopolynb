@@ -13,10 +13,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {len: [1, 100]}
     },
-    description: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
     numberOfBeds: {
       type: DataTypes.INTEGER,
       allowNull: false,

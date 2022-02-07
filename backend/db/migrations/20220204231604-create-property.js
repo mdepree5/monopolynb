@@ -15,10 +15,6 @@ module.exports = {
       type: Sequelize.STRING(100),
       allowNull: false,
     },
-    description: {
-      type: Sequelize.TEXT,
-      allowNull: false,
-    },
     numberOfBeds: {
       type: Sequelize.INTEGER,
       allowNull: false,
