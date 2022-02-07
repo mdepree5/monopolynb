@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation';
 import Splash from './components/Splash';
+import UserPage from './components/User/UserPage';
+import PropertyPage from './components/Property/PropertyPage';
 
 
 function App() {
@@ -36,14 +38,15 @@ function App() {
       </div>
 
       <Switch>
-        <Route exact path={['/', 'users/:userId', '/properties/:propertyId']}>
-          <Splash />
-        </Route>
+        <Route exact path={'/'}><Splash /></Route>
+        <Route path='/users/:userId'><UserPage /></Route>
+        <Route path='/properties/:propertyId'><PropertyPage /></Route>
         <Route><h2>Page Not Found</h2></Route>
       </Switch>
     </>
   );
 }
+
 
 /* 
 todo Switch/Route implementation for different site pages
@@ -51,11 +54,10 @@ import PropertyPage from './components/Property/PropertyPage';
 import UserPage from './components/User/UserPage';
 
 <Switch>
-  <Route exact path={'/'}><Splash /></Route>
-  <Route path='/users/:userId'><UserPage /></Route>
-  <Route path='/properties/:propertyId'><PropertyPage /></Route>
-  <Route><h2>Page Not Found</h2></Route>
-
+<Route exact path={['/', 'users/:userId', '/properties/:propertyId']}>
+          <Splash />
+        </Route>
+        <Route><h2>Page Not Found</h2></Route>
 </Switch>
  */
 

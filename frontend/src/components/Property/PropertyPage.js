@@ -22,9 +22,16 @@ const PropertyPage = () => {
   console.log('state', state)
   console.log('property', property);
   
+
+  useEffect(() => {
+    dispatch(getProperty(propertyId));
+  }, []);
+  
   useEffect(() => {
     dispatch(getProperty(propertyId));
   }, [dispatch, propertyId]);
+  
+  
 
   return (
     <div className='property-page'>
