@@ -1,7 +1,3 @@
-
-
-//! Do I need to spread children here???
-
 export const Form = ({onSub, errors, buttonName, children}) => (
   <form onSubmit={onSub}>
     <ul className='form-errors'>
@@ -13,8 +9,6 @@ export const Form = ({onSub, errors, buttonName, children}) => (
     <button className='form-button' type='submit' >{buttonName}</button>
   </form>
 )
-
-
 
 
 export const FormInput = ({ type, name, state, setState, required = true}) => {

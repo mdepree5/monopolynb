@@ -22,11 +22,10 @@ const PropertyPage = () => {
   console.log('state', state)
   console.log('property', property);
   
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                          Persist state through reload?
+// todo ——————————————————————————————————————————————————————————————————————————————————
 
-  useEffect(() => {
-    dispatch(getProperty(propertyId));
-  }, []);
-  
   useEffect(() => {
     dispatch(getProperty(propertyId));
   }, [dispatch, propertyId]);
@@ -67,13 +66,6 @@ const PropertyPage = () => {
       </li>
 
 */
-
-
-// <Review propertyId={propertyId}/>
-
-// const PropertyPage = () => (
-//   <div>Property Page</div>
-// )
 
 
 export default PropertyPage;

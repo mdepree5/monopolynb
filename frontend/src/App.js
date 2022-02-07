@@ -7,29 +7,17 @@ import Navigation from './components/Navigation';
 import Splash from './components/Splash';
 import UserPage from './components/User/UserPage';
 import PropertyPage from './components/Property/PropertyPage';
+import PageNotFound from './components/PageNotFound';
 
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  // const [navColor, setNavColor] = useState('blu');
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-
-
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-  // useEffect(() => {
-  //   document.addEventListener('scroll', () => {
-  //     if(window.scrollY > 1) setNavColor('wheat')
-  //     setNavColor('blu');
-  //   })
-  // })/
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-
-//<div className={`nav-bar ${navColor}`}>
 
   return (
     <>
@@ -41,7 +29,7 @@ function App() {
         <Route exact path={'/'}><Splash /></Route>
         <Route path='/users/:userId'><UserPage /></Route>
         <Route path='/properties/:propertyId'><PropertyPage /></Route>
-        <Route><h2>Page Not Found</h2></Route>
+        <Route><PageNotFound /></Route>
       </Switch>
     </>
   );
