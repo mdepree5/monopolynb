@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom';
 import {useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
+import Review from '../Review';
 
 import './Property.css';
 // import Review from '../Review';
@@ -42,6 +43,7 @@ const PropertyPage = () => {
       </li>
       <br />
       <div>Reviews: (put review component here)</div>
+      <Review property={property} />
       <br />
     </div>
   );

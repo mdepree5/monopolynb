@@ -1,0 +1,4 @@
+.review-data-line{
+  display: flex;
+  flex-direction: row;
+}

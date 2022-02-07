@@ -29,11 +29,9 @@ const Splash = () => {
         ))
         }
       </ul>
-      <div>
       <Route path="/properties/:propertyId">
         <PropertyPage />
       </Route>
-      </div>
     </>
   );
 }

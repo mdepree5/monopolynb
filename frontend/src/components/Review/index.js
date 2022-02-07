@@ -6,14 +6,20 @@ import ReviewList from './ReviewList';
 import ReviewData from './ReviewData';
 
 
-const Reviews = ({propertyId}) => {
+const Reviews = ({property}) => {
   const dispatch = useDispatch();
 
-  const reviews = useSelector(state => state.review.listOfReviews);
+  const reviews = useSelector(state => {
+    if(!property.reviews) return null;
+
+    return property.reviews.map(reviewId => state.review[reviewId])
+  });
+  
+  console.log(reviews);
 
   useEffect(() => {
-    dispatch(getReviewsByPropertyId(propertyId));
-  }, [dispatch, propertyId]);
+    dispatch(getReviewsByPropertyId(property.id));
+  }, [dispatch, property.id]);
 
   return (
     <>
