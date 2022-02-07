@@ -1,4 +1,6 @@
 'use strict';
+const {Review} = require('./review')
+
 module.exports = (sequelize, DataTypes) => {
   const Property = sequelize.define('Property', {
     hostId: {

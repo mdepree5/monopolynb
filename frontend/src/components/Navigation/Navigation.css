@@ -1,0 +1,11 @@
+.nav-bar{
+  box-shadow: 0 1px 10px gray;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.right-nav{
+  display: flex;
+  flex-direction: row;
+}

@@ -12,17 +12,6 @@
   background-color: wheat;
 }
 
-.nav-bar{
-  box-shadow: 0 1px 10px gray;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.right-nav{
-  display: flex;
-  flex-direction: row;
-}
 
 .form-input:hover {
   background-color: gray;
@@ -31,7 +20,6 @@
 .form-button:hover {
   box-shadow: 0 1px 10px white;
 }
-
 
 form{
   display: flex;
@@ -101,30 +89,3 @@ form{
   border-top: solid black 2px;
   border-bottom: solid black 2px;
 }
-
-
-
-
-
-#brown {
-  background-color: saddlebrown;
-}
-#skyblue {
-  background-color: skyblue;
-}
-#orchid {
-  background-color: darkorchid;}
-#orange {
-  background-color: orange;
-}
-#red {
-  background-color: red;
-}
-#yellow {
-  background-color: yellow;
-}
-#green {
-  background-color: green;
-}
-#blue {
-  background-color: blue;}

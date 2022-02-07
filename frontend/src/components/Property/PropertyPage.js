@@ -4,6 +4,7 @@ import {useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
 
+import './Property.css';
 // import Review from '../Review';
 
 
@@ -12,13 +13,13 @@ const PropertyPage = () => {
   const {propertyId} = useParams();
 
 
-  console.log('debugger-component')
+  console.log('debugger-component');
   
   const state = useSelector(state => state.property);
   const property = useSelector(state => state.property[propertyId]);
 
-  console.log(state)
-  console.log(property);
+  console.log('state', state)
+  console.log('property', property);
   
   useEffect(() => {
     dispatch(getProperty(propertyId));
@@ -33,16 +34,33 @@ const PropertyPage = () => {
               <NavLink to={`/users/${property.hostId}`}/>
             </div>
           <h3 className='property-title'>{property.title}</h3>
+          <div className='property-location'>{`${property.city}, ${property.state}`}</div>
           <div className='property-description'>Description: {property.description}</div>
           <div className='property-number-of-beds'>{`${property.numberOfBeds} Bed${property.numberOfBeds === 1 ? '' : 's'}`}</div>
-          <div className='property-price'>{property.price}</div>
-          <div className='property-location'>{`${property.city}, ${property.state}`}</div>
+          <div className='property-price'>{`$${property.price} / night`}</div>
         </div>
-        <div>Put Review Component Here</div>
       </li>
+      <br />
+      <div>Reviews: (put review component here)</div>
+      <br />
     </div>
   );
 }
+
+/* 
+
+<li>
+        <div className='review-user-info'>
+          <div className='user-picture'> 
+            <NavLink to={`/users/${property.reviews.guestId}`}/>
+          </div>
+          <div className='user-first-name'>{property.reviews[0].firstName}</div>
+        </div>
+        <div className='review-body'>{property.reviews[0].content}</div>
+      </li>
+
+*/
+
 
 // <Review propertyId={propertyId}/>
 

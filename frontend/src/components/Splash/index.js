@@ -6,8 +6,7 @@ import {NavLink} from 'react-router-dom';
 import PropertyPage from '../Property/PropertyPage';
 import ColorDisplay from './colorDisplay';
 
-
-import Meter from '../../context/Meter';
+import './Splash.css';
 
 const Splash = () => {
   const dispatch = useDispatch();
@@ -39,6 +38,7 @@ const Splash = () => {
   );
 }
 
+// import Meter from '../../context/Meter';
 // <Meter rating={80}/>
 // import PropertyList from '../Property/PropertyList';
 // <div>

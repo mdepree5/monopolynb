@@ -9,7 +9,7 @@ import ReviewData from './ReviewData';
 const Reviews = ({propertyId}) => {
   const dispatch = useDispatch();
 
-  // const reviews = useSelector(state => state.review.listOfReviews);
+  const reviews = useSelector(state => state.review.listOfReviews);
 
   useEffect(() => {
     dispatch(getReviewsByPropertyId(propertyId));
