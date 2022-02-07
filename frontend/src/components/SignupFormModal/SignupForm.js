@@ -28,12 +28,12 @@ function SignupFormPage() {
 
   return (
     <Form onSub={handleSubmit} errors={errors} buttonName={'Sign Up'} >
-      <FormInput name='Email' state={email} setState={setEmail} />
-      <FormInput name='Username' state={username} setState={setUsername} />
       <FormInput name='First Name' state={firstName} setState={setFirstName} />
       <FormInput name='Last Name' state={lastName} setState={setLastName} />
-      <FormInput name='Password' state={password} setState={setPassword} />
-      <FormInput name='Confirm Password' state={confirmPassword} setState={setConfirmPassword} />
+      <FormInput name='Username' state={username} setState={setUsername} />
+      <FormInput name='Email' state={email} setState={setEmail} />
+      <FormInput type='password' name='Password' state={password} setState={setPassword} />
+      <FormInput type='password' name='Confirm Password' state={confirmPassword} setState={setConfirmPassword} />
     </Form>
   )
 }

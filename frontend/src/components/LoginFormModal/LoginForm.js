@@ -41,7 +41,7 @@ return (
   <>
     <Form onSub={handleSubmit} errors={errors} buttonName={'Log In'} >
       <FormInput name='Username or Email' state={credential} setState={setCredential} />
-      <FormInput name='Password' state={password} setState={setPassword} />
+      <FormInput type='password' name='Password' state={password} setState={setPassword} />
     </Form>
     <DemoLogin/>
   </>
