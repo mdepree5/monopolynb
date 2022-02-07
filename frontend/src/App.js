@@ -1,23 +1,22 @@
+import {Switch, Route} from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-// import { Route, Switch } from "react-router-dom";
 // import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
-import Navigation from "./components/Navigation";
-import PropertyList from "./components/Property/PropertyList";
-import Meter from './context/Meter';
+import Navigation from './components/Navigation';
+import Splash from './components/Splash';
+import PropertyPage from './components/Property/PropertyPage';
+import UserPage from './components/User/UserPage';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [navColor, setNavColor] = useState('blu');
 
-
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  const colors = ['brown', 'skyblue', 'orchid', 'orange', 'red', 'yellow', 'green', 'blue'];
 
 
 // !!!! ——————————————————————————————————————————————————————————————————————————————————
@@ -35,19 +34,14 @@ function App() {
       <div className={`nav-bar ${navColor}`}>
         <Navigation isLoaded={isLoaded} />
       </div>
-      <Meter rating={80}/>
-      <div className='cards-container'>
-        {colors.map(color => (
-          <div className='card' key={color}>
-            <div className='card-header'id={color}/>
-            <div>{color}</div>
-          </div>
-        ))
-        }
-      </div>
-      <div>
-        <PropertyList />
-      </div>
+
+      <Switch>
+        <Route exact path={'/'}><Splash /></Route>
+        <Route path='/users/:userId'><UserPage /></Route>
+        <Route path='/properties/:propertyId'><PropertyPage /></Route>
+        <Route><h2>Page Not Found</h2></Route>
+        
+      </Switch>
     </>
   );
 }

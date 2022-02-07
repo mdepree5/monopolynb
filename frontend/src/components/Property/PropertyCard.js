@@ -1,6 +1,6 @@
 import {NavLink, Route, Switch} from 'react-router-dom';
 import PropertyPage from './PropertyPage';
-import UserPage from '../';
+import UserPage from '../User/UserPage';
 
 const PropertyCard = ({ property }) => {
   let propertyColor;

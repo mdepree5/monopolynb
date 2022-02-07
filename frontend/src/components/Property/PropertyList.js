@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProperties } from '../../store/property';
 // import {useProperty} from '../../context/Property';
 import PropertyCard from './PropertyCard';
-
+import { Route, Switch } from "react-router-dom";
+import PropertyPage from './PropertyPage';
 
 
 
@@ -33,6 +34,15 @@ const PropertyList = () => {
         ))
         }
       </ul>
+      <br />
+      <div>Hello World</div>
+      <div>
+        <Switch>
+          <Route path='/properties/:propertyId'>
+            <PropertyPage />
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 };
