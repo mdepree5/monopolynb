@@ -1,3 +1,4 @@
+import { csrfFetch } from './csrf';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Variables
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -40,7 +41,7 @@ const deleteOneProperty = property => ({
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
 export const createProperty = property => async (dispatch) => {
-  const response = await fetch(`/api/properties`, {
+  const response = await csrfFetch(`/api/properties`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(property)

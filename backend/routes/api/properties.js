@@ -17,7 +17,8 @@ router.route('/')
 .post(
   validateProperty,
   asyncHandler(async (req, res) => {
-    const id = await Property.createProperty(req.body); // createProperty() method returns an id
+    const id = await Property.createProperty(req.body); 
+    return res.json({id});
     return res.redirect(`${req.baseUrl}/${id}`);
   }))
 .get(asyncHandler(async (req, res) => {

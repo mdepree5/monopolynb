@@ -71,13 +71,13 @@ const validateSignup = [
 // !!!! ——————————————————————————————————————————————————————————————————————————————————
 // todo Elaborate validators
 const validateProperty = [
-  check('credential')
+  check('title')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Please provide a valid email or username.'),
-  check('password')
-    .exists({ checkFalsy: true })
-    .withMessage('Please provide a password.'),
+    .withMessage('Please provide a valid title.'),
+  // check('password')
+  //   .exists({ checkFalsy: true })
+  //   .withMessage('Please provide a password.'),
   handleValidationErrors
 ];
 

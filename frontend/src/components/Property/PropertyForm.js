@@ -18,6 +18,8 @@ const PropertyForm = () => {
 
   const handleSubmit = event => {
     event.preventDefault();
+    
+    console.log('debugger-component');
 
     setErrors([]); //* is this necessary? Why is it important in LoginForm handleSubmit?
     return dispatch(propertyActions.createProperty(
@@ -25,6 +27,7 @@ const PropertyForm = () => {
     )).catch(
       async (res) => {
         const data = await res.json();
+        console.log('d')
         if(data && data.errors) setErrors(data.errors);
       }
     )
