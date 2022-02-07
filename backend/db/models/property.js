@@ -42,7 +42,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-  }, {});
+  },
+  {
+    defaultScope: {
+      attributes: {
+        exclude: ['address']
+      }
+    }
+  });
 
   // todo ————————————————————————————————————————————————————————————————————————————————
   // todo                               Property Methods
@@ -58,7 +65,7 @@ module.exports = (sequelize, DataTypes) => {
   };
   
   Property.getPropertyById = async function (id) {
-    return await Property.scope("detailed").findByPk(id);
+    return await Property.findByPk(id);
   };
   
   Property.updateProperty = async function (details) {

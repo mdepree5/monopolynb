@@ -80,12 +80,6 @@ form{
   text-align: center;
   margin: 5px;
 }
-.property-card:hover {
-  border: solid white 2px;
-  box-shadow: 0 1px 10px white;
-  color: white;
-  transform: translateY(-20px);
-}
 
 .card:hover {
   border: solid white 2px;

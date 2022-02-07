@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 const PropertyCard = ({ property }) => {
   let propertyColor;
@@ -21,10 +21,10 @@ const PropertyCard = ({ property }) => {
           <div className='property-location'>{`${property.city}, ${property.state}`}</div>
           <div className='property-price'>{`$${property.price} / night`}</div>
           <div className='property-host'> 
-            <Link to={`/users/${property.hostId}`}>Link to host</Link>
+            <NavLink to={`/users/${property.hostId}`}>Link to host</NavLink>
           </div>
           <div className='property-host'> 
-            <Link to={`/properties/${property.id}`}>Link to Property Page</Link>
+            <NavLink to={`/properties/${property.id}`}>Link to Property Page</NavLink>
           </div>
         </div>
       </div>

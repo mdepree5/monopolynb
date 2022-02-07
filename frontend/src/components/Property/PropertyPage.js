@@ -1,20 +1,28 @@
-import {Link} from 'react-dom-router';
-// import React, { useState } from 'react';
+import { useEffect } from 'react';
+import {useParams, NavLink} from 'react-router-dom';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getProperty } from '../../store/property'
+
 import Review from '../Review';
 
+const PropertyPage = () => {
+  const {propertyId} = useParams();
 
-const propertyDate = date => `${date.toString().split(' ')[1]} ${date.toString().split(' ')[3]}`;
+  const dispatch = useDispatch();
 
-const PropertyPage = ({propertyId}) => {
-
-  const property = '';
-
-  console.log('PROPERTY PAGE');
-
-  // todo ——————————————————————————————————————————————————————————————————————————————————
-  // todo                     Need to refactor Property Page (curr code from property card)
-  // todo ——————————————————————————————————————————————————————————————————————————————————
+  const property = useSelector(state => state.property.listOfProperties[propertyId]);
   
+  console.log('debugger');
+  console.log(property);
+  // console.log('debugger-component');
+  // console.log(properties);
+  // console.log('debugger-component');
+
+  useEffect(() => {
+    dispatch(getProperty(propertyId));
+  }, [dispatch, propertyId]);
+
 
   return (
     <>
@@ -22,13 +30,13 @@ const PropertyPage = ({propertyId}) => {
       <li>
         <div className='property-info'>
             <div className='property-host'> 
-              <Link to={`/users/${property.hostId}`}/>
+              <NavLink to={`/users/${property.hostId}`}/>
             </div>
           <div className='property-title'>{property.title}</div>
           <div className='property-description'>{property.description}</div>
           <div className='property-number-of-beds'>{property.numberOfBeds}</div>
           <div className='property-price'>{property.price}</div>
-          <div className='property-date'>{propertyDate(property.updatedAt ? property.updatedAt : property.createdAt)}</div>
+          <div className='property-location'>{`${property.city}, ${property.state}`}</div>
         </div>
       </li>
       
