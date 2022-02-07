@@ -166,9 +166,7 @@ const propertyReducer = (state = initialState, action) => {
       delete newState.listOfProperties[action.property.id];
       return newState;
 // todo ——————————————————————————————————————————————————————————————————————————————————
-// **** ——————————————————————————————————————————————————————————————————————————————————
 // ****                                 REVIEW CASES
-// **** ——————————————————————————————————————————————————————————————————————————————————
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case CREATE_REVIEW:
       return {
@@ -182,13 +180,22 @@ const propertyReducer = (state = initialState, action) => {
     case GET_ALL_REVIEWS:
       // const reviews = {};
       // action.proper
+      const reviews = {};
+      action.reviews.reviews.forEach(review => {
+        reviews[review.id] = review;
+      });
       return {
+        ...reviews,
         ...state,
-        // [action.propertyId]: {
-        //   ...state[action.propertyId],
-        //   reviews: action.reviews.map(review => review.id)
-        // }
-      };
+        listOfReviews: action.reviews.reviews
+      }
+      // return {
+      //   ...state,
+      //   // [action.propertyId]: {
+      //   //   ...state[action.propertyId],
+      //   //   reviews: action.reviews.map(review => review.id)
+      //   // }
+      // };
 // **** ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_REVIEW:
       return {

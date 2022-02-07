@@ -16,7 +16,6 @@ const Reviews = () => {
   
   console.log('debugger');
   console.log('propertyId', propertyId);
-  console.log('debugger');
   console.log('reviews', reviews);
   console.log('debugger');
 
