@@ -13,12 +13,12 @@ const Reviews = ({property}) => {
   console.log('debugger');
   console.log(property);
   console.log('debugger');
-  // const reviews = useSelector(state => state.reviews.listOfReviews)
-  // console.log(reviews);
+  const reviews = useSelector(state => state.review.listOfReviews)
+  console.log(reviews);
 
-  // useEffect(() => {
-  //   dispatch(getReviewsByPropertyId(property?.id));
-  // }, [dispatch, property?.id]);
+  useEffect(() => {
+    dispatch(getReviewsByPropertyId(property?.id));
+  }, [dispatch, property?.id]);
 
   return (
     <>
