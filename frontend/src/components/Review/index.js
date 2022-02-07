@@ -12,12 +12,10 @@ const Reviews = () => {
   const dispatch = useDispatch();
   const {propertyId} = useParams();
 
-  const reviews = useSelector(state => state.review.listOfReviews)
+  const reviews = useSelector(state => state.review)
   
   console.log('debugger');
-  console.log('propertyId', propertyId);
   console.log('reviews', reviews);
-  console.log('debugger');
 
 
   useEffect(() => {

@@ -187,7 +187,6 @@ const propertyReducer = (state = initialState, action) => {
       return {
         ...reviews,
         ...state,
-        listOfReviews: action.reviews.reviews
       }
       // return {
       //   ...state,
