@@ -32,10 +32,4 @@ const Reviews = () => {
 } 
 
 
-// const Reviews = ({property}) => {
-//   return (
-//     <div>Reviews here!</div>
-//   )
-// }
-
 export default Reviews;
