@@ -180,14 +180,14 @@ const propertyReducer = (state = initialState, action) => {
       };
 // **** ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS:
-      const reviews = {};
-
+      // const reviews = {};
+      // action.proper
       return {
         ...state,
-        [action.propertyId]: {
-          ...state[action.propertyId],
-          reviews: action.reviews.map(review => review.id)
-        }
+        // [action.propertyId]: {
+        //   ...state[action.propertyId],
+        //   reviews: action.reviews.map(review => review.id)
+        // }
       };
 // **** ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_REVIEW:
