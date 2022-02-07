@@ -18,7 +18,6 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-
   return (
     <>
       <div className={`nav-bar`}>
@@ -34,19 +33,5 @@ function App() {
     </>
   );
 }
-
-
-/* 
-todo Switch/Route implementation for different site pages
-import PropertyPage from './components/Property/PropertyPage';
-import UserPage from './components/User/UserPage';
-
-<Switch>
-<Route exact path={['/', 'users/:userId', '/properties/:propertyId']}>
-          <Splash />
-        </Route>
-        <Route><h2>Page Not Found</h2></Route>
-</Switch>
- */
 
 export default App;
