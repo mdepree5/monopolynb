@@ -41,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     zipcode: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {len: [1, 10]}
     },
   },
   {

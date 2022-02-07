@@ -139,9 +139,6 @@ const propertyReducer = (state = initialState, action) => {
       action.properties.properties.forEach(property => {
         properties[property.id] = property;
       });
-      console.log('debugger-reducer');
-      console.log(properties);
-      console.log('debugger-reducer');
       return {
         ...properties,
         ...state,

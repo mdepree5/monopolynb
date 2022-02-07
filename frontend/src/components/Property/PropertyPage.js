@@ -4,26 +4,31 @@ import {useParams, NavLink} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property'
 
-import Review from '../Review';
+// import Review from '../Review';
 
 const PropertyPage = () => {
   const {propertyId} = useParams();
 
   const dispatch = useDispatch();
+  
+  console.log('property-page-debugger');
 
   const property = useSelector(state => state.property.listOfProperties[propertyId]);
   
-  console.log('debugger');
-  console.log(property);
   // console.log('debugger-component');
   // console.log(properties);
   // console.log('debugger-component');
 
   useEffect(() => {
+    console.log('hello')
     dispatch(getProperty(propertyId));
   }, [dispatch, propertyId]);
 
 
+  return (
+    <div>Property Page</div>
+  )
+  
   return (
     <>
       <div>Property Page</div>
@@ -40,10 +45,10 @@ const PropertyPage = () => {
         </div>
       </li>
       
-      <Review propertyId={propertyId}/>
     </>
   );
 }
+//<Review propertyId={propertyId}/>
 
 export default PropertyPage;
 

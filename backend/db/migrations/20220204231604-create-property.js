@@ -40,7 +40,7 @@ module.exports = {
       allowNull: false,
     },
     zipcode: {
-      type: Sequelize.STRING,
+      type: Sequelize.STRING(10),
       allowNull: false,
     },
     createdAt: {
