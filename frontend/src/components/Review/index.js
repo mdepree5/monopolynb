@@ -23,7 +23,7 @@ const Reviews = ({property}) => {
 
   return (
     <>
-      <h2>Reviews</h2>
+      <h3>Reviews</h3>
       <ReviewData />
       <ReviewList />
     </>

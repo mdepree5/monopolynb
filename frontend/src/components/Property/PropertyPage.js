@@ -42,9 +42,7 @@ const PropertyPage = () => {
         </div>
       </li>
       <br />
-      <div>Reviews: (put review component here)</div>
       <Review property={property} />
-      <br />
     </div>
   );
 }

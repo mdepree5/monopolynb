@@ -14,7 +14,7 @@ const Meter = ({rating}) => {
   return (
   <div className='meter'>
     <meter id="meter"
-    min="0" max='500'
+    min="0" max='5'
     value={rating} />
   </div>
 )
