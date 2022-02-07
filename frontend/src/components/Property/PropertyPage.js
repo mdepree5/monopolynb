@@ -4,15 +4,20 @@ import {useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
 
-import Review from '../Review';
+// import Review from '../Review';
 
 
 const PropertyPage = () => {
   const dispatch = useDispatch();
   const {propertyId} = useParams();
 
-  const property = useSelector(state => state.property[propertyId]);
+
   console.log('debugger-component')
+  
+  const state = useSelector(state => state.property);
+  const property = useSelector(state => state.property[propertyId]);
+
+  console.log(state)
   console.log(property);
   
   useEffect(() => {
@@ -33,11 +38,13 @@ const PropertyPage = () => {
           <div className='property-price'>{property.price}</div>
           <div className='property-location'>{`${property.city}, ${property.state}`}</div>
         </div>
+        <div>Put Review Component Here</div>
       </li>
-      <Review propertyId={propertyId}/>
     </>
   );
 }
+
+{/* <Review propertyId={propertyId}/> */}
 
 // const PropertyPage = () => (
 //   <div>Property Page</div>
