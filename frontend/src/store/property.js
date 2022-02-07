@@ -180,6 +180,8 @@ const propertyReducer = (state = initialState, action) => {
       };
 // **** ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS:
+      const reviews = {};
+
       return {
         ...state,
         [action.propertyId]: {

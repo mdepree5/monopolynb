@@ -64,10 +64,7 @@ router.route('/:propertyId/reviews')
 .get(asyncHandler(async function(req, res) {
   // const reviews = await Property.getReviewsByPropertyId(req.params.id); //* Decide whether to add the method in the Property method or Reviews method
   const reviews = await Review.getReviewsByPropertyId(req.params.propertyId); //* Decide whether to add the method in the Property method or Reviews method
-// todo ——————————————————————————————————————————————————————————————————————————————————
-// todo       Also includ getREviewData????
-// todo ——————————————————————————————————————————————————————————————————————————————————
-
+  
   return res.json({reviews});
 }))
 // todo ——————————————————————————————————————————————————————————————————————————————————
