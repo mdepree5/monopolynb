@@ -1,4 +1,6 @@
-import {NavLink} from 'react-router-dom';
+import {NavLink, Route, Switch} from 'react-router-dom';
+import PropertyPage from './PropertyPage';
+import UserPage from '../';
 
 const PropertyCard = ({ property }) => {
   let propertyColor;
@@ -24,12 +26,21 @@ const PropertyCard = ({ property }) => {
             <NavLink to={`/users/${property.hostId}`}>Link to host</NavLink>
           </div>
           <div className='property-host'> 
-            <NavLink to={`/properties/${property.id}`}>Link to Property Page</NavLink>
+            <Switch>
+              <Route path="/properties/:propertyId">
+                <PropertyPage />
+              </Route>
+              <Route path="/properties/:hostId">
+                <UserPage />
+              </Route>
+            </Switch>
           </div>
         </div>
       </div>
     </li>
   )
 };
+
+//<NavLink to={`/properties/${property.id}`}>Link to Property Page</NavLink>
 
 export default PropertyCard;

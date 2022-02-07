@@ -1,7 +1,7 @@
-// import { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { getProperties } from '../../store/property';
-import {useProperty} from '../../context/Property';
+import { getProperties } from '../../store/property';
+// import {useProperty} from '../../context/Property';
 import PropertyCard from './PropertyCard';
 
 
@@ -9,15 +9,15 @@ import PropertyCard from './PropertyCard';
 
 const PropertyList = () => {
   const dispatch = useDispatch();
-  const {currProperty, setCurrProperty} = useProperty();
+  // const {currProperty, setCurrProperty} = useProperty();
 
   const properties = useSelector(state => state.property.listOfProperties);
 
-  console.log('debugger component')
-  console.log(currProperty);
-  // useEffect(() => {
-  //   dispatch(getProperties());
-  // }, [dispatch]);
+  // console.log('debugger component')
+  // console.log(currProperty);
+  useEffect(() => {
+    dispatch(getProperties());
+  }, [dispatch]);
 
   return (
     <div>
@@ -29,7 +29,6 @@ const PropertyList = () => {
             id={`property-${property.id}`}
             title={property.title}
             property={property}
-            onCLick={() => setCurrProperty(property)}
           />
         ))
         }
@@ -38,4 +37,5 @@ const PropertyList = () => {
   );
 };
 
+// onCLick={() => setCurrProperty(property)}
 export default PropertyList;
