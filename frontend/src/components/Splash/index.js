@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProperties } from '../../store/property';
 import {NavLink} from 'react-router-dom';
 import PropertyPage from '../Property/PropertyPage';
-import PropertyCard from '../Property/PropertyCard';
+import ColorDisplay from './colorDisplay';
+
 
 import Meter from '../../context/Meter';
 
@@ -17,20 +18,10 @@ const Splash = () => {
     dispatch(getProperties());
   }, [dispatch]);
 
-  const colors = ['brown', 'skyblue', 'orchid', 'orange', 'red', 'yellow', 'green', 'blue'];
-
   return (
     <>
       <Meter rating={80}/>
-      <div className='cards-container'>
-        {colors.map(color => (
-          <div className='card' key={color}>
-            <div className='card-header'id={color}/>
-            <div>{color}</div>
-          </div>
-        ))
-        }
-      </div>
+      <ColorDisplay />
       <div className='property-list-container'>
         {properties.map(property => (
           <div className='property-card' key={property.id}>

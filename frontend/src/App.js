@@ -10,7 +10,7 @@ import Splash from './components/Splash';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [navColor, setNavColor] = useState('blu');
+  // const [navColor, setNavColor] = useState('blu');
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -19,18 +19,19 @@ function App() {
 
 
 // !!!! ——————————————————————————————————————————————————————————————————————————————————
-  useEffect(() => {
-    document.addEventListener('scroll', () => {
-      if(window.scrollY > 1) setNavColor('wheat')
-      setNavColor('blu');
-    })
-  })
+  // useEffect(() => {
+  //   document.addEventListener('scroll', () => {
+  //     if(window.scrollY > 1) setNavColor('wheat')
+  //     setNavColor('blu');
+  //   })
+  // })/
 // !!!! ——————————————————————————————————————————————————————————————————————————————————
 
+//<div className={`nav-bar ${navColor}`}>
 
   return (
     <>
-      <div className={`nav-bar ${navColor}`}>
+      <div className={`nav-bar`}>
         <Navigation isLoaded={isLoaded} />
       </div>
 
@@ -45,7 +46,7 @@ function App() {
 }
 
 /* 
-
+todo Switch/Route implementation for different site pages
 import PropertyPage from './components/Property/PropertyPage';
 import UserPage from './components/User/UserPage';
 
