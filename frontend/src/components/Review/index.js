@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviewsByPropertyId } from '../../store/review';
 
-import ReviewList from './ReviewList';
+// import ReviewList from './ReviewList';
 import ReviewData from './ReviewData';
 import './Review.css';
 
