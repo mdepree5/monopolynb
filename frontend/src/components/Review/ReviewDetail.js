@@ -10,7 +10,7 @@ import {Link} from 'react-router-dom';
 const reviewDate = date => `${date.toString().split(' ')[1]} ${date.toString().split(' ')[3]}`;
 
 const ReviewDetail = ({ review }) => (
-  <li>
+  <li className='review-detail'>
     <div className='review-user-info'>
       <div className='user-picture'> 
         <Link to={`/users/${review.guestId}`}/>

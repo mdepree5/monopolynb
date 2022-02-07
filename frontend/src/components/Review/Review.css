@@ -1,6 +1,8 @@
 .review-container{
+  display: flex;
+  flex-direction: column;
   width: 500px;
-  height: 200px;
+  height: 500px;
   border: solid black 2px;
   border-radius: 3px;
   padding: 10px;
@@ -8,8 +10,26 @@
 }
 
 
+.review-data-container{
+  display: flex;
+  flex-direction: row;
+  border: solid black 2px;
+  border-radius: 3px;
+}
+
 .review-data-line{
   display: flex;
   flex-direction: row;
 }
 
+.container-of-reviews{
+  display: flex;
+  flex-direction: row;
+  border: solid black 2px;
+  border-radius: 3px;
+}
+
+.review-detail{
+  border: solid black 1px;
+  border-radius: 2px;
+}

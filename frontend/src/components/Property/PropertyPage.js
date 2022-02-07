@@ -3,36 +3,19 @@ import {NavLink, useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
 import Review from '../Review';
-// import { getReviewsByPropertyId } from '../../store/review';
 
 import './Property.css';
-import { getReviewsByPropertyId } from '../../store/review';
-// import Review from '../Review';
 
 
 const PropertyPage = () => {
   const dispatch = useDispatch();
   const {propertyId} = useParams();
 
-  // console.log('debugger-component');
-  // const state = useSelector(state => state.property);
-  // console.log('state', state)
-  // console.log('property', property);
-
   const property = useSelector(state => state.property[propertyId]);
-  // const review = useSelector(state => state.review.listOfReviews);
-  
-  // console.log('debugger');
-  // console.log('——————————————————————————————————————————————————————————————————————————————————');
-  // console.log(review) //* currently returning empty array
-  // console.log('——————————————————————————————————————————————————————————————————————————————————');
-  // console.log('debugger');
-  
+
   useEffect(() => {
     dispatch(getProperty(propertyId));
   }, [dispatch, propertyId]);
-  
-  
 
   return (
     <>

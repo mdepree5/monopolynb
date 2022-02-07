@@ -17,11 +17,9 @@ const ReviewData = () => {
     {name: 'Communication', rating: 4.8},
     {name: 'Check-In', rating: 4.0},
   ];
-
-  console.log(reviewData);
   
   return (    
-    <div>
+    <div className='review-data-container'>
       <div>Rating</div>
       <div>
         {reviewData.map(datum => (
