@@ -18,8 +18,8 @@ router.route('/')
   validateProperty,
   asyncHandler(async (req, res) => {
     const id = await Property.createProperty(req.body); 
-    return res.json({id});
     return res.redirect(`${req.baseUrl}/${id}`);
+    return res.json({id});
   }))
 .get(asyncHandler(async (req, res) => {
   const properties = await Property.getAllProperties();
