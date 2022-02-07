@@ -8,8 +8,8 @@ const PropertyForm = () => {
   const dispatch = useDispatch();
 
   const [title, setTitle] = useState('');
-  const [numberOfBeds, setNumberOfBeds] = useState(2);
-  const [price, setPrice] = useState(20);
+  const [numberOfBeds, setNumberOfBeds] = useState('');
+  const [price, setPrice] = useState('');
   const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');

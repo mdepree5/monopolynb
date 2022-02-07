@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import PropertyFormModal from '../Property/PropertyFormModal';
 
 import './Navigation.css';
 
@@ -15,12 +16,9 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   sessionLinks = sessionUser ? (
     <>
-      <li>
-        <div>{`Hello ${sessionUser.firstName}`}</div>
-      </li>
-      <li>
-        <ProfileButton user={sessionUser} />
-      </li>
+      <li><PropertyFormModal /></li>
+      <li><div>{`Hello ${sessionUser.firstName}`}</div></li>
+      <li><ProfileButton user={sessionUser} /></li>
     </>
   ) : (
     <>
