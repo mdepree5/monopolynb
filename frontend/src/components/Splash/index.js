@@ -17,20 +17,19 @@ const Splash = () => {
   useEffect(() => {
     dispatch(getProperties());
   }, [dispatch]);
-
+  
   return (
     <>
-      <Meter rating={80}/>
       <ColorDisplay />
-      <div className='property-list-container'>
+      <ul className='property-list-container'>
         {properties.map(property => (
-          <div className='property-card' key={property.id}>
+          <li className='property-card' key={property.id}>
             <div>box</div>
             <NavLink to={`/properties/${property.id}`}>{property.title}</NavLink>
-          </div>
+          </li>
         ))
         }
-      </div>
+      </ul>
       <div>
       <Route path="/properties/:propertyId">
         <PropertyPage />
@@ -40,6 +39,7 @@ const Splash = () => {
   );
 }
 
+// <Meter rating={80}/>
 // import PropertyList from '../Property/PropertyList';
 // <div>
 //   <PropertyList />

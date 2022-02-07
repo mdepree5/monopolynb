@@ -25,26 +25,26 @@ const PropertyPage = () => {
   }, [dispatch, propertyId]);
 
   return (
-    <>
+    <div className='property-page'>
       <div>Property Page</div>
       <li>
         <div className='property-info'>
             <div className='property-host'> 
               <NavLink to={`/users/${property.hostId}`}/>
             </div>
-          <div className='property-title'>{property.title}</div>
-          <div className='property-description'>{property.description}</div>
-          <div className='property-number-of-beds'>{property.numberOfBeds}</div>
+          <h3 className='property-title'>{property.title}</h3>
+          <div className='property-description'>Description: {property.description}</div>
+          <div className='property-number-of-beds'>Number of beds {property.numberOfBeds}</div>
           <div className='property-price'>{property.price}</div>
           <div className='property-location'>{`${property.city}, ${property.state}`}</div>
         </div>
         <div>Put Review Component Here</div>
       </li>
-    </>
+    </div>
   );
 }
 
-{/* <Review propertyId={propertyId}/> */}
+// <Review propertyId={propertyId}/>
 
 // const PropertyPage = () => (
 //   <div>Property Page</div>
