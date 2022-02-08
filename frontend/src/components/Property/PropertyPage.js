@@ -39,11 +39,12 @@ const PropertyPage = () => {
         }
       <li>
         <div className='property-info'>
-            <div className='property-host'> 
-              <NavLink to={`/users/${property?.hostId}`}>Host</NavLink>
-            </div>
           <h3 className='property-title'>{property?.title}</h3>
           <div className='property-location'>{`${property?.city}, ${property?.state}`}</div>
+          <div className='property-host'> 
+            <NavLink to={`/users/${property?.hostId}`}>Host</NavLink>
+          </div>
+          <div className='img-placeholder'>IMG</div>
           <div className='property-description'>Description: {property?.description}</div>
           <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
           <div className='property-price'>{`$${property?.price} / night`}</div>
@@ -59,5 +60,9 @@ const PropertyPage = () => {
 
 
 export default PropertyPage;
+
+
+
+
 
 

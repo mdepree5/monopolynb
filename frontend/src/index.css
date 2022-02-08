@@ -5,6 +5,13 @@
   
 }
 
+.img-placeholder{
+  width: 100px;
+  height: 100px;
+  border: solid black 2px;
+  border-radius: 3px;
+  text-align: center;
+}
 
 .form-input:hover {
   background-color: gray;
