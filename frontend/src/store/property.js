@@ -138,16 +138,26 @@ const propertyReducer = (state = initialState, action) => {
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ONE:
-      const getOne = {
+      return {
+        ...state,
+        
         [action.property.id]: {
           ...state[action.property.id],
+          ...action.property
         }
-      }
-      return {
-        getOne,
-        ...state,
-        hello: 'there',
-      }
+      };
+
+          // case GET_ONE:
+    //   const getOne = {
+    //     [action.property.id]: {
+    //       ...state[action.property.id],
+    //     }
+    //   }
+    //   return {
+    //     getOne,
+    //     ...state,
+    //     hello: 'there',
+    //   }
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_ONE:
       return {

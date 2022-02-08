@@ -7,7 +7,11 @@ function PropertyFormModal() {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Host new property</button>
+      <button onClick={e => {
+      e.stopPropagation();
+      setShowModal(true)
+      }
+      }>Host New Property</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <PropertyCreateForm closeModal={() => setShowModal(false)}/>

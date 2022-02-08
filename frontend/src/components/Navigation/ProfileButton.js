@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
+
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import PropertyFormModal from '../Property/PropertyFormModal';
@@ -40,6 +41,7 @@ function ProfileButton({isLoaded}) {
     <>
       <li><div>{`Hello ${sessionUser.firstName}`}</div></li>
       <li><div>{`Hello ${sessionUser.lastName}`}</div></li>
+      <PropertyFormModal />
       <li><button onClick={logout}>Log Out</button></li>
     </>
   ) : (

@@ -9,3 +9,8 @@
   display: flex;
   flex-direction: row;
 }
+
+.profile-dropdown{
+  z-index: 3;
+  
+}

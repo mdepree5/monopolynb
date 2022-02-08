@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
-import PropertyFormModal from '../Property/PropertyFormModal';
 
 import './Navigation.css';
 
@@ -15,7 +14,6 @@ function Navigation({ isLoaded }){
         <NavLink exact to="/">Home</NavLink>
       </ul>
       <ul className='right-nav'>
-        <PropertyFormModal />
         <ProfileButton isLoaded={isLoaded} />
       </ul>
     </>
