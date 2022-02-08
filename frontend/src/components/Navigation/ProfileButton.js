@@ -39,9 +39,7 @@ function ProfileButton({isLoaded}) {
   let sessionLinks;
   sessionLinks = sessionUser ? (
     <>
-      <li><div>{`Hello ${sessionUser.firstName}`}</div></li>
-      <li><div>{`Hello ${sessionUser.lastName}`}</div></li>
-      <PropertyFormModal />
+      <li><PropertyFormModal /></li>
       <li><button onClick={logout}>Log Out</button></li>
     </>
   ) : (

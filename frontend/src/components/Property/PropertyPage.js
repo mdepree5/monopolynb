@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import {NavLink, useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
@@ -14,6 +14,16 @@ const PropertyPage = () => {
   const {propertyId} = useParams();
 
   const property = useSelector(state => state.property[propertyId]);
+  const state = useSelector(state => state);
+  // const sessionUser = useSelector(state => state.session.user);
+  
+  const [belongsToUser, setBelongsToUser] = useState(false);
+  
+  console.log('debugger-property-page');
+  console.log(state);
+  // console.log(sessionUser);
+
+  // if(sessionUser?.id === property?.hostId) setBelongsToUser(true);
 
   useEffect(() => {
     dispatch(getProperty(propertyId));
@@ -23,8 +33,13 @@ const PropertyPage = () => {
     <>
     <div className='property-page'>
       <div>Property Page</div>
-        <PropertyEditModal property={property} />
-        <PropertyDeleteButton propertyId={propertyId} />
+        {belongsToUser &&( 
+          <>
+            <PropertyEditModal property={property} />
+            <PropertyDeleteButton propertyId={propertyId} />
+          </>
+          )
+        }
       <li>
         <div className='property-info'>
             <div className='property-host'> 
