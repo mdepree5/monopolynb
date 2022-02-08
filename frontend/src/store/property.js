@@ -48,9 +48,9 @@ export const createProperty = property => async (dispatch) => {
   });
 
   if (response.ok) {
-    const property = await response.json();
-    dispatch(createOneProperty(property));
-    return property;
+    const newProperty = await response.json();
+    dispatch(createOneProperty(newProperty));
+    return newProperty;
   }
 };
 
@@ -109,13 +109,12 @@ const initialState = { listOfProperties: [], listOfReviews: [] };
 const propertyReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_ONE: 
-    console.log('debugger-reducer');
-    console.log('i think it 42', action.property.id);
+
       return {
       ...state,
-      [action.property.property.id]: {
-        ...state[action.property.property.id],
-        ...action.property.property
+      [action.property.id]: {
+        ...state[action.property.id],
+        ...action.property
       }
     };
     // const newCreateState = {
@@ -129,22 +128,22 @@ const propertyReducer = (state = initialState, action) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL:
       const properties = {}; //* Declare new object 1. avoid mutation, 2. control specific slices of state
-      action.properties.properties.forEach(property => {
+      action.properties.forEach(property => {
         properties[property.id] = property;
       });
       return {
         ...properties,
         ...state,
-        listOfProperties: action.properties.properties
+        listOfProperties: action.properties
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ONE:
       return {
         ...state,
         
-        [action.property.property.id]: {
-          ...state[action.property.property.id],
-          ...action.property.property
+        [action.property.id]: {
+          ...state[action.property.id],
+          ...action.property
         }
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -172,13 +171,13 @@ const propertyReducer = (state = initialState, action) => {
 // **** ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS:
       const reviews = {};
-      action.reviews.reviews.forEach(review => {
+      action.reviews.forEach(review => {
         reviews[review.id] = review;
       });
       return {
         ...reviews,
         ...state,
-        listOfReviews: action.reviews.reviews
+        listOfReviews: action.reviews
       }
 // **** ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_REVIEW:

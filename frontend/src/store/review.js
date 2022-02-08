@@ -104,13 +104,13 @@ const reviewReducer = (state = initialState, action) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS:
       const reviews = {}; 
-      action.reviews.reviews.forEach(review => {
+      action.reviews.forEach(review => {
         reviews[review.id] = review;
       });
       return {
         ...reviews,
         ...state,
-        listOfReviews: action.reviews.reviews
+        listOfReviews: action.reviews
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_REVIEW:

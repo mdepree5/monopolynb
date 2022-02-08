@@ -18,17 +18,19 @@ router.route('/')
   validateProperty,
   asyncHandler(async (req, res) => {
     const property = await Property.createProperty(req.body); 
-    return res.redirect(`/properties/${property.id}`);
+    console.log('backend');
+    console.log(property);
+    return res.json(property);
   }))
 .get(asyncHandler(async (req, res) => {
   const properties = await Property.getAllProperties();
-  return res.json({properties});
+  return res.json(properties);
 }))
 // todo ——————————————————————————————————————————————————————————————————————————————————
 router.route('/:propertyId')
 .get(asyncHandler(async (req, res) => {
   const property = await Property.getPropertyById(req.params.propertyId);
-  return res.json({property});
+  return res.json(property);
 }))
 .put(
   validateProperty,
@@ -37,7 +39,7 @@ router.route('/:propertyId')
     // const property = await Property.getPropertyById(req.params.id); //* am I not getting it from req.params.id??
     const id = await Property.updateProperty(req.body);
     const property = await Property.getPropertyById(id);
-    return res.json({property});
+    return res.json(property);
   }))
 .delete(
   asyncHandler(async (req, res) => {
@@ -57,7 +59,7 @@ router.route('/:propertyId/reviews')
   validateReview,
   asyncHandler(async function(req, res) {
     const review = await Review.createReview(req.body, req.params.propertyId);
-    return res.json({review}); //* return json?{ OR} do I redirect?
+    return res.json(review); //* return json?{ OR} do I redirect?
     return res.redirect(`${req.baseUrl}/${req.paramsid}`); //* redirect/return to post page???
   })
 )
@@ -65,7 +67,7 @@ router.route('/:propertyId/reviews')
   // const reviews = await Property.getReviewsByPropertyId(req.params.id); //* Decide whether to add the method in the Property method or Reviews method
   const reviews = await Review.getReviewsByPropertyId(req.params.propertyId); //* Decide whether to add the method in the Property method or Reviews method
   
-  return res.json({reviews});
+  return res.json(reviews);
 }))
 // todo ——————————————————————————————————————————————————————————————————————————————————
 router.route('/:propertyId/reviews/:reviewId')
@@ -76,12 +78,12 @@ router.route('/:propertyId/reviews/:reviewId')
     // const review = await Review.getReviewById(req.params.reviewId); //* am I not getting it from req.params.id??
     const id = await Review.updateReview(req.body);
     const review = await Property.getReviewById(id);
-    return res.json({review});
+    return res.json(review);
   }))
 .delete(
   asyncHandler(async (req, res) => {
     const reviewId = await Review.deleteReview(req.params.reviewId);
-    return res.json({reviewId});
+    return res.json(reviewId);
     return res.redirect(`${req.baseUrl}/${req.params.propertyId}`); //* of do you want redirect here?
   })
 )

@@ -1,3 +1,4 @@
+import {useHistory} from 'react-router-dom';
 import React, { useState } from "react";
 import * as propertyActions from "../../store/property";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,6 +7,7 @@ import {Form, FormInput} from '../Form';
 
 const PropertyForm = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const [title, setTitle] = useState('');
   const [numberOfBeds, setNumberOfBeds] = useState('');
@@ -22,24 +24,18 @@ const PropertyForm = () => {
   // console.log('hostId', hostId);
 
 
-
-
-
-  
-  const handleSubmit = event => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
 
-    return dispatch(propertyActions.createProperty(
+    const newProperty = await dispatch(propertyActions.createProperty(
       {hostId, title, numberOfBeds, price, address, city, state, zipcode}
     ))
-    .catch(
-      async (res) => {
-        console.log('debugger-property-form-handle-submit');
-        console.log(res);
-        const data = await res.json();
-        if(data && data.errors) setErrors(data.errors);
-      }
-    )
+
+    console.log('debugger-property-form-new-property');
+    console.log(newProperty);
+
+    if(newProperty) history.push(`/properties/${newProperty.id}`);
+
   }
 
   return (
@@ -56,3 +52,12 @@ const PropertyForm = () => {
 };
 
 export default PropertyForm;
+
+// .then(
+//   async (res) => {
+//     console.log('debugger-property-form-handle-submit');
+//     console.log('res', res);
+//     const data = await res.json();
+//     if(data && data.errors) setErrors(data.errors);
+//   }
+// )
