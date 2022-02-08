@@ -34,7 +34,9 @@ const PropertyForm = ({closeModal}) => {
     console.log('debugger-property-form-new-property');
     console.log(newProperty);
 
-    if(newProperty) history.push(`/properties/${newProperty.id}`);
+    if(newProperty.errors) setErrors(newProperty.errors); //* Is this the way?
+
+    if(newProperty || !newProperty.errors ) history.push(`/properties/${newProperty.id}`);
     
     closeModal();
   }
