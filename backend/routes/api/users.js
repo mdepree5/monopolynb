@@ -21,6 +21,13 @@ router.route('/')
   })
 )
 
+// router.route('/reviews')
+// .get(
+//   asyncHandler(async(req, res) => {
+
+//   })
+// )
+
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo Test validators

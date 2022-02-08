@@ -1,6 +1,8 @@
 
+
 const UserPage = () => {
-  console.log('hello')
+  console.log('hello');
+  
   return (
     <div>
       <div>User Page</div>
@@ -10,3 +12,4 @@ const UserPage = () => {
 
 // onCLick={() => setCurrProperty(property)}
 export default UserPage;
+

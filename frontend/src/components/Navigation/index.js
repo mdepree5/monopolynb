@@ -1,9 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
-import LoginFormModal from '../LoginFormModal';
-import SignupFormModal from '../SignupFormModal';
 import PropertyFormModal from '../Property/PropertyFormModal';
 
 import './Navigation.css';
@@ -11,21 +8,6 @@ import './Navigation.css';
 
 
 function Navigation({ isLoaded }){
-  const sessionUser = useSelector(state => state.session.user);
-
-  let sessionLinks;
-  sessionLinks = sessionUser ? (
-    <>
-      <li><PropertyFormModal /></li>
-      <li><div>{`Hello ${sessionUser.firstName}`}</div></li>
-      <li><ProfileButton user={sessionUser} /></li>
-    </>
-  ) : (
-    <>
-      <LoginFormModal />
-      <SignupFormModal />
-    </>
-  );
 
   return (
     <>
@@ -33,7 +15,8 @@ function Navigation({ isLoaded }){
         <NavLink exact to="/">Home</NavLink>
       </ul>
       <ul className='right-nav'>
-        {isLoaded && sessionLinks}
+        <PropertyFormModal />
+        <ProfileButton isLoaded={isLoaded} />
       </ul>
     </>
   );

@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 
-function ProfileButton({ user }) {
+import LoginFormModal from '../LoginFormModal';
+import SignupFormModal from '../SignupFormModal';
+import PropertyFormModal from '../Property/PropertyFormModal';
+
+function ProfileButton({isLoaded}) {
+  const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   
@@ -28,19 +34,29 @@ function ProfileButton({ user }) {
     dispatch(sessionActions.logout());
   };
 
+
+  let sessionLinks;
+  sessionLinks = sessionUser ? (
+    <>
+      <li><div>{`Hello ${sessionUser.firstName}`}</div></li>
+      <li><div>{`Hello ${sessionUser.lastName}`}</div></li>
+      <li><button onClick={logout}>Log Out</button></li>
+    </>
+  ) : (
+    <>
+      <li><LoginFormModal /></li>
+      <li><SignupFormModal /></li>
+    </>
+  );
+
   return (
     <>
       <button onClick={openMenu}>
         <i className="far fa-user" />
-        {/* <i className="fas fa-user-circle" /> */}
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          <li>{user.username}</li>
-          <li>{user.email}</li>
-          <li>
-            <button onClick={logout}>Log Out</button>
-          </li>
+          {sessionLinks}
         </ul>
       )}
     </>
