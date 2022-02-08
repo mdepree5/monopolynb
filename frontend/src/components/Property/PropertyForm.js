@@ -23,7 +23,6 @@ const PropertyForm = ({closeModal}) => {
   // console.log('debugger-Property-form-component');
   // console.log('hostId', hostId);
 
-
   const handleSubmit = async(event) => {
     event.preventDefault();
 
