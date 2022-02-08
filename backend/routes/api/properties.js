@@ -44,8 +44,7 @@ router.route('/:propertyId')
 .delete(
   asyncHandler(async (req, res) => {
     const propertyId = await Property.deleteProperty(req.params.propertyId);
-    return res.json({propertyId}); //* option 1: manipualte res.json({),} display confirmation page?
-    return res.redirect(`${req.baseUrl}/${id}`); //* option 2: immediately redirect. Both op 1 and op 2 are design choice
+    return res.json(propertyId); //* option 1: manipualte res.json({),} display confirmation page?
   })
 )
 
@@ -60,7 +59,6 @@ router.route('/:propertyId/reviews')
   asyncHandler(async function(req, res) {
     const review = await Review.createReview(req.body, req.params.propertyId);
     return res.json(review); //* return json?{ OR} do I redirect?
-    return res.redirect(`${req.baseUrl}/${req.paramsid}`); //* redirect/return to post page???
   })
 )
 .get(asyncHandler(async function(req, res) {

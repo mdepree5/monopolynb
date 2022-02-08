@@ -9,13 +9,18 @@ const PropertyDeleteButton = ({propertyId}) => {
 
   // const hostId = useSelector(state => state.session.user.id);
 
+  // console.log('debugger-delete-button-component');
+  // console.log('propertyId', propertyId);
 
   const handleDelete = async(event) => {
     event.preventDefault();
 
-    await dispatch(propertyActions.deleteProperty(propertyId))
+    const deletedProperty = await dispatch(propertyActions.deleteProperty(propertyId));
 
-    history.push(`/properties/confirmDelete`);
+    console.log('deletedProperty:', deletedProperty);
+
+    alert('deleted');
+    history.push(`/confirmDelete`);
   }
 
   return (

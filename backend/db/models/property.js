@@ -79,12 +79,13 @@ module.exports = (sequelize, DataTypes) => {
     return id;
   };
   
-  Property.deleteProperty = async function (propertyId) {
-    const property = await Property.findByPk(propertyId);
+  Property.deleteProperty = async function (id) {
+    const property = await Property.findByPk(id);
     if (!property) throw new Error('Cannot find property');
-  
+    const formerId = property.id;
+
     await Property.destroy({ where: { id: property.id }});
-    return property.id;
+    return formerId;
   };
 
 

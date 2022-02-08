@@ -138,14 +138,16 @@ const propertyReducer = (state = initialState, action) => {
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ONE:
-      const getOneState = {
-        ...state,
+      const getOne = {
         [action.property.id]: {
           ...state[action.property.id],
-          ...action.property
         }
       }
-      return getOneState;
+      return {
+        getOne,
+        ...state,
+        hello: 'there',
+      }
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_ONE:
       return {
@@ -155,49 +157,50 @@ const propertyReducer = (state = initialState, action) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_ONE: 
     const deleteOneState = {
-      ...state,
-      [action.property.id]: {
-        ...state[action.property.id],
+      // ...state,
+      [action.property]: {
+        ...state[action.property],
         ...action.property
       }
     }
       console.log('debugger-reducer');
       console.log('before', deleteOneState)
-      delete deleteOneState[action.property.id];
+      // delete deleteOneState[action.property.id];
       console.log('after', deleteOneState)
       return deleteOneState;
-// todo ——————————————————————————————————————————————————————————————————————————————————
-// ****                                 REVIEW CASES
-// todo ——————————————————————————————————————————————————————————————————————————————————
-    case CREATE_REVIEW:
-      return {
-        ...state,
-        [action.review.propertyId]: {
-          ...state[action.review.propertyId],
-          reviews: [...state[action.review.propertyId].reviews, action.review.id]
-        }
-      };
-// **** ——————————————————————————————————————————————————————————————————————————————————
-    case GET_ALL_REVIEWS:
-      const reviews = {};
-      action.reviews.forEach(review => {
-        reviews[review.id] = review;
-      });
-      return {
-        ...reviews,
-        ...state,
-        listOfReviews: action.reviews
-      }
-// **** ——————————————————————————————————————————————————————————————————————————————————
-    case DELETE_REVIEW:
-      return {
-        ...state,
-        [action.propertyId]: {
-          ...state[action.propertyId],
-          reviews: state[action.propertyId].items.filter(reviewId => reviewId !== action.reviewId)
-        }
-      };
-// **** ——————————————————————————————————————————————————————————————————————————————————
+// todo ——————————————————————————————————————————————————————————————————————————————————      
+// // todo ——————————————————————————————————————————————————————————————————————————————————
+// // ****                                 REVIEW CASES
+// // todo ——————————————————————————————————————————————————————————————————————————————————
+//     case CREATE_REVIEW:
+//       return {
+//         ...state,
+//         [action.review.propertyId]: {
+//           ...state[action.review.propertyId],
+//           reviews: [...state[action.review.propertyId].reviews, action.review.id]
+//         }
+//       };
+// // **** ——————————————————————————————————————————————————————————————————————————————————
+//     case GET_ALL_REVIEWS:
+//       const reviews = {};
+//       action.reviews.forEach(review => {
+//         reviews[review.id] = review;
+//       });
+//       return {
+//         ...reviews,
+//         ...state,
+//         listOfReviews: action.reviews
+//       }
+// // **** ——————————————————————————————————————————————————————————————————————————————————
+//     case DELETE_REVIEW:
+//       return {
+//         ...state,
+//         [action.propertyId]: {
+//           ...state[action.propertyId],
+//           reviews: state[action.propertyId].items.filter(reviewId => reviewId !== action.reviewId)
+//         }
+//       };
+// // **** ——————————————————————————————————————————————————————————————————————————————————
     default:
       return state;
   }
