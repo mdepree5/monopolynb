@@ -1,8 +1,16 @@
-
-
-
-
 /* 
+UNSTABLE property reducer case
+case CREATE_ONE: 
+return {
+    ...state,
+    listOfProperties: {
+      ...state.listOfProperties,
+      [action.property.id]: action.property
+    }
+  };
+ */
+/* 
+
 components/property/propertypage
   const state = useSelector(state => state.property);
   const property = useSelector(state => state.property[propertyId]);

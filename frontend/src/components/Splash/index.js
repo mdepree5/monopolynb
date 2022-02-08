@@ -1,4 +1,4 @@
-import {Switch, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperties } from '../../store/property';
@@ -13,6 +13,10 @@ const Splash = () => {
 
   const properties = useSelector(state => state.property.listOfProperties);
 
+  // console.log('debugger-splash-component');
+  // console.log('properties', properties);
+  // console.log('debugger-splash-component');
+  
   useEffect(() => {
     dispatch(getProperties());
   }, [dispatch]);
@@ -36,11 +40,5 @@ const Splash = () => {
   );
 }
 
-// import Meter from '../../context/Meter';
-// <Meter rating={80}/>
-// import PropertyList from '../Property/PropertyList';
-// <div>
-//   <PropertyList />
-// </div>
 
 export default Splash;

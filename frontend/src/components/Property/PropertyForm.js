@@ -18,25 +18,25 @@ const PropertyForm = () => {
 
   const hostId = useSelector(state => state.session.user.id);
 
-  console.log('hostId', hostId);
+  // console.log('debugger-Property-form-component');
+  // console.log('hostId', hostId);
 
 
-  // useEffect(() => {
-  //   dispatch(getPropertyId)
-  // }, [dispatch])
 
+
+
+  
   const handleSubmit = event => {
     event.preventDefault();
-    
-    console.log('debugger-component');
 
-    setErrors([]); //* is this necessary? Why is it important in LoginForm handleSubmit?
     return dispatch(propertyActions.createProperty(
       {hostId, title, numberOfBeds, price, address, city, state, zipcode}
-    )).catch(
+    ))
+    .catch(
       async (res) => {
+        console.log('debugger-property-form-handle-submit');
+        console.log(res);
         const data = await res.json();
-        console.log('d')
         if(data && data.errors) setErrors(data.errors);
       }
     )

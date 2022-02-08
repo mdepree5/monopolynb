@@ -1,8 +1,8 @@
 export const Form = ({onSub, errors, buttonName, children}) => (
   <form onSubmit={onSub}>
     <ul className='form-errors'>
-      {errors.map((error, idx) => (
-        <li key={idx}>{error}</li>
+      {errors.map((error, id) => (
+        <li key={id}>{error}</li>
       ))}
     </ul>
     {children}

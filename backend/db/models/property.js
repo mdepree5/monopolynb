@@ -53,9 +53,8 @@ module.exports = (sequelize, DataTypes) => {
   // todo                               Property Methods
   // todo ————————————————————————————————————————————————————————————————————————————————
 
-  Property.createProperty = async function (details) {
-    const property = await Property.create(details);
-    return property.id;
+  Property.createProperty = async function (reqData) {
+    return await Property.create(reqData);
   };
   
   Property.getAllProperties = async function () {

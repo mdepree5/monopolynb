@@ -76,7 +76,7 @@ export const getProperty = id => async (dispatch) => {
 };
 
 export const updateProperty = property => async (dispatch) => {
-  const response = await fetch(`/api/properties/${property.id}`, {
+  const response = await csrfFetch(`/api/properties/${property.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(property)
@@ -90,7 +90,7 @@ export const updateProperty = property => async (dispatch) => {
 };
 
 export const deleteProperty = propertyId => async (dispatch) => {
-  const response = await fetch(`/api/properties/${propertyId}`, {
+  const response = await csrfFetch(`/api/properties/${propertyId}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -109,31 +109,23 @@ const initialState = { listOfProperties: [], listOfReviews: [] };
 const propertyReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_ONE: 
-    return {
-        ...state,
-        listOfProperties: {
-          ...state.listOfProperties,
-          [action.property.id]: action.property
-        }
-      };
-      // Refactored CREATE_ONE case for listOfProperties = [];
-      // switch (action.type) {
-      //   case CREATE_ONE: 
-      //   const newState = {
-      //     ...state,
-      //     [action.property.id]: action.property
-      //   };
-      //   const newPropertyList = newState.listOfProperties.map(id => newState[id]);
-      //   newPropertyList.push(action.property);
-      //   newState.listOfProperties = action.properties.properties
-      //   return newState;  
-      //     return {
-      //       ...state,
-      //       listOfProperties: {
-      //         ...state.listOfProperties,
-      //         [action.property.id]: action.property
-      //       }
-      //     };
+    console.log('debugger-reducer');
+    console.log('i think it 42', action.property.id);
+      return {
+      ...state,
+      [action.property.property.id]: {
+        ...state[action.property.property.id],
+        ...action.property.property
+      }
+    };
+    // const newCreateState = {
+    //   ...state,
+    //   [action.property.id]: action.property
+    // };
+    // const newPropertyList = newCreateState.listOfProperties.map(id => newCreateState[id]);
+    // newPropertyList.push(action.property);
+    // newCreateState.listOfProperties = action.properties.properties
+    // return newCreateState;  
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL:
       const properties = {}; //* Declare new object 1. avoid mutation, 2. control specific slices of state
