@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {Form, FormInput} from '../Form';
 
 
-const PropertyForm = () => {
+const PropertyForm = ({closeModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -35,7 +35,8 @@ const PropertyForm = () => {
     console.log(newProperty);
 
     if(newProperty) history.push(`/properties/${newProperty.id}`);
-
+    
+    closeModal();
   }
 
   return (

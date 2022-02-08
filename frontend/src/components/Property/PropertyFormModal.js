@@ -10,7 +10,7 @@ function PropertyFormModal() {
       <button onClick={() => setShowModal(true)}>Host new property</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <PropertyForm />
+          <PropertyForm closeModal={() => setShowModal(false)}/>
         </Modal>
       )}
     </>
