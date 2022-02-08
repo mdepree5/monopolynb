@@ -18,8 +18,8 @@ router.route('/')
   validateProperty,
   asyncHandler(async (req, res) => {
     const property = await Property.createProperty(req.body); 
-    console.log('backend');
-    console.log(property);
+    // console.log('debugger-api-properties');
+    // console.log(property);
     return res.json(property);
   }))
 .get(asyncHandler(async (req, res) => {
@@ -33,7 +33,7 @@ router.route('/:propertyId')
   return res.json(property);
 }))
 .put(
-  validateProperty,
+  // validateProperty,
   validatePUT,
   asyncHandler(async (req, res) => {
     // const property = await Property.getPropertyById(req.params.id); //* am I not getting it from req.params.id??

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {Form, FormInput} from '../Form';
 
 
-const PropertyForm = ({closeModal}) => {
+const PropertyCreateForm = ({closeModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -53,7 +53,7 @@ const PropertyForm = ({closeModal}) => {
   )
 };
 
-export default PropertyForm;
+export default PropertyCreateForm;
 
 // .then(
 //   async (res) => {

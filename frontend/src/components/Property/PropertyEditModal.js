@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import PropertyCreateForm from './PropertyCreateForm';
+import PropertyEditForm from './PropertyEditForm';
 
 function PropertyFormModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Host new property</button>
+      <button onClick={() => setShowModal(true)}>Edit your Property</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <PropertyCreateForm closeModal={() => setShowModal(false)}/>
+          <PropertyEditForm closeModal={() => setShowModal(false)}/>
         </Modal>
       )}
     </>
