@@ -2,9 +2,9 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.bulkInsert('Properties', [
-    { hostId: 2, title: 'Mediterranean Avenue', numberOfBeds: 4, price: 10, address: 'Mediterranean Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
-    { hostId: 2, title: 'Baltic Avenue', numberOfBeds: 4, price: 20, address: 'Baltic Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
-    { hostId: 2, title: 'Oriental Avenue', numberOfBeds: 4, price: 30, address: 'Oriental Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
+    { hostId: 1, title: 'Mediterranean Avenue', numberOfBeds: 4, price: 10, address: 'Mediterranean Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
+    { hostId: 1, title: 'Baltic Avenue', numberOfBeds: 4, price: 20, address: 'Baltic Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
+    { hostId: 1, title: 'Oriental Avenue', numberOfBeds: 4, price: 30, address: 'Oriental Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
     { hostId: 2, title: 'Vermont Avenue', numberOfBeds: 4, price: 30, address: 'N Vermont Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
     { hostId: 2, title: 'Connecticut Avenue', numberOfBeds: 4, price: 40, address: 'N Connecticut Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
     { hostId: 2, title: 'St. Charles Place', numberOfBeds: 4, price: 50, address: 'St Charles Pl', city: 'Ocean City', state: 'New Jersey', zipcode: '08226' },

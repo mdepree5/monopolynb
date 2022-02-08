@@ -12,18 +12,15 @@ import './Property.css';
 const PropertyPage = () => {
   const dispatch = useDispatch();
   const {propertyId} = useParams();
+  const [belongsToUser, setBelongsToUser] = useState(false);
 
   const property = useSelector(state => state.property[propertyId]);
-  const state = useSelector(state => state);
-  // const sessionUser = useSelector(state => state.session.user);
-  
-  const [belongsToUser, setBelongsToUser] = useState(false);
-  
-  console.log('debugger-property-page');
-  console.log(state);
-  // console.log(sessionUser);
+  const sessionUser = useSelector(state => state.session.user);
 
-  // if(sessionUser?.id === property?.hostId) setBelongsToUser(true);
+  useEffect(() => {    
+    if(sessionUser?.id === property?.hostId) setBelongsToUser(true);
+    else setBelongsToUser(false);
+  }, [sessionUser, property])
 
   useEffect(() => {
     dispatch(getProperty(propertyId));

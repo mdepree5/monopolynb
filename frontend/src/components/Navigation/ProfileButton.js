@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import * as sessionActions from '../../store/session';
+import { useDispatch, useSelector } from 'react-redux';
+import {NavLink} from 'react-router-dom';
 
+import * as sessionActions from '../../store/session';
 
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
@@ -40,6 +40,7 @@ function ProfileButton({isLoaded}) {
   sessionLinks = sessionUser ? (
     <>
       <li><PropertyFormModal /></li>
+      <li><NavLink to={`/users/${sessionUser.id}`}>My Page</NavLink></li>
       <li><button onClick={logout}>Log Out</button></li>
     </>
   ) : (
