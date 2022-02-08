@@ -22,7 +22,7 @@ const PropertyPage = () => {
     <>
     <div className='property-page'>
       <div>Property Page</div>
-        <PropertyEditModal />
+        <PropertyEditModal property={property} />
       <li>
         <div className='property-info'>
             <div className='property-host'> 

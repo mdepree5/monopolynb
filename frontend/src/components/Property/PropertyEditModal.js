@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import PropertyEditForm from './PropertyEditForm';
 
-function PropertyFormModal() {
+const PropertyFormModal = ({property}) => {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -10,7 +10,7 @@ function PropertyFormModal() {
       <button onClick={() => setShowModal(true)}>Edit your Property</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <PropertyEditForm closeModal={() => setShowModal(false)}/>
+          <PropertyEditForm closeModal={() => setShowModal(false)} property={property}/>
         </Modal>
       )}
     </>
