@@ -20,9 +20,6 @@ const PropertyEditForm = ({property, closeModal}) => {
 
   const hostId = useSelector(state => state.session.user.id);
 
-  // console.log('debugger-Property-form-component');
-  // console.log('hostId', hostId);
-
   const handleSubmit = async(event) => {
     event.preventDefault();
 

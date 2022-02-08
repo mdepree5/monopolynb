@@ -2,8 +2,9 @@ import { useEffect } from 'react';
 import {NavLink, useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
-import Review from '../Review';
+// import Review from '../Review';
 import PropertyEditModal from './PropertyEditModal';
+import PropertyDeleteButton from './PropertyDeleteButton';
 
 import './Property.css';
 
@@ -23,6 +24,7 @@ const PropertyPage = () => {
     <div className='property-page'>
       <div>Property Page</div>
         <PropertyEditModal property={property} />
+        <PropertyDeleteButton propertyId={propertyId} />
       <li>
         <div className='property-info'>
             <div className='property-host'> 
@@ -37,7 +39,7 @@ const PropertyPage = () => {
       </li>
       <br />
     </div>
-    <Review />
+    {/* <Review /> */}
     </>
   );
 }

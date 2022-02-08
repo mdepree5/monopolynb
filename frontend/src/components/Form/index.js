@@ -11,10 +11,9 @@ export const Form = ({onSub, errors, buttonName, children}) => (
 )
 
 
-export const FormInput = ({ type, name, state, setState, required}) => {
+export const FormInput = ({ type, name, state, setState }) => {
   const formatName = name.toLowerCase().split(' ').join('-');
 
-  // <label htmlFor={`${formatName}`}>{`${name}: `}</label>
   return (
   <div className={`${formatName}-input form-input`}>
     <label htmlFor={`${formatName}`} />
@@ -23,7 +22,6 @@ export const FormInput = ({ type, name, state, setState, required}) => {
       id={`${formatName}`} 
       value={state}
       onChange={e => setState(e.target.value)}
-      // required={required || true}
       placeholder={`${name}`}
       />
   </div>

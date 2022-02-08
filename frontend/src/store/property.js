@@ -138,14 +138,14 @@ const propertyReducer = (state = initialState, action) => {
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ONE:
-      return {
+      const getOneState = {
         ...state,
-        
         [action.property.id]: {
           ...state[action.property.id],
           ...action.property
         }
-      };
+      }
+      return getOneState;
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_ONE:
       return {
@@ -154,9 +154,18 @@ const propertyReducer = (state = initialState, action) => {
       }
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_ONE: 
-      const newState = {...state, listOfProperties: {...state.listOfProperties}};
-      delete newState.listOfProperties[action.property.id];
-      return newState;
+    const deleteOneState = {
+      ...state,
+      [action.property.id]: {
+        ...state[action.property.id],
+        ...action.property
+      }
+    }
+      console.log('debugger-reducer');
+      console.log('before', deleteOneState)
+      delete deleteOneState[action.property.id];
+      console.log('after', deleteOneState)
+      return deleteOneState;
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // ****                                 REVIEW CASES
 // todo ——————————————————————————————————————————————————————————————————————————————————
