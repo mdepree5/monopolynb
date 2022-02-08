@@ -157,16 +157,12 @@ const propertyReducer = (state = initialState, action) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_ONE: 
     const deleteOneState = {
-      // ...state,
+      ...state,
       [action.property]: {
         ...state[action.property],
         ...action.property
       }
     }
-      console.log('debugger-reducer');
-      console.log('before', deleteOneState)
-      // delete deleteOneState[action.property.id];
-      console.log('after', deleteOneState)
       return deleteOneState;
 // todo ——————————————————————————————————————————————————————————————————————————————————      
 // // todo ——————————————————————————————————————————————————————————————————————————————————

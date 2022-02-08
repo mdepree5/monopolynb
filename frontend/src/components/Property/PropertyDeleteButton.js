@@ -1,13 +1,11 @@
 import {useHistory} from 'react-router-dom';
 import * as propertyActions from "../../store/property";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 
 const PropertyDeleteButton = ({propertyId}) => {
   const dispatch = useDispatch();
   const history = useHistory();
-
-  // const hostId = useSelector(state => state.session.user.id);
 
   // console.log('debugger-delete-button-component');
   // console.log('propertyId', propertyId);
