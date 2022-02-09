@@ -25,7 +25,13 @@ const PropertyEditForm = ({property, closeModal}) => {
 
     const updatedProperty = await dispatch(propertyActions.updateProperty(
       {...property, hostId, title, numberOfBeds, price, address, city, state, zipcode}
-    ))
+    )).catch(
+      async(res) => {
+        const data = await res.json();
+        console.log('data', data);
+        if(data && data.errors) setErrors(data.errors);
+      }
+    )
 
     console.log('debugger-property-form-updated-property');
     console.log(updatedProperty);
