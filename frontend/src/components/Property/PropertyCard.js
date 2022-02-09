@@ -18,17 +18,14 @@ const PropertyCard = ({ property }) => {
 
   return (
     <li>
-      <div 
-        onClick={handleClick}
-        className='property-card'
-      >
-        <div className='property-card-image-placeholder' id={propertyColor} />
-        <div>
-          <h4 className='property-title'>{property.title}</h4>
-          <div className='property-location'>{`${property.city}, ${property.state}`}</div>
-          <div className='property-price'>{`$${property.price} / night`}</div>
-        </div>
-      </div>
+      <ul onClick={handleClick} className='property-card'>
+        <li className='property-card-image-placeholder' id={propertyColor} />
+        <li><h4 className='property-title'>{property.title}</h4></li>
+        <li />
+        <li className='property-location'>{property.city}</li>
+        <li className='property-price'>{`$${property.price} / night`}</li>
+        <li/>
+      </ul>
     </li>
   )
 };

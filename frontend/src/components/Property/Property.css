@@ -8,7 +8,7 @@
 
 
 .property-list-container{
-  border: solid black 2px;
+  border: solid black 1px;
   border-radius: 3px;
   overflow: auto;
   white-space: normal;
@@ -27,6 +27,7 @@
 .property-card{
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border: solid black 2px;
   border-radius: 3px;
   width: 150px;
