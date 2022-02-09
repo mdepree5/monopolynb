@@ -19,7 +19,6 @@ const PropertyCard = ({ property }) => {
   return (
     <li>
       <div 
-        
         onClick={handleClick}
         className='property-card'
       >
