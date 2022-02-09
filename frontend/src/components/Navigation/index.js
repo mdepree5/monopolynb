@@ -7,16 +7,16 @@ import './Navigation.css';
 
 
 function Navigation({ isLoaded }){
-  const [navStatus, setNavStatus] = useState('top');
+  const [navStatus, setNavStatus] = useState('nav-top');
   
   useEffect(() => {
     window.addEventListener('scroll', () => {
-      setNavStatus((window.scrollY > 0) ? 'not-top' : 'top')
+      setNavStatus((window.scrollY > 0) ? 'nav-not-top' : 'nav-top')
     })
   }, [])
 
   return (
-    <div id='nav-bar' className={navStatus}>
+    <div className={`nav-bar ${navStatus}`}>
       <div className='left-nav'>
         <NavLink exact to="/">Home</NavLink>
       </div>

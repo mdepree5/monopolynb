@@ -8,9 +8,11 @@ import './Splash.css';
 const Splash = () => (
   <>
     <div className='splash-container'>
-      <div className='splash-image'>hello</div>
-      <h1>Where would you like to stay?</h1>
-      <button onClick={() => alert('hey')}> Find out here </button>
+      <img id='splash-image' src='https://images2.alphacoders.com/652/652776.jpg' alt='monopoly-background' />
+      <div className='floating-message'>
+        <h1>Where would you like to stay?</h1>
+        <button onClick={() => alert('hey')}> Find out here </button>
+      </div>
     </div>
     <PropertyList />
     <Route path="/properties/:propertyId">
