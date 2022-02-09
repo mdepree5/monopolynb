@@ -20,11 +20,8 @@ const PropertyCard = ({ property }) => {
           <h4 className='property-title'>{property.title}</h4>
           <div className='property-location'>{`${property.city}, ${property.state}`}</div>
           <div className='property-price'>{`$${property.price} / night`}</div>
-          <div className='property-host'> 
-            <NavLink to={`/users/${property.hostId}`}>Link to host</NavLink>
-          </div>
-          <div className='property-page'> 
-            <NavLink to={`/properties/${property.id}`}>{property.title}</NavLink>
+          <div className='property-link'> 
+            <NavLink to={`/properties/${property.id}`}>Check it out</NavLink>
           </div>
         </div>
       </div>
