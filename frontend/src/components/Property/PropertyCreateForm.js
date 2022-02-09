@@ -20,23 +20,21 @@ const PropertyCreateForm = ({closeModal}) => {
 
   const hostId = useSelector(state => state.session.user.id);
 
-  // console.log('debugger-Property-form-component');
-  // console.log('hostId', hostId);
-
   const handleSubmit = async(event) => {
     event.preventDefault();
 
     const newProperty = await dispatch(propertyActions.createProperty(
       {hostId, title, numberOfBeds, price, address, city, state, zipcode}
-    ))
+    )).catch(
+      async(res) => {
+        const data = await res.json();
+        console.log('data', data);
+        if(data && data.errors) setErrors(data.errors);
+      }
+    )
 
-    // console.log('debugger-property-form-new-property');
-    // console.log(newProperty);
+    if(newProperty || !newProperty.errors) history.push(`/properties/${newProperty.id}`);
 
-    if(newProperty.errors) setErrors(newProperty.errors); //* Is this the way?
-
-    if(newProperty || !newProperty.errors ) history.push(`/properties/${newProperty.id}`);
-    
     closeModal();
   }
 

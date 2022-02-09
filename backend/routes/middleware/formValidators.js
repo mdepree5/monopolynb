@@ -68,10 +68,10 @@ const validateProperty = [
     .exists({ checkFalsy: true })
     .notEmpty()
     .withMessage('What is your property called? We\'d love to know!'),
-  check('title')
+  check('numberOfBeds')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Please provide a valid title.'),
+    .withMessage('How many beds does your property have?'),
   // check('password')
   //   .exists({ checkFalsy: true })
   //   .withMessage('Please provide a password.'),
