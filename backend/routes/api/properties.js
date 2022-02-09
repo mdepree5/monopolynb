@@ -56,13 +56,13 @@ router.route('/:propertyId/reviews')
 .post(
   validateReview,
   asyncHandler(async function(req, res) {
-    const review = await Review.createReview(req.body, req.params.propertyId);
-    return res.json(review); //* return json?{ OR} do I redirect?
+    const review = await Review.createReview(req.body);
+    return res.json(review);
   })
 )
 .get(asyncHandler(async function(req, res) {
-  // const reviews = await Property.getReviewsByPropertyId(req.params.id); //* Decide whether to add the method in the Property method or Reviews method
-  const reviews = await Review.getReviewsByPropertyId(req.params.propertyId); //* Decide whether to add the method in the Property method or Reviews method
+  // const reviews = await Property.getReviewsByPropertyId(req.params.id); //* via Property or Reviews method
+  const reviews = await Review.getReviewsByPropertyId(req.params.propertyId); //* via Property or Reviews method
   
   return res.json(reviews);
 }))

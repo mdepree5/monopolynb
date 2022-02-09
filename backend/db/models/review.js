@@ -49,14 +49,7 @@ module.exports = (sequelize, DataTypes) => {
   // todo                               Review Methods
   // todo ————————————————————————————————————————————————————————————————————————————————
 
-  Review.createReview = async function (details, propertyId) {
-    const review = await Review.create({
-      ...details,
-      propertyId, 
-      propertyId,
-    });
-    return await Review.findByPk(review.id);
-  };
+  Review.createReview = async (reqData) => await Review.create(reqData);
   
   Review.getReviewsByPropertyId = async function (propertyId) {
     return await Review.scope('reviewContentOnly').findAll({

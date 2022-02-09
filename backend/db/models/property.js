@@ -53,19 +53,13 @@ module.exports = (sequelize, DataTypes) => {
   // todo                               Property Methods
   // todo ————————————————————————————————————————————————————————————————————————————————
 
-  Property.createProperty = async function (reqData) {
-    return await Property.create(reqData);
-  };
+  Property.createProperty = async (reqData) => await Property.create(reqData);
   
-  Property.getAllProperties = async function () {
-    return await Property.findAll();
-  };
+  Property.getAllProperties = async () => await Property.findAll();
   
-  Property.getPropertyById = async function (id) {
-    return await Property.findByPk(id);
-  };
+  Property.getPropertyById = async (id) => await Property.findByPk(id);
   
-  Property.updateProperty = async function (details) {
+  Property.updateProperty = async (details) => {
     const id = details.id; 
     delete details.id; 
     await Property.update(
@@ -79,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
     return id;
   };
   
-  Property.deleteProperty = async function (id) {
+  Property.deleteProperty = async (id) => {
     const property = await Property.findByPk(id);
     if (!property) throw new Error('Cannot find property');
     const formerId = property.id;
