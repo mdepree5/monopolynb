@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
 
@@ -7,14 +7,18 @@ import './Navigation.css';
 
 
 function Navigation({ isLoaded }){
-
-  const handleCLick = () => window.scroll(0, 0);
+  const [navStatus, setNavStatus] = useState('top');
+  
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setNavStatus((window.scrollY > 0) ? 'not-top' : 'top')
+    })
+  }, [])
 
   return (
-    <div className='nav-bar'>
+    <div id='nav-bar' className={navStatus}>
       <div className='left-nav'>
         <NavLink exact to="/">Home</NavLink>
-        <div onClick={handleCLick}>CLICK ME</div>
       </div>
       <div className='right-nav'>
         <ProfileButton isLoaded={isLoaded} />
