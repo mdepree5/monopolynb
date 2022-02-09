@@ -17,8 +17,7 @@ router.route('/')
 .post(
   validateProperty,
   asyncHandler(async (req, res) => {
-    const {hostId, title, numberOfBeds, price, address, city, state, zipcode} = req.body
-    const property = await Property.createProperty({hostId, title, numberOfBeds, price, address, city, state, zipcode}); 
+    const property = await Property.createProperty(req.body); 
     // console.log('debugger-api-properties');
     // console.log(property);
     return res.json(property);

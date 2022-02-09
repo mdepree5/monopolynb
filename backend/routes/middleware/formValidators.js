@@ -61,8 +61,6 @@ const validateSignup = [
   handleValidationErrors
 ];
 
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-// todo Elaborate validators
 const validateProperty = [
   check('title')
     .exists({ checkFalsy: true })
@@ -71,10 +69,37 @@ const validateProperty = [
   check('numberOfBeds')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('How many beds does your property have?'),
-  // check('password')
-  //   .exists({ checkFalsy: true })
-  //   .withMessage('Please provide a password.'),
+    .withMessage('Please provide a number of beds.')
+    .isInt({min: 1 })
+    .withMessage('Please provide at least one bed.')
+    .isInt({max: 1000})
+    .withMessage('This is a lot of beds. Perhaps look into the hospitality industry.'),
+  check('price')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .isInt({min: 10})
+    .withMessage('Please provide a price of at least 10 dollars.')
+    .isInt({max: 3000})
+    .withMessage('Please provide a price no greater than 3000 dollars.'),
+  check('address')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide an address.'),
+    check('city')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a city.'),
+  check('state')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a state'),
+  check('zipcode')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .isLength({ min: 5 })
+    .isLength({ max: 5 })
+    .isPostalCode('any')
+    .withMessage('Please provide a valid zipcode.'),
   handleValidationErrors
 ];
 
