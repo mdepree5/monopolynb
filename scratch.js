@@ -1,3 +1,81 @@
+
+
+const array1 = [
+  { guestId: 2, propertyId: 1, content: 'Mediterranean Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 3, propertyId: 1, content: 'Mediterranean Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 4, propertyId: 2, content: 'Baltic Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 3, propertyId: 2, content: 'Baltic Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 4, propertyId: 3, content: 'Oriental Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 5, propertyId: 3, content: 'Oriental Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 3, propertyId: 4, content: 'Vermont Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 2, propertyId: 4, content: 'Vermont Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 5, propertyId: 5, content: 'Connecticut Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 4, propertyId: 5, content: 'Connecticut Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 2, propertyId: 6, content: 'St. Charles Place was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 5, propertyId: 6, content: 'St. Charles Place was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 3, propertyId: 7, content: 'States Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 2, propertyId: 7, content: 'States Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 4, propertyId: 8, content: 'Virginia Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 3, propertyId: 8, content: 'Virginia Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 5, propertyId: 9, content: 'St. James Place was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 3, propertyId: 9, content: 'St. James Place was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 2, propertyId: 10, content: 'Tennessee Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 4, propertyId: 10, content: 'Tennessee Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 5, propertyId: 11, content: 'New York Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 4, propertyId: 11, content: 'New York Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 3, propertyId: 12, content: 'Kentucky Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 2, propertyId: 12, content: 'Kentucky Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 5, propertyId: 13, content: 'Indiana Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 4, propertyId: 13, content: 'Reminds me of home!', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 3, propertyId: 14, content: 'Illinois Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 4, propertyId: 14, content: 'Illinois Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 3, propertyId: 15, content: 'Atlantic Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 5, propertyId: 15, content: 'Atlantic Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 4, propertyId: 16, content: 'North Carolina Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 3, propertyId: 16, content: 'North Carolina Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 2, propertyId: 17, content: 'Pennsylvania Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 5, propertyId: 17, content: 'Pennsylvania Avenue was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 3, propertyId: 18, content: 'Park Place was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 2, propertyId: 18, content: 'Park Place was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 4, propertyId: 19, content: 'Boardwalk was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+  { guestId: 5, propertyId: 19, content: 'Boardwalk was a nice place to stay at.', rating: 4, communication: 4.3, checkIn: 4.8, cleanliness: 5},
+
+]
+
+// const avg = (reviews, key) => {
+//   const total = reviews.reduce((prev, curr) => prev + curr[key], 0);
+//   return (total / reviews.length);
+// }
+const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
+console.log(avg(array1, 'rating'));
+console.log(avg(array1, 'communication'));
+
+
+
+// console.log('sum', sun); //152
+
+
+// let data = {
+//   rating: 0,
+
+// }
+// let sum = 0;
+
+// for (const review of array1){
+//   sum += review.rating
+// }
+
+// console.log('sum', sum); //152
+
+// const sum = array1.reduce((prev, curr) => {
+//   console.log(prev);
+//   console.log(curr.rating);
+//   prev.rating + curr.rating;
+
+// }, array1[0].rating);
+
+// console.log('sum', sum); //152
+
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                             HANDLEHOVER EVENT LISTENER LOGIC
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -43,27 +121,27 @@ case GET_ONE:
   };
   
  */
-// todo ——————————————————————————————————————————————————————————————————————————————————
-// todo                             MORE DATABASE / AWS TABLES
-// todo ——————————————————————————————————————————————————————————————————————————————————
-// REACT PARALLAX TILT for them, CSS in circle bois
-const userIcons = [
-  { name: 'Thimble', link: 25 },
-  { name: 'Boot', link: 25 },
-  { name: 'Battleship', link: 25 },
-  { name: 'Howitzer', link: 25 },
-]
+// // todo ——————————————————————————————————————————————————————————————————————————————————
+// // todo                             MORE DATABASE / AWS TABLES
+// // todo ——————————————————————————————————————————————————————————————————————————————————
+// // REACT PARALLAX TILT for them, CSS in circle bois
+// const userIcons = [
+//   { name: 'Thimble', link: 25 },
+//   { name: 'Boot', link: 25 },
+//   { name: 'Battleship', link: 25 },
+//   { name: 'Howitzer', link: 25 },
+// ]
 
-const railroads = [
-  { name: 'Reading', price: 25 },
-  { name: 'Pennsylvania', price: 25 },
-  { name: 'B & O', price: 25 },
-  { name: 'Short Line', price: 25 },
-]
+// const railroads = [
+//   { name: 'Reading', price: 25 },
+//   { name: 'Pennsylvania', price: 25 },
+//   { name: 'B & O', price: 25 },
+//   { name: 'Short Line', price: 25 },
+// ]
 
-const utilities = [
-  { name: 'Water and Electric', price: 25},
-]
+// const utilities = [
+//   { name: 'Water and Electric', price: 25},
+// ]
 
 /*
 Review seed data:
