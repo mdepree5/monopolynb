@@ -41,13 +41,27 @@ const PropertyPage = () => {
         <div className='property-info'>
           <h3 className='property-title'>{property?.title}</h3>
           <div className='property-location'>{`${property?.city}, ${property?.state}`}</div>
-          <div className='property-host'> 
-            <NavLink to={`/users/${property?.hostId}`}>Host</NavLink>
+          
+          
+          <div className='img-container'>
+            <div className='img-placeholder-main'>IMG</div>
+            <div className='img-placeholder'>IMG</div>
+            <div className='img-placeholder'>IMG</div>
+            <div className='img-placeholder'>IMG</div>
           </div>
-          <div className='img-placeholder'>IMG</div>
+          <div className='property-host'> 3 quarter portion hosted by </div>
+          <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>Host</NavLink></div>
           <div className='property-description'>Description: {property?.description}</div>
           <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
           <div className='property-price'>{`$${property?.price} / night`}</div>
+
+          <div className='mainDetails'>
+            <div>Entire Home</div>
+            <div>Enhanced Clean</div>
+            <div>Self check-in</div>
+            <div>Free cancellation before Mar 25</div>
+          </div>
+
         </div>
       </li>
       <br />

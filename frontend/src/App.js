@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 // import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 import Splash from './components/Splash';
 import UserPage from './components/User/UserPage';
 import PropertyPage from './components/Property/PropertyPage';
@@ -21,17 +22,17 @@ function App() {
 
   return (
     <>
-      <div className={`nav-bar`}>
-        <Navigation isLoaded={isLoaded} />
-      </div>
-
-      <Switch>
-        <Route exact path={'/'}><Splash /></Route>
-        <Route path='/users/:userId'><UserPage /></Route>
-        <Route path='/properties/:propertyId'><PropertyPage /></Route>
-        <Route path='/confirmDelete'><ConfirmDelete/></Route>
-        <Route><PageNotFound /></Route>
-      </Switch>
+      <Navigation isLoaded={isLoaded} />
+      <div className='main-body'>
+        <Switch>
+          <Route exact path={'/'}><Splash /></Route>
+          <Route path='/users/:userId'><UserPage /></Route>
+          <Route path='/properties/:propertyId'><PropertyPage /></Route>
+          <Route path='/confirmDelete'><ConfirmDelete/></Route>
+          <Route><PageNotFound /></Route>
+        </Switch>
+      </div>      
+      <Footer />
     </>
   );
 }
