@@ -8,14 +8,17 @@ import './Navigation.css';
 
 function Navigation({ isLoaded }){
 
+  const handleCLick = () => window.scroll(0, 0);
+
   return (
     <div className='nav-bar'>
-      <ul className='left-nav'>
+      <div className='left-nav'>
         <NavLink exact to="/">Home</NavLink>
-      </ul>
-      <ul className='right-nav'>
+        <div onClick={handleCLick}>CLICK ME</div>
+      </div>
+      <div className='right-nav'>
         <ProfileButton isLoaded={isLoaded} />
-      </ul>
+      </div>
     </div>
   );
 }

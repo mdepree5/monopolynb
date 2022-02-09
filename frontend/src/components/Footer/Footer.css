@@ -7,9 +7,15 @@
   /* bottom: 0; */
 }
 
-.footer a{
+.footer > *{
+  text-decoration: none;
   color: #2c8bff;
 }
+
+.footer > * :visited{
+  color: #2c8bff;
+}
+
 
 .footer-links{
   width: 80%;
