@@ -18,8 +18,6 @@ router.route('/')
   validateProperty,
   asyncHandler(async (req, res) => {
     const property = await Property.createProperty(req.body); 
-    // console.log('debugger-api-properties');
-    // console.log(property);
     return res.json(property);
   }))
 .get(asyncHandler(async (req, res) => {
@@ -43,7 +41,7 @@ router.route('/:propertyId')
 .delete(
   asyncHandler(async (req, res) => {
     const propertyId = await Property.deleteProperty(req.params.propertyId);
-    return res.json(propertyId); //* option 1: manipualte res.json({),} display confirmation page?
+    return res.json(propertyId);
   })
 )
 
@@ -61,9 +59,7 @@ router.route('/:propertyId/reviews')
   })
 )
 .get(asyncHandler(async function(req, res) {
-  // const reviews = await Property.getReviewsByPropertyId(req.params.id); //* via Property or Reviews method
-  const reviews = await Review.getReviewsByPropertyId(req.params.propertyId); //* via Property or Reviews method
-  
+  const reviews = await Review.getReviewsByPropertyId(req.params.propertyId); 
   return res.json(reviews);
 }))
 // todo ——————————————————————————————————————————————————————————————————————————————————

@@ -52,18 +52,26 @@ module.exports = (sequelize, DataTypes) => {
   Review.createReview = async (reqData) => await Review.create(reqData);
   
   Review.getReviewsByPropertyId = async (propertyId) => {
-    const allReviewsOnlyContent = await Review.scope('reviewContentOnly')
+    const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
+
+    const reviewsOnlyContent = await Review.scope('reviewContentOnly')
       .findAll({
         where: { propertyId },
         order: [['createdAt', 'DESC']],
     });
 
-    const allReviewsOnlyData = await Review.scope('reviewDataOnly')
+    const reviewsOnlyData = await Review.scope('reviewDataOnly')
       .findAll({where: {propertyId}});
 
-      review.rating
+    const data = {
+      ratingAverage: avg(reviewsOnlyData, 'rating'),
+      communicationAverage: avg(reviewsOnlyData, 'communication'),
+      checkInAverage: avg(reviewsOnlyData, 'checkIn'),
+      cleanlinessAverage: avg(reviewsOnlyData, 'cleanliness'),
+    }
 
-
+    // console.log({...data, reviewsOnlyContent});
+    return {...data, reviewsOnlyContent};
   };
 
   // todo ——————————————————————————————————————————————————————————————————————————————————

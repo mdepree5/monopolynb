@@ -42,14 +42,22 @@ const array1 = [
 
 ]
 
-// const avg = (reviews, key) => {
-//   const total = reviews.reduce((prev, curr) => prev + curr[key], 0);
-//   return (total / reviews.length);
-// }
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                              The golden child
+// todo ——————————————————————————————————————————————————————————————————————————————————
+const array2 = [1, 2, 3,];
 const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
-console.log(avg(array1, 'rating'));
-console.log(avg(array1, 'communication'));
 
+const data = {
+  rating: avg(array1, 'rating'),
+  communication: avg(array1, 'communication'),
+  checkIn: avg(array1, 'checkIn'),
+  cleanliness: avg(array1, 'cleanliness'),
+}
+
+console.log({...data, array2});
+
+// todo ——————————————————————————————————————————————————————————————————————————————————
 
 
 // console.log('sum', sun); //152
