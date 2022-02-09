@@ -33,10 +33,9 @@ router.route('/:propertyId')
   return res.json(property);
 }))
 .put(
-  // validateProperty,
+  validateProperty,
   validatePUT,
   asyncHandler(async (req, res) => {
-    // const property = await Property.getPropertyById(req.params.id); //* am I not getting it from req.params.id??
     const id = await Property.updateProperty(req.body);
     const property = await Property.getPropertyById(id);
     return res.json(property);

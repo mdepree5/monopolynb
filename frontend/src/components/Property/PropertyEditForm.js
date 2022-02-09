@@ -1,4 +1,3 @@
-// import {useHistory} from 'react-router-dom';
 import React, { useState } from "react";
 import * as propertyActions from "../../store/property";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +6,6 @@ import {Form, FormInput} from '../Form';
 
 const PropertyEditForm = ({property, closeModal}) => {
   const dispatch = useDispatch();
-  // const history = useHistory();
 
   const [title, setTitle] = useState(property?.title);
   const [numberOfBeds, setNumberOfBeds] = useState(property?.numberOfBeds);
@@ -37,8 +35,6 @@ const PropertyEditForm = ({property, closeModal}) => {
     console.log(updatedProperty);
 
     if(updatedProperty.errors) setErrors(updatedProperty.errors); //* Is this the way?
-
-    // if(updatedProperty || !updatedProperty.errors ) history.push(`/properties/${updatedProperty.id}`);
     
     closeModal();
   }

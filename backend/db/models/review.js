@@ -52,7 +52,8 @@ module.exports = (sequelize, DataTypes) => {
   Review.createReview = async function (details, propertyId) {
     const review = await Review.create({
       ...details,
-      propertyId, //* because my review API routes nestin properties, elabaorate the createReview method
+      propertyId, 
+      propertyId,
     });
     return await Review.findByPk(review.id);
   };
