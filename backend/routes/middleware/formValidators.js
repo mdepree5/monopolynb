@@ -98,7 +98,6 @@ const validateProperty = [
     .notEmpty()
     .isLength({ min: 5 })
     .isLength({ max: 5 })
-    .isPostalCode('any')
     .withMessage('Please provide a valid zipcode.'),
   handleValidationErrors
 ];
