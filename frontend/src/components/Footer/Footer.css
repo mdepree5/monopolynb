@@ -4,6 +4,11 @@
   width: 100%;
   background-color: #e3e3e3;
   border-top: solid lightgray 1px;
+  /* bottom: 0; */
+}
+
+.footer a{
+  color: #2c8bff;
 }
 
 .footer-links{
