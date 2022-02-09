@@ -7,9 +7,11 @@ export const Form = ({onSub, errors, buttonName, children}) => (
       <button className='form-button' type='submit' >{buttonName}</button>
     </form>
     <ul className='form-errors'>
-      {errors.map((error, id) => (
-        <li key={id}>{error}</li>
-      ))}
+      {errors.filter(error => error !== 'Invalid value')
+        .map((error, id) => (
+          <li key={id}>{error}</li>
+        ))
+      }
     </ul>
   </>
 )
