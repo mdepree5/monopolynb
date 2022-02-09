@@ -2,7 +2,7 @@ import './Footer.css';
 
 const Footer = () => {
 
-  const handleClick = () => window.scroll(0, 0);
+  const handleClick = () => window.scroll({top: 0, left: 0, behavior: 'smooth'});
 
   return (
     <div className='footer'>

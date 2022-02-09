@@ -14,6 +14,7 @@ const Splash = () => (
         <button onClick={() => alert('hey')}> Find out here </button>
       </div>
     </div>
+    <div className='filler-box' />
     <PropertyList />
     <Route path="/properties/:propertyId">
       <PropertyPage />
