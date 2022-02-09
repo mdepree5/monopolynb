@@ -49,4 +49,5 @@
 .filler-box{
   height: 500px;
   background-color: navy;
+  border: solid white 2px;
 }

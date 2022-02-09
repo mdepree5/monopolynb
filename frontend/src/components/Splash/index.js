@@ -15,6 +15,7 @@ const Splash = () => (
       </div>
     </div>
     <div className='filler-box' />
+    <div className='filler-box' />
     <PropertyList />
     <Route path="/properties/:propertyId">
       <PropertyPage />
