@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import ProfileButton from './ProfileButton';
 
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import PropertyFormModal from '../Property/PropertyFormModal';
+import DemoLogin from '../LoginFormModal/DemoLogin';
+
 import * as sessionActions from '../../store/session';
 
 
@@ -40,6 +41,7 @@ function Navigation({ isLoaded }){
   ) : (
     <>
       <li><LoginFormModal /></li>
+      <li><DemoLogin/></li>
       <li><SignupFormModal /></li>
     </>
   );
@@ -59,9 +61,7 @@ function Navigation({ isLoaded }){
         </li>
       </ul>
       <ul id='right-nav'>
-      {sessionLinks}
-      {/* <li><ProfileButton isLoaded={isLoaded} /></li> */}
-
+        {sessionLinks}
       </ul>
     </nav>
   );
@@ -74,3 +74,8 @@ export default Navigation;
 import PropertySearchBar from '../PropertySearchBar';
 <PropertySearchBar placeholderText='Search for Properties'/>
 */
+
+/* 
+import ProfileButton from './ProfileButton';
+<li><ProfileButton isLoaded={isLoaded} /></li>
+ */

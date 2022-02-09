@@ -22,29 +22,11 @@ const LoginForm = () => {
     );
   };
 
-  const DemoLogin = () => {
-    const onClick = () => dispatch(sessionActions.demoLogin()).catch(
-      async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }
-    );
-  
-    return (
-      <button onClick={onClick}> 
-        Demo Login
-      </button>
-    )
-  }
-
 return (
-  <>
-    <Form onSub={handleSubmit} errors={errors} buttonName={'Log In'} >
-      <FormInput name='Username or Email' state={credential} setState={setCredential} />
-      <FormInput type='password' name='Password' state={password} setState={setPassword} />
-    </Form>
-    <DemoLogin/>
-  </>
+  <Form onSub={handleSubmit} errors={errors} buttonName={'Log In'} >
+    <FormInput name='Username or Email' state={credential} setState={setCredential} />
+    <FormInput type='password' name='Password' state={password} setState={setPassword} />
+  </Form>
 )
 }
 

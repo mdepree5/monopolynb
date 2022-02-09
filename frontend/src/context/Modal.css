@@ -23,6 +23,6 @@
   position: absolute;
   padding: 20px;
   background-color: white;
-  height: 500px;
-  width: 500px;
+  min-height: 200px;
+  min-width: 200px;
 }
