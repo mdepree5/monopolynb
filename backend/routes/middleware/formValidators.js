@@ -103,16 +103,23 @@ const validateProperty = [
   handleValidationErrors
 ];
 
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-// todo Elaborate validators
 const validateReview = [
-  check('credential')
+  check('content')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Please provide a valid email or username.'),
-  check('password')
+    .withMessage('Please write about your experience.'),
+  check('rating')
     .exists({ checkFalsy: true })
-    .withMessage('Please provide a password.'),
+    .withMessage('Please rate your overall experience.'),
+  check('communication')
+    .exists({ checkFalsy: true })
+    .withMessage('Please rate the communication of your stay.'),
+  check('checkIn')
+    .exists({ checkFalsy: true })
+    .withMessage('Please rate the check in process of your stay.'),
+  check('cleanliness')
+    .exists({ checkFalsy: true })
+    .withMessage('Please rate the cleanliness.'),
   handleValidationErrors
 ];
 

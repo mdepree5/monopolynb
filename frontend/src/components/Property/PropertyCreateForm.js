@@ -52,12 +52,3 @@ const PropertyCreateForm = ({closeModal}) => {
 };
 
 export default PropertyCreateForm;
-
-// .then(
-//   async (res) => {
-//     console.log('debugger-property-form-handle-submit');
-//     console.log('res', res);
-//     const data = await res.json();
-//     if(data && data.errors) setErrors(data.errors);
-//   }
-// )
