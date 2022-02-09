@@ -1,13 +1,17 @@
+import './Form.css';
+
 export const Form = ({onSub, errors, buttonName, children}) => (
-  <form onSubmit={onSub}>
+  <>
+    <form className='form' onSubmit={onSub}>
+      {children}
+      <button className='form-button' type='submit' >{buttonName}</button>
+    </form>
     <ul className='form-errors'>
       {errors.map((error, id) => (
         <li key={id}>{error}</li>
       ))}
     </ul>
-    {children}
-    <button className='form-button' type='submit' >{buttonName}</button>
-  </form>
+  </>
 )
 
 

@@ -1,0 +1,23 @@
+
+.form-input:hover {
+  background-color: gray;
+}
+
+.form-button:hover {
+  box-shadow: 0 1px 10px white;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.form-errors{
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid black;
+  padding-top: 10px;
+  font-size: 0.75em;
+  color: #ff8b94;
+}
