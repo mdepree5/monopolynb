@@ -11,18 +11,19 @@
   color: white;
 }
 
-#splash-image{
-  width: 75%;
-  height: 75%;
-  opacity: 80%;
-}
 
+#splash-image{
+  width: 70%;
+  height: 70%;
+  opacity: 80%;
+  border-radius: 20px;
+}
 
 @media (max-width: 560px){
   #splash-image{
     width: 100%;
     height: 100%;
-    opacity: 20%;
+    opacity: 60%;
   }
 }
 
@@ -30,7 +31,7 @@
   #splash-image{
     width: 95%;
     height: 95%;
-    opacity: 40%;
+    opacity: 70%;
   }
 }
 
@@ -38,9 +39,10 @@
   #splash-image{
     width: 85%;
     height: 85%;
-    opacity: 60%;
+    opacity: 80%;
   }
 }
+
 
 .floating-message{
   z-index: 5;
