@@ -1,3 +1,15 @@
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                             HANDLEHOVER EVENT LISTENER LOGIC
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// const handleHover = () => alert('hello');
+//   return (
+//     <div
+//     onMouseEnter={handleHover}
+//     >
+//   )
+
+
+
 /* 
 UNSTABLE property reducer case
 case CREATE_ONE: 
