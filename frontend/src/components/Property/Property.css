@@ -7,7 +7,7 @@
 }
 
 
-.property-list-container{
+.property-list-by-user-container{
   border: solid black 1px;
   border-radius: 3px;
   overflow: auto;
@@ -16,6 +16,22 @@
   width: 95%;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.property-list-container{
+  border: solid black 1px;
+  border-radius: 3px;
+  overflow: auto;
+  white-space: normal;
+  height: 275px;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .property-list-container li{

@@ -1,14 +1,15 @@
 import {Route} from 'react-router-dom';
 
 import PropertyPage from '../Property/PropertyPage';
-import ColorDisplay from './colorDisplay';
 import PropertyList from '../Property/PropertyList';
 
 import './Splash.css';
 
 const Splash = () => (
   <>
-    <ColorDisplay />
+    <div className='splash-container'>
+      <div className='splash-image'>hello</div>
+    </div>
     <PropertyList />
     <Route path="/properties/:propertyId">
       <PropertyPage />
