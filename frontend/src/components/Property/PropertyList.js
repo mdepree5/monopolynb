@@ -13,20 +13,18 @@ const PropertyList = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <ul className='property-list-container'>
-        {
-          properties.map(property => (
-          <PropertyCard
-            key={property.id}
-            id={`property-${property.id}`}
-            title={property.title}
-            property={property}
-          />
-        ))
-        }
-      </ul>
-    </div>
+    <ul className='property-list-container'>
+      {
+        properties.map(property => (
+        <PropertyCard
+          key={property.id}
+          id={`property-${property.id}`}
+          title={property.title}
+          property={property}
+        />
+      ))
+      }
+    </ul>
   );
 };
 

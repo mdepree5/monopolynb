@@ -15,7 +15,7 @@ const PropertyCard = ({ property }) => {
   return (
     <li>
       <div className='property-card'>
-        <div className='image-card-placeholder' id={propertyColor} >img</div>
+        <div className='property-card-image-placeholder' id={propertyColor} />
         <div>
           <h4 className='property-title'>{property.title}</h4>
           <div className='property-location'>{`${property.city}, ${property.state}`}</div>

@@ -38,27 +38,6 @@ form{
 }
 
 
-.property-list-container{
-  border: solid black 2px;
-  border-radius: 3px;
-  overflow: auto;
-  white-space: normal;
-  width: 95%;
-  display: flex;
-  flex-direction: row;
-}
-
-.image-card-placeholder{
-  width: 200px;
-  height: 200px;
-  background-color: red;
-  border: solid black 2px;
-  border-radius: 3px;
-  text-align: center;
-}
-
-
-
 .card:hover {
   border: solid gray 2px;
   /* box-shadow: 0px 50px 20px 2px black; */
@@ -71,4 +50,38 @@ form{
   width: 100px;
   height: 50px;
   border-bottom: solid black 2px;
+}
+
+
+#brown {
+  /* background-color: saddlebrown; */
+  background-color: #ceb5a7;
+}
+#skyblue {
+  /* background-color: skyblue; */
+  background-color: #b5e4f2;
+}
+#orchid {
+  /* background-color: darkorchid; */
+  background-color: #deaaff;
+}
+#orange {
+  /* background-color: orange; */
+  background-color: #ffbf81;
+}
+#red {
+  /* background-color: red; */
+  background-color: #ff8b94;
+}
+#yellow {
+  /* background-color: yellow; */
+  background-color: #ffee93;
+}
+#green {
+  /* background-color: green; */
+  background-color: #b0f2b4;
+}
+#blue {
+  /* background-color: blue; */
+  background-color: #5aa9e6;
 }
