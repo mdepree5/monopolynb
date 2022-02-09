@@ -30,8 +30,8 @@ const PropertyCreateForm = ({closeModal}) => {
       {hostId, title, numberOfBeds, price, address, city, state, zipcode}
     ))
 
-    console.log('debugger-property-form-new-property');
-    console.log(newProperty);
+    // console.log('debugger-property-form-new-property');
+    // console.log(newProperty);
 
     if(newProperty.errors) setErrors(newProperty.errors); //* Is this the way?
 

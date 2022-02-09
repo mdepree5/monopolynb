@@ -28,8 +28,6 @@ const validateLogin = [
   handleValidationErrors
 ];
 
-// ! —————————————————————————————————————————————————————————————————————————————————————
-// todo Elaborate validators
 const validateSignup = [
   check('username')
     .exists({ checkFalsy: true })
@@ -56,21 +54,20 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage('Please provide a valid email.'),
-    // .custom(value => User.findByEmail(value).then(user => {
-    //   if(user) return Promise.reject('Email already in use')
-    // })),
   check('password')
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
     .withMessage('Password must be 6 characters or more.'),
   handleValidationErrors
 ];
-// ! —————————————————————————————————————————————————————————————————————————————————————
-
 
 // !!!! ——————————————————————————————————————————————————————————————————————————————————
 // todo Elaborate validators
 const validateProperty = [
+  check('title')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('What is your property called? We\'d love to know!'),
   check('title')
     .exists({ checkFalsy: true })
     .notEmpty()
