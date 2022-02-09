@@ -67,7 +67,7 @@ router.route('/:propertyId/reviews')
   return res.json(reviews);
 }))
 // todo ——————————————————————————————————————————————————————————————————————————————————
-router.route('/:propertyId/reviews/:reviewId')
+/* router.route('/:propertyId/reviews/:reviewId')
 .put(
   validateReview,
   validatePUT,
@@ -83,7 +83,7 @@ router.route('/:propertyId/reviews/:reviewId')
     return res.json(reviewId);
     return res.redirect(`${req.baseUrl}/${req.params.propertyId}`); //* of do you want redirect here?
   })
-)
+) */
 
 
 

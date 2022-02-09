@@ -49,7 +49,9 @@ module.exports = (sequelize, DataTypes) => {
 
   Property.createProperty = async (reqData) => await Property.create(reqData);
   
-  Property.getAllProperties = async () => await Property.findAll();
+  Property.getAllProperties = async () => await Property.findAll({
+    order: [['price', 'ASC']]
+  });
   
   Property.getPropertyById = async (id) => await Property.findByPk(id);
   

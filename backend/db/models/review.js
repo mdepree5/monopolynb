@@ -51,11 +51,13 @@ module.exports = (sequelize, DataTypes) => {
 
   Review.createReview = async (reqData) => await Review.create(reqData);
   
-  Review.getReviewsByPropertyId = async function (propertyId) {
-    return await Review.scope('reviewContentOnly').findAll({
+  Review.getReviewsByPropertyId = async (propertyId) => {
+    const reviews = await Review.scope('reviewContentOnly').findAll({
       where: { propertyId },
       order: [['createdAt', 'DESC']],
     });
+
+    return reviews;
   };
 
   Review.getAllReviewDataByPropertyId = async function (propertyId) {
