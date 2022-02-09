@@ -41,13 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {len: [1, 10]}
     },
   },
-  {
-    defaultScope: {
-      attributes: {
-        exclude: ['address']
-      }
-    }
-  });
+  {});
 
   // todo ————————————————————————————————————————————————————————————————————————————————
   // todo                               Property Methods
