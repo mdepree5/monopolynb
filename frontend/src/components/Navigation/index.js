@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import ProfileButton from './ProfileButton';
+import PropertySearchBar from '../PropertySearchBar';
 
 import './Navigation.css';
 
@@ -26,7 +27,7 @@ function Navigation({ isLoaded }){
         {navStatus === 'nav-top' ? (
           <div>HI</div>
         ) : (
-          <div>HEY</div>
+          <PropertySearchBar placeholderText='Search for Properties'/>
         )}
         </li>
       </ul>
