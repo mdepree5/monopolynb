@@ -74,6 +74,15 @@ module.exports = (sequelize, DataTypes) => {
     return {...data, reviewsOnlyContent};
   };
 
+  Review.getReviewById = async (id) => await Review.findByPk(id);
+
+  Review.deleteReviewsByPropertyId = async (propertyId) => {
+    const reviews = await Review.findAll({where: {propertyId}});
+    reviews.forEach(review => await Review.destroy(review));
+    
+    return 'All reviews have been deleted';
+  }
+
   // todo ——————————————————————————————————————————————————————————————————————————————————
 
   Review.updateReview = async function (details) {
