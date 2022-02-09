@@ -20,6 +20,8 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+  useEffect(() => window.scroll({top: 0, left: 0, behavior: 'smooth'}))
+
   return (
     <>
       <Navigation isLoaded={isLoaded} />

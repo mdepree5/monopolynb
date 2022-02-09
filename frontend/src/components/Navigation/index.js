@@ -15,17 +15,25 @@ function Navigation({ isLoaded }){
     })
   }, [])
 
-  useEffect(() => window.scroll({top: 0, left: 0, behavior: 'smooth'}), [])
 
   return (
-    <div className={`nav-bar ${navStatus}`}>
-      <div className='left-nav'>
-        <NavLink exact to="/">Home</NavLink>
-      </div>
-      <div className='right-nav'>
-        <ProfileButton isLoaded={isLoaded} />
-      </div>
-    </div>
+    <nav className={`nav-bar ${navStatus}`}>
+      <ul className='left-nav'>
+        <li><NavLink exact to="/">Home</NavLink></li>
+      </ul>
+      <ul>
+        <li>
+        {navStatus === 'nav-top' ? (
+          <div>HI</div>
+        ) : (
+          <div>HEY</div>
+        )}
+        </li>
+      </ul>
+      <ul className='right-nav'>
+        <li><ProfileButton isLoaded={isLoaded} /></li>
+      </ul>
+    </nav>
   );
 }
 

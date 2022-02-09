@@ -62,6 +62,7 @@ const PropertyPage = () => {
             <div>Free cancellation before Mar 25</div>
           </div>
 
+          <div className='filler-box' />
         </div>
       </li>
       <br />

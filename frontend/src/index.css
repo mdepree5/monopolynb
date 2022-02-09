@@ -95,3 +95,10 @@ form{
   /* background-color: blue; */
   background-color: #5aa9e6;
 }
+
+
+.filler-box{
+  height: 500px;
+  background-color: white;
+  border: solid navy 1px;
+}
