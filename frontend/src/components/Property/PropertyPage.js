@@ -34,7 +34,7 @@ const PropertyPage = () => {
 
   return (
     <>
-    <div className='property-page'>
+    <div className='property-page centered-body'>
       <div>Property Page</div>
         <div>
         {belongsToUser &&( 

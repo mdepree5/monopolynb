@@ -53,6 +53,10 @@ body{
   background-color: #5aa9e6;
 }
 
+.centered-body{
+  margin-right: auto;
+  margin-left: auto;
+}
 
 .filler-box{
   height: 500px;
