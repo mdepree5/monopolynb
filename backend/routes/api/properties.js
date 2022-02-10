@@ -3,12 +3,16 @@ const asyncHandler = require('express-async-handler');
 
 const {validateReview, validateProperty, validatePUT} = require('../middleware/formValidators');
 const {Property, Review} = require('../../db/models');
+const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3');
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 router.route('/')
-.post(validateProperty, asyncHandler
-  (async (req, res) => res.json(await Property.createProperty(req.body))))
+.post(validateProperty, singleMulterUpload, asyncHandler
+  (async (req, res) => {
+    const imageUrl = await singlePublicFileUpload(req.file);
+    res.json(await Property.createProperty({...req.body, imageUrl}))
+  }))
 .get(asyncHandler
   (async (req, res) => res.json(await Property.getAllProperties()))
 )
