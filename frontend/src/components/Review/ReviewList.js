@@ -17,14 +17,12 @@ const ReviewList = ({id}) => {
 
   const reviews = useSelector(state => state.review.listOfReviews);
   const reviewData = {
-    data: useSelector(state => state.review.ratingData),
-    numberOfReviews: useSelector(state => state.review.numberOfReviews)
+    data: useSelector(state => state.review?.ratingData),
+    numberOfReviews: useSelector(state => state.review?.numberOfReviews)
   }
-  // const numberOfReviews = useSelector(state => state.review.numberOfReviews);
 
   console.log('reviews', reviews);
   console.log('reviewData', reviewData);
-  // console.log('numberOfReviews', numberOfReviews);
 
   useEffect(() => {
     dispatch(getReviewsByPropertyId(propertyId));

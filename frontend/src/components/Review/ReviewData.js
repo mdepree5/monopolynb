@@ -15,8 +15,9 @@ const ReviewData = ({reviewData}) => {
   return (    
     <div className='review-data-container'>
       <div>Rating</div>
+      {`${reviewData.data[0].value} * ${reviewData.numberOfReviews} reviews`} 
       <div>
-        {reviewData.map(datum => (
+        {reviewData.data.map(datum => (
           <ReviewDataLine key={datum.name} datum={datum}/>
         ))
         }
