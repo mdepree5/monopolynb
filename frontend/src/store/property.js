@@ -172,7 +172,7 @@ const propertyReducer = (state = initialState, action) => {
         }
       };
 // **** ——————————————————————————————————————————————————————————————————————————————————
-    // case GET_ALL_REVIEWS:
+    // case GET_ALL_REVIEWS: //! Do I need to create shallow
     //   // const reviews = {};
     //   // console.log('action.reviews:', action.reviews);
     //   // action.reviews.contentArray.forEach(review => {
@@ -181,7 +181,7 @@ const propertyReducer = (state = initialState, action) => {
     //   return {
     //     ...state,
     //     [action.propertyId]: {
-    //       ...state[action.propertyId],
+    //       ...state[action.propertyId], //! OR is it ok to pass in directly here?
     //       listOfReviews: action.reviews.contentArray
     //     }
     //   }

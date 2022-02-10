@@ -40,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
         attributes: {exclude: ['guestId', 'content'] }
       },
       reviewContentOnly: {
-        attributes: {exclude: ['propertyId', 'rating', 'communicaiton', 'checkIn', 'cleanliness'] }
+        attributes: {exclude: ['propertyId', 'rating', 'communication', 'checkIn', 'cleanliness'] }
       },
     }
   });
@@ -60,14 +60,14 @@ module.exports = (sequelize, DataTypes) => {
     const reviewDataOnly = await Review.scope('reviewDataOnly')
       .findAll({where: {propertyId}});
 
-    const ratingData = {
-      rating: avg(reviewDataOnly, 'rating'),
-      communication: avg(reviewDataOnly, 'communication'),
-      checkIn: avg(reviewDataOnly, 'checkIn'),
-      cleanliness: avg(reviewDataOnly, 'cleanliness'),
-    }
-    // console.log({...data, reviewContentOnly});
-    return {ratingData, listOfReviews:reviewContentOnly}; //* change name for readibility on front end
+    const ratingData = [
+      {name: 'Rating', value: avg(reviewDataOnly, 'rating')},
+      {name: 'Communication', value: avg(reviewDataOnly, 'communication')},
+      {name: 'Check-in', value: avg(reviewDataOnly, 'checkIn')},
+      {name: 'Cleanliness', value: avg(reviewDataOnly, 'cleanliness')},
+    ]
+
+    return {ratingData, listOfReviews:reviewContentOnly};
   };
 
   Review.getReviewById = async (id) => await Review.findByPk(id);

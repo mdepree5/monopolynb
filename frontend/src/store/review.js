@@ -65,9 +65,9 @@ export const getReviewsByPropertyId = propertyId => async (dispatch) => {
 
   if (response.ok) {
     const reviews = await response.json();
-    dispatch(getAllReviews(reviews, propertyId));
-    return alert('HEY');
-    // return reviews;
+    dispatch(getAllReviews(reviews));
+    // return alert('HEY');
+    return reviews;
   }
 };
 
@@ -101,7 +101,7 @@ export const deleteReview = reviewId => async (dispatch) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const initialState = { listOfReviews: [], ratingData: {} };
+const initialState = { listOfReviews: [], ratingData: [] };
 
 const reviewReducer = (state = initialState, action) => {
   switch (action.type) {
