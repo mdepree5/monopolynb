@@ -40,26 +40,29 @@ const deleteOneProperty = propertyId => ({
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
 export const createProperty = property => async (dispatch) => {
-  const { images, image, username, email, password } = property;
+  const { image, title, numberOfBeds, price,
+    city, state, zipcode } = property;
   const formData = new FormData();
-  formData.append("username", username);
-  formData.append("email", email);
-  formData.append("password", password);
-
+  formData.append('title', title);
+  formData.append('numberOfBeds', numberOfBeds);
+  formData.append('price', price);
+  formData.append('city', city);
+  formData.append('state', state);
+  formData.append('zipcode', zipcode);
+  
+  if (image) formData.append('image', image);
   // for multiple files
-  if (images && images.length !== 0) {
-    for (var i = 0; i < images.length; i++) {
-      formData.append("images", images[i]);
-    }
-  }
-
-  // for single file
-  if (image) formData.append("image", image);
+  // if (images && images.length !== 0) {
+  //   for (let i = 0; i < images.length; i++) {
+  //     formData.append('images', images[i]);
+  //   }
+  // }
   
   const response = await csrfFetch(`/api/properties`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(property)
+    headers: { 'Content-Type': 'multipart/form-data' },
+    body: formData
+    // body: JSON.stringify(property)
   });
 
   if (response.ok) {

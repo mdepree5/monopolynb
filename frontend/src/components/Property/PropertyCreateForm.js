@@ -8,7 +8,8 @@ import {Form, FormInput} from '../Form';
 const PropertyCreateForm = ({closeModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
-
+  
+  const [image, setImage] = useState(null);
   const [title, setTitle] = useState('');
   const [numberOfBeds, setNumberOfBeds] = useState('');
   const [price, setPrice] = useState('');
@@ -37,6 +38,12 @@ const PropertyCreateForm = ({closeModal}) => {
 
     closeModal();
   }
+  
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if (file) setImage(file);
+  };
+
 
   return (
     <Form onSub={handleSubmit} errors={errors} buttonName={'Host Your Property!'} >
@@ -47,6 +54,8 @@ const PropertyCreateForm = ({closeModal}) => {
       <FormInput name='City' state={city} setState={setCity} />
       <FormInput name='State' state={state} setState={setState} />
       <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
+      <label><input type="file" onChange={updateFile} /></label>
+      <img style={{width: '150px'}} src={image} alt='uploaded' />
     </Form>
   )
 };
