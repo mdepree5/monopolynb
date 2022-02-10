@@ -5,9 +5,8 @@ import { getProperty } from '../../store/property';
 // import Review from '../Review';
 import PropertyEditModal from './PropertyEditModal';
 import PropertyDeleteButton from './PropertyDeleteButton';
-
-
 import ReviewFormModal from '../Review/ReviewFormModal';
+
 import ReviewList from '../Review/ReviewList';
 
 import './Property.css';
@@ -18,20 +17,7 @@ const PropertyPage = () => {
   const {propertyId} = useParams();
   const [belongsToUser, setBelongsToUser] = useState(false);
 
-// ???? ——————————————————————————————————————————————————————————————————————————————————
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-  
-
-
-
   const property = useSelector(state => state.property[propertyId]);
-
-
-
-
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-// ???? ——————————————————————————————————————————————————————————————————————————————————
-
   const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {    
@@ -42,6 +28,7 @@ const PropertyPage = () => {
   useEffect(() => {
     dispatch(getProperty(propertyId));
   }, [dispatch, propertyId]);
+
 
   useEffect(() => window.scroll({top: 0, left: 0}));
 
@@ -54,8 +41,7 @@ const PropertyPage = () => {
           <>
             <PropertyEditModal property={property} />
             <PropertyDeleteButton propertyId={propertyId} />
-          </>
-          )
+          </>)
         }
         </div>
         
@@ -67,7 +53,7 @@ const PropertyPage = () => {
         <div className='property-info'>
           <h3 className='property-title'>{property?.title}</h3>
           <div className='property-location'>{`${property?.city}, ${property?.state}`}</div>
-          
+          {/* <ReviewData reviewData={reviewData} /> */}
           <ReviewList id={propertyId} />
 
           {/* <div className='img-container'>

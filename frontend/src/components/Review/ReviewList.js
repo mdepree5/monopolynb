@@ -34,7 +34,7 @@ const ReviewList = ({id}) => {
     <div >
     
     <div>
-      <ReviewData reviewData={reviewData} />
+      {/* <ReviewData reviewData={reviewData} /> */}
     </div>
       <ul className='review-list-container'>
         {
