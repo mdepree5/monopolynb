@@ -63,6 +63,8 @@ export const getProperties = () => async (dispatch) => {
   if (response.ok) {
     const properties = await response.json();
     dispatch(getAllProperties(properties));
+    // return alert('HEY');
+    return properties;
   }
 };
 
@@ -72,6 +74,7 @@ export const getProperty = id => async (dispatch) => {
   if (response.ok) {
     const property = await response.json();
     dispatch(getOneProperty(property));
+    return property;
   }
 };
 
@@ -100,6 +103,7 @@ export const deleteProperty = propertyId => async (dispatch) => {
     console.log('propertyId', propertyId);
     console.log('message', message);
     dispatch(deleteOneProperty(propertyId));
+    return [propertyId, message];
   }
 };
 
@@ -111,7 +115,6 @@ const initialState = { listOfProperties: [], listOfReviews: [] };
 const propertyReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_ONE: 
-
       return {
       ...state,
       [action.property.id]: {
@@ -119,14 +122,6 @@ const propertyReducer = (state = initialState, action) => {
         ...action.property
       }
     };
-    // const newCreateState = {
-    //   ...state,
-    //   [action.property.id]: action.property
-    // };
-    // const newPropertyList = newCreateState.listOfProperties.map(id => newCreateState[id]);
-    // newPropertyList.push(action.property);
-    // newCreateState.listOfProperties = action.properties.properties
-    // return newCreateState;  
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL:
       const properties = {}; //* Declare new object 1. avoid mutation, 2. control specific slices of state
@@ -148,18 +143,6 @@ const propertyReducer = (state = initialState, action) => {
           ...action.property
         }
       };
-
-          // case GET_ONE:
-    //   const getOne = {
-    //     [action.property.id]: {
-    //       ...state[action.property.id],
-    //     }
-    //   }
-    //   return {
-    //     getOne,
-    //     ...state,
-    //     hello: 'there',
-    //   }
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_ONE:
       return {

@@ -12,7 +12,6 @@ const router = express.Router();
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Properties
 // todo ——————————————————————————————————————————————————————————————————————————————————
-
 router.route('/')
 .post(
   validateProperty,
@@ -34,8 +33,7 @@ router.route('/:propertyId')
   validateProperty,
   validatePUT,
   asyncHandler(async (req, res) => {
-    const id = await Property.updateProperty(req.body);
-    const property = await Property.getPropertyById(id);
+    const property = await Property.updateProperty(req.body);
     return res.json(property);
   }))
 .delete(
@@ -49,8 +47,6 @@ router.route('/:propertyId')
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reviews
 // todo ——————————————————————————————————————————————————————————————————————————————————
-
-
 router.route('/:propertyId/reviews')
 .post(
   validateReview,
@@ -63,25 +59,6 @@ router.route('/:propertyId/reviews')
   const reviews = await Review.getReviewsByPropertyId(req.params.propertyId); 
   return res.json(reviews);
 }))
-// todo ——————————————————————————————————————————————————————————————————————————————————
-/* router.route('/:propertyId/reviews/:reviewId')
-.put(
-  validateReview,
-  validatePUT,
-  asyncHandler(async (req, res) => {
-    // const review = await Review.getReviewById(req.params.reviewId); //* am I not getting it from req.params.id??
-    const id = await Review.updateReview(req.body);
-    const review = await Property.getReviewById(id);
-    return res.json(review);
-  }))
-.delete(
-  asyncHandler(async (req, res) => {
-    const reviewId = await Review.deleteReview(req.params.reviewId);
-    return res.json(reviewId);
-    return res.redirect(`${req.baseUrl}/${req.params.propertyId}`); //* of do you want redirect here?
-  })
-) */
-
 
 
 module.exports = router;

@@ -55,10 +55,7 @@ module.exports = (sequelize, DataTypes) => {
     const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
 
     const reviewsOnlyContent = await Review.scope('reviewContentOnly')
-      .findAll({
-        where: { propertyId },
-        order: [['createdAt', 'DESC']],
-    });
+      .findAll({where: { propertyId }, order: [['createdAt', 'DESC']] });
 
     const reviewsOnlyData = await Review.scope('reviewDataOnly')
       .findAll({where: {propertyId}});
@@ -69,34 +66,21 @@ module.exports = (sequelize, DataTypes) => {
       checkInAverage: avg(reviewsOnlyData, 'checkIn'),
       cleanlinessAverage: avg(reviewsOnlyData, 'cleanliness'),
     }
-
     // console.log({...data, reviewsOnlyContent});
     return {...data, reviewsOnlyContent};
   };
 
   Review.getReviewById = async (id) => await Review.findByPk(id);
 
-  Review.deleteReviewsByPropertyId = async (propertyId) => {
-    const reviews = await Review.findAll({where: {propertyId}});
-    reviews.forEach(review => Review.destroy(review));
-    
-    return 'All reviews have been deleted';
-  }
-
-  // todo ——————————————————————————————————————————————————————————————————————————————————
-
-  Review.updateReview = async function (details) {
+  Review.updateReview = async (details) => {
     const id = details.id;
     delete details.id;
   
-    await Review.update(
-      details,
-      {
-        where: { id },
-        returning: true,
-        plain: true,
-      }
-    );
+    await Review.update(details, {
+      where: { id },
+      returning: true,
+      plain: true 
+    });
     return await Review.findByPk(id);
   };
   
@@ -108,6 +92,12 @@ module.exports = (sequelize, DataTypes) => {
     return review.id;
   };
 
+  Review.deleteReviewsByPropertyId = async (propertyId) => {
+    const reviews = await Review.findAll({where: {propertyId}});
+    reviews.forEach(review => Review.destroy(review));
+    
+    return 'All reviews have been deleted';
+  }
 
   // todo ————————————————————————————————————————————————————————————————————————————————
   // todo                               Review Associations

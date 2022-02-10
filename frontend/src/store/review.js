@@ -1,3 +1,4 @@
+import { csrfFetch } from './csrf';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Variables
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -33,11 +34,11 @@ const deleteOneReview = review => ({
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
-export const createReview = (newReviewData, propertyId) => async (dispatch) => {
-  const response = await fetch(`/api/properties/${propertyId}/reviews`, {
+export const createReview = (review, propertyId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/properties/${propertyId}/reviews`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(newReviewData)
+    body: JSON.stringify(review)
   });
 
   if (response.ok) {
@@ -56,14 +57,16 @@ export const getReviewsByPropertyId = propertyId => async (dispatch) => {
   if (response.ok) {
     const reviews = await response.json();
     dispatch(getAllReviews(reviews, propertyId));
+    return alert('HEY');
+    // return reviews;
   }
 };
 
-export const updateReview = updatedReviewData => async (dispatch) => {
-  const response = await fetch(`/api/reviews/${updatedReviewData.id}`, {
+export const updateReview = review => async (dispatch) => {
+  const response = await csrfFetch(`/api/reviews/${review.id}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(updatedReviewData)
+    body: JSON.stringify(review)
   });
 
   if (response.ok) {
@@ -74,7 +77,7 @@ export const updateReview = updatedReviewData => async (dispatch) => {
 };
 
 export const deleteReview = reviewId => async (dispatch) => {
-  const response = await fetch(`/api/reviews/${reviewId}`, {
+  const response = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -82,6 +85,7 @@ export const deleteReview = reviewId => async (dispatch) => {
   if (response.ok) {
     const review = await response.json();
     dispatch(deleteOneReview(review.id));
+    return review;
   }
 };
 

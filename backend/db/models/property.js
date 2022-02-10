@@ -58,15 +58,12 @@ module.exports = (sequelize, DataTypes) => {
   Property.updateProperty = async (details) => {
     const id = details.id; 
     delete details.id; 
-    await Property.update(
-      details,
-      {
-        where: { id },
-        returning: true,
-        plain: true,
-      }
-    );
-    return id;
+    await Property.update(details, {
+      where: { id },
+      returning: true,
+      plain: true,
+    });
+    return await Property.findByPk(id);
   };
   
   Property.deleteProperty = async (id) => {
