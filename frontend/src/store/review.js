@@ -56,6 +56,7 @@ export const createReview = (review, propertyId) => async (dispatch) => {
     dispatch(createOneReview(review));
     return review;
   }
+  return response;
 };
 
 export const getReviewsByPropertyId = propertyId => async (dispatch) => {
@@ -70,6 +71,7 @@ export const getReviewsByPropertyId = propertyId => async (dispatch) => {
     // return alert('HEY');
     return reviews;
   }
+  return response;
 };
 
 export const updateReview = review => async (dispatch) => {
@@ -84,6 +86,7 @@ export const updateReview = review => async (dispatch) => {
     dispatch(updateOneReview(updatedReview));
     return updatedReview;
   }
+  return response;
 };
 
 export const deleteReview = reviewId => async (dispatch) => {
@@ -97,6 +100,7 @@ export const deleteReview = reviewId => async (dispatch) => {
     dispatch(deleteOneReview(reviewId));
     return reviewId;
   }
+  return response;
 };
 
 // todo ——————————————————————————————————————————————————————————————————————————————————

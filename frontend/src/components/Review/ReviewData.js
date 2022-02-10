@@ -3,7 +3,7 @@ import './Review.css';
 
 
 const ReviewData = ({reviewData}) => {
-  
+
   const ReviewDataLine = ({datum}) => (
     <ul className='review-data-line' >
       <li>{datum.name}</li>
@@ -12,13 +12,18 @@ const ReviewData = ({reviewData}) => {
     </ul>
   );
 
+  const ReviewSummary = ({reviewData}) => (
+    <ul>
+      <li><i className='review-star fas fa-star'/></li>
+      <li>{`${reviewData?.data[0]?.value} · ${reviewData.numberOfReviews} reviews`} </li>
+    </ul>
+  )
+
   return (
     <div className='review-data-container'>
+      <ReviewSummary reviewData={reviewData}/>
       <div>
-        {`${reviewData.data[0].value} * ${reviewData.numberOfReviews} reviews`} 
-      </div>
-      <div>
-        {reviewData.data.map(datum => (
+        {reviewData.data.slice(1).map(datum => (
           <ReviewDataLine key={datum.name} datum={datum}/>
         ))
         }

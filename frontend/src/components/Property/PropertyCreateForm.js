@@ -19,9 +19,10 @@ const PropertyCreateForm = ({closeModal}) => {
   const [image, setImage] = useState();
   const [errors, setErrors] = useState([]);
 
-  const hostId = useSelector(state => state.session.user.id);
-  
+  const hostId = useSelector(state => state.session.user.id);  
+
   const updateFile = (e) => {
+    
     const file = e.target.files[0];
     if(file) setImage(file)
   };
@@ -34,15 +35,17 @@ const PropertyCreateForm = ({closeModal}) => {
 
     const newProperty = await dispatch(propertyActions.createProperty(
       {image, hostId, title, numberOfBeds, price, address, city, state, zipcode}
-    )).catch(
-      async(res) => {
-        const data = await res.json();
-        // console.log('data', data);
-        if(data && data.errors) setErrors(data.errors);
-      }
-    )
+    ))
+    // .catch(
+    //   async(res) => {
+    //     console.log('res', res);
+    //     // const data = await res.json();
+    //     // console.log('data', data);
+    //     // if(data && data.errors) setErrors(data.errors);
+    //   }
+    // )
 
-    if(newProperty || !newProperty.errors) history.push(`/properties/${newProperty.id}`);
+    // if(newProperty || !newProperty.errors) history.push(`/properties/${newProperty.id}`);
 
     closeModal();
   }
@@ -51,7 +54,7 @@ const PropertyCreateForm = ({closeModal}) => {
 
 
 
-  
+
   return (
     <Form onSub={handleSubmit} errors={errors} buttonName={'Host Your Property!'} >
       <FormInput name='Title' state={title} setState={setTitle} />

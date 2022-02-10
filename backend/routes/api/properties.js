@@ -8,13 +8,17 @@ const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3');
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 router.route('/')
-.post(validateProperty, singleMulterUpload, asyncHandler
+.post(
+  validateProperty,
+  singleMulterUpload, asyncHandler
   (async (req, res) => {
     // const {image, title, numberOfBeds, address, price, city, state, zipcode} = req.body;
     const {title, numberOfBeds, price, address, city, state, zipcode} = req.body;
     // const imageUrl = await singlePublicFileUpload(image);
     const imageUrl = await singlePublicFileUpload(req.file);
+    console.log('req.body', req.body);
     console.log('api-imageUrl', imageUrl);
+
     res.json(await Property.createProperty({
       title, numberOfBeds, price, address, city, state, zipcode, imageUrl
     }))
@@ -22,21 +26,10 @@ router.route('/')
 .get(asyncHandler
   (async (req, res) => res.json(await Property.getAllProperties()))
 )
-// ???? ——————————————————————————————————————————————————————————————————————————————————
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-
-
 
 router.route('/:propertyId')
 .get(asyncHandler
   (async (req, res) => res.json(await Property.getPropertyById(req.params.propertyId))))
-
-
-
-  // !!!! ——————————————————————————————————————————————————————————————————————————————————
-  // ???? ——————————————————————————————————————————————————————————————————————————————————
-
-
 .put(validateProperty, validatePUT, asyncHandler
   (async (req, res) => res.json(await Property.updateProperty(req.body))))
 .delete(asyncHandler

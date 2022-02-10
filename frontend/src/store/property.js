@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { csrfFetch } from './csrf';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Variables
@@ -43,14 +44,18 @@ export const createProperty = property => async (dispatch) => {
   const { image, title, numberOfBeds, price,
     city, state, zipcode } = property;
     const formData = new FormData();
-  formData.append("title", title);
-  formData.append("numberOfBeds", numberOfBeds);
-  formData.append("price", price);
-  formData.append("city", city);
-  formData.append("state", state);
-  formData.append("zipcode", zipcode);
+  
+    formData.append("title", title);
+    formData.append("numberOfBeds", numberOfBeds);
+    formData.append("price", price);
+    formData.append("city", city);
+    formData.append("state", state);
+    formData.append("zipcode", zipcode);
+    if (image) formData.append("image", image);
+    for( const key of formData.entries()){
+      console.log(`FORM DATA: ${key[0]}, ${key[1]}`)
+    }
 
-  if (image) formData.append("image", image);
 
   // const formData = {
   //   image: image || null, title, numberOfBeds, price, city, state, zipcode
@@ -70,6 +75,7 @@ export const createProperty = property => async (dispatch) => {
     dispatch(createOneProperty(newProperty));
     return newProperty;
   }
+  return response;
 };
 
 export const getProperties = () => async (dispatch) => {

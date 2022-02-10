@@ -19,6 +19,10 @@ body{
   margin: 0;
 }
 
+.review-star{
+  height: 5px;
+  width: 5px;
+}
 
 #brown {
   /* background-color: saddlebrown; */
