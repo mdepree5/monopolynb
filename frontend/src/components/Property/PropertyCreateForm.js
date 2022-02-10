@@ -9,7 +9,6 @@ const PropertyCreateForm = ({closeModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   
-  const [image, setImage] = useState(null);
   const [title, setTitle] = useState('');
   const [numberOfBeds, setNumberOfBeds] = useState('');
   const [price, setPrice] = useState('');
@@ -17,11 +16,18 @@ const PropertyCreateForm = ({closeModal}) => {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zipcode, setZipcode] = useState('');
+  const [image, setImage] = useState(null);
   const [errors, setErrors] = useState([]);
 
   const hostId = useSelector(state => state.session.user.id);
   
-  const updateFile = (e) => setImage(e.target.files[0]);
+  const updateFile = (e) => {
+    const file = e.target.files[0];
+    if(file){
+      setImage(file)
+      console.log('component-image', image);
+    }
+  };
 
   const handleSubmit = async(event) => {
     event.preventDefault();

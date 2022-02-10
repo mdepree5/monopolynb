@@ -42,22 +42,21 @@ const deleteOneProperty = propertyId => ({
 export const createProperty = property => async (dispatch) => {
   const { image, title, numberOfBeds, price,
     city, state, zipcode } = property;
-    // const formData = new FormData();
-  // formData.append("title", title);
-  // formData.append("numberOfBeds", numberOfBeds);
-  // formData.append("price", price);
-  // formData.append("city", city);
-  // formData.append("state", state);
-  // formData.append("zipcode", zipcode);
+    const formData = new FormData();
+  formData.append("title", title);
+  formData.append("numberOfBeds", numberOfBeds);
+  formData.append("price", price);
+  formData.append("city", city);
+  formData.append("state", state);
+  formData.append("zipcode", zipcode);
 
-  // if (image) formData.append("image", image);
+  if (image) formData.append("image", image);
 
-  const formData = {
-    image: image || null, title, numberOfBeds, price, city, state, zipcode
-  }
+  // const formData = {
+  //   image: image || null, title, numberOfBeds, price, city, state, zipcode
+  // }
   
-  console.log('debugger');
-  console.log('debugger', formData);
+  console.log('thunk-formData', formData);
 
   const response = await csrfFetch(`/api/properties`, {
     method: 'POST',
