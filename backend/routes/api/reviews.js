@@ -2,10 +2,9 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
 const {validateReview, validatePUT} = require('../middleware/formValidators');
-
 const {Review} = require('../../db/models');
 
-// const router = express.Router();
+// todo ——————————————————————————————————————————————————————————————————————————————————
 
 router.route('/:reviewId')
 .put(validateReview, validatePUT, asyncHandler

@@ -2,15 +2,10 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
 const {validateReview, validateProperty, validatePUT} = require('../middleware/formValidators');
-
 const {Property, Review} = require('../../db/models');
 
-// const router = express.Router();
-
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
-// todo                                 Properties
-// todo ——————————————————————————————————————————————————————————————————————————————————
+
 router.route('/')
 .post(validateProperty, asyncHandler
   (async (req, res) => res.json(await Property.createProperty(req.body))))
@@ -18,7 +13,6 @@ router.route('/')
   (async (req, res) => res.json(await Property.getAllProperties()))
 )
 
-// todo ——————————————————————————————————————————————————————————————————————————————————
 router.route('/:propertyId')
 .get(asyncHandler
   (async (req, res) => res.json(await Property.getPropertyById(req.params.propertyId))))
@@ -32,9 +26,6 @@ router.route('/:propertyId')
   })
 )
 
-// todo ——————————————————————————————————————————————————————————————————————————————————
-// todo                                 Reviews
-// todo ——————————————————————————————————————————————————————————————————————————————————
 router.route('/:propertyId/reviews')
 .post(validateReview, asyncHandler
   (async (req, res) => res.json(await Review.createReview(req.body))))

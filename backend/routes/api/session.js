@@ -1,20 +1,15 @@
-const express = require('express');
+const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
 const {validateLogin} = require('../middleware/formValidators');
-
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
-
 const { User } = require('../../db/models');
-const router = express.Router();
 
-
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 
 router.route('/')
-.post(
-  validateLogin,
-  asyncHandler(async (req, res, next) => {
+.post(validateLogin, asyncHandler
+  (async (req, res, next) => {
     const { credential, password } = req.body;
 
     const user = await User.login({ credential, password });
@@ -30,30 +25,22 @@ router.route('/')
     await setTokenCookie(res, user);
 
     return res.json({user});
-  })
-)
-.get(
-  restoreUser,
+  }))
+.get(restoreUser,
   (req, res) => {
     const { user } = req;
-    if (user) {
-      return res.json({
-        user: user.toSafeObject()
-      });
-    }
+    if (user) return res.json({ user: user.toSafeObject() });
     return res.json({});
-  }
-)
-.delete(
-  (_req, res) => {
+  })
+.delete((_req, res) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
   }
 );
 
 router.route('/demo')
-.post(
-  asyncHandler(async (req, res) => {
+.post(asyncHandler
+  (async (req, res) => {
     const user = await User.loginDemo();
 
     await setTokenCookie(res, user);
