@@ -30,7 +30,7 @@ const getOneProperty = property => ({
 const updateOneProperty = property => ({
   type: UPDATE_PROPERTY,
   property
-});
+}); 
 
 const deleteOneProperty = propertyId => ({
   type: DELETE_PROPERTY,
@@ -127,7 +127,7 @@ const propertyReducer = (state = initialState, action) => {
       //   properties[property.id] = property;
       // });
       return {
-        // ...properties,
+        // ...properties, //* unnecessary?
         ...state,
         listOfProperties: action.properties
       };
@@ -174,7 +174,8 @@ const propertyReducer = (state = initialState, action) => {
 // **** ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS:
       const reviews = {};
-      action.reviews.forEach(review => {
+      console.log('action.reviews:', action.reviews);
+      action.reviews.contentArray.forEach(review => {
         reviews[review.id] = review;
       });
       return {

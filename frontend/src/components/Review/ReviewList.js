@@ -15,9 +15,12 @@ const ReviewList = ({id}) => {
 
   const reviews = useSelector(state => state.property[propertyId]);
 
+  console.log('reviews', reviews);
+  
+
   useEffect(() => {
-    dispatch(getReviewsByPropertyId());
-  }, [dispatch]);
+    dispatch(getReviewsByPropertyId(propertyId));
+  }, [dispatch, propertyId]);
 
   return (
     <div >

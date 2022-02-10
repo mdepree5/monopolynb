@@ -60,14 +60,14 @@ module.exports = (sequelize, DataTypes) => {
     const reviewsOnlyData = await Review.scope('reviewDataOnly')
       .findAll({where: {propertyId}});
 
-    const data = {
-      ratingAverage: avg(reviewsOnlyData, 'rating'),
-      communicationAverage: avg(reviewsOnlyData, 'communication'),
-      checkInAverage: avg(reviewsOnlyData, 'checkIn'),
-      cleanlinessAverage: avg(reviewsOnlyData, 'cleanliness'),
+    const ratingData = {
+      rating: avg(reviewsOnlyData, 'rating'),
+      communication: avg(reviewsOnlyData, 'communication'),
+      checkIn: avg(reviewsOnlyData, 'checkIn'),
+      cleanliness: avg(reviewsOnlyData, 'cleanliness'),
     }
     // console.log({...data, reviewsOnlyContent});
-    return {...data, reviewsOnlyContent};
+    return {ratingData, contentArray:reviewsOnlyContent}; //* change name for readibility on front end
   };
 
   Review.getReviewById = async (id) => await Review.findByPk(id);

@@ -28,6 +28,8 @@ const PropertyPage = () => {
     dispatch(getProperty(propertyId));
   }, [dispatch, propertyId]);
 
+  useEffect(() => window.scroll({top: 0, left: 0}));
+
   return (
     <>
     <div className='property-page'>

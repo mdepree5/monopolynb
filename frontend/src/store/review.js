@@ -117,7 +117,7 @@ const reviewReducer = (state = initialState, action) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS:
       const reviews = {}; 
-      action.reviews.forEach(review => {
+      action.reviews.contentArray.forEach(review => {
         reviews[review.id] = review;
       });
       return {
