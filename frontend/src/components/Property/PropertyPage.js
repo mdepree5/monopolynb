@@ -6,6 +6,8 @@ import { getProperty } from '../../store/property';
 import PropertyEditModal from './PropertyEditModal';
 import PropertyDeleteButton from './PropertyDeleteButton';
 
+import ReviewList from '../Review/ReviewList';
+
 import './Property.css';
 
 
@@ -42,8 +44,9 @@ const PropertyPage = () => {
           <h3 className='property-title'>{property?.title}</h3>
           <div className='property-location'>{`${property?.city}, ${property?.state}`}</div>
           
-          
-          <div className='img-container'>
+          <ReviewList id={propertyId} />
+
+          {/* <div className='img-container'>
             <div className='img-placeholder-main'>IMG</div>
             <div className='img-placeholder'>IMG</div>
             <div className='img-placeholder'>IMG</div>
@@ -60,7 +63,7 @@ const PropertyPage = () => {
             <div>Enhanced Clean</div>
             <div>Self check-in</div>
             <div>Free cancellation before Mar 25</div>
-          </div>
+          </div> */}
 
           <div className='filler-box' />
         </div>

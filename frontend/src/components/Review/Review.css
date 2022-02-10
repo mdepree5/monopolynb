@@ -22,11 +22,13 @@
   flex-direction: row;
 }
 
-.container-of-reviews{
+.review-list-container{
   display: flex;
   flex-direction: row;
   border: solid black 2px;
   border-radius: 3px;
+  width: 80%;
+  height: 300px;
 }
 
 .review-detail{

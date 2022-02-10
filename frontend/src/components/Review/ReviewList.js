@@ -1,21 +1,36 @@
+import {useParams} from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviewsByPropertyId } from '../../store/review';
-import ReviewDetail from './ReviewDetail';
 
-const ReviewList = ({reviews}) => {
+// import ReviewDetail from './ReviewDetail';
+import './Review.css';
+
+
+const ReviewList = ({id}) => {
+
+  const dispatch = useDispatch();
+
+  const {propertyId} = useParams();
+
+  const reviews = useSelector(state => state.property[propertyId]);
+
+  useEffect(() => {
+    dispatch(getReviewsByPropertyId());
+  }, [dispatch]);
 
   return (
-    <div className='container-of-reviews'>
-      <ul>
-        {reviews.map(review => (
+    <div >
+      <ul className='review-list-container'>
+        <li>hi</li>
+        {/* {reviews.map(review => (
           <ReviewDetail
             key={review.id}
             id={`review-${review.id}`}
             title={review.title}
             review={review}
           />
-        ))}
+        ))} */}
       </ul>
     </div>
   );
