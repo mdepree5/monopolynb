@@ -6,7 +6,7 @@ import ReviewData from './ReviewData';
 
 // import ReviewDetail from './ReviewDetail';
 import './Review.css';
- 
+
 
 
 const ReviewList = ({id}) => {
@@ -15,14 +15,16 @@ const ReviewList = ({id}) => {
 
   const {propertyId} = useParams();
 
+  // const reviewData = useSelector(state => state.review.ratingData);
+  // const numberOfReviews = useSelector(state => state.review.numberOfReviews);
   const reviews = useSelector(state => state.review.listOfReviews);
+  
   const reviewData = {
-    data: useSelector(state => state.review?.ratingData),
-    numberOfReviews: useSelector(state => state.review?.numberOfReviews)
-  }
-
-  console.log('reviews', reviews);
+    data: useSelector(state => state.review.ratingData),
+    numberOfReviews: useSelector(state => state.review.numberOfReviews)
+  };
   console.log('reviewData', reviewData);
+
 
   useEffect(() => {
     dispatch(getReviewsByPropertyId(propertyId));
@@ -32,7 +34,7 @@ const ReviewList = ({id}) => {
     <div >
     
     <div>
-      {/* <ReviewData reviewData={reviewData}/> */}
+      <ReviewData reviewData={reviewData} />
     </div>
       <ul className='review-list-container'>
         {

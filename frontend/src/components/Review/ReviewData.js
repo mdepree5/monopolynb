@@ -12,10 +12,11 @@ const ReviewData = ({reviewData}) => {
     </ul>
   );
 
-  return (    
+  return (
     <div className='review-data-container'>
-      <div>Rating</div>
-      {`${reviewData.data[0].value} * ${reviewData.numberOfReviews} reviews`} 
+      <div>
+        {`${reviewData.data[0].value} * ${reviewData.numberOfReviews} reviews`} 
+      </div>
       <div>
         {reviewData.data.map(datum => (
           <ReviewDataLine key={datum.name} datum={datum}/>
