@@ -17,7 +17,7 @@ const ReviewData = ({reviewData}) => {
       <div>Rating</div>
       <div>
         {reviewData.map(datum => (
-          <ReviewDataLine datum={datum}/>
+          <ReviewDataLine key={datum.name} datum={datum}/>
         ))
         }
       </div>
