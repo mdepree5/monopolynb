@@ -17,8 +17,7 @@ router.route('/:reviewId')
   validateReview,
   validatePUT,
   asyncHandler(async (req, res) => {
-    const id = await Review.updateReview(req.body);
-    const review = await Property.getReviewById(id);
+    const review = await Review.updateReview(req.body);
     return res.json(review);
   }))
 .delete(

@@ -13,31 +13,20 @@ const router = express.Router();
 // todo                                 Properties
 // todo ——————————————————————————————————————————————————————————————————————————————————
 router.route('/')
-.post(
-  validateProperty,
-  asyncHandler(async (req, res) => {
-    const property = await Property.createProperty(req.body); 
-    return res.json(property);
-  }))
-.get(asyncHandler(async (req, res) => {
-  const properties = await Property.getAllProperties();
-  return res.json(properties);
-}))
+.post(validateProperty, asyncHandler
+  (async (req, res) => res.json(await Property.createProperty(req.body))))
+.get(asyncHandler
+  (async (req, res) => res.json(await Property.getAllProperties()))
+)
+
 // todo ——————————————————————————————————————————————————————————————————————————————————
 router.route('/:propertyId')
-.get(asyncHandler(async (req, res) => {
-  const property = await Property.getPropertyById(req.params.propertyId);
-  return res.json(property);
-}))
-.put(
-  validateProperty,
-  validatePUT,
-  asyncHandler(async (req, res) => {
-    const property = await Property.updateProperty(req.body);
-    return res.json(property);
-  }))
-.delete(
-  asyncHandler(async (req, res) => {
+.get(asyncHandler
+  (async (req, res) => res.json(await Property.getPropertyById(req.params.propertyId))))
+.put(validateProperty, validatePUT, asyncHandler
+  (async (req, res) => res.json(await Property.updateProperty(req.body))))
+.delete(asyncHandler
+  (async (req, res) => {
     const propertyId = await Property.deleteProperty(req.params.propertyId);
     const message = await Review.deleteReviewsByPropertyId(req.params.propertyId);
     return res.json({propertyId, message});
@@ -48,30 +37,10 @@ router.route('/:propertyId')
 // todo                                 Reviews
 // todo ——————————————————————————————————————————————————————————————————————————————————
 router.route('/:propertyId/reviews')
-.post(
-  validateReview,
-  asyncHandler(async function(req, res) {
-    const review = await Review.createReview(req.body);
-    return res.json(review);
-  })
+.post(validateReview, asyncHandler
+  (async (req, res) => res.json(await Review.createReview(req.body))))
+.get(asyncHandler
+  (async (req, res) => res.json(await Review.getReviewsByPropertyId(req.params.propertyId)))
 )
-.get(asyncHandler(async function(req, res) {
-  const reviews = await Review.getReviewsByPropertyId(req.params.propertyId); 
-  return res.json(reviews);
-}))
-
 
 module.exports = router;
-
-// todo ——————————————————————————————————————————————————————————————————————————————————
-// todo                               Deprecated
-// todo ——————————————————————————————————————————————————————————————————————————————————
-/* 
-.get(asyncHandler(async (req, res) => {
-  const review = await Review.getReviewById(req.params.reviewId);
-  return res.json({review});
-}))
-
-const getReviewById = async(id) => await Property.scope("detailed").findByPk(id);
-*/
-
