@@ -32,9 +32,9 @@ const updateOneProperty = property => ({
   property
 });
 
-const deleteOneProperty = property => ({
+const deleteOneProperty = propertyId => ({
   type: DELETE_PROPERTY,
-  property
+  propertyId
 });
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -186,11 +186,14 @@ const propertyReducer = (state = initialState, action) => {
       }
 // **** ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_REVIEW:
+      const filteredArr = state[action.propertyId].listOfReviews
+        .filter(review => review.id !== action.reviewId)
+
       return {
         ...state,
         [action.propertyId]: {
           ...state[action.propertyId],
-          reviews: state[action.propertyId].items.filter(reviewId => reviewId !== action.reviewId)
+          listOfReviews: filteredArr
         }
       };
 // **** ——————————————————————————————————————————————————————————————————————————————————

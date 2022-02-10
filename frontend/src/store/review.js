@@ -35,9 +35,9 @@ const updateOneReview = review => ({
   review
 });
 
-const deleteOneReview = review => ({
+const deleteOneReview = reviewId => ({
   type: DELETE_REVIEW,
-  review
+  reviewId
 });
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
