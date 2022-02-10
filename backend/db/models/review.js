@@ -78,7 +78,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Review.deleteReviewsByPropertyId = async (propertyId) => {
     const reviews = await Review.findAll({where: {propertyId}});
-    reviews.forEach(review => await Review.destroy(review));
+    reviews.forEach(review => Review.destroy(review));
     
     return 'All reviews have been deleted';
   }

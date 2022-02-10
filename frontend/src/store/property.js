@@ -96,8 +96,10 @@ export const deleteProperty = propertyId => async (dispatch) => {
   });
 
   if (response.ok) {
-    const property = await response.json();
-    dispatch(deleteOneProperty(property.id));
+    const {propertyId, message} = await response.json();
+    console.log('propertyId', propertyId);
+    console.log('message', message);
+    dispatch(deleteOneProperty(propertyId));
   }
 };
 
