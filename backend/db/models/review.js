@@ -61,10 +61,10 @@ module.exports = (sequelize, DataTypes) => {
       .findAll({where: {propertyId}});
 
     const ratingData = [
-      {name: 'Rating', value: avg(reviewDataOnly, 'rating')},
-      {name: 'Communication', value: avg(reviewDataOnly, 'communication')},
-      {name: 'Check-in', value: avg(reviewDataOnly, 'checkIn')},
-      {name: 'Cleanliness', value: avg(reviewDataOnly, 'cleanliness')},
+      {name: 'Rating', value: +avg(reviewDataOnly, 'rating').toFixed(2)},
+      {name: 'Communication', value: +avg(reviewDataOnly, 'communication').toFixed(2)},
+      {name: 'Check-in', value: +avg(reviewDataOnly, 'checkIn').toFixed(2)},
+      {name: 'Cleanliness', value: +avg(reviewDataOnly, 'cleanliness').toFixed(2)},
     ]
 
     return {ratingData, listOfReviews:reviewContentOnly, numberOfReviews:reviewContentOnly.length};
