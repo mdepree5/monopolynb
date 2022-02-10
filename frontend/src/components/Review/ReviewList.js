@@ -2,44 +2,11 @@ import {useParams} from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviewsByPropertyId } from '../../store/review';
+import ReviewData from './ReviewData';
 
 // import ReviewDetail from './ReviewDetail';
 import './Review.css';
 
-
-
-import Meter from '../../context/Meter';
-import './Review.css';
-
-
-const ReviewData = () => {
-
-  const reviewData = [
-    {name: 'Cleanliness', rating: 5.0},
-    {name: 'Communication', rating: 4.8},
-    {name: 'Check-In', rating: 4.0},
-  ];
-
-  const ReviewDataLine = ({datum}) => (
-    <ul className='review-data-line' >
-      <li>{datum.name}</li>
-      <li><Meter rating={datum.rating}/></li>
-      <li>{datum.rating}</li>
-    </ul>
-  );
-
-  return (    
-    <div className='review-data-container'>
-      <div>Rating</div>
-      <div>
-        {reviewData.map(datum => (
-          <ReviewDataLine datum={datum}/>
-        ))
-        }
-      </div>
-    </div>
-  )
-}
 
 
 const ReviewList = ({id}) => {
@@ -61,6 +28,10 @@ const ReviewList = ({id}) => {
 
   return (
     <div >
+    
+    <div>
+      <ReviewData reviewData={reviewData}/>
+    </div>
       <ul className='review-list-container'>
         {
           reviews.map(review => (
