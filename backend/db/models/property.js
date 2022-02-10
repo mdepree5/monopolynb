@@ -52,9 +52,27 @@ module.exports = (sequelize, DataTypes) => {
   Property.getAllProperties = async () => await Property.findAll({
     order: [['price', 'ASC']]
   });
-  
+
+
+
+
+
+  // ???? ——————————————————————————————————————————————————————————————————————————————————
+  // !!!! ——————————————————————————————————————————————————————————————————————————————————
+
+
+
+
   Property.getPropertyById = async (id) => await Property.findByPk(id);
+
+
+
+
+  // !!!! ——————————————————————————————————————————————————————————————————————————————————
+  // ???? ——————————————————————————————————————————————————————————————————————————————————
   
+
+
   Property.updateProperty = async (details) => {
     const id = details.id; 
     delete details.id; 

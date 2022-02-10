@@ -67,7 +67,7 @@ module.exports = (sequelize, DataTypes) => {
       {name: 'Cleanliness', value: avg(reviewDataOnly, 'cleanliness')},
     ]
 
-    return {ratingData, listOfReviews:reviewContentOnly};
+    return {ratingData, listOfReviews:reviewContentOnly, numberOfReviews:reviewContentOnly.length};
   };
 
   Review.getReviewById = async (id) => await Review.findByPk(id);

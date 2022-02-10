@@ -17,9 +17,11 @@ const ReviewList = ({id}) => {
 
   const reviews = useSelector(state => state.review.listOfReviews);
   const reviewData = useSelector(state => state.review.ratingData);
+  const numberOfReviews = useSelector(state => state.review.numberOfReviews);
 
   console.log('reviews', reviews);
   console.log('reviewData', reviewData);
+  console.log('numberOfReviews', numberOfReviews);
   
 
   useEffect(() => {

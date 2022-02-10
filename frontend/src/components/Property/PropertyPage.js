@@ -18,7 +18,20 @@ const PropertyPage = () => {
   const {propertyId} = useParams();
   const [belongsToUser, setBelongsToUser] = useState(false);
 
+// ???? ——————————————————————————————————————————————————————————————————————————————————
+// !!!! ——————————————————————————————————————————————————————————————————————————————————
+  
+
+
+
   const property = useSelector(state => state.property[propertyId]);
+
+
+
+
+// !!!! ——————————————————————————————————————————————————————————————————————————————————
+// ???? ——————————————————————————————————————————————————————————————————————————————————
+
   const sessionUser = useSelector(state => state.session.user);
 
   useEffect(() => {    
@@ -49,7 +62,7 @@ const PropertyPage = () => {
       <div>
         <ReviewFormModal/>
       </div>
-
+      <br />
       <li>
         <div className='property-info'>
           <h3 className='property-title'>{property?.title}</h3>

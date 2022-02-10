@@ -102,7 +102,7 @@ export const deleteReview = reviewId => async (dispatch) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const initialState = { listOfReviews: [], ratingData: [] };
+const initialState = { listOfReviews: [], ratingData: [], numberOfReviews: null};
 
 const reviewReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -124,8 +124,9 @@ const reviewReducer = (state = initialState, action) => {
       return {
         // ...reviews,
         ...state, //! OR is it ok to pass in directly here?
+        numberOfReviews: action.reviews.numberOfReviews,
+        ratingData: action.reviews.ratingData,
         listOfReviews: action.reviews.listOfReviews,
-        ratingData: action.reviews.ratingData
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_REVIEW:

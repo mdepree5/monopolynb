@@ -22,10 +22,21 @@ router.route('/')
 .get(asyncHandler
   (async (req, res) => res.json(await Property.getAllProperties()))
 )
+// ???? ——————————————————————————————————————————————————————————————————————————————————
+// !!!! ——————————————————————————————————————————————————————————————————————————————————
+
+
 
 router.route('/:propertyId')
 .get(asyncHandler
   (async (req, res) => res.json(await Property.getPropertyById(req.params.propertyId))))
+
+
+
+  // !!!! ——————————————————————————————————————————————————————————————————————————————————
+  // ???? ——————————————————————————————————————————————————————————————————————————————————
+
+
 .put(validateProperty, validatePUT, asyncHandler
   (async (req, res) => res.json(await Property.updateProperty(req.body))))
 .delete(asyncHandler
