@@ -2,7 +2,6 @@ import { csrfFetch } from './csrf';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Variables
 // todo ——————————————————————————————————————————————————————————————————————————————————
-import {CREATE_REVIEW, GET_ALL_REVIEWS, DELETE_REVIEW} from './review';
 const CREATE_PROPERTY = 'property/create';
 const GET_ALL_PROPERTIES = 'property/get_all';
 const GET_ONE_PROPERTY = 'property/get_one';
@@ -41,6 +40,22 @@ const deleteOneProperty = propertyId => ({
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
 export const createProperty = property => async (dispatch) => {
+  const { images, image, username, email, password } = property;
+  const formData = new FormData();
+  formData.append("username", username);
+  formData.append("email", email);
+  formData.append("password", password);
+
+  // for multiple files
+  if (images && images.length !== 0) {
+    for (var i = 0; i < images.length; i++) {
+      formData.append("images", images[i]);
+    }
+  }
+
+  // for single file
+  if (image) formData.append("image", image);
+  
   const response = await csrfFetch(`/api/properties`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -157,48 +172,7 @@ const propertyReducer = (state = initialState, action) => {
       }
     }
       return deleteOnePropertyState;
-// todo ——————————————————————————————————————————————————————————————————————————————————      
 // todo ——————————————————————————————————————————————————————————————————————————————————
-// ****                                 REVIEW CASES
-// todo ——————————————————————————————————————————————————————————————————————————————————
-    case CREATE_REVIEW:
-      return;
-    // const reviewsArr = [];
-      // reviewsArr.push(...[action.propertyId].listOfReviews, action.review)
-      // return {
-      //   ...state,
-      //   [action.propertyId]: {
-      //     ...state[action.propertyId],
-      //     listOfReviews: reviewsArr
-      //   }
-      // };
-// **** ——————————————————————————————————————————————————————————————————————————————————
-    // case GET_ALL_REVIEWS: //! Do I need to create shallow
-    //   // const reviews = {};
-    //   // console.log('action.reviews:', action.reviews);
-    //   // action.reviews.contentArray.forEach(review => {
-    //   //   reviews[review.id] = review;
-    //   // });
-    //   return {
-    //     ...state,
-    //     [action.propertyId]: {
-    //       ...state[action.propertyId], //! OR is it ok to pass in directly here?
-    //       listOfReviews: action.reviews.contentArray
-    //     }
-    //   }
-// **** ——————————————————————————————————————————————————————————————————————————————————
-    case DELETE_REVIEW:
-      const filteredArr = state[action.propertyId].listOfReviews
-        .filter(review => review.id !== action.reviewId)
-
-      return {
-        ...state,
-        [action.propertyId]: {
-          ...state[action.propertyId],
-          listOfReviews: filteredArr
-        }
-      };
-// **** ——————————————————————————————————————————————————————————————————————————————————
     default:
       return state;
   }
