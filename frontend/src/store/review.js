@@ -101,7 +101,7 @@ export const deleteReview = reviewId => async (dispatch) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const initialState = { listOfReviews: [] };
+const initialState = { listOfReviews: [], ratingData: {} };
 
 const reviewReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -116,14 +116,15 @@ const reviewReducer = (state = initialState, action) => {
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS:
-      const reviews = {}; 
-      action.reviews.contentArray.forEach(review => {
-        reviews[review.id] = review;
-      });
+      // const reviews = {};  //! Do I need to create shallow
+      // action.reviews.contentArray.forEach(review => {
+      //   reviews[review.id] = review;
+      // });
       return {
-        ...reviews,
-        ...state,
-        listOfReviews: action.reviews
+        // ...reviews,
+        ...state, //! OR is it ok to pass in directly here?
+        listOfReviews: action.reviews.listOfReviews,
+        ratingData: action.reviews.ratingData
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_REVIEW:

@@ -172,19 +172,19 @@ const propertyReducer = (state = initialState, action) => {
         }
       };
 // **** ——————————————————————————————————————————————————————————————————————————————————
-    case GET_ALL_REVIEWS:
-      const reviews = {};
-      console.log('action.reviews:', action.reviews);
-      action.reviews.contentArray.forEach(review => {
-        reviews[review.id] = review;
-      });
-      return {
-        ...state,
-        [action.propertyId]: {
-          ...state[action.propertyId],
-          listOfReviews: action.reviews
-        }
-      }
+    // case GET_ALL_REVIEWS:
+    //   // const reviews = {};
+    //   // console.log('action.reviews:', action.reviews);
+    //   // action.reviews.contentArray.forEach(review => {
+    //   //   reviews[review.id] = review;
+    //   // });
+    //   return {
+    //     ...state,
+    //     [action.propertyId]: {
+    //       ...state[action.propertyId],
+    //       listOfReviews: action.reviews.contentArray
+    //     }
+    //   }
 // **** ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_REVIEW:
       const filteredArr = state[action.propertyId].listOfReviews
