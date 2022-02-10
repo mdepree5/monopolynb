@@ -3,37 +3,37 @@ import { csrfFetch } from './csrf';
 // todo                                 Variables
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import {CREATE_REVIEW, GET_ALL_REVIEWS, DELETE_REVIEW} from './review';
-const CREATE_ONE = 'property/create';
-const GET_ALL = 'property/get_all';
-const GET_ONE = 'property/get_one';
-const UPDATE_ONE = 'property/update';
-const DELETE_ONE = 'property/delete';
+const CREATE_PROPERTY = 'property/create';
+const GET_ALL_PROPERTIES = 'property/get_all';
+const GET_ONE_PROPERTY = 'property/get_one';
+const UPDATE_PROPERTY = 'property/update';
+const DELETE_PROPERTY = 'property/delete';
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                              Action Creators
 // todo ——————————————————————————————————————————————————————————————————————————————————
 const createOneProperty = property => ({
-  type: CREATE_ONE,
+  type: CREATE_PROPERTY,
   property
 });
 
 const getAllProperties = properties => ({
-  type: GET_ALL,
+  type: GET_ALL_PROPERTIES,
   properties
 });
 
 const getOneProperty = property => ({
-  type: GET_ONE,
+  type: GET_ONE_PROPERTY,
   property
 });
 
 const updateOneProperty = property => ({
-  type: UPDATE_ONE,
+  type: UPDATE_PROPERTY,
   property
 });
 
 const deleteOneProperty = property => ({
-  type: DELETE_ONE,
+  type: DELETE_PROPERTY,
   property
 });
 
@@ -101,7 +101,7 @@ export const deleteProperty = propertyId => async (dispatch) => {
   if (response.ok) {
     const {propertyId, message} = await response.json();
     dispatch(deleteOneProperty(propertyId));
-    return [propertyId, message];
+    return {propertyId, message};
   }
 };
 
@@ -112,7 +112,7 @@ const initialState = { listOfProperties: [], listOfReviews: [] };
 
 const propertyReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_ONE: 
+    case CREATE_PROPERTY: 
       return {
       ...state,
       [action.property.id]: {
@@ -121,18 +121,18 @@ const propertyReducer = (state = initialState, action) => {
       }
     };
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case GET_ALL:
-      const properties = {}; //* Declare new object 1. avoid mutation, 2. control specific slices of state
-      action.properties.forEach(property => {
-        properties[property.id] = property;
-      });
+    case GET_ALL_PROPERTIES:
+      // const properties = {}; 
+      // action.properties.forEach(property => {
+      //   properties[property.id] = property;
+      // });
       return {
-        ...properties,
+        // ...properties,
         ...state,
         listOfProperties: action.properties
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case GET_ONE:
+    case GET_ONE_PROPERTY:
       return {
         ...state,
         
@@ -142,54 +142,56 @@ const propertyReducer = (state = initialState, action) => {
         }
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case UPDATE_ONE:
+    case UPDATE_PROPERTY:
       return {
         ...state,
         [action.property.id]: action.property
       }
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case DELETE_ONE: 
-    const deleteOneState = {
+    case DELETE_PROPERTY: 
+    const deleteOnePropertyState = {
       ...state,
       [action.property]: {
         ...state[action.property],
         ...action.property
       }
     }
-      return deleteOneState;
+      return deleteOnePropertyState;
 // todo ——————————————————————————————————————————————————————————————————————————————————      
-// // todo ——————————————————————————————————————————————————————————————————————————————————
-// // ****                                 REVIEW CASES
-// // todo ——————————————————————————————————————————————————————————————————————————————————
-//     case CREATE_REVIEW:
-//       return {
-//         ...state,
-//         [action.review.propertyId]: {
-//           ...state[action.review.propertyId],
-//           reviews: [...state[action.review.propertyId].reviews, action.review.id]
-//         }
-//       };
-// // **** ——————————————————————————————————————————————————————————————————————————————————
-//     case GET_ALL_REVIEWS:
-//       const reviews = {};
-//       action.reviews.forEach(review => {
-//         reviews[review.id] = review;
-//       });
-//       return {
-//         ...reviews,
-//         ...state,
-//         listOfReviews: action.reviews
-//       }
-// // **** ——————————————————————————————————————————————————————————————————————————————————
-//     case DELETE_REVIEW:
-//       return {
-//         ...state,
-//         [action.propertyId]: {
-//           ...state[action.propertyId],
-//           reviews: state[action.propertyId].items.filter(reviewId => reviewId !== action.reviewId)
-//         }
-//       };
-// // **** ——————————————————————————————————————————————————————————————————————————————————
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// ****                                 REVIEW CASES
+// todo ——————————————————————————————————————————————————————————————————————————————————
+    case CREATE_REVIEW:
+      return {
+        ...state,
+        [action.review.propertyId]: {
+          ...state[action.review.propertyId],
+          reviews: [...state[action.review.propertyId].reviews, action.review.id]
+        }
+      };
+// **** ——————————————————————————————————————————————————————————————————————————————————
+    case GET_ALL_REVIEWS:
+      const reviews = {};
+      action.reviews.forEach(review => {
+        reviews[review.id] = review;
+      });
+      return {
+        ...state,
+        [action.propertyId]: {
+          ...state[action.propertyId],
+          listOfReviews: action.reviews
+        }
+      }
+// **** ——————————————————————————————————————————————————————————————————————————————————
+    case DELETE_REVIEW:
+      return {
+        ...state,
+        [action.propertyId]: {
+          ...state[action.propertyId],
+          reviews: state[action.propertyId].items.filter(reviewId => reviewId !== action.reviewId)
+        }
+      };
+// **** ——————————————————————————————————————————————————————————————————————————————————
     default:
       return state;
   }

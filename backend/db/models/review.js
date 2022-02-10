@@ -84,12 +84,13 @@ module.exports = (sequelize, DataTypes) => {
     return await Review.findByPk(id);
   };
   
-  Review.deleteReview = async function (reviewId) {
-    const review = await Review.findByPk(reviewId);
+  Review.deleteReview = async (id) => {
+    const review = await Review.findByPk(id);
     if (!review) throw new Error('Cannot find review');
-  
+    const formerId = review.id;
+
     await Review.destroy({ where: { id: review.id }});
-    return review.id;
+    return formerId;
   };
 
   Review.deleteReviewsByPropertyId = async (propertyId) => {

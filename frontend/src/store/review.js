@@ -10,16 +10,25 @@ export const DELETE_REVIEW = 'review/delete';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                              Action Creators
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const createOnereview = review => ({
+const createOneReview = (review, propertyId) => ({
   type: CREATE_REVIEW,
-  review
+  review,
+  propertyId
 });
+// const createOneReview = review => ({
+//   type: CREATE_REVIEW,
+//   review
+// });
 
 const getAllReviews = (reviews, propertyId) => ({
   type: GET_ALL_REVIEWS,
   reviews,
   propertyId
 });
+// const getAllReviews = reviews => ({
+//   type: GET_ALL_REVIEWS,
+//   reviews,
+// });
 
 const updateOneReview = review => ({
   type: UPDATE_REVIEW,
@@ -43,7 +52,7 @@ export const createReview = (review, propertyId) => async (dispatch) => {
 
   if (response.ok) {
     const review = await response.json();
-    dispatch(createOnereview(review));
+    dispatch(createOneReview(review));
     return review;
   }
 };
@@ -83,9 +92,9 @@ export const deleteReview = reviewId => async (dispatch) => {
   });
 
   if (response.ok) {
-    const review = await response.json();
-    dispatch(deleteOneReview(review.id));
-    return review;
+    const reviewId = await response.json();
+    dispatch(deleteOneReview(reviewId));
+    return reviewId;
   }
 };
 
@@ -99,9 +108,9 @@ const reviewReducer = (state = initialState, action) => {
     case CREATE_REVIEW: 
       return {
         ...state,
-        listOfReviews: {
-          ...state.listOfReviews,
-          [action.review.id]: action.review
+        [action.review.id]: {
+          ...state[action.review.id],
+          ...action.review
         }
       };
 
@@ -124,10 +133,14 @@ const reviewReducer = (state = initialState, action) => {
       }
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_REVIEW: 
-      const newState = {...state, listOfReviews: {...state.listOfReviews}};
-      delete newState.listOfReviews[action.review.id];
-      return newState;
-
+      const deleteOneReviewState = {
+        ...state,
+        [action.review]: {
+          ...state[action.review],
+          ...action.review
+        }
+      }
+        return deleteOneReviewState;
     default:
       return state;
   }
