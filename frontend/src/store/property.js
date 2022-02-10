@@ -162,11 +162,13 @@ const propertyReducer = (state = initialState, action) => {
 // ****                                 REVIEW CASES
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case CREATE_REVIEW:
+      const reviewsArr = [];
+      reviewsArr.push(...[action.propertyId].listOfReviews, action.review)
       return {
         ...state,
-        [action.review.propertyId]: {
-          ...state[action.review.propertyId],
-          reviews: [...state[action.review.propertyId].reviews, action.review.id]
+        [action.propertyId]: {
+          ...state[action.propertyId],
+          listOfReviews: reviewsArr
         }
       };
 // **** ——————————————————————————————————————————————————————————————————————————————————
