@@ -162,15 +162,16 @@ const propertyReducer = (state = initialState, action) => {
 // ****                                 REVIEW CASES
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case CREATE_REVIEW:
-      const reviewsArr = [];
-      reviewsArr.push(...[action.propertyId].listOfReviews, action.review)
-      return {
-        ...state,
-        [action.propertyId]: {
-          ...state[action.propertyId],
-          listOfReviews: reviewsArr
-        }
-      };
+      return;
+    // const reviewsArr = [];
+      // reviewsArr.push(...[action.propertyId].listOfReviews, action.review)
+      // return {
+      //   ...state,
+      //   [action.propertyId]: {
+      //     ...state[action.propertyId],
+      //     listOfReviews: reviewsArr
+      //   }
+      // };
 // **** ——————————————————————————————————————————————————————————————————————————————————
     // case GET_ALL_REVIEWS: //! Do I need to create shallow
     //   // const reviews = {};

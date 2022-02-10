@@ -52,6 +52,7 @@ export const createReview = (review, propertyId) => async (dispatch) => {
 
   if (response.ok) {
     const review = await response.json();
+    console.log('review', review)
     dispatch(createOneReview(review));
     return review;
   }

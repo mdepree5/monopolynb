@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import ReviewCreateForm from './ReviewCreateForm';
 
-function PropertyFormModal() {
+function ReviewFormModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -21,6 +21,6 @@ function PropertyFormModal() {
   );
 }
 
-export default PropertyFormModal;
+export default ReviewFormModal;
 
 

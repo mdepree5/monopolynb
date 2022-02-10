@@ -6,6 +6,8 @@ import { getProperty } from '../../store/property';
 import PropertyEditModal from './PropertyEditModal';
 import PropertyDeleteButton from './PropertyDeleteButton';
 
+
+import ReviewFormModal from '../Review/ReviewFormModal';
 import ReviewList from '../Review/ReviewList';
 
 import './Property.css';
@@ -34,6 +36,7 @@ const PropertyPage = () => {
     <>
     <div className='property-page'>
       <div>Property Page</div>
+        <div>
         {belongsToUser &&( 
           <>
             <PropertyEditModal property={property} />
@@ -41,6 +44,12 @@ const PropertyPage = () => {
           </>
           )
         }
+        </div>
+        
+      <div>
+        <ReviewFormModal/>
+      </div>
+
       <li>
         <div className='property-info'>
           <h3 className='property-title'>{property?.title}</h3>

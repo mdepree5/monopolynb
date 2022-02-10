@@ -6,7 +6,7 @@ import ReviewData from './ReviewData';
 
 // import ReviewDetail from './ReviewDetail';
 import './Review.css';
-
+ 
 
 
 const ReviewList = ({id}) => {
