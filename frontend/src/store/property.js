@@ -42,22 +42,23 @@ const deleteOneProperty = propertyId => ({
 export const createProperty = property => async (dispatch) => {
   const { image, title, numberOfBeds, price,
     city, state, zipcode } = property;
-  const formData = new FormData();
-  formData.append('title', title);
-  formData.append('numberOfBeds', numberOfBeds);
-  formData.append('price', price);
-  formData.append('city', city);
-  formData.append('state', state);
-  formData.append('zipcode', zipcode);
+    // const formData = new FormData();
+  // formData.append("title", title);
+  // formData.append("numberOfBeds", numberOfBeds);
+  // formData.append("price", price);
+  // formData.append("city", city);
+  // formData.append("state", state);
+  // formData.append("zipcode", zipcode);
+
+  // if (image) formData.append("image", image);
+
+  const formData = {
+    image: image || null, title, numberOfBeds, price, city, state, zipcode
+  }
   
-  if (image) formData.append('image', image);
-  // for multiple files
-  // if (images && images.length !== 0) {
-  //   for (let i = 0; i < images.length; i++) {
-  //     formData.append('images', images[i]);
-  //   }
-  // }
-  
+  console.log('debugger');
+  console.log('debugger', formData);
+
   const response = await csrfFetch(`/api/properties`, {
     method: 'POST',
     headers: { 'Content-Type': 'multipart/form-data' },

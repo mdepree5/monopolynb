@@ -10,8 +10,13 @@ const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3');
 router.route('/')
 .post(validateProperty, singleMulterUpload, asyncHandler
   (async (req, res) => {
-    const imageUrl = await singlePublicFileUpload(req.file);
-    res.json(await Property.createProperty({...req.body, imageUrl}))
+    const {image, title, numberOfBeds, price, city, state, zipcode} = req.body;
+    const imageUrl = await singlePublicFileUpload(image);
+    console.log(imageUrl);
+    console.log('imageUrl', imageUrl);
+    res.json(await Property.createProperty({
+      title, numberOfBeds, price, city, state, zipcode,imageUrl
+    }))
   }))
 .get(asyncHandler
   (async (req, res) => res.json(await Property.getAllProperties()))
