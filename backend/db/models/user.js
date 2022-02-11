@@ -79,7 +79,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   // todo ————————————————————————————————————————————————————————————————————————————————
-  // todo                               User Methods
+  // todo                               Methods
   // todo ————————————————————————————————————————————————————————————————————————————————
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
     const { id, username, firstName, lastName, email, bio, isHost } = this; // context will be the User instance
@@ -128,7 +128,7 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope('currentUser').findByPk(user.id);
   };
   // todo ————————————————————————————————————————————————————————————————————————————————
-  // todo                               User Associations
+  // todo                               Associations
   // todo ————————————————————————————————————————————————————————————————————————————————
   User.associate = function(models) {  
     

@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   // todo ————————————————————————————————————————————————————————————————————————————————
-  // todo                               Review Methods
+  // todo                               Methods
   // todo ————————————————————————————————————————————————————————————————————————————————
 
   Review.createReview = async (reqData) => await Review.create(reqData);
@@ -83,7 +83,7 @@ module.exports = (sequelize, DataTypes) => {
   // }
 
   // todo ————————————————————————————————————————————————————————————————————————————————
-  // todo                               Review Associations
+  // todo                               Associations
   // todo ————————————————————————————————————————————————————————————————————————————————
   Review.associate = function(models) {
 

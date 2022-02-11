@@ -40,15 +40,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {len: [1, 10]}
     },
-    imageURL: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
   },
   {});
 
   // todo ————————————————————————————————————————————————————————————————————————————————
-  // todo                               Property Methods
+  // todo                               Methods
   // todo ————————————————————————————————————————————————————————————————————————————————
 
   Property.createProperty = async (reqData) => await Property.create(reqData);
@@ -85,7 +81,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   // todo ————————————————————————————————————————————————————————————————————————————————
-  // todo                               Property Associations
+  // todo                               Associations
   // todo ————————————————————————————————————————————————————————————————————————————————
   Property.associate = function(models) {
 
