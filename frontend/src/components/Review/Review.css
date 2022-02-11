@@ -9,6 +9,11 @@
   margin: 5px;
 }
 
+.review-nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 .review-data-container{
   display: flex;
