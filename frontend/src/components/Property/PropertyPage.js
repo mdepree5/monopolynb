@@ -7,7 +7,7 @@ import PropertyEditModal from './PropertyEditModal';
 import PropertyDeleteButton from './PropertyDeleteButton';
 import ReviewFormModal from '../Review/ReviewFormModal';
 
-import ReviewList from '../Review/ReviewList';
+import Review from '../Review/';
 
 import './Property.css';
 
@@ -55,7 +55,7 @@ const PropertyPage = () => {
       
       
       <br />
-      <ReviewList id={propertyId} belongsToUser={belongsToUser} />
+      <Review id={propertyId} belongsToUser={belongsToUser} />
       <br />
       <div className='filler-box' />
     </div>

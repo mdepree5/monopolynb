@@ -1,44 +1,31 @@
-import {useParams} from 'react-router-dom';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getReviewsByPropertyId } from '../../store/review';
+// const reviewDate = date => `${date.toString().split(' ')[1]} ${date.toString().split(' ')[3]}`;
 
-import ReviewData from './ReviewData';
-import ReviewDetail from './ReviewDetail';
-import './Review.css';
+const ReviewDetail = ({review, belongsToUser}) => (
+  <ul className='review-detail'>
+      <li className='review-body'>{review.content}</li>
+  </ul>
+)
 
+const ReviewList = ({reviews, belongsToUser}) => (
 
+  <ul className='review-list-container'>
+    {reviews.map(review => (
+      <li key={review.id}> 
+        <ReviewDetail review={review} belongsToUser={belongsToUser}/>
+      </li>
+    ))}
+  </ul>
+)
 
-const ReviewList = ({id, belongsToUser}) => {
-  const dispatch = useDispatch();
-  const {propertyId} = useParams();
-
-  const reviews = useSelector(state => state.review.listOfReviews);
-  const reviewData = {
-    rating: useSelector(state => state.review.rating),
-    data: useSelector(state => state.review.ratingData),
-    numberOfReviews: useSelector(state => state.review.numberOfReviews)
-  };
-
-
-  useEffect(() => {
-    dispatch(getReviewsByPropertyId(propertyId));
-  }, [dispatch, propertyId]);
-
-  return (
-    <div >
-      <ReviewData reviewData={reviewData} />
-
-      <ul className='review-list-container'>
-        {reviews.map(review => (
-          <ReviewDetail
-            key={review.id}
-            review={review}
-            belongsToUser={belongsToUser}
-          />
-        ))}
-      </ul>
-    </div>
-  );
-};
 export default ReviewList;
+
+
+
+/* 
+{belongsToUser &&( 
+  <>
+    <PropertyEditModal property={property} />
+    <PropertyDeleteButton propertyId={propertyId} />
+  </>)
+}
+*/

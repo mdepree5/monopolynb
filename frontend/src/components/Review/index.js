@@ -3,33 +3,34 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviewsByPropertyId } from '../../store/review';
 
-// import ReviewList from './ReviewList';
 import ReviewData from './ReviewData';
+import ReviewList from './ReviewList';
 import './Review.css';
 
 
-const Reviews = () => {
+
+const Review = ({id, belongsToUser}) => {
   const dispatch = useDispatch();
   const {propertyId} = useParams();
 
-  const reviews = useSelector(state => state.review);
-  
-  console.log('debugger');
-  console.log('reviews', reviews);
+  const reviews = useSelector(state => state.review.listOfReviews);
+  const reviewData = {
+    rating: useSelector(state => state.review.rating),
+    data: useSelector(state => state.review.ratingData),
+    numberOfReviews: useSelector(state => state.review.numberOfReviews)
+  };
 
+  console.log('reviews', reviews)
 
   useEffect(() => {
     dispatch(getReviewsByPropertyId(propertyId));
   }, [dispatch, propertyId]);
 
   return (
-    <div className='review-container'>
-      <h3>Reviews</h3>
-      <ReviewData />
-      {/* <ReviewList reviews={reviews} /> */}
+    <div >
+      <ReviewData reviewData={reviewData} />
+      <ReviewList reviews={reviews}  belongsToUser={belongsToUser} />
     </div>
-  )
-} 
-
-
-export default Reviews;
+  );
+};
+export default Review;
