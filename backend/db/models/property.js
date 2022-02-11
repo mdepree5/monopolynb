@@ -40,6 +40,10 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {len: [1, 10]}
     },
+    imageURL: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {});
 

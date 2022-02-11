@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { csrfFetch } from './csrf';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Variables

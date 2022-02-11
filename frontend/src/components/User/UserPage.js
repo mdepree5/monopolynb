@@ -8,19 +8,10 @@ import {useParams} from 'react-router-dom';
 
 
 const UserPage = () => {
+  const dispatch = useDispatch();
   const {userId} = useParams();
 
-  const dispatch = useDispatch();
-
   const properties = useSelector(state => state.property.listOfProperties);
-
-  // const userProperties = properties.filter(property => {
-  //   console.log('property', property?.hostId === userId)
-  //   return property?.hostId === userId
-  //   });
-
-    // console.log(userId)
-    // console.log('userProperties', properties);
 
   useEffect(() => {
     dispatch(getPropertiesByUserId(userId));
@@ -35,6 +26,7 @@ const UserPage = () => {
       <br />
       <div>My Listings</div>
       <ul className='explore-all-properties'>
+      
       {
         properties.map(property => (
         <PropertyCard

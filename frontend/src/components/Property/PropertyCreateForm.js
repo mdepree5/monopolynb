@@ -36,16 +36,16 @@ const PropertyCreateForm = ({closeModal}) => {
     const newProperty = await dispatch(propertyActions.createProperty(
       {image, hostId, title, numberOfBeds, price, address, city, state, zipcode}
     ))
-    // .catch(
-    //   async(res) => {
-    //     console.log('res', res);
-    //     // const data = await res.json();
-    //     // console.log('data', data);
-    //     // if(data && data.errors) setErrors(data.errors);
-    //   }
-    // )
+    .catch(
+      async(res) => {
+        console.log('res', res);
+        const data = await res.json();
+        console.log('data', data);
+        if(data && data.errors) setErrors(data.errors);
+      }
+    )
 
-    // if(newProperty || !newProperty.errors) history.push(`/properties/${newProperty.id}`);
+    if(newProperty || !newProperty.errors) history.push(`/properties/${newProperty.id}`);
 
     closeModal();
   }

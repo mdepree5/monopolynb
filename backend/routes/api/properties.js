@@ -8,13 +8,11 @@ const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3');
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 router.route('/')
-.post(
+.post(singleMulterUpload, 
   validateProperty,
-  singleMulterUpload, asyncHandler
+  asyncHandler
   (async (req, res) => {
-    // const {image, title, numberOfBeds, address, price, city, state, zipcode} = req.body;
     const {title, numberOfBeds, price, address, city, state, zipcode} = req.body;
-    // const imageUrl = await singlePublicFileUpload(image);
     const imageUrl = await singlePublicFileUpload(req.file);
     console.log('req.body', req.body);
     console.log('api-imageUrl', imageUrl);
