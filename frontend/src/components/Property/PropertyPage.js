@@ -35,7 +35,8 @@ const PropertyPage = () => {
 
   useEffect(() => window.scroll({top: 0, left: 0}));
 
-  // if(!property?.id) history.push(`/page-not-found`);
+  // if(property === null) alert('HEY') 
+  // history.push(`/page-not-found`);
   return (
     <>
     <div className='property-page centered-body'>
