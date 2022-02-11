@@ -17,7 +17,6 @@ const ReviewDetail = ({review, belongsToUser}) => (
     </li>
       </ul></li>
       <li className='review-body'>{review.content}</li>
-
   </ul>
 )
 

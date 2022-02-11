@@ -13,14 +13,18 @@ const Review = ({id, belongsToUser}) => {
   const dispatch = useDispatch();
   const {propertyId} = useParams();
 
+  // const reviews = useSelector(state => state.review.listOfReviews);
+  // const reviewData = {
+  //   rating: useSelector(state => state.review.rating),
+  //   data: useSelector(state => state.review.ratingData),
+  //   numberOfReviews: useSelector(state => state.review.numberOfReviews)
+  // };
   const reviews = useSelector(state => state.review.listOfReviews);
-  const reviewData = {
-    rating: useSelector(state => state.review.rating),
-    data: useSelector(state => state.review.ratingData),
-    numberOfReviews: useSelector(state => state.review.numberOfReviews)
-  };
 
-  console.log('reviews', reviews)
+  console.log('review-index', reviews)
+
+
+
 
   useEffect(() => {
     dispatch(getReviewsByPropertyId(propertyId));
@@ -28,8 +32,10 @@ const Review = ({id, belongsToUser}) => {
 
   return (
     <div >
-      <ReviewData reviewData={reviewData} />
+      {/* <ReviewData reviewData={reviewData} /> */}
       <ReviewList reviews={reviews}  belongsToUser={belongsToUser} />
+      {/* <ReviewData reviewData={reviewData} />
+      <ReviewList reviews={reviews}  belongsToUser={belongsToUser} /> */}
     </div>
   );
 };

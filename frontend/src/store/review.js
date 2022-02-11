@@ -109,12 +109,16 @@ const reviewReducer = (state = initialState, action) => {
       // action.reviews.contentArray.forEach(review => {
       //   reviews[review.id] = review;
       // });
+      console.log('reducer-review');
+      console.log(action.reviews);
+      console.log('reducer-review');
       return {
         // ...reviews,
         ...state,
-        numberOfReviews: action.reviews.numberOfReviews,
-        ratingData: action.reviews.ratingData,
-        listOfReviews: action.reviews.listOfReviews,
+        listOfReviews: action.reviews
+        // numberOfReviews: action.reviews.numberOfReviews,
+        // ratingData: action.reviews.ratingData,
+        // listOfReviews: action.reviews.listOfReviews,
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_REVIEW:
