@@ -9,7 +9,7 @@ import './Review.css';
 
 
 
-const Review = ({id, belongsToUser}) => {
+const Review = ({id}) => {
   const dispatch = useDispatch();
   const {propertyId} = useParams();
 
@@ -33,7 +33,7 @@ const Review = ({id, belongsToUser}) => {
   return (
     <div >
       <ReviewData reviewData={reviewData} totalReviews={reviews?.length}/>
-      <ReviewList reviews={reviews}  belongsToUser={belongsToUser} />
+      <ReviewList reviews={reviews} />
     </div>
   );
 };

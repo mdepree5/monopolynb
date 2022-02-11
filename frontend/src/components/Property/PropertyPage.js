@@ -59,7 +59,7 @@ const PropertyPage = () => {
       <div className='property-price'>{`$${property?.price} / night`}</div> */}
       
       <br />
-      <Review id={propertyId} belongsToUser={belongsToUser} />
+      <Review id={propertyId} />
       <br />
       <div className='filler-box' />
     </div>

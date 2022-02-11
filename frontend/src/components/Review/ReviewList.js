@@ -1,8 +1,19 @@
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import ReviewEditModal from './ReviewEditModal';
 import ReviewDeleteButton from './ReviewDeleteButton';
 
-const ReviewDetail = ({review, belongsToUser}) => {
+const ReviewDetail = ({review}) => {
   
+  const [belongsToUser, setBelongsToUser] = useState(false);
+  const sessionUser = useSelector(state => state.session.user);
+
+  useEffect(() => {    
+    if(sessionUser?.id === review?.guestId) setBelongsToUser(true);
+    else setBelongsToUser(false);
+  }, [sessionUser, review])
+
   const month = [
     'January', 'February', 'March', 'April',
     'May', 'June', 'July', 'August',
@@ -31,15 +42,18 @@ const ReviewDetail = ({review, belongsToUser}) => {
 )
 }
 
-const ReviewList = ({reviews, belongsToUser}) => (
+const ReviewList = ({reviews}) => {
 
-  <ul className='review-list-container'>
-    {reviews.map(review => (
-      <li key={review.id}> 
-        <ReviewDetail review={review} belongsToUser={belongsToUser}/>
-      </li>
-    ))}
-  </ul>
-)
+
+  return (
+    <ul className='review-list-container'>
+      {reviews.map(review => (
+        <li key={review.id}> 
+          <ReviewDetail review={review} />
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 export default ReviewList;
