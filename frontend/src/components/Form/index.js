@@ -21,16 +21,15 @@ export const FormInput = ({ type, name, state, setState }) => {
   const formatName = name.toLowerCase().split(' ').join('-');
 
   return (
-  <div className={`${formatName}-input form-input`}>
-    <label htmlFor={`${formatName}`} />
-    <input 
+  <ul className='form-input'>
+    <li><label htmlFor={formatName}>{name}</label></li>
+    <li><input 
       type={type || 'text'}
-      id={`${formatName}`} 
+      id={formatName} 
       value={state}
       onChange={e => setState(e.target.value)}
-      placeholder={`${name}`}
-      />
-  </div>
+      placeholder={name}/></li>
+  </ul>
   ) 
 }
 
