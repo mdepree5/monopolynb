@@ -13,7 +13,7 @@ const PropertyList = () => {
   }, [dispatch]);
 
   return (
-    <ul className='property-list-container'>
+    <ul className='explore-all-properties'>
       {
         properties.map(property => (
         <PropertyCard
