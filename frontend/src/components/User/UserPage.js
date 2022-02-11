@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProperties } from '../../store/property';
+import { getPropertiesByUserId } from '../../store/property';
 import PropertyCard from '../Property/PropertyCard';
 import {useParams} from 'react-router-dom';
 
@@ -14,17 +14,17 @@ const UserPage = () => {
 
   const properties = useSelector(state => state.property.listOfProperties);
 
-  const userProperties = properties.filter(property => {
-    console.log('property', property?.hostId === userId)
-    return property?.hostId === userId
-    });
+  // const userProperties = properties.filter(property => {
+  //   console.log('property', property?.hostId === userId)
+  //   return property?.hostId === userId
+  //   });
 
-    console.log(userId)
-    console.log('userProperties', userProperties);
+    // console.log(userId)
+    // console.log('userProperties', properties);
 
   useEffect(() => {
-    dispatch(getProperties());
-  }, [dispatch]);
+    dispatch(getPropertiesByUserId(userId));
+  }, [dispatch, userId]);
   
 
 
@@ -33,6 +33,7 @@ const UserPage = () => {
       <h2>User Page</h2>
       <div>{`Hello user ${userId}`}</div>
       <br />
+      <div>My Listings</div>
       <ul className='explore-all-properties'>
       {
         properties.map(property => (

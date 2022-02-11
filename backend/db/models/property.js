@@ -53,8 +53,8 @@ module.exports = (sequelize, DataTypes) => {
     order: [['price', 'ASC']]
   });
   
-  Property.getAllPropertiesByUserId = async (userId) => await Property.findAll({
-    where: { userId },
+  Property.getPropertiesByUserId = async (hostId) => await Property.findAll({
+    where: { hostId },
     order: [['price', 'ASC']]
   });
 

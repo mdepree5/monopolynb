@@ -5,6 +5,7 @@ import { csrfFetch } from './csrf';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 const CREATE_PROPERTY = 'property/create';
 const GET_ALL_PROPERTIES = 'property/get_all';
+const GET_ALL_PROPERTIES_BY_USER_ID = 'property/get_all_by_user_id';
 const GET_ONE_PROPERTY = 'property/get_one';
 const UPDATE_PROPERTY = 'property/update';
 const DELETE_PROPERTY = 'property/delete';
@@ -20,6 +21,12 @@ const createOneProperty = property => ({
 const getAllProperties = properties => ({
   type: GET_ALL_PROPERTIES,
   properties
+});
+
+const getAllPropertiesByUserId = (properties, userId) => ({
+  type: GET_ALL_PROPERTIES_BY_USER_ID,
+  properties,
+  userId
 });
 
 const getOneProperty = property => ({
@@ -92,7 +99,7 @@ export const getProperties = () => async (dispatch) => {
   }
 };
 
-export const getAllPropertiesByUserId = userId => async (dispatch) => {
+export const getPropertiesByUserId = userId => async (dispatch) => {
   const response = await fetch(`/api/users/${userId}/properties`, {
     method: 'GET',
     headers: { 'Content-Type': 'application/json' },
@@ -100,7 +107,7 @@ export const getAllPropertiesByUserId = userId => async (dispatch) => {
 
   if (response.ok) {
     const properties = await response.json();
-    dispatch(getAllProperties(properties));
+    dispatch(getAllPropertiesByUserId(properties, userId));
     return properties;
   }
 };
@@ -165,6 +172,13 @@ const propertyReducer = (state = initialState, action) => {
       // });
       return {
         // ...properties, //* unnecessary?
+        ...state,
+        listOfProperties: action.properties
+      };
+// todo ——————————————————————————————————————————————————————————————————————————————————
+    case GET_ALL_PROPERTIES_BY_USER_ID:
+
+      return {
         ...state,
         listOfProperties: action.properties
       };

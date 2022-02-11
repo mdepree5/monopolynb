@@ -67,7 +67,7 @@ export const getReviewsByPropertyId = propertyId => async (dispatch) => {
 
   if (response.ok) {
     const reviews = await response.json();
-    dispatch(getAllReviews(reviews));
+    dispatch(getAllReviews(reviews, propertyId));
     // return alert('HEY');
     return reviews;
   }
