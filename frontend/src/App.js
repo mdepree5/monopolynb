@@ -30,7 +30,7 @@ function App() {
         <Switch>
           <Route exact path={'/'}><Splash /></Route>
           <Route path='/users/:userId'><UserPage /></Route>
-          <Route path='/properties/'><ExplorePage /></Route>
+          <Route exact path='/properties/'><ExplorePage /></Route>
           <Route path='/properties/:propertyId'><PropertyPage /></Route>
           <Route path='/confirmDelete'><ConfirmDelete/></Route>
           <Route><PageNotFound /></Route>
