@@ -11,6 +11,25 @@
   color: white;
 }
 
+.floating-message{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+
+#splash-button-white{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  width: 200px;
+  height: 80px;
+  border-radius: 50px;
+
+}
 
 #splash-image{
   width: 70%;
@@ -41,9 +60,4 @@
     height: 85%;
     /* opacity: 80%; */
   }
-}
-
-
-.floating-message{
-  z-index: 5;
 }
