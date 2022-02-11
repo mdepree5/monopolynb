@@ -91,8 +91,20 @@ export const getProperties = () => async (dispatch) => {
     return properties;
   }
 };
-// ???? ——————————————————————————————————————————————————————————————————————————————————
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
+
+export const getAllPropertiesByUserId = userId => async (dispatch) => {
+  const response = await fetch(`/api/users/${userId}/properties`, {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  if (response.ok) {
+    const properties = await response.json();
+    dispatch(getAllProperties(properties));
+    return properties;
+  }
+};
+
 export const getProperty = id => async (dispatch) => {
   const response = await fetch(`/api/properties/${id}`);
 
@@ -102,8 +114,6 @@ export const getProperty = id => async (dispatch) => {
     return property;
   }
 };
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-// ???? ——————————————————————————————————————————————————————————————————————————————————
 
 export const updateProperty = property => async (dispatch) => {
   const response = await csrfFetch(`/api/properties/${property.id}`, {
@@ -159,9 +169,6 @@ const propertyReducer = (state = initialState, action) => {
         listOfProperties: action.properties
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
-
-// ???? ——————————————————————————————————————————————————————————————————————————————————
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
     case GET_ONE_PROPERTY:
       return {
         ...state,
@@ -171,9 +178,6 @@ const propertyReducer = (state = initialState, action) => {
           ...action.property
         }
       };
-// !!!! ——————————————————————————————————————————————————————————————————————————————————
-// ???? ——————————————————————————————————————————————————————————————————————————————————
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_PROPERTY:
       return {

@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       references: { model: 'Users'},
     },
     title: {
-      type: DataTypes.STRING,
+    type: DataTypes.STRING,
       allowNull: false,
       validate: {len: [1, 100]}
     },
@@ -52,26 +52,13 @@ module.exports = (sequelize, DataTypes) => {
   Property.getAllProperties = async () => await Property.findAll({
     order: [['price', 'ASC']]
   });
-
-
-
-
-
-  // ???? ——————————————————————————————————————————————————————————————————————————————————
-  // !!!! ——————————————————————————————————————————————————————————————————————————————————
-
-
-
+  
+  Property.getAllPropertiesByUserId = async (userId) => await Property.findAll({
+    where: { userId },
+    order: [['price', 'ASC']]
+  });
 
   Property.getPropertyById = async (id) => await Property.findByPk(id);
-
-
-
-
-  // !!!! ——————————————————————————————————————————————————————————————————————————————————
-  // ???? ——————————————————————————————————————————————————————————————————————————————————
-  
-
 
   Property.updateProperty = async (details) => {
     const id = details.id; 

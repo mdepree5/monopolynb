@@ -1,3 +1,59 @@
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                              Date Rendering
+// todo ——————————————————————————————————————————————————————————————————————————————————
+
+router.route('/:id(\\d+)')
+.get(asyncHandler(async(req, res) => {
+  const userId = parseInt(req.params.id, 10);
+  const queryData = await db.User.findByPk(userId, {
+    include: {
+      model: db.Post,
+      as: 'posts',
+      order: [['createdAt', 'DESC']],
+      include: [{
+        model: db.PostLike,
+        as: 'postLikes',
+      }, {
+        model: db.Comment,
+        as: 'comments',
+      }],
+    }
+  });
+
+  const posts = [];
+
+  for(const post of queryData.posts){
+    const month = [
+      'Jan', 'Feb', 'Mar', 'Apr',
+      'May', 'Jun', 'Jul', 'Aug',
+      'Sep', 'Oct', 'Nov', 'Dec'
+    ][post.createdAt.getMonth()];
+    const day = post.createdAt.getDay() + 1;
+    const year = post.createdAt.getFullYear();
+
+    posts.push({
+      date: `${month} ${day}, ${year}`,
+      postId: post.id,
+      title: post.title,
+      content: post.content,
+      likesCount: post.postLikes.length,
+      commentsCount: post.comments.length,
+    });
+  };
+
+  res.render('user-page', {
+    title: `${queryData.firstName} ${queryData.lastName}${queryData.lastName.endsWith('s') ? '\'' : '\'s'} Page`,
+    firstName: queryData.firstName,
+    lastName: queryData.lastName,
+    userName: queryData.userName,
+    userId,
+    posts,
+    theUserHasWrittenAPost: queryData.posts.length
+  })
+
+}));
+
+
 
 
 const array1 = [
@@ -43,19 +99,36 @@ const array1 = [
 ]
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                              Filter by UserId
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// const array2 = [1, 2, 3,];
+// const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
+
+// const data = {
+//   rating: avg(array1, 'rating'),
+//   communication: avg(array1, 'communication'),
+//   checkIn: avg(array1, 'checkIn'),
+//   cleanliness: avg(array1, 'cleanliness'),
+// }
+
+// console.log({...data, array2});
+
+// todo ——————————————————————————————————————————————————————————————————————————————————
+
+// todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                              The golden child
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const array2 = [1, 2, 3,];
-const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
+// const array2 = [1, 2, 3,];
+// const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
 
-const data = {
-  rating: avg(array1, 'rating'),
-  communication: avg(array1, 'communication'),
-  checkIn: avg(array1, 'checkIn'),
-  cleanliness: avg(array1, 'cleanliness'),
-}
+// const data = {
+//   rating: avg(array1, 'rating'),
+//   communication: avg(array1, 'communication'),
+//   checkIn: avg(array1, 'checkIn'),
+//   cleanliness: avg(array1, 'cleanliness'),
+// }
 
-console.log({...data, array2});
+// console.log({...data, array2});
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
