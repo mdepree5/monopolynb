@@ -1,6 +1,6 @@
 // const reviewDate = date => `${date.toString().split(' ')[1]} ${date.toString().split(' ')[3]}`;
 
-// import ReviewEditModal from './ReviewEditModal';
+import ReviewEditModal from './ReviewEditModal';
 import ReviewDeleteButton from './ReviewDeleteButton';
 
 const ReviewDetail = ({review, belongsToUser}) => {
@@ -17,7 +17,14 @@ const ReviewDetail = ({review, belongsToUser}) => {
       <li>
         <ul className='review-nav'>
           <li>{`${month} ${year}`}</li>
-          <li>{belongsToUser && (<ReviewDeleteButton reviewId={review.id} />)}</li>
+          <li>{belongsToUser && 
+          (
+            <>
+              <ReviewEditModal review={review}/>
+              <ReviewDeleteButton reviewId={review.id} />
+            </>
+            )
+          }</li>
         </ul>
       </li>
       <li className='review-body'>{review.content}</li>

@@ -9,14 +9,10 @@ const ReviewEditForm = ({review, closeModal}) => {
   const dispatch = useDispatch();
 
   const [content, setContent] = useState(review?.content);
-  const [rating, setRating] = useState(5);
-  const [communication, setCommunication] = useState(5);
-  const [checkIn, setCheckIn] = useState(5);
-  const [cleanliness, setCleanliness] = useState(5);
-  // const [rating, setRating] = useState(review?.rating);
-  // const [communication, setCommunication] = useState(review?.communication);
-  // const [checkIn, setCheckIn] = useState(review?.checkIn);
-  // const [cleanliness, setCleanliness] = useState(review?.cleanliness);
+  const [rating, setRating] = useState(review?.rating);
+  const [communication, setCommunication] = useState(review?.communication);
+  const [checkIn, setCheckIn] = useState(review?.checkIn);
+  const [cleanliness, setCleanliness] = useState(review?.cleanliness);
   const [errors, setErrors] = useState([]);
 
   const guestId = useSelector(state => state.session.user.id);
