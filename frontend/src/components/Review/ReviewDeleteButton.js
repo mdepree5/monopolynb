@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 
 
 const ReviewDeleteButton = ({reviewId}) => {
+  console.log('reviewId', reviewId);
+
   const dispatch = useDispatch();
   const history = useHistory();
 

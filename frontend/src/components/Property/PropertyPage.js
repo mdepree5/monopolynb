@@ -23,8 +23,6 @@ const PropertyPage = () => {
   const property = useSelector(state => state.property[propertyId]);
   const sessionUser = useSelector(state => state.session.user);
 
-  if(!property) history.push(`/page-not-found`);
-
   useEffect(() => {    
     if(sessionUser?.id === property?.hostId) setBelongsToUser(true);
     else setBelongsToUser(false);
@@ -37,6 +35,7 @@ const PropertyPage = () => {
 
   useEffect(() => window.scroll({top: 0, left: 0}));
 
+  // if(!property?.id) history.push(`/page-not-found`);
   return (
     <>
     <div className='property-page centered-body'>
