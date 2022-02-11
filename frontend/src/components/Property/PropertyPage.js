@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {NavLink, useParams} from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
 // import Review from '../Review';
@@ -35,28 +35,43 @@ const PropertyPage = () => {
   return (
     <>
     <div className='property-page centered-body'>
-      <div>Property Page</div>
-        <div>
+      <div className='property-info'>
+        <h3 className='property-title'>{property?.title}</h3>
+        <div className='property-location'>{`${property?.city}, ${property?.state}`}</div>
+      
+      <ul>
         {belongsToUser &&( 
           <>
-            <PropertyEditModal property={property} />
-            <PropertyDeleteButton propertyId={propertyId} />
+          <li><PropertyEditModal property={property} /></li>
+          <li><PropertyDeleteButton propertyId={propertyId} /></li>
           </>)
         }
-        </div>
-        
-      <div>
-        <ReviewFormModal/>
-      </div>
-      <br />
-      <li>
-        <div className='property-info'>
-          <h3 className='property-title'>{property?.title}</h3>
-          <div className='property-location'>{`${property?.city}, ${property?.state}`}</div>
-          {/* <ReviewData reviewData={reviewData} /> */}
-          <ReviewList id={propertyId} />
+      </ul>
+    </div>
+      
+      <ReviewFormModal/>
 
-          {/* <div className='img-container'>
+      
+      
+      
+      <br />
+      <ReviewList id={propertyId} belongsToUser={belongsToUser} />
+      <br />
+      <div className='filler-box' />
+    </div>
+    {/* <Review /> */}
+    </>
+  );
+}
+
+
+
+export default PropertyPage;
+
+
+
+/* 
+<div className='img-container'>
             <div className='img-placeholder-main'>IMG</div>
             <div className='img-placeholder'>IMG</div>
             <div className='img-placeholder'>IMG</div>
@@ -73,24 +88,5 @@ const PropertyPage = () => {
             <div>Enhanced Clean</div>
             <div>Self check-in</div>
             <div>Free cancellation before Mar 25</div>
-          </div> */}
-
-          <div className='filler-box' />
-        </div>
-      </li>
-      <br />
-    </div>
-    {/* <Review /> */}
-    </>
-  );
-}
-
-
-
-export default PropertyPage;
-
-
-
-
-
-
+          </div>
+*/

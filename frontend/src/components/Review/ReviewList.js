@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getReviewsByPropertyId } from '../../store/review';
 
 import ReviewData from './ReviewData';
-// import ReviewDetail from './ReviewDetail';
+import ReviewDetail from './ReviewDetail';
 import './Review.css';
 
 
 
-const ReviewList = ({id}) => {
+const ReviewList = ({id, belongsToUser}) => {
 
   const dispatch = useDispatch();
 
@@ -35,6 +35,7 @@ const ReviewList = ({id}) => {
     <div >
       <ReviewData reviewData={reviewData} />
 
+
       <ul className='review-list-container'>
         {
           reviews.map(review => (
@@ -42,14 +43,13 @@ const ReviewList = ({id}) => {
           ))
         }
 
-        {/* {reviews.map(review => (
+        {reviews.map(review => (
           <ReviewDetail
             key={review.id}
-            id={`review-${review.id}`}
-            title={review.title}
             review={review}
+            belongsToUser={belongsToUser}
           />
-        ))} */}
+        ))}
       </ul>
     </div>
   );
