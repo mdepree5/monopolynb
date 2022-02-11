@@ -15,15 +15,14 @@ const ReviewCreateForm = ({review, closeModal}) => {
   const [cleanliness, setCleanliness] = useState(review?.cleanliness);
   const [errors, setErrors] = useState([]);
 
-  // const guestId = useSelector(state => state.session.user.id);
-  // const {propertyId} = useParams();
-  // {guestId, propertyId,}
+  const guestId = useSelector(state => state.session.user.id);
+  const {propertyId} = useParams();
 
   const handleSubmit = async(event) => {
     event.preventDefault();
 
     const updatedReview = await dispatch(reviewActions.updateReview(
-      {...review, content, rating, communication, checkIn, cleanliness}
+      {...review, guestId, propertyId, content, rating, communication, checkIn, cleanliness}
     )).catch(
       async(res) => {
         const data = await res.json();

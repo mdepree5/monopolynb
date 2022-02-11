@@ -38,7 +38,6 @@ const PropertyPage = () => {
       <div className='property-info'>
         <h3 className='property-title'>{property?.title}</h3>
         <div className='property-location'>{`${property?.city}, ${property?.state}`}</div>
-      
       <ul>
         {belongsToUser &&( 
           <>
@@ -67,6 +66,7 @@ const PropertyPage = () => {
 
 
 export default PropertyPage;
+
 
 
 

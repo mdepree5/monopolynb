@@ -96,6 +96,7 @@ export const getProperties = () => async (dispatch) => {
     // return alert('HEY');
     return properties;
   }
+  return response;
 };
 
 export const getPropertiesByUserId = userId => async (dispatch) => {
@@ -109,6 +110,7 @@ export const getPropertiesByUserId = userId => async (dispatch) => {
     dispatch(getAllPropertiesByUserId(properties, userId));
     return properties;
   }
+  return response;
 };
 
 export const getProperty = id => async (dispatch) => {
@@ -119,6 +121,7 @@ export const getProperty = id => async (dispatch) => {
     dispatch(getOneProperty(property));
     return property;
   }
+  return response;
 };
 
 export const updateProperty = property => async (dispatch) => {
@@ -133,6 +136,7 @@ export const updateProperty = property => async (dispatch) => {
     dispatch(updateOneProperty(updatedProperty));
     return updatedProperty;
   }
+  return response;
 };
 
 export const deleteProperty = propertyId => async (dispatch) => {
@@ -146,6 +150,7 @@ export const deleteProperty = propertyId => async (dispatch) => {
     dispatch(deleteOneProperty(propertyId));
     return {propertyId, message};
   }
+  return response;
 };
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
