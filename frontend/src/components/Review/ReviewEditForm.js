@@ -15,14 +15,11 @@ const ReviewEditForm = ({review, closeModal}) => {
   const [cleanliness, setCleanliness] = useState(review?.cleanliness);
   const [errors, setErrors] = useState([]);
 
-  const guestId = useSelector(state => state.session.user.id);
-  const {propertyId} = useParams();
-
   const handleSubmit = async(event) => {
     event.preventDefault();
 
     const updatedReview = await dispatch(reviewActions.updateReview(
-      {guestId, propertyId, content, rating, communication, checkIn, cleanliness}
+      {...review, content, rating, communication, checkIn, cleanliness}
     )).catch(
       async(res) => {
         const data = await res.json();
@@ -30,7 +27,6 @@ const ReviewEditForm = ({review, closeModal}) => {
         if(data && data.errors) setErrors(data.errors);
       }
     )
-    console.log('review-form-updated-review', updatedReview);
 
     if(updatedReview.errors) setErrors(updatedReview.errors); 
 
