@@ -54,9 +54,9 @@ function Navigation({ isLoaded }){
       <ul id='mid-nav'>
         <li>
         {navStatus === 'nav-top' ? (
-          <div>Good</div>
+          <NavLink exact to="/properties">Explore</NavLink>
         ) : (
-          <div>Morning</div>
+          <NavLink exact to="/properties">Explore</NavLink>
         )}
         </li>
       </ul>
