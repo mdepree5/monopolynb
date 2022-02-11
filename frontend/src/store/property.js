@@ -1,16 +1,11 @@
 import { csrfFetch } from './csrf';
 // todo ——————————————————————————————————————————————————————————————————————————————————
-// todo                                 Variables
-// todo ——————————————————————————————————————————————————————————————————————————————————
 const CREATE_PROPERTY = 'property/create';
 const GET_ALL_PROPERTIES = 'property/get_all';
 const GET_ALL_PROPERTIES_BY_USER_ID = 'property/get_all_by_user_id';
 const GET_ONE_PROPERTY = 'property/get_one';
 const UPDATE_PROPERTY = 'property/update';
 const DELETE_PROPERTY = 'property/delete';
-
-// todo ——————————————————————————————————————————————————————————————————————————————————
-// todo                              Action Creators
 // todo ——————————————————————————————————————————————————————————————————————————————————
 const createOneProperty = property => ({
   type: CREATE_PROPERTY,
@@ -42,7 +37,6 @@ const deleteOneProperty = propertyId => ({
   type: DELETE_PROPERTY,
   propertyId
 });
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -61,12 +55,9 @@ export const createProperty = property => async (dispatch) => {
     for( const key of formData.entries()){
       console.log(`FORM DATA: ${key[0]}, ${key[1]}`)
     }
-
-
   // const formData = {
   //   image: image || null, title, numberOfBeds, price, city, state, zipcode
   // }
-  
   console.log('thunk-formData', formData);
 
   const response = await csrfFetch(`/api/properties`, {
@@ -146,13 +137,12 @@ export const deleteProperty = propertyId => async (dispatch) => {
   });
 
   if (response.ok) {
-    const {propertyId, message} = await response.json();
+    const propertyId = await response.json();
     dispatch(deleteOneProperty(propertyId));
-    return {propertyId, message};
+    return propertyId;
   }
   return response;
 };
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -175,7 +165,7 @@ const propertyReducer = (state = initialState, action) => {
       //   properties[property.id] = property;
       // });
       return {
-        // ...properties, //* unnecessary?
+        // ...properties, 
         ...state,
         listOfProperties: action.properties
       };

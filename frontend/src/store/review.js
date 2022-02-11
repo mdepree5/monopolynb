@@ -1,34 +1,21 @@
 import { csrfFetch } from './csrf';
 // todo ——————————————————————————————————————————————————————————————————————————————————
-// todo                                 Variables
-// todo ——————————————————————————————————————————————————————————————————————————————————
 export const CREATE_REVIEW = 'review/create';
 export const GET_ALL_REVIEWS = 'review/get_all';
 export const UPDATE_REVIEW = 'review/update';
 export const DELETE_REVIEW = 'review/delete';
-
-// todo ——————————————————————————————————————————————————————————————————————————————————
-// todo                              Action Creators
 // todo ——————————————————————————————————————————————————————————————————————————————————
 const createOneReview = (review, propertyId) => ({
   type: CREATE_REVIEW,
   review,
   propertyId
 });
-// const createOneReview = review => ({
-//   type: CREATE_REVIEW,
-//   review
-// });
 
 const getAllReviews = (reviews, propertyId) => ({
   type: GET_ALL_REVIEWS,
   reviews,
   propertyId
 });
-// const getAllReviews = reviews => ({
-//   type: GET_ALL_REVIEWS,
-//   reviews,
-// });
 
 const updateOneReview = review => ({
   type: UPDATE_REVIEW,
@@ -39,7 +26,6 @@ const deleteOneReview = reviewId => ({
   type: DELETE_REVIEW,
   reviewId
 });
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -90,7 +76,7 @@ export const updateReview = review => async (dispatch) => {
 };
 
 export const deleteReview = reviewId => async (dispatch) => {
-  const response = await csrfFetch(`/api/reviews/${reviewId}`, {
+  const response = await fetch(`/api/reviews/${reviewId}`, {
     method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -102,7 +88,6 @@ export const deleteReview = reviewId => async (dispatch) => {
   }
   return response;
 };
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -118,16 +103,15 @@ const reviewReducer = (state = initialState, action) => {
           ...action.review
         }
       };
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS:
-      // const reviews = {};  //! Do I need to create shallow
+      // const reviews = {}; 
       // action.reviews.contentArray.forEach(review => {
       //   reviews[review.id] = review;
       // });
       return {
         // ...reviews,
-        ...state, //! OR is it ok to pass in directly here?
+        ...state,
         numberOfReviews: action.reviews.numberOfReviews,
         ratingData: action.reviews.ratingData,
         listOfReviews: action.reviews.listOfReviews,
