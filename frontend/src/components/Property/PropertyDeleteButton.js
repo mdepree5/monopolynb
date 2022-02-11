@@ -12,7 +12,7 @@ const PropertyDeleteButton = ({propertyId}) => {
 
     const deletedProperty = await dispatch(propertyActions.deleteProperty(propertyId));
 
-    console.log('deletedProperty:', deletedProperty);
+    console.log('delete-button', deletedProperty);
 
     alert('deleted');
     history.push(`/confirmDelete`);

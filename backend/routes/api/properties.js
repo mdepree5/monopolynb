@@ -33,8 +33,9 @@ router.route('/:propertyId')
 .delete(asyncHandler
   (async (req, res) => {
     const propertyId = await Property.deleteProperty(req.params.propertyId);
-    const message = await Review.deleteReviewsByPropertyId(req.params.propertyId);
-    return res.json({propertyId, message});
+    // const message = await Review.deleteReviewsByPropertyId(req.params.propertyId);
+    // return res.json({propertyId, message});
+    return res.json(propertyId);
   })
 )
 
