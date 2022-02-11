@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Images = sequelize.define('Images', {
+  const Image = sequelize.define('Image', {
     propertyId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -16,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
   // todo ————————————————————————————————————————————————————————————————————————————————
   // todo                               Associations
   // todo ————————————————————————————————————————————————————————————————————————————————
-  Images.associate = function(models) {
+  Image.associate = function(models) {
     Review.belongsTo(models.Property, {
       as: 'properties',
       foreignKey: 'propertyId'
     });
   };
-  return Images;
+  return Image;
 };
