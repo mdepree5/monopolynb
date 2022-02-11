@@ -1,5 +1,6 @@
 // const reviewDate = date => `${date.toString().split(' ')[1]} ${date.toString().split(' ')[3]}`;
 
+import ReviewDeleteButton from './ReviewDeleteButton';
 
 const ReviewDetail = ({review, belongsToUser}) => (
   <ul className='review-detail'>
