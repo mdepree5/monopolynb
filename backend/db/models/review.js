@@ -101,12 +101,12 @@ module.exports = (sequelize, DataTypes) => {
     return formerId;
   };
 
-  Review.deleteReviewsByPropertyId = async (propertyId) => {
-    const reviews = await Review.findAll({where: {propertyId}});
-    reviews.forEach(review => Review.destroy(review));
+  // Review.deleteReviewsByPropertyId = async (propertyId) => {
+  //   const reviews = await Review.findAll({where: {propertyId}});
+  //   reviews.forEach(review => Review.destroy(review));
     
-    return 'All reviews have been deleted';
-  }
+  //   return 'All reviews have been deleted';
+  // }
 
   // todo ————————————————————————————————————————————————————————————————————————————————
   // todo                               Review Associations

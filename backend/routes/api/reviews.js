@@ -11,7 +11,6 @@ router.route('/:reviewId')
   (async (req, res) => res.json(await Review.updateReview(req.body))))
 .delete(asyncHandler
   (async (req, res) => {
-    console.log('debugger-req', req);
     res.json(await Review.deleteReview(req.params.reviewId))
   })
 )

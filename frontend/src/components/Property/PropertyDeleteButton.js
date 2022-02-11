@@ -14,7 +14,7 @@ const PropertyDeleteButton = ({propertyId}) => {
 
     console.log('delete-button', deletedProperty);
 
-    alert('deleted');
+    // alert('deleted');
     history.push(`/confirmDelete`);
     return;
   }
