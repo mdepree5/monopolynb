@@ -7,7 +7,6 @@ import {Form, FormInput} from '../Form';
 
 const ReviewCreateForm = ({review, closeModal}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const [content, setContent] = useState(review?.content);
   const [rating, setRating] = useState(review?.rating);
@@ -16,14 +15,15 @@ const ReviewCreateForm = ({review, closeModal}) => {
   const [cleanliness, setCleanliness] = useState(review?.cleanliness);
   const [errors, setErrors] = useState([]);
 
-  const guestId = useSelector(state => state.session.user.id);
-  const {propertyId} = useParams();
+  // const guestId = useSelector(state => state.session.user.id);
+  // const {propertyId} = useParams();
+  // {guestId, propertyId,}
 
   const handleSubmit = async(event) => {
     event.preventDefault();
 
-    const newReview = await dispatch(reviewActions.createReview(
-      {...review, guestId, propertyId, content, rating, communication, checkIn, cleanliness}
+    const updatedReview = await dispatch(reviewActions.updateReview(
+      {...review, content, rating, communication, checkIn, cleanliness}
     )).catch(
       async(res) => {
         const data = await res.json();
@@ -31,15 +31,23 @@ const ReviewCreateForm = ({review, closeModal}) => {
         if(data && data.errors) setErrors(data.errors);
       }
     )
+    console.log('review-form-updated-review', updatedReview);
 
-    if(newReview || !newReview.errors) history.push(`/properties/${newReview.id}`);
+    if(updatedReview.errors) setErrors(updatedReview.errors); 
 
-    closeModal();
+    return closeModal();
   }
 
   return (
     <Form onSub={handleSubmit} errors={errors} buttonName={'Edit Your Review'} >
-      <FormInput name='Title' state={content} setState={setContent} />
+        <ul>
+        <li><label htmlFor='content'>Content</label></li>
+        <li><textarea 
+          id='content'
+          value={content}
+          onChange={e => setContent(e.target.value)}
+          placeholder='Content'/></li>
+      </ul>
       <FormInput name='Rating' state={rating} setState={setRating} />
       <FormInput name='Communication' state={communication} setState={setCommunication} />
       <FormInput name='Check In' state={checkIn} setState={setCheckIn} />

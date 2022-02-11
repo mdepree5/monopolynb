@@ -31,10 +31,10 @@ const PropertyEditForm = ({property, closeModal}) => {
       }
     )
 
-    console.log('debugger-property-form-updated-property');
-    console.log(updatedProperty);
+    // console.log('property-form-updated-property');
+    // console.log(updatedProperty);
 
-    if(updatedProperty.errors) setErrors(updatedProperty.errors); //* Is this the way?
+    if(updatedProperty.errors) setErrors(updatedProperty.errors); 
     
     return closeModal();
   }
@@ -53,12 +53,3 @@ const PropertyEditForm = ({property, closeModal}) => {
 };
 
 export default PropertyEditForm;
-
-// .then(
-//   async (res) => {
-//     console.log('debugger-property-form-handle-submit');
-//     console.log('res', res);
-//     const data = await res.json();
-//     if(data && data.errors) setErrors(data.errors);
-//   }
-// )
