@@ -34,7 +34,6 @@ const ReviewEditForm = ({review, closeModal}) => {
     
     history.push(`/properties/${propertyId}`);
     return closeModal();
-    // return closeModal();
   }
 
   return (

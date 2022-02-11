@@ -11,8 +11,7 @@ function ReviewFormModal() {
       e.stopPropagation();
       setShowModal(true)
       }
-      }>Create Review</button>
-      {/* Tell us about your stay */}
+      }>Tell us about your stay</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <ReviewCreateForm closeModal={() => setShowModal(false)}/>

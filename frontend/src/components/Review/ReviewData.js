@@ -7,15 +7,28 @@ const ReviewData = ({reviewData, totalReviews}) => {
   const ReviewDataLine = ({datum}) => (
     <ul className='review-data-line' >
       <li>{datum.name}</li>
-      <li><Meter rating={datum.value}/></li>
-      <li>{datum.value}</li>
+      {datum.value ? (
+      <>
+        <li><Meter rating={datum.value}/></li>
+        <li>{datum.value}</li>
+      </>
+      ) : (
+      <li>... no reviews yet!</li>
+      )}
+      
     </ul>
   );
 
   const ReviewSummary = ({reviewData}) => (
     <ul>
-      <li><i className='review-star fas fa-star'/></li>
-      <li>{`${reviewData[0]?.value} · ${totalReviews} reviews`} </li>
+      {reviewData[0]?.value ? (
+        <>
+          <li><i className='review-star fas fa-star'/></li>
+          <li>{`${reviewData[0]?.value} · ${totalReviews} reviews`} </li>
+        </>
+      ) : (
+        <li>{`${totalReviews} reviews`}</li>
+      )}
     </ul>
   )
 
