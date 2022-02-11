@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import {useHistory} from 'react-router-dom';
 import { useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
@@ -14,11 +15,15 @@ import './Property.css';
 
 const PropertyPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  
   const {propertyId} = useParams();
   const [belongsToUser, setBelongsToUser] = useState(false);
 
   const property = useSelector(state => state.property[propertyId]);
   const sessionUser = useSelector(state => state.session.user);
+
+  if(!property) history.push(`/page-not-found`);
 
   useEffect(() => {    
     if(sessionUser?.id === property?.hostId) setBelongsToUser(true);

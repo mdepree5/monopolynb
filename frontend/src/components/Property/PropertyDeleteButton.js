@@ -7,9 +7,6 @@ const PropertyDeleteButton = ({propertyId}) => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  // console.log('debugger-delete-button-component');
-  // console.log('propertyId', propertyId);
-
   const handleDelete = async(event) => {
     event.preventDefault();
 
@@ -19,6 +16,7 @@ const PropertyDeleteButton = ({propertyId}) => {
 
     alert('deleted');
     history.push(`/confirmDelete`);
+    return;
   }
 
   return (

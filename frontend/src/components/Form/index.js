@@ -28,7 +28,10 @@ export const FormInput = ({ type, name, state, setState }) => {
       id={formatName} 
       value={state}
       onChange={e => setState(e.target.value)}
-      placeholder={name}/></li>
+      placeholder={name}
+      required={false}
+      /></li>
+      
   </ul>
   ) 
 }

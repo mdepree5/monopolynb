@@ -83,7 +83,6 @@ module.exports = (sequelize, DataTypes) => {
   Review.updateReview = async (details) => {
     const id = details.id;
     delete details.id;
-  
     await Review.update(details, {
       where: { id },
       returning: true,

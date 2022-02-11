@@ -11,7 +11,7 @@ const ReviewDetail = ({review, belongsToUser}) => (
       {belongsToUser &&( 
         <>
           <ReviewEditModal review={review} />
-          <ReviewDeleteButton reviewId={review.Id} />
+          <ReviewDeleteButton reviewId={review.id} />
         </>)
       }
     </li>

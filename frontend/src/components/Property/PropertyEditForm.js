@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import * as propertyActions from "../../store/property";
 import { useDispatch, useSelector } from "react-redux";
 import {Form, FormInput} from '../Form';
@@ -41,13 +41,13 @@ const PropertyEditForm = ({property, closeModal}) => {
 
   return (
     <Form onSub={handleSubmit} errors={errors} buttonName={'Edit Your Property!'} >
-      <FormInput name='Title' state={title} setState={setTitle} required={false} />
-      <FormInput name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} required={false} />
-      <FormInput name='Price' state={price} setState={setPrice} required={false} />
-      <FormInput name='Address' state={address} setState={setAddress} required={false} />
-      <FormInput name='City' state={city} setState={setCity} required={false} />
-      <FormInput name='State' state={state} setState={setState} required={false} />
-      <FormInput name='Zipcode' state={zipcode} setState={setZipcode} required={false} />
+      <FormInput name='Title' state={title} setState={setTitle} />
+      <FormInput name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
+      <FormInput name='Price' state={price} setState={setPrice} />
+      <FormInput name='Address' state={address} setState={setAddress} />
+      <FormInput name='City' state={city} setState={setCity} />
+      <FormInput name='State' state={state} setState={setState} />
+      <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
     </Form>
   )
 };
