@@ -1,5 +1,4 @@
 'use strict';
-
 const {User} = require('./user')
 
 module.exports = (sequelize, DataTypes) => {
@@ -52,10 +51,19 @@ module.exports = (sequelize, DataTypes) => {
   Review.createReview = async (reqData) => await Review.create(reqData);
   
   Review.getReviewsByPropertyId = async (propertyId) => {
-    const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
-
+    
     const reviewContentOnly = await Review.scope('reviewContentOnly')
-      .findAll({where: { propertyId }, order: [['createdAt', 'DESC']] });
+      .findAll({
+        where: { propertyId }, order: [['createdAt', 'DESC']],
+        // include: [{
+        //   model: User,
+        //   as: 'users'}]
+        // include: {
+        //   model: User,
+        //   as: 'users'}
+      });
+
+      const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
 
     const reviewDataOnly = await Review.scope('reviewDataOnly')
       .findAll({where: {propertyId}});
