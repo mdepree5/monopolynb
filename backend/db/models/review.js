@@ -52,9 +52,10 @@ module.exports = (sequelize, DataTypes) => {
   
   Review.getReviewsByPropertyId = async (propertyId) => {
     
-    const reviewContentOnly = await Review.scope('reviewContentOnly')
-      .findAll({
+    // const reviewContentOnly = await Review.scope('reviewContentOnly')
+    const reviewContentOnly = await Review.findAll({
         where: { propertyId }, include: User, order: [['createdAt', 'DESC']],
+        // where: { propertyId }, order: [['createdAt', 'DESC']],
         // include: [{
         //   model: User,
         //   as: 'users'}]

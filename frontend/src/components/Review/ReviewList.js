@@ -33,9 +33,3 @@ const ReviewList = ({reviews, belongsToUser}) => (
 )
 
 export default ReviewList;
-
-
-
-/* 
-
-*/
