@@ -1,24 +1,22 @@
-// const reviewDate = date => `${date.toString().split(' ')[1]} ${date.toString().split(' ')[3]}`;
+
 
 // import ReviewEditModal from './ReviewEditModal';
 import ReviewDeleteButton from './ReviewDeleteButton';
 
-const ReviewDetail = ({review, belongsToUser}) => (
+const ReviewDetail = ({review, belongsToUser}) => {
+  const date = review.createdAt
+  return (
   <ul className='review-detail'>
-      <li><ul className='review-nav'>
-        <li>User2 January 23</li>
-        <li className='review-edit-delete'>
-      {belongsToUser &&( 
-        <>
-          {/* <ReviewEditModal review={review} /> */}
-          <ReviewDeleteButton reviewId={review.id} />
-        </>)
-      }
-    </li>
-      </ul></li>
+      <li>
+        <ul className='review-nav'>
+          <li>{date}</li>
+          <li>{belongsToUser && (<ReviewDeleteButton reviewId={review.id} />)}</li>
+        </ul>
+      </li>
       <li className='review-body'>{review.content}</li>
   </ul>
 )
+}
 
 const ReviewList = ({reviews, belongsToUser}) => (
 
