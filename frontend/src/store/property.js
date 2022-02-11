@@ -40,31 +40,45 @@ const deleteOneProperty = propertyId => ({
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
-export const createProperty = property => async (dispatch) => {
-  const { image, title, numberOfBeds, price,
-    city, state, zipcode } = property;
-    const formData = new FormData();
+// export const createProperty = property => async (dispatch) => {
+//   const { image, title, numberOfBeds, price,
+//     city, state, zipcode } = property;
+//     const formData = new FormData();
   
-    formData.append("title", title);
-    formData.append("numberOfBeds", numberOfBeds);
-    formData.append("price", price);
-    formData.append("city", city);
-    formData.append("state", state);
-    formData.append("zipcode", zipcode);
-    if (image) formData.append("image", image);
-    for( const key of formData.entries()){
-      console.log(`FORM DATA: ${key[0]}, ${key[1]}`)
-    }
-  // const formData = {
-  //   image: image || null, title, numberOfBeds, price, city, state, zipcode
-  // }
-  console.log('thunk-formData', formData);
+//     formData.append("title", title);
+//     formData.append("numberOfBeds", numberOfBeds);
+//     formData.append("price", price);
+//     formData.append("city", city);
+//     formData.append("state", state);
+//     formData.append("zipcode", zipcode);
+//     if (image) formData.append("image", image);
+//     for( const key of formData.entries()){
+//       console.log(`FORM DATA: ${key[0]}, ${key[1]}`)
+//     }
+//   // const formData = {
+//   //   image: image || null, title, numberOfBeds, price, city, state, zipcode
+//   // }
+//   console.log('thunk-formData', formData);
 
+//   const response = await csrfFetch(`/api/properties`, {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'multipart/form-data' },
+//     body: formData
+//     // body: JSON.stringify(property)
+//   });
+
+//   if (response.ok) {
+//     const newProperty = await response.json();
+//     dispatch(createOneProperty(newProperty));
+//     return newProperty;
+//   }
+//   return response;
+// };
+export const createProperty = property => async (dispatch) => {
   const response = await csrfFetch(`/api/properties`, {
     method: 'POST',
-    headers: { 'Content-Type': 'multipart/form-data' },
-    body: formData
-    // body: JSON.stringify(property)
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(property)
   });
 
   if (response.ok) {

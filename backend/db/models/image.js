@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   // todo                               Associations
   // todo ————————————————————————————————————————————————————————————————————————————————
   Image.associate = function(models) {
-    Review.belongsTo(models.Property, {
+    Image.belongsTo(models.Property, {
       as: 'properties',
       foreignKey: 'propertyId'
     });
