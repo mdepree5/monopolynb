@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import {useHistory} from 'react-router-dom';
-import { useParams} from 'react-router-dom';
+import {useHistory, NavLink, useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
 // import Review from '../Review';
@@ -52,11 +51,12 @@ const PropertyPage = () => {
         }
       </ul>
     </div>
-      
+
       <ReviewFormModal/>
 
-      
-      
+      {/* <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>Host</NavLink></div>
+      <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
+      <div className='property-price'>{`$${property?.price} / night`}</div> */}
       
       <br />
       <Review id={propertyId} belongsToUser={belongsToUser} />
@@ -82,11 +82,7 @@ export default PropertyPage;
             <div className='img-placeholder'>IMG</div>
             <div className='img-placeholder'>IMG</div>
           </div>
-          <div className='property-host'> 3 quarter portion hosted by </div>
-          <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>Host</NavLink></div>
-          <div className='property-description'>Description: {property?.description}</div>
-          <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
-          <div className='property-price'>{`$${property?.price} / night`}</div>
+
 
           <div className='mainDetails'>
             <div>Entire Home</div>
