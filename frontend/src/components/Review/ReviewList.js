@@ -1,9 +1,8 @@
-// const reviewDate = date => `${date.toString().split(' ')[1]} ${date.toString().split(' ')[3]}`;
-
 import ReviewEditModal from './ReviewEditModal';
 import ReviewDeleteButton from './ReviewDeleteButton';
 
 const ReviewDetail = ({review, belongsToUser}) => {
+  
   const month = [
     'January', 'February', 'March', 'April',
     'May', 'June', 'July', 'August',
