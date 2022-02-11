@@ -10,21 +10,15 @@ import './Review.css';
 
 
 const ReviewList = ({id, belongsToUser}) => {
-
   const dispatch = useDispatch();
-
   const {propertyId} = useParams();
 
-  // const reviewData = useSelector(state => state.review.ratingData);
-  // const numberOfReviews = useSelector(state => state.review.numberOfReviews);
   const reviews = useSelector(state => state.review.listOfReviews);
-  
   const reviewData = {
     rating: useSelector(state => state.review.rating),
     data: useSelector(state => state.review.ratingData),
     numberOfReviews: useSelector(state => state.review.numberOfReviews)
   };
-  console.log('reviewData', reviewData);
 
 
   useEffect(() => {
@@ -35,14 +29,7 @@ const ReviewList = ({id, belongsToUser}) => {
     <div >
       <ReviewData reviewData={reviewData} />
 
-
       <ul className='review-list-container'>
-        {
-          reviews.map(review => (
-            <li key={review.id}>{review.content}</li>
-          ))
-        }
-
         {reviews.map(review => (
           <ReviewDetail
             key={review.id}

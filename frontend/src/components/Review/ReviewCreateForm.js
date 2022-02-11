@@ -1,4 +1,4 @@
-import {useHistory, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import { useState } from "react";
 import * as reviewActions from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,6 @@ import {Form, FormInput} from '../Form';
 
 const ReviewCreateForm = ({closeModal}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const [content, setContent] = useState(''); 
   const [rating, setRating] = useState(5);
@@ -32,10 +31,7 @@ const ReviewCreateForm = ({closeModal}) => {
       }
     )
 
-    if(newReview) alert(newReview);
-    // if(newReview || !newReview.errors) history.push(`/properties/${newReview.id}`);
-
-    closeModal();
+    if(newReview) closeModal();
   }
 
   return (

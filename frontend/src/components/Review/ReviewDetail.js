@@ -14,20 +14,22 @@ const ReviewDetail = ({ review, belongsToUser }) => {
     <li className='review-detail'>
       <div className='review-user-info'>
         
-        <div className='user-first-name'>{review.firstName}</div>
+      <div className='user-first-name'>{review.firstName}</div>
       </div>
       <div className='review-body'>{review.content}</div>
   
-      {/* <div>
-          {belongsToUser &&( 
-            <>
-              <PropertyEditModal property={property} />
-              <PropertyDeleteButton propertyId={propertyId} />
-            </>)
-          }
-      </div> */}
+      
     </li>
   )
 }
 
 export default ReviewDetail;
+
+/* 
+{belongsToUser &&( 
+  <>
+    <PropertyEditModal property={property} />
+    <PropertyDeleteButton propertyId={propertyId} />
+  </>)
+}
+*/
