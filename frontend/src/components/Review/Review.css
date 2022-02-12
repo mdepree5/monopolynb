@@ -9,6 +9,11 @@
   margin: 5px;
 }
 
+.review-header{
+  display: flex;
+  flex-direction: row;
+}
+
 .review-nav{
   display: flex;
   flex-direction: row;
@@ -17,7 +22,7 @@
 
 .review-data-container{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   border: solid black 2px;
   border-radius: 3px;
 }

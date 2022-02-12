@@ -44,10 +44,10 @@ button{
 .style-text-white{ color: white }
 .dot{ color: inherit };
 
-/* .center-body{
+.center-body{
   margin-right: auto;
   margin-left: auto;
-} */
+}
 
 .filler-box{
   height: 500px;

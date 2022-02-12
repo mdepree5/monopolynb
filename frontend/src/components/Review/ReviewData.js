@@ -26,7 +26,7 @@ const ReviewData = ({reviewData, totalReviews}) => {
   );
 
   const ReviewSummary = ({reviewData}) => (
-    <ul>
+    <ul className='review-header' >
       {reviewData[0]?.value ? (
         <>
           <li><i className='review-star fas fa-star'/></li>

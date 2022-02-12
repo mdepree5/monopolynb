@@ -8,7 +8,6 @@ import ReviewList from './ReviewList';
 import './Review.css';
 
 
-
 const Review = ({id}) => {
   const dispatch = useDispatch();
   const {propertyId} = useParams();

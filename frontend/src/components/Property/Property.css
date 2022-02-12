@@ -2,8 +2,8 @@
   border: solid black 2px;
   border-radius: 3px;
   width: 70%;
-  /* padding: 10px;
-  margin: 5px; */
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .property-info{
@@ -12,10 +12,6 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-}
-.center-body{
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .explore-all-properties{

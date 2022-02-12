@@ -11,7 +11,7 @@ const Splash = () => (
         <h1>Where would you like to stay?</h1>
         {/* <button onClick={() => alert('hey')}> Find out here </button> */}
         <ul id='splash-button-white'>
-          <li><NavLink to='/properties'>Where the dice land</NavLink></li>
+          <li> <NavLink to='/properties'>Where the dice land</NavLink></li>
         </ul>
       </div>
     </div>
