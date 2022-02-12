@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {useHistory, NavLink, useParams} from 'react-router-dom';
+import {useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
 // import Review from '../Review';
@@ -14,7 +14,6 @@ import './Property.css';
 
 const PropertyPage = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
   
   const {propertyId} = useParams();
   const [belongsToUser, setBelongsToUser] = useState(false);
@@ -52,7 +51,8 @@ const PropertyPage = () => {
       </ul>
     </div>
 
-      <ReviewFormModal/>
+    <div>{!belongsToUser && ( <ReviewFormModal/>)}</div>
+      
 
       {/* <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>Host</NavLink></div>
       <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
