@@ -11,7 +11,7 @@ const PropertyList = ({userId = null}) => {
 
   const thunk = userId ? getPropertiesByUserId(userId) : getProperties();
 
-  useEffect(() => {dispatch(thunk)}, [dispatch, thunk]);
+  useEffect(() => {dispatch(thunk)}, [dispatch]);
 
   return (
     <ul className='explore-all-properties'>

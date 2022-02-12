@@ -19,16 +19,25 @@ const UserPage = () => {
 
   useEffect(() => {dispatch(getUserById(userId))}, [dispatch, userId]);
 
+  
   return (
     <div className='center-body'>
       <ul className='user-splash'>
         <li><h2>User Page</h2></li>
-        <li>{`Hello user ${userId}`}</li>
+        <li>{`Hello ${currentUser?.firstName}`}</li>
+        <li>{`
+          ${currentUser?.firstName}
+          ${currentUser?.lastName.slice(0, 1)}${currentUser?.lastName.slice(0, 1).endsWith('s') ? '\'' : '\'s'}
+          Page`}
+        </li>
         <li><div>My Listings</div></li>
       </ul>
       <PropertyList userId={userId} />
     </div>
   );
 };
+
+
+
 
 export default UserPage;
