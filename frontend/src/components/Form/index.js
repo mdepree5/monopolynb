@@ -35,3 +35,8 @@ export const FormInput = ({ type, name, state, setState }) => {
   </ul>
   ) 
 }
+
+// const [input, setInput] = useState('')
+// const handleChange = event => {
+//   setInput(event.target.value.toLowerCase())
+// }
