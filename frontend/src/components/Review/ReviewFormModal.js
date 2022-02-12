@@ -5,7 +5,7 @@ import ReviewCreateForm from './ReviewCreateForm';
 const ReviewFormModal = ({reviews, handleChange}) =>  {
   const [showModal, setShowModal] = useState(false);
 
-  console.log('MODAL', reviews);
+  // console.log('MODAL', reviews);
 
   return (
     <>

@@ -13,10 +13,10 @@ const ReviewDeleteButton = ({reviewId}) => {
 
     const deletedReview = await dispatch(reviewActions.deleteReview(reviewId));
     
-    console.log('review-delete-button', deletedReview);
+    // console.log('review-delete-button', deletedReview);
 
-    if(deletedReview) history.push(`/properties`);
-    if(deletedReview) history.push(`/properties/${propertyId}`);
+    // if(deletedReview) history.push(`/properties`);
+    // if(deletedReview) history.push(`/properties/${propertyId}`);
     return;
   }
 

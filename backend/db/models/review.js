@@ -71,7 +71,11 @@ module.exports = (sequelize, DataTypes) => {
     if (!review) throw new Error('Cannot find review');
     const formerId = review.id;
 
-    await Review.destroy({ where: { id: review.id }});
+    console.log('debugger')
+    console.log('this is the backend', formerId)
+    console.log('debugger')
+    // await Review.destroy({ where: { id: review.id }});
+    await review.destroy();
     return formerId;
   };
 

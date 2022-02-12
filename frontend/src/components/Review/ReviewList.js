@@ -53,10 +53,8 @@ const ReviewList = ({propertyId}) => {
   
   const [currentReviews, setCurrentReviews] = useState(reviews2); 
 
-  console.log('review-list current reviews', currentReviews);
-
-
-  console.log('review-list propertyId', propertyId)
+  // console.log('review-list current reviews', currentReviews);
+  // console.log('review-list propertyId', propertyId)
 
   const dispatch = useDispatch();
   useEffect(() => {

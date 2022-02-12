@@ -18,7 +18,7 @@ const Review = ({propertyId}) => {
   
   const [currentReviews, setCurrentReviews] = useState(reviews); 
 
-  console.log('current-review-index', currentReviews)
+  console.log('review-index', currentReviews)
 
   const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
   

@@ -11,8 +11,8 @@ const ReviewCreateForm = ({closeModal, reviews, handleChange}) => {
   const {propertyId} = useParams();
   const guestId = useSelector(state => state.session.user.id);
 
-  console.log('FORM', reviews)
-  console.log('FORM', handleChange)
+  // console.log('FORM', reviews)
+  // console.log('FORM', handleChange)
 
   useEffect(() => {
     dispatch(getReviewsByPropertyId(propertyId));
@@ -41,7 +41,7 @@ const ReviewCreateForm = ({closeModal, reviews, handleChange}) => {
 
     // if(newReview) history.replace(`/properties`)
     // if(newReview) history.replace(`/properties/${propertyId}`);
-    if(newReview) alert('new review')
+    // if(newReview) alert('new review')
     return closeModal();
   }
 
