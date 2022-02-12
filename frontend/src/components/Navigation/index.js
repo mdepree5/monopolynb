@@ -35,13 +35,17 @@ function Navigation({ isLoaded }){
   sessionLinks = sessionUser ? (
     <>
       <li><PropertyFormModal /></li>
+      <li className='dot'>·</li>
       <li><NavLink to={`/users/${sessionUser.id}`}>My Page</NavLink></li>
+      <li className='dot'>·</li>
       <li><button onClick={logout}>Log Out</button></li>
     </>
   ) : (
     <>
       <li><DemoLogin/></li>
+      <li className='dot'>·</li>
       <li><LoginFormModal /></li>
+      <li className='dot'>·</li>
       <li><SignupFormModal /></li>
     </>
   );

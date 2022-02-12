@@ -29,7 +29,7 @@
   align-items: flex-end;
   justify-content: center;
 }
-
+/* 
 .property-list-container{
   border: solid black 1px;
   border-radius: 3px;
@@ -42,7 +42,7 @@
   align-items: flex-end;
   margin-right: auto;
   margin-left: auto;
-}
+} */
 
 .property-list-container li{
   display: flex;
