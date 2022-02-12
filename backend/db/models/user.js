@@ -52,15 +52,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {len: [60, 60]}
     },
-    bio: {
-      type: DataTypes.TEXT,
-      allowNull: true,
-    },
-    isHost: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false,
-    }
   }, 
   {
     defaultScope: {
@@ -90,41 +81,25 @@ module.exports = (sequelize, DataTypes) => {
     return bcrypt.compareSync(password, this.hashedPassword.toString());
   };
   
-  User.getCurrentUserById = async function (id) {
-    return await User.scope('currentUser').findByPk(id);
-  };
+  User.getCurrentUserById = async (id) => await User.scope('currentUser').findByPk(id);
   
+  User.getUserById = async (id) => await User.findByPk(id);
   
-  User.loginDemo = async function () {
-    return await User.scope('currentUser').findByPk(1)
-  };
+  User.loginDemo = async () => await User.scope('currentUser').findByPk(1);
 
-  User.login = async function ({ credential, password }) {
+  User.login = async ({ credential, password }) => {
     const { Op } = require('sequelize');
     const user = await User.scope('loginUser').findOne({
-      where: {
-        [Op.or]: {
-          username: credential,
-          email: credential
-        }
-      }
+      where: {[Op.or]: { username: credential, email: credential }}
     });
+    
     if (user && user.validatePassword(password)) {
       return await User.scope('currentUser').findByPk(user.id);
-    }
+    };
   };
   
-  User.signup = async function ({ username, firstName, lastName, email, password, bio = '', isHost = false}) {
-    const hashedPassword = bcrypt.hashSync(password);
-    const user = await User.create({
-      username,
-      firstName,
-      lastName,
-      email,
-      hashedPassword,
-      bio,
-      isHost,
-    });
+  User.signup = async function ({ password, ...reqData }) {
+    const user = await User.create({ hashedPassword: bcrypt.hashSync(password), ...reqData});
     return await User.scope('currentUser').findByPk(user.id);
   };
   // todo ————————————————————————————————————————————————————————————————————————————————

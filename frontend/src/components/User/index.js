@@ -1,24 +1,23 @@
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getPropertiesByUserId } from '../../store/property';
-import PropertyCard from '../Property/PropertyCard';
 import {useParams} from 'react-router-dom';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserById } from '../../store/user';
+// todo ——————————————————————————————————————————————————————————————————————————————————
+import PropertyList from '../Property/PropertyList';
 import './User.css';
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 
 const UserPage = () => {
-  const dispatch = useDispatch();
   const {userId} = useParams();
 
-  const properties = useSelector(state => state.property.listOfProperties);
-  // const properties = useSelector(state => state.property.listOfProperties);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getPropertiesByUserId(userId));
-  }, [dispatch, userId]);
+  // const sessionUser = useSelector(state => state.session.user);
+  // console.log(sessionUser);
+  const currentUser = useSelector(state => state.session.user);
+  console.log(currentUser);
 
-
+  useEffect(() => {dispatch(getUserById(userId))}, [dispatch, userId]);
 
   return (
     <div className='center-body'>
@@ -27,21 +26,9 @@ const UserPage = () => {
         <li>{`Hello user ${userId}`}</li>
         <li><div>My Listings</div></li>
       </ul>
-      <ul className='explore-all-properties'>
-        {
-          properties.map(property => (
-          <PropertyCard
-            key={property.id}
-            id={`property-${property.id}`}
-            title={property.title}
-            property={property}
-          />
-        ))
-        }
-    </ul>
+      <PropertyList userId={userId} />
     </div>
   );
 };
 
-// onCLick={() => setCurrProperty(property)}
 export default UserPage;

@@ -1,9 +1,9 @@
 import {Switch, Route} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 import {restoreUser} from "./store/session";
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 import Navigation from './components/Navigation';
 import Splash from './components/Splash';
 import UserPage from './components/User';
@@ -12,9 +12,9 @@ import PropertyPage from './components/Property';
 import ConfirmDelete from './components/Property/ConfirmDelete';
 import PageNotFound from './components/PageNotFound';
 import Footer from './components/Footer';
+// todo ——————————————————————————————————————————————————————————————————————————————————
 
-
-function App() {
+const App = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 

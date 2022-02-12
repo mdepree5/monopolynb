@@ -10,13 +10,17 @@ const { User, Property } = require('../../db/models');
 router.route('/')
 .post(validateSignup, asyncHandler
   (async (req, res) => {
-    const { username, firstName, lastName, email, password, bio, isHost } = req.body;
-    const user = await User.signup({ username, firstName, lastName, email, password, bio, isHost });
-
+    const user = await User.signup(req.body);
+    
     await setTokenCookie(res, user);
 
     return res.json({user});
   })
+)
+
+router.route('/:userId')
+.get(asyncHandler
+  (async (req, res) => res.json(await User.getUserById(req.params.userId)))
 )
 
 router.route('/:userId/properties')
