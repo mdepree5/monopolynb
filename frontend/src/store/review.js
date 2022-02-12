@@ -94,10 +94,9 @@ export const deleteReview = reviewId => async (dispatch) => {
 const initialState = { listOfReviews: [], pseudoListOfReviews: {} };
 
 const reviewReducer = (state = initialState, action) => {
-  let newState;
   switch (action.type) {
-    case CREATE_REVIEW: 
-      let newReview = {[action.review.id]: action.review}
+    case CREATE_REVIEW: {
+      const newReview = {[action.review.id]: action.review}
       return {
         newReview,
         ...state,
@@ -106,9 +105,10 @@ const reviewReducer = (state = initialState, action) => {
           ...action.review
         }
       };
+    }
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case GET_ALL_REVIEWS:
-      newState = {};
+    case GET_ALL_REVIEWS: {
+      const newState = {};
       action.reviews.forEach(review => newState[review.id] = review);
 
       return {
@@ -118,29 +118,24 @@ const reviewReducer = (state = initialState, action) => {
         listOfReviews: action.reviews,
         pseudoListOfReviews: {...newState}
       };
+    }
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_REVIEW:
-      newState = {[action.review.id]: action.review};
-      return {
-        ...newState,
-        ...state,
-      }
+      const newState = {...state}
+      const newReview = state.listOfReviews.map(review => 
+        review.id === action.review.id ? review = action.review : review      
+        )
+      newState.listOfReviews = newReview
+      return newState;
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case DELETE_REVIEW: 
-      newState = {...state}
+    case DELETE_REVIEW: {
+      const newState = {...state}
       const newReviews = state.listOfReviews.filter(review => {
         return review.id !== action.reviewId
       })
       newState.listOfReviews = newReviews
       return newState;
-      // const deleteOneReviewState = {
-      //   ...state.reviews}
-      //   [action.review]: {
-      //     ...state[action.review],
-      //     ...action.review
-      //   }
-      // }
-      //   return deleteOneReviewState;
+    }
     default:
       return state;
   }
