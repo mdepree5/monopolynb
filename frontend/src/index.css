@@ -12,14 +12,10 @@
   padding: 0;
 }
 
-/* * :visited{
-  color: #2c8bff;
-} */
 
 body{
   margin: 0;
 }
-
 
 .style-text-white{
   color: white;
@@ -63,7 +59,8 @@ body{
   background-color: #5aa9e6;
 }
 
-.centered-body{
+.center-body{
+  width: 70%;
   margin-right: auto;
   margin-left: auto;
 }

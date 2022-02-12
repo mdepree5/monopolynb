@@ -37,7 +37,7 @@ const PropertyPage = () => {
   // history.push(`/page-not-found`);
   return (
     <>
-    <div className='property-page centered-body'>
+    <div className='property-page center-body'>
       <div className='property-info'>
         <h3 className='property-title'>{property?.title}</h3>
         <div className='property-location'>{`${property?.city}, ${property?.state}`}</div>
