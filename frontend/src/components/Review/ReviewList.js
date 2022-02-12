@@ -41,14 +41,16 @@ const ReviewDetail = ({review}) => {
 )
 }
 
-const ReviewList = ({reviews}) => (
-  <ul className='review-list-container'>
-    {reviews.map(review => (
-      <li key={review.id}> 
-        <ReviewDetail review={review} />
-      </li>
-    ))}
-  </ul>
-)
-
+const ReviewList = ({reviews}) => {
+  
+  return (
+    <ul className='review-list-container'>
+      {reviews.map(review => (
+        <li key={review.id}> 
+          <ReviewDetail review={review} />
+        </li>
+      ))}
+    </ul>
+  )
+}
 export default ReviewList;

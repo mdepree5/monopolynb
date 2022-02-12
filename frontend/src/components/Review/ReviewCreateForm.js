@@ -1,4 +1,4 @@
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import { useState } from "react";
 import * as reviewActions from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,9 @@ import {Form, FormInput} from '../Form';
 
 const ReviewCreateForm = ({closeModal}) => {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const {propertyId} = useParams();
+  const guestId = useSelector(state => state.session.user.id);
 
   const [content, setContent] = useState(''); 
   const [rating, setRating] = useState(5);
@@ -14,9 +17,6 @@ const ReviewCreateForm = ({closeModal}) => {
   const [checkIn, setCheckIn] = useState(5);
   const [cleanliness, setCleanliness] = useState(5);
   const [errors, setErrors] = useState([]);
-
-  const guestId = useSelector(state => state.session.user.id);
-  const {propertyId} = useParams();
 
   const handleSubmit = async(event) => {
     event.preventDefault();
@@ -31,7 +31,8 @@ const ReviewCreateForm = ({closeModal}) => {
       }
     )
 
-    if(newReview) closeModal();
+    if(newReview) history.push(`/properties/${propertyId}`);
+    return closeModal();
   }
 
   return (

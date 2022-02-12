@@ -1,5 +1,5 @@
 import {useParams} from 'react-router-dom';
-import { useEffect } from 'react';
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviewsByPropertyId } from '../../store/review';
 
@@ -14,8 +14,10 @@ const Review = ({id}) => {
   const {propertyId} = useParams();
 
   const reviews = useSelector(state => state.review.listOfReviews);
+  
+  const [currentReviews, setCurrentReviews] = useState(reviews); 
 
-  console.log('review-index', reviews)
+  console.log('current-review-index', currentReviews)
 
   const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
   
@@ -30,6 +32,8 @@ const Review = ({id}) => {
     dispatch(getReviewsByPropertyId(propertyId));
   }, [dispatch, propertyId]);
 
+
+  
   return (
     <div >
       <ReviewData reviewData={reviewData} totalReviews={reviews?.length}/>

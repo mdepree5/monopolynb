@@ -21,7 +21,7 @@ module.exports = {
     { hostId: 1, title: 'Pennsylvania Avenue', numberOfBeds: 4, price: 150, address: 'Pennsylvania Ave', city: 'Absecon', state: 'New Jersey', zipcode: '08201' },
     { hostId: 1, title: 'Park Place', numberOfBeds: 4, price: 175, address: 'Park Pl', city: 'Ocean City', state: 'New Jersey', zipcode: '08226' },
     { hostId: 1, title: 'Boardwalk', numberOfBeds: 4, price: 200, address: 'Boardwalk', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
-  
+    
   ], {}),
   
   down: (queryInterface, Sequelize) => {
