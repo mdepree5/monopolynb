@@ -14,7 +14,7 @@ const PropertyList = ({userId = null}) => {
 
   useEffect(() => {dispatch(thunk)}, [dispatch]);
 
-  return properties.length > 1 ? (
+  return properties.length > 0 ? (
     <ul className='explore-all-properties'>
       {properties.map(property => (
         <PropertyCard
