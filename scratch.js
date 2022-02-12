@@ -1,3 +1,10 @@
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                              The Golden boi
+// todo ——————————————————————————————————————————————————————————————————————————————————
+
+// if(newReview) history.replace(`/properties`)
+// if(newReview) history.replace(`/properties/${propertyId}`);
+// if(newReview) alert('new review')
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                              More error handling
@@ -16,9 +23,6 @@ useEffect(()=> {
   reactErrors.map(error => (
     <li key={error} className='error'>{error}</li>
   ))}
-
-
-
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                              Date Rendering
@@ -358,5 +362,4 @@ Mayfair
 
 404 Go to jail!
 Get out of Jail Free card: Return to Home
-
 */

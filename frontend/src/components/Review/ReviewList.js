@@ -47,29 +47,14 @@ const ReviewDetail = ({review}) => {
 )
 }
 
-const ReviewList = ({propertyId}) => {
-
-  const reviews2 = useSelector(state => state.review.listOfReviews);
-  
-  const [currentReviews, setCurrentReviews] = useState(reviews2); 
-
-  // console.log('review-list current reviews', currentReviews);
-  // console.log('review-list propertyId', propertyId)
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getReviewsByPropertyId(propertyId))
-  }, [dispatch, propertyId])
-
-  return (
+const ReviewList = ({reviews, propertyId}) => (
     <ul className='review-list-container'>
-      {reviews2.map(review => (
+      {reviews.map(review => (
         <li key={review.id}> 
           <ReviewDetail review={review} />
         </li>
       ))}
     </ul>
-  )
-}
+)
 
 export default ReviewList;

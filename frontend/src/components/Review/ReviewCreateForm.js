@@ -1,23 +1,16 @@
-import {useParams, useHistory} from 'react-router-dom';
 import { useState, useEffect } from "react";
-import * as reviewActions from "../../store/review";
+import {useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import {Form, FormInput} from '../Form';
-import { getReviewsByPropertyId } from '../../store/review';
 
-const ReviewCreateForm = ({closeModal, reviews, handleChange}) => {
+import { createReview, getReviewsByPropertyId } from '../../store/review';
+import {Form, FormInput} from '../Form';
+
+const ReviewCreateForm = ({closeModal }) => {
   const dispatch = useDispatch();
-  const history = useHistory();
   const {propertyId} = useParams();
   const guestId = useSelector(state => state.session.user.id);
 
-  // console.log('FORM', reviews)
-  // console.log('FORM', handleChange)
-
-  useEffect(() => {
-    dispatch(getReviewsByPropertyId(propertyId));
-  }, [dispatch, propertyId]);
-
+  useEffect(() => {dispatch(getReviewsByPropertyId(propertyId))}, [dispatch, propertyId]);
 
   const [content, setContent] = useState(''); 
   const [rating, setRating] = useState(5);
@@ -29,19 +22,11 @@ const ReviewCreateForm = ({closeModal, reviews, handleChange}) => {
   const handleSubmit = async(event) => {
     event.preventDefault();
 
-    const newReview = await dispatch(reviewActions.createReview(
-      {guestId, propertyId, content, rating, communication, checkIn, cleanliness}
-    )).catch(
-      async(res) => {
-        const data = await res.json();
-        console.log('data', data);
-        if(data && data.errors) setErrors(data.errors);
-      }
-    )
+    await dispatch(createReview({guestId, propertyId, content, rating, communication, checkIn, cleanliness}))
+    .catch(async(res) => {const data = await res.json();
+      if(data && data.errors) setErrors(data.errors);
+    })
 
-    // if(newReview) history.replace(`/properties`)
-    // if(newReview) history.replace(`/properties/${propertyId}`);
-    // if(newReview) alert('new review')
     return closeModal();
   }
 
@@ -59,12 +44,6 @@ const ReviewCreateForm = ({closeModal, reviews, handleChange}) => {
       <FormInput name='Communication' state={communication} setState={setCommunication} />
       <FormInput name='Check In' state={checkIn} setState={setCheckIn} />
       <FormInput name='Cleanliness' state={cleanliness} setState={setCleanliness} />
-      <input
-          id="usernameInput"
-          type="text"
-          onChange={handleChange}
-          // value={username}
-        />
     </Form>
   )
 };
