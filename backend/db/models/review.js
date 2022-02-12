@@ -71,20 +71,9 @@ module.exports = (sequelize, DataTypes) => {
     if (!review) throw new Error('Cannot find review');
     const formerId = review.id;
 
-    console.log('debugger')
-    console.log('this is the backend', formerId)
-    console.log('debugger')
-    // await Review.destroy({ where: { id: review.id }});
     await review.destroy();
     return formerId;
   };
-
-  // Review.deleteReviewsByPropertyId = async (propertyId) => {
-  //   const reviews = await Review.findAll({where: {propertyId}});
-  //   reviews.forEach(review => Review.destroy(review));
-    
-  //   return 'All reviews have been deleted';
-  // }
 
   // todo ————————————————————————————————————————————————————————————————————————————————
   // todo                               Associations
@@ -104,35 +93,3 @@ module.exports = (sequelize, DataTypes) => {
   };
   return Review;
 };
-
-
-
-
-  // Review.getReviewsByPropertyId = async (propertyId) => {
-    
-  //   // const reviewContentOnly = await Review.scope('reviewContentOnly')
-  //   const reviewContentOnly = await Review.findAll({
-  //       where: { propertyId }, include: User, order: [['createdAt', 'DESC']],
-  //       // where: { propertyId }, order: [['createdAt', 'DESC']],
-  //       // include: [{
-  //       //   model: User,
-  //       //   as: 'users'}]
-  //       // include: {
-  //       //   model: User,
-  //       //   as: 'users'}
-  //     });
-
-  //     const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
-
-  //   const reviewDataOnly = await Review.scope('reviewDataOnly')
-  //     .findAll({where: {propertyId}});
-
-  //   const ratingData = [
-  //     {name: 'Rating', value: +avg(reviewDataOnly, 'rating').toFixed(2)},
-  //     {name: 'Communication', value: +avg(reviewDataOnly, 'communication').toFixed(2)},
-  //     {name: 'Check-in', value: +avg(reviewDataOnly, 'checkIn').toFixed(2)},
-  //     {name: 'Cleanliness', value: +avg(reviewDataOnly, 'cleanliness').toFixed(2)},
-  //   ]
-
-  //   return {ratingData, listOfReviews:reviewContentOnly, numberOfReviews:reviewContentOnly.length};
-  // };

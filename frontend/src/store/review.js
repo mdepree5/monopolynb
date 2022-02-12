@@ -38,7 +38,6 @@ export const createReview = (review, propertyId) => async (dispatch) => {
 
   if (response.ok) {
     const review = await response.json();
-    console.log('review', review)
     dispatch(createOneReview(review));
     return review;
   }
@@ -96,15 +95,10 @@ const initialState = { listOfReviews: [], pseudoListOfReviews: {} };
 const reviewReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_REVIEW: {
-      const newReview = {[action.review.id]: action.review}
-      return {
-        newReview,
-        ...state,
-        [action.review.id]: {
-          ...state[action.review.id],
-          ...action.review
-        }
-      };
+      const newState = {...state, listOfReviews:[...state.listOfReviews]}
+      newState.listOfReviews.unshift(action.review);
+      
+      return newState;
     }
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS: {
@@ -112,7 +106,6 @@ const reviewReducer = (state = initialState, action) => {
       action.reviews.forEach(review => newState[review.id] = review);
 
       return {
-        // ...reviews,
         ...newState,
         ...state,
         listOfReviews: action.reviews,
@@ -123,9 +116,10 @@ const reviewReducer = (state = initialState, action) => {
     case UPDATE_REVIEW:
       const newState = {...state}
       const newReview = state.listOfReviews.map(review => 
-        review.id === action.review.id ? review = action.review : review      
-        )
+        review.id === action.review.id ? review = action.review : review)
+
       newState.listOfReviews = newReview
+
       return newState;
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_REVIEW: {
