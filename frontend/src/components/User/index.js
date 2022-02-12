@@ -13,25 +13,20 @@ const UserPage = () => {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector(state => state.session.user);
-
-  const pageUser = useSelector(state => state.user);
-  console.log(pageUser)
-
+  const pageUser = useSelector(state => state.user.currentUser);
 
   useEffect(() => {dispatch(getUserById(userId))}, [dispatch, userId]);
 
-  
   return (
     <div className='center-body'>
       <ul className='user-splash'>
         <li>{sessionUser === pageUser ? (
-          <>{`Hello ${pageUser?.firstName}`}</>
+          <h2>{`Hello ${pageUser?.firstName}`}</h2>
         ) : (
-          <>{`
-          ${pageUser?.firstName}
-          Page`}</>
-        )}</li>
-        <li><h2>User Page</h2></li>
+          <h2>{`${pageUser?.firstName}
+            ${pageUser?.lastName.slice(0, 1)}${pageUser?.lastName.slice(0, 1).endsWith('s') ? '\'' : '\'s'} Page`}
+          </h2> )}
+        </li>
         <li><div>My Listings</div></li>
       </ul>
       <PropertyList userId={userId} />
@@ -42,8 +37,8 @@ const UserPage = () => {
 
 
 
+
 export default UserPage;
 
 /* 
-${pageUser?.lastName.slice(0, 1)}${pageUser?.lastName.slice(0, 1).endsWith('s') ? '\'' : '\'s'}
  */
