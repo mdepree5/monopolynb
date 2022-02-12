@@ -10,6 +10,26 @@
   margin: 0;
 }
 
+
+button{
+  background: none;
+  outline: none;
+  /* border: none; */
+  border: solid skyblue 2px;
+  color: inherit;
+  font: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+.delete{
+  border: solid #ff8b94 2px;
+}
+
+.edit{
+  border: solid #ffbf81 2px;
+}
+
 #brown{ background-color: #ceb5a7 }
 #skyblue{ background-color: #b5e4f2 }
 #orchid{ background-color: #deaaff }
@@ -24,10 +44,10 @@
 .style-text-white{ color: white }
 .dot{ color: inherit };
 
-.center-body{
+/* .center-body{
   margin-right: auto;
   margin-left: auto;
-}
+} */
 
 .filler-box{
   height: 500px;

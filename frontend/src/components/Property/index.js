@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, NavLink} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
 // import Review from '../Review';
@@ -54,9 +54,9 @@ const PropertyPage = () => {
     <div>{!belongsToUser && ( <ReviewFormModal/>)}</div>
       
 
-      {/* <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>Host</NavLink></div>
+      <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>Host</NavLink></div>
       <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
-      <div className='property-price'>{`$${property?.price} / night`}</div> */}
+      <div className='property-price'>{`$${property?.price} / night`}</div>
       
       <br />
       <Review id={propertyId} />
