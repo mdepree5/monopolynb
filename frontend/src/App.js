@@ -1,16 +1,17 @@
 import {Switch, Route} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-// import SignupFormPage from "./components/SignupFormPage";
-import * as sessionActions from "./store/session";
+
+import {restoreUser} from "./store/session";
+
 import Navigation from './components/Navigation';
-import Footer from './components/Footer';
 import Splash from './components/Splash';
 import UserPage from './components/User';
+import PropertyList from './components/Property/PropertyList';
 import PropertyPage from './components/Property';
-import ExplorePage from './components/Property/ExplorePage';
 import ConfirmDelete from './components/Property/ConfirmDelete';
 import PageNotFound from './components/PageNotFound';
+import Footer from './components/Footer';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   useEffect(() => window.scroll({top: 0, left: 0, behavior: 'smooth'}));
@@ -30,7 +31,7 @@ function App() {
         <Switch>
           <Route exact path={'/'}><Splash /></Route>
           <Route path='/users/:userId'><UserPage /></Route>
-          <Route exact path='/properties/'><ExplorePage /></Route>
+          <Route exact path='/properties/'><PropertyList /></Route>
           <Route path='/properties/:propertyId'><PropertyPage /></Route>
           <Route path='/confirmDelete'><ConfirmDelete/></Route>
           <Route><PageNotFound /></Route>
