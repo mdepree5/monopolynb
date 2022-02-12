@@ -14,6 +14,7 @@ import PageNotFound from './components/PageNotFound';
 import Footer from './components/Footer';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
+
 const App = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);

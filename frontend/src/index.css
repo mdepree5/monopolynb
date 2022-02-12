@@ -1,62 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 
-
 *{
-  /* background-color: rgb(200, 218, 255); */
   list-style: none;
   text-decoration: none;
-  /* color: black; */
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   /* font-family: 'Monserrat', sans-serif; */
   padding: 0;
-}
-
-
-body{
   margin: 0;
 }
 
-.style-text-white{
-  color: white;
-}
+#brown{ background-color: #ceb5a7 }
+#skyblue{ background-color: #b5e4f2 }
+#orchid{ background-color: #deaaff }
+#orange{ background-color: #ffbf81 }
+#red{ background-color: #ff8b94 }
+#yellow{ background-color: #ffee93 }
+#green{ background-color: #b0f2b4 }
+#blue{ background-color: #5aa9e6 }
 
-#brown {
-  /* background-color: saddlebrown; */
-  background-color: #ceb5a7;
-}
-#skyblue {
-  /* background-color: skyblue; */
-  background-color: #b5e4f2;
-}
-#orchid {
-  /* background-color: darkorchid; */
-  background-color: #deaaff;
-}
-#orange {
-  /* background-color: orange; */
-  background-color: #ffbf81;
-}
-#red {
-  /* background-color: red; */
-  background-color: #ff8b94;
-}
-#yellow {
-  /* background-color: yellow; */
-  background-color: #ffee93;
-}
-#green {
-  /* background-color: green; */
-  background-color: #b0f2b4;
-}
-#blue {
-  /* background-color: blue; */
-  background-color: #5aa9e6;
-}
-
-.dot{
-  color: inherit;
-}
+.style-text-white{ color: white }
+.dot{ color: inherit };
 
 .center-body{
   margin-right: auto;
@@ -68,6 +32,7 @@ body{
   background-color: white;
   border: solid navy 1px;
 }
+
 /* 
 @media (max-width: 560px){
   .screen-size{
