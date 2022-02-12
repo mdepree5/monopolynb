@@ -24,6 +24,7 @@ export const FormInput = ({ type, name, state, setState }) => {
   <ul className='form-input'>
     <li><label htmlFor={formatName}>{name}</label></li>
     <li><input 
+      className='inputField'
       type={type || 'text'}
       id={formatName} 
       value={state}
@@ -31,7 +32,6 @@ export const FormInput = ({ type, name, state, setState }) => {
       placeholder={name}
       required={false}
       /></li>
-      
   </ul>
   ) 
 }

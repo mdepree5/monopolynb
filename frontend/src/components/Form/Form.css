@@ -6,7 +6,8 @@
 
 .form-button {
   border: solid black 1.5px;
-  background-color: #b0f2b4;
+  /* background-color: #b0f2b4; */
+  background-color: #b5e4f2;
   border-radius: 4px;
   padding: 5px;
   margin: 5px;
@@ -14,6 +15,12 @@
 
 .form-button:hover {
   box-shadow: 0 1px 10px #b0f2b4;
+}
+
+/* .inputField:hover{ background-color: #ffee93 } */
+.inputField:hover{ 
+  background-color: white;
+  border: solid 2px #b5e4f2;
 }
 
 .form{

@@ -1,3 +1,25 @@
+
+// todo ——————————————————————————————————————————————————————————————————————————————————
+// todo                              More error handling
+// todo ——————————————————————————————————————————————————————————————————————————————————
+const [reactErrors, setReactErrors] = useState([]);
+useEffect(()=> {
+  const errors = [];
+  if(credential.length < 3) errors.push('Name must be 3 or more characters');
+  if(password.length > 20) errors.push('Name must be 20 characters or less');
+  if(sweetness < 1 || sweetness > 10) errors.push('Sweetness must be between 1 and 10');
+
+  setReactErrors(errors);
+}, [name, sweetness])
+
+{reactErrors.length > 0 &&
+  reactErrors.map(error => (
+    <li key={error} className='error'>{error}</li>
+  ))}
+
+
+
+
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                              Date Rendering
 // todo ——————————————————————————————————————————————————————————————————————————————————

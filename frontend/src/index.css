@@ -19,6 +19,8 @@
 #green{ background-color: #b0f2b4 }
 #blue{ background-color: #5aa9e6 }
 
+:any-link{ color: inherit }
+
 .style-text-white{ color: white }
 .dot{ color: inherit };
 
