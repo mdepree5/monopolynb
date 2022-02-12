@@ -14,13 +14,19 @@
 }
 
 .form-button:hover {
-  box-shadow: 0 1px 10px #b0f2b4;
+  box-shadow: 0 1px 10px #b5e4f2;
 }
+
 
 /* .inputField:hover{ background-color: #ffee93 } */
 .inputField:hover{ 
   background-color: white;
   border: solid 2px #b5e4f2;
+}
+
+.inputField:focus{ 
+  background-color: white;
+  border: solid 3px #b5e4f2;
 }
 
 .form{
