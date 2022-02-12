@@ -12,31 +12,32 @@ const UserPage = () => {
   const {userId} = useParams();
 
   const properties = useSelector(state => state.property.listOfProperties);
+  // const properties = useSelector(state => state.property.listOfProperties);
 
   useEffect(() => {
     dispatch(getPropertiesByUserId(userId));
   }, [dispatch, userId]);
-  
+
 
 
   return (
     <div className='center-body'>
-      <h2>User Page</h2>
-      <div>{`Hello user ${userId}`}</div>
-      <br />
-      <div>My Listings</div>
+      <ul className='user-splash'>
+        <li><h2>User Page</h2></li>
+        <li>{`Hello user ${userId}`}</li>
+        <li><div>My Listings</div></li>
+      </ul>
       <ul className='explore-all-properties'>
-      
-      {
-        properties.map(property => (
-        <PropertyCard
-          key={property.id}
-          id={`property-${property.id}`}
-          title={property.title}
-          property={property}
-        />
-      ))
-      }
+        {
+          properties.map(property => (
+          <PropertyCard
+            key={property.id}
+            id={`property-${property.id}`}
+            title={property.title}
+            property={property}
+          />
+        ))
+        }
     </ul>
     </div>
   );

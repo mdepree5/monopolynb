@@ -7,7 +7,7 @@ import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import Splash from './components/Splash';
 import UserPage from './components/User';
-import PropertyPage from './components/Property/PropertyPage';
+import PropertyPage from './components/Property';
 import ExplorePage from './components/Property/ExplorePage';
 import ConfirmDelete from './components/Property/ConfirmDelete';
 import PageNotFound from './components/PageNotFound';
