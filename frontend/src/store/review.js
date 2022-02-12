@@ -94,6 +94,7 @@ export const deleteReview = reviewId => async (dispatch) => {
 const initialState = { listOfReviews: [], ratingData: [], numberOfReviews: null};
 
 const reviewReducer = (state = initialState, action) => {
+  let newState;
   switch (action.type) {
     case CREATE_REVIEW: 
       return {

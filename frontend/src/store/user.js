@@ -17,18 +17,14 @@ export const getUserById = id => async (dispatch) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const initialState = {};
+const initialState = { currentUser: null };
 
 const userReducer = (state = initialState, action) => {
+  let newState;
   switch (action.type) {
     case GET_ONE_USER:
-      return {
-        ...state,
-        [action.user.id]: {
-          ...state[action.user.id],
-          ...action.property
-        }
-      };
+      newState = {...state, currentUser:action.user}
+      return newState;
 // todo ——————————————————————————————————————————————————————————————————————————————————
     default:
       return state;
