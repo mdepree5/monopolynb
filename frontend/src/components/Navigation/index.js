@@ -31,8 +31,7 @@ function Navigation({ isLoaded }){
     dispatch(sessionActions.logout());
   };
 
-  let sessionLinks;
-  sessionLinks = sessionUser ? (
+  const sessionLinks = sessionUser ? (
     <>
       <li><PropertyFormModal /></li>
       <li className='dot'>·</li>

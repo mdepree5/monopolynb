@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperties, getPropertiesByUserId } from '../../store/property';
+import PropertyFormModal from './PropertyFormModal';
 import PropertyCard from './PropertyCard';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
@@ -13,7 +14,7 @@ const PropertyList = ({userId = null}) => {
 
   useEffect(() => {dispatch(thunk)}, [dispatch]);
 
-  return (
+  return properties.length > 1 ? (
     <ul className='explore-all-properties'>
       {properties.map(property => (
         <PropertyCard
@@ -23,6 +24,11 @@ const PropertyList = ({userId = null}) => {
           property={property}
         />
       ))}
+    </ul>
+  ) : (
+    <ul>
+      <li><h4>No Listings yet... why not start now?</h4></li>
+      <li><PropertyFormModal /></li>
     </ul>
   );
 };
