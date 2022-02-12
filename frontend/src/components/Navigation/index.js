@@ -40,8 +40,8 @@ function Navigation({ isLoaded }){
     </>
   ) : (
     <>
-      <li><LoginFormModal /></li>
       <li><DemoLogin/></li>
+      <li><LoginFormModal /></li>
       <li><SignupFormModal /></li>
     </>
   );
