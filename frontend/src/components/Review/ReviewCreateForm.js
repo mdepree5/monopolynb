@@ -31,9 +31,9 @@ const ReviewCreateForm = ({closeModal}) => {
       }
     )
 
-    if(newReview) history.push(`/properties`);
-    if(newReview) history.push(`/properties/${propertyId}`);
-    // return closeModal();
+    if(newReview) history.replace(`/properties`);
+    if(newReview) history.replace(`/properties/${propertyId}`);
+    return closeModal();
   }
 
   return (
