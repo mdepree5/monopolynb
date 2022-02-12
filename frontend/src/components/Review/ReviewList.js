@@ -1,12 +1,19 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+// todo ——————————————————————————————————————————————————————————————————————————————————
+import { getUserById } from '../../store/user';
 import ReviewEditModal from './ReviewEditModal';
 import ReviewDeleteButton from './ReviewDeleteButton';
+// todo ——————————————————————————————————————————————————————————————————————————————————
 
 const ReviewDetail = ({review}) => {
+  const dispatch = useDispatch();
   const [belongsToUser, setBelongsToUser] = useState(false);
+
   const sessionUser = useSelector(state => state.session.user);
+  // const pageUser = useSelector(state => state.user.currentUser);
+  
+  // useEffect(() => {dispatch(getUserById(review?.guestId))}, [dispatch]);
 
   useEffect(() => {    
     if(sessionUser?.id === review?.guestId) setBelongsToUser(true);
@@ -25,15 +32,13 @@ const ReviewDetail = ({review}) => {
   <ul className='review-detail'>
       <li>
         <ul className='review-nav'>
+          <li>{`${review?.firstName}`}</li>
           <li>{`${month} ${year}`}</li>
-          <li>{belongsToUser && 
-          (
-            <>
+          <li>{belongsToUser && (<>
               <ReviewEditModal review={review}/>
               <ReviewDeleteButton reviewId={review.id} />
-            </>
-            )
-          }</li>
+            </>)}
+          </li>
         </ul>
       </li>
       <li className='review-body'>{review.content}</li>
@@ -41,16 +46,13 @@ const ReviewDetail = ({review}) => {
 )
 }
 
-const ReviewList = ({reviews}) => {
-  
-  return (
-    <ul className='review-list-container'>
-      {reviews.map(review => (
-        <li key={review.id}> 
-          <ReviewDetail review={review} />
-        </li>
-      ))}
-    </ul>
-  )
-}
+const ReviewList = ({reviews}) => (
+  <ul className='review-list-container'>
+    {reviews.map(review => (
+      <li key={review.id}> 
+        <ReviewDetail review={review} />
+      </li>
+    ))}
+  </ul>
+)
 export default ReviewList;

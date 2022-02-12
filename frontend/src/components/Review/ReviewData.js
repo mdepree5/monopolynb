@@ -1,3 +1,7 @@
+import { useEffect, useState } from 'react';
+import {useParams} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import ReviewFormModal from '../Review/ReviewFormModal';
 import './Review.css';
 
 const Meter = ({rating}) => (
@@ -9,6 +13,18 @@ const Meter = ({rating}) => (
 )
 
 const ReviewData = ({reviewData, totalReviews}) => {
+
+  const {propertyId} = useParams();
+  const [belongsToUser, setBelongsToUser] = useState(false);
+
+  const property = useSelector(state => state.property[propertyId]);
+  const sessionUser = useSelector(state => state.session.user);
+
+  useEffect(() => {    
+    if(sessionUser?.id === property?.hostId) setBelongsToUser(true);
+    else setBelongsToUser(false);
+  }, [sessionUser, property])
+
 
   const ReviewDataLine = ({datum}) => (
     <ul className='review-data-line' >
@@ -40,13 +56,16 @@ const ReviewData = ({reviewData, totalReviews}) => {
 
   return (
     <div className='review-data-container'>
-      <ReviewSummary reviewData={reviewData}/>
       <div>
-        {reviewData.slice(1).map(datum => (
-          <ReviewDataLine key={datum.name} datum={datum}/>
-        ))
-        }
+        <ReviewSummary reviewData={reviewData}/>
+        <div>
+          {reviewData.slice(1).map(datum => (
+            <ReviewDataLine key={datum.name} datum={datum}/>
+          ))
+          }
+        </div>
       </div>
+      <div>{!belongsToUser && ( <ReviewFormModal/>)}</div>
     </div>
   )
 }
