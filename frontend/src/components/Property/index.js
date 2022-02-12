@@ -52,7 +52,7 @@ const PropertyPage = () => {
       
 
       <br />
-      <Review id={propertyId} />
+      <Review propertyId={propertyId} />
     </div>
   );
 }

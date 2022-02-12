@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserById } from '../../store/user';
 import ReviewEditModal from './ReviewEditModal';
 import ReviewDeleteButton from './ReviewDeleteButton';
+import { getReviewsByPropertyId } from '../../store/review';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 const ReviewDetail = ({review}) => {
@@ -46,13 +47,31 @@ const ReviewDetail = ({review}) => {
 )
 }
 
-const ReviewList = ({reviews}) => (
-  <ul className='review-list-container'>
-    {reviews.map(review => (
-      <li key={review.id}> 
-        <ReviewDetail review={review} />
-      </li>
-    ))}
-  </ul>
-)
+const ReviewList = ({propertyId}) => {
+
+  const reviews2 = useSelector(state => state.review.listOfReviews);
+  
+  const [currentReviews, setCurrentReviews] = useState(reviews2); 
+
+  console.log('review-list current reviews', currentReviews);
+
+
+  console.log('review-list propertyId', propertyId)
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getReviewsByPropertyId(propertyId))
+  }, [dispatch, propertyId])
+
+  return (
+    <ul className='review-list-container'>
+      {reviews2.map(review => (
+        <li key={review.id}> 
+          <ReviewDetail review={review} />
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 export default ReviewList;

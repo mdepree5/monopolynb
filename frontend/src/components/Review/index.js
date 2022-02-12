@@ -3,14 +3,16 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { getReviewsByPropertyId } from '../../store/review';
 
+
+import ReviewFormModal from './ReviewFormModal';
 import ReviewData from './ReviewData';
 import ReviewList from './ReviewList';
 import './Review.css';
 
 
-const Review = ({id}) => {
+const Review = ({propertyId}) => {
   const dispatch = useDispatch();
-  const {propertyId} = useParams();
+  // const {propertyId} = useParams();
 
   const reviews = useSelector(state => state.review.listOfReviews);
   
@@ -33,30 +35,28 @@ const Review = ({id}) => {
 
   useEffect(() => setCurrentReviews(reviews), [reviews]);
 
-
+  const [username, setUsername] = useState('');
+  
+  function handleChange(event) {
+    setUsername(event.target.value.toLowerCase())
+  }
 
   return (
     <div >
-      <ReviewData reviewData={reviewData} totalReviews={reviews?.length}/>
-      <ReviewList reviews={reviews} />
+      <ReviewData reviews={reviews} reviewData={reviewData} totalReviews={reviews?.length}/>
+      <ReviewList reviews={reviews} propertyId={propertyId} />
+      <ReviewFormModal reviews={reviews} handleChange={handleChange}/>
+      <input
+          id="usernameInput"
+          type="text"
+          onChange={handleChange}
+          value={username}
+        />
+        <div>{username}</div>
     </div>
   );
 };
 export default Review;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // !!!! ——————————————————————————————————————————————————————————————————————————————————

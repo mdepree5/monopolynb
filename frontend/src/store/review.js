@@ -97,7 +97,9 @@ const reviewReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case CREATE_REVIEW: 
+      let newReview = {[action.review.id]: action.review}
       return {
+        newReview,
         ...state,
         [action.review.id]: {
           ...state[action.review.id],
@@ -106,15 +108,15 @@ const reviewReducer = (state = initialState, action) => {
       };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS:
-      // const reviews = {}; 
-      // action.reviews.contentArray.forEach(review => {
-      //   reviews[review.id] = review;
-      // });
-      console.log('reducer-review');
-      console.log(action.reviews);
-      console.log('reducer-review');
+      newState = {};
+      action.reviews.forEach(review => newState[review.id] = review);
+      
+      // console.log('reducer-review');
+      // console.log(action.reviews);
+      // console.log('reducer-review');
       return {
         // ...reviews,
+        ...newState,
         ...state,
         listOfReviews: action.reviews
         // numberOfReviews: action.reviews.numberOfReviews,

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import ReviewCreateForm from './ReviewCreateForm';
 
-function ReviewFormModal() {
+const ReviewFormModal = ({reviews, handleChange}) =>  {
   const [showModal, setShowModal] = useState(false);
+
+  console.log('MODAL', reviews);
 
   return (
     <>
@@ -14,7 +16,7 @@ function ReviewFormModal() {
       }>Tell us about your stay</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ReviewCreateForm closeModal={() => setShowModal(false)}/>
+          <ReviewCreateForm handleChange={handleChange} reviews={reviews} closeModal={() => setShowModal(false)}/>
         </Modal>
       )}
     </>

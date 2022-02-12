@@ -1,15 +1,23 @@
 import {useParams, useHistory} from 'react-router-dom';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as reviewActions from "../../store/review";
 import { useDispatch, useSelector } from "react-redux";
 import {Form, FormInput} from '../Form';
+import { getReviewsByPropertyId } from '../../store/review';
 
-
-const ReviewCreateForm = ({closeModal}) => {
+const ReviewCreateForm = ({closeModal, reviews, handleChange}) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const {propertyId} = useParams();
   const guestId = useSelector(state => state.session.user.id);
+
+  console.log('FORM', reviews)
+  console.log('FORM', handleChange)
+
+  useEffect(() => {
+    dispatch(getReviewsByPropertyId(propertyId));
+  }, [dispatch, propertyId]);
+
 
   const [content, setContent] = useState(''); 
   const [rating, setRating] = useState(5);
@@ -31,8 +39,9 @@ const ReviewCreateForm = ({closeModal}) => {
       }
     )
 
-    if(newReview) history.replace(`/properties`)
-    if(newReview) history.replace(`/properties/${propertyId}`);
+    // if(newReview) history.replace(`/properties`)
+    // if(newReview) history.replace(`/properties/${propertyId}`);
+    if(newReview) alert('new review')
     return closeModal();
   }
 
@@ -50,6 +59,12 @@ const ReviewCreateForm = ({closeModal}) => {
       <FormInput name='Communication' state={communication} setState={setCommunication} />
       <FormInput name='Check In' state={checkIn} setState={setCheckIn} />
       <FormInput name='Cleanliness' state={cleanliness} setState={setCleanliness} />
+      <input
+          id="usernameInput"
+          type="text"
+          onChange={handleChange}
+          // value={username}
+        />
     </Form>
   )
 };

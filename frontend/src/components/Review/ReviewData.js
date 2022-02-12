@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ReviewFormModal from '../Review/ReviewFormModal';
+import ReviewFormModal from './ReviewFormModal';
 import './Review.css';
 
 const Meter = ({rating}) => (
@@ -12,7 +12,7 @@ const Meter = ({rating}) => (
   </div>
 )
 
-const ReviewData = ({reviewData, totalReviews}) => {
+const ReviewData = ({reviewData, totalReviews, reviews}) => {
 
   const {propertyId} = useParams();
   const [belongsToUser, setBelongsToUser] = useState(false);
@@ -65,7 +65,7 @@ const ReviewData = ({reviewData, totalReviews}) => {
           }
         </div>
       </div>
-      <div>{!belongsToUser && ( <ReviewFormModal/>)}</div>
+      <div>{!belongsToUser && ( <ReviewFormModal reviews={reviews}/>)}</div>
     </div>
   )
 }
