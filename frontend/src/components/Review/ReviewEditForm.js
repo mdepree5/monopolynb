@@ -32,7 +32,8 @@ const ReviewEditForm = ({review, closeModal}) => {
 
     if(updatedReview.errors) setErrors(updatedReview.errors); 
     
-    history.push(`/properties/${propertyId}`);
+    if(updatedReview) history.push(`/properties`);
+    if(updatedReview) history.push(`/properties/${propertyId}`);
     return closeModal();
   }
 

@@ -32,8 +32,10 @@ const Review = ({id}) => {
     dispatch(getReviewsByPropertyId(propertyId));
   }, [dispatch, propertyId]);
 
+  useEffect(() => setCurrentReviews(reviews), [reviews]);
 
-  
+
+
   return (
     <div >
       <ReviewData reviewData={reviewData} totalReviews={reviews?.length}/>
