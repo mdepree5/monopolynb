@@ -1,23 +1,10 @@
 import { csrfFetch } from './csrf';
-
-// todo ——————————————————————————————————————————————————————————————————————————————————
-// todo                                 Variables
 // todo ——————————————————————————————————————————————————————————————————————————————————
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
-// todo                              Action Creators
-// todo ——————————————————————————————————————————————————————————————————————————————————
-const setUser = user => ({
-  type: SET_USER,
-  payload: user,
-});
-
-const removeUser = () => ({
-  type: REMOVE_USER,
-});
-
+const setUser = user => ({ type: SET_USER, payload: user });
+const removeUser = () => ({ type: REMOVE_USER });
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -25,10 +12,7 @@ export const login = user => async (dispatch) => {
   const { credential, password } = user;
   const response = await csrfFetch('/api/session', {
     method: 'POST',
-    body: JSON.stringify({
-      credential,
-      password,
-    }),
+    body: JSON.stringify({ credential, password }),
   });
   const data = await response.json();
   dispatch(setUser(data.user));
@@ -52,23 +36,30 @@ export const restoreUser = () => async dispatch => {
 };
 
 export const signup = user => async (dispatch) => {
-  const { username, firstName, lastName, email, password, bio, isHost } = user;
   const response = await csrfFetch("/api/users", {
     method: "POST",
-    body: JSON.stringify({
-      username,
-      firstName,
-      lastName,
-      email,
-      password,
-      bio,
-      isHost
-    }),
+    body: JSON.stringify(user),
   });
   const data = await response.json();
   dispatch(setUser(data.user));
   return response;
 };
+// export const signup = user => async (dispatch) => {
+//   const { username, firstName, lastName, email, password } = user;
+//   const response = await csrfFetch("/api/users", {
+//     method: "POST",
+//     body: JSON.stringify({
+//       username,
+//       firstName,
+//       lastName,
+//       email,
+//       password,
+//     }),
+//   });
+//   const data = await response.json();
+//   dispatch(setUser(data.user));
+//   return response;
+// };
 
 
 export const logout = () => async (dispatch) => {
