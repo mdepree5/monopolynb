@@ -10,6 +10,7 @@ const LoginForm = () => {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [validationErrors, setValidationErrors] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,8 +23,17 @@ const LoginForm = () => {
     );
   };
 
+  useEffect(()=> {
+    const errors = [];
+    if(!credential) errors.push('Please provide a valid email or username.'); 
+    if(!password) errors.push('Please provide a password.');
+
+    setValidationErrors(errors);
+  }, [credential, password])
+
+
 return (
-  <Form onSub={handleSubmit} errors={errors} buttonName={'Log In'} >
+  <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={'Log In'} >
     <FormInput name='Username or Email' state={credential} setState={setCredential} />
     <FormInput type='password' name='Password' state={password} setState={setPassword} />
   </Form>

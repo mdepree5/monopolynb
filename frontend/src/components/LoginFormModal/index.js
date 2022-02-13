@@ -8,8 +8,8 @@ function LoginFormModal() {
   return (
     <>
       <button onClick={e => {
-      e.stopPropagation();
-      setShowModal(true)
+        e.stopPropagation();
+        setShowModal(true)
       }
       }>Log In</button>
       {showModal && (

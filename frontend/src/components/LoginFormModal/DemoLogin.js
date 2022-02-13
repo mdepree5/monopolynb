@@ -1,14 +1,11 @@
 import { useDispatch } from 'react-redux';
-import * as sessionActions from "../../store/session";
+import {demoLogin} from "../../store/session";
 
 const DemoLogin = () => {
   const dispatch = useDispatch();
-
   return (
-    <button onClick={() => dispatch(sessionActions.demoLogin())}> 
-      Demo Login
-    </button>
+    <button onClick={() => dispatch(demoLogin())}>Demo Login</button>
   )
-}
+};
 
 export default DemoLogin;

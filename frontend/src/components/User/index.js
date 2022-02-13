@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserById } from '../../store/user';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import PropertyList from '../Property/PropertyList';
+import PropertyFormModal from '../Property/PropertyFormModal';
 import './User.css';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
@@ -17,12 +18,12 @@ const UserPage = () => {
 
   useEffect(() => {dispatch(getUserById(userId))}, [dispatch, userId]);
 
-
-  return sessionUser === pageUser ? (
+  return sessionUser?.id === pageUser?.id ? (
     <div className='center-body'>
       <ul className='user-splash'>
         <li><h2>{`Welcome Back, ${pageUser?.firstName}`}</h2></li>
         <li><h3>Your Properties</h3></li>
+        <li><PropertyFormModal /></li>
       </ul>
       <PropertyList userId={userId} />
     </div>
