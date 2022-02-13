@@ -32,7 +32,8 @@ const PropertyCreateForm = ({closeModal}) => {
       }
     )
 
-    if(newProperty || !newProperty.errors) history.push(`/properties/${newProperty.id}`);
+    // if(newProperty || !newProperty.errors) history.push(`/properties/${newProperty.id}`);
+    if(newProperty && !newProperty.errors) history.push(`/properties/${newProperty.id}`);
 
     closeModal();
   }

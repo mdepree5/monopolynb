@@ -12,7 +12,6 @@ import Image from '../Image';
 import './Property.css';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
-
 const PropertyPage = () => {
   const dispatch = useDispatch();
   

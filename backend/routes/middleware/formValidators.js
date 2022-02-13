@@ -73,7 +73,7 @@ const validateProperty = [
     .isInt({min: 1 })
     .withMessage('Please provide at least one bed.')
     .isInt({max: 1000})
-    .withMessage('This is a lot of beds. Perhaps look into the hospitality industry.'),
+    .withMessage('Please do not list more than 1000 beds.'),
   check('price')
     .exists({ checkFalsy: true })
     .notEmpty()
@@ -84,21 +84,21 @@ const validateProperty = [
   check('address')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Please provide an address.'),
+    .withMessage('Please provide an address for your property.'),
     check('city')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Please provide a city.'),
+    .withMessage('Please provide a city for your property.'),
   check('state')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('Please provide a state'),
+    .withMessage('Please provide a state for your property.'),
   check('zipcode')
     .exists({ checkFalsy: true })
     .notEmpty()
     .isLength({ min: 5 })
     .isLength({ max: 5 })
-    .withMessage('Please provide a valid zipcode.'),
+    .withMessage('Please provide a valid zipcode for your property.'),
   handleValidationErrors
 ];
 
@@ -118,7 +118,7 @@ const validateReview = [
     .withMessage('Please rate the check in process of your stay.'),
   check('cleanliness')
     .exists({ checkFalsy: true })
-    .withMessage('Please rate the cleanliness.'),
+    .withMessage('Please rate the cleanliness of this property.'),
   handleValidationErrors
 ];
 
