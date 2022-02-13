@@ -30,7 +30,7 @@ const PropertyEditForm = ({property, closeModal}) => {
       if(data && data.errors) setErrors(data.errors);
     })
 
-    if(updatedProperty.errors) setErrors(updatedProperty.errors); 
+    if(updatedProperty?.errors) setErrors(updatedProperty?.errors); 
     
     return closeModal();
   }

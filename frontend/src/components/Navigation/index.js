@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import {useHistory} from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,15 +10,15 @@ import DemoLogin from '../LoginFormModal/DemoLogin';
 
 import * as sessionActions from '../../store/session';
 
-
 import './Navigation.css';
 
 
-
-function Navigation({ isLoaded }){
+const Navigation = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  
   const [navStatus, setNavStatus] = useState('nav-top');
   const sessionUser = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -29,6 +30,7 @@ function Navigation({ isLoaded }){
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    return history.replace('/');
   };
 
   const sessionLinks = sessionUser ? (

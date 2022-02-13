@@ -32,6 +32,7 @@ const ReviewEditForm = ({review, closeModal}) => {
     return closeModal();
   }
 
+  
   useEffect(()=> {
     const errors = [];
     if(!content) errors.push('Please write some content');
