@@ -60,7 +60,7 @@ const ReviewData = ({reviewData, totalReviews, reviews}) => {
           }
         </div>
       </div>
-      <div>{!belongsToUser && ( <ReviewFormModal reviews={reviews}/>)}</div>
+      <div>{!belongsToUser && sessionUser && ( <ReviewFormModal reviews={reviews}/>)}</div>
     </div>
   )
 }

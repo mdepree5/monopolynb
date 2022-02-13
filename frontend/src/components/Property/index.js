@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import {useParams, NavLink} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { getProperty } from '../../store/property';
+import { getUserById } from '../../store/user';
 
 import PropertyEditModal from './PropertyEditModal';
 import PropertyDeleteButton from './PropertyDeleteButton';
@@ -20,6 +22,7 @@ const PropertyPage = () => {
 
   const property = useSelector(state => state.property[propertyId]);
   const sessionUser = useSelector(state => state.session.user);
+  const propertyOwner = useSelector(state => state.user.currentUser);
 
   useEffect(() => {    
     if(sessionUser?.id === property?.hostId) setBelongsToUser(true);
@@ -30,11 +33,10 @@ const PropertyPage = () => {
     dispatch(getProperty(propertyId));
   }, [dispatch, propertyId]);
 
+  useEffect(() => {dispatch(getUserById(property?.hostId))}, [dispatch]);
 
   useEffect(() => window.scroll({top: 0, left: 0}));
 
-  // if(property === null) alert('HEY') 
-  // history.push(`/page-not-found`);
   return (
     <div className='property-page'>
       <ul className='property-info'>
@@ -46,7 +48,7 @@ const PropertyPage = () => {
         </ul> )}</li>
       </ul>
 
-      <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>Host</NavLink></div>
+      <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${propertyOwner?.firstName}`}</NavLink></div>
       <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
       <div className='property-price'>{`$${property?.price} / night`}</div>
       
@@ -66,18 +68,10 @@ export default PropertyPage;
 
 
 /* 
-<div className='img-container'>
-            <div className='img-placeholder-main'>IMG</div>
-            <div className='img-placeholder'>IMG</div>
-            <div className='img-placeholder'>IMG</div>
-            <div className='img-placeholder'>IMG</div>
-          </div>
-
-
-          <div className='mainDetails'>
-            <div>Entire Home</div>
-            <div>Enhanced Clean</div>
-            <div>Self check-in</div>
-            <div>Free cancellation before Mar 25</div>
-          </div>
+  <div className='mainDetails'>
+    <div>Entire Home</div>
+    <div>Enhanced Clean</div>
+    <div>Self check-in</div>
+    <div>Free cancellation before Mar 25</div>
+  </div>
 */
