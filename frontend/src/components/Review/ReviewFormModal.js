@@ -7,7 +7,7 @@ const ReviewFormModal = ({reviews}) =>  {
 
   return (
     <>
-      <button onClick={e => setShowModal(true)}>Tell us about your stay</button>
+      <button className='create' onClick={e => setShowModal(true)}>Write a Review</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <ReviewCreateForm reviews={reviews} closeModal={() => setShowModal(false)}/>

@@ -7,7 +7,7 @@ function PropertyFormModal() {
 
   return (
     <>
-      <button onClick={e => {
+      <button className='create' onClick={e => {
       e.stopPropagation();
       setShowModal(true)
       }

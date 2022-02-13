@@ -6,7 +6,7 @@ const ReviewDeleteButton = ({reviewId}) => {
   const handleDelete = async () => await dispatch(deleteReview(reviewId));
 
   return (
-    <button className='delete' onClick={handleDelete}>Delete Review</button>
+    <button className='delete' onClick={handleDelete}>Delete</button>
   )
 };
 
