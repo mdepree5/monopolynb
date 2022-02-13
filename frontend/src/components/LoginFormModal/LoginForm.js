@@ -1,26 +1,33 @@
+import {useHistory} from 'react-router-dom';
 import { useEffect, useState } from "react";
-import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+// todo ——————————————————————————————————————————————————————————————————————————————————
+import * as sessionActions from "../../store/session";
 import {Form, FormInput} from '../Form';
+// todo ——————————————————————————————————————————————————————————————————————————————————
 
-
-
-const LoginForm = () => {
+const LoginForm = ({closeModal}) => {
   const dispatch = useDispatch();
+  const history = useHistory();
+
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ credential, password })).catch(
+    
+    const successfulLogin = await dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       }
     );
+    
+    if(successfulLogin) history.push(`/users/${successfulLogin.id}`);
+    return closeModal();
   };
 
   useEffect(()=> {
