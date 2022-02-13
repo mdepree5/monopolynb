@@ -1,4 +1,3 @@
-import {useHistory} from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -8,7 +7,6 @@ import {Form, FormInput} from '../Form';
 
 const LoginForm = ({closeModal}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -26,8 +24,7 @@ const LoginForm = ({closeModal}) => {
       }
     );
     
-    if(successfulLogin) history.push(`/users/${successfulLogin.id}`);
-    return closeModal();
+    if(successfulLogin) return closeModal();
   };
 
   useEffect(()=> {

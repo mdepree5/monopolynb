@@ -1,17 +1,15 @@
-import {useHistory} from 'react-router-dom';
+import {NavLink, useHistory} from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
 import PropertyFormModal from '../Property/PropertyFormModal';
 import DemoLogin from '../LoginFormModal/DemoLogin';
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 import * as sessionActions from '../../store/session';
-
 import './Navigation.css';
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 
 const Navigation = () => {
   const dispatch = useDispatch();
