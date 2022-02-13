@@ -1,4 +1,3 @@
-import {useParams, useHistory} from 'react-router-dom';
 import { useState } from "react";
 import * as reviewActions from "../../store/review";
 import { useDispatch } from "react-redux";
@@ -7,8 +6,6 @@ import {Form, FormInput} from '../Form';
 
 const ReviewEditForm = ({review, closeModal}) => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const {propertyId} = useParams();
   
   const [content, setContent] = useState(review?.content);
   const [rating, setRating] = useState(review?.rating);
@@ -25,20 +22,16 @@ const ReviewEditForm = ({review, closeModal}) => {
     )).catch(
       async(res) => {
         const data = await res.json();
-        console.log('data', data);
         if(data && data.errors) setErrors(data.errors);
-      }
-    )
+    })
 
     if(updatedReview.errors) setErrors(updatedReview.errors); 
     
-    if(updatedReview) history.push(`/properties`);
-    if(updatedReview) history.push(`/properties/${propertyId}`);
     return closeModal();
   }
 
   return (
-    <Form onSub={handleSubmit} errors={errors} buttonName={'Edit Your Review'} >
+    <Form onSub={handleSubmit} errors={errors} buttonName={'Update'} >
         <ul>
         <li><label htmlFor='content'>Content</label></li>
         <li><textarea 

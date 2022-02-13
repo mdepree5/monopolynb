@@ -34,11 +34,21 @@
   flex-direction: column;
 }
 
+.line{
+  border-top: 1px solid black;
+}
 
 .form-errors{
   display: flex;
   flex-direction: column;
-  border-top: 1px solid black;
+  padding-top: 10px;
+  font-size: 0.75em;
+  color: #ff8b94;
+}
+
+.state-errors{
+  display: flex;
+  flex-direction: column;
   padding-top: 10px;
   font-size: 0.75em;
   color: #ff8b94;

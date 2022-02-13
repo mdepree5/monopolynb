@@ -18,20 +18,40 @@ const ReviewCreateForm = ({closeModal }) => {
   const [checkIn, setCheckIn] = useState(5);
   const [cleanliness, setCleanliness] = useState(5);
   const [errors, setErrors] = useState([]);
+  const [validationErrors, setValidationErrors] = useState([]);
 
   const handleSubmit = async(event) => {
     event.preventDefault();
 
-    await dispatch(createReview({guestId, propertyId, content, rating, communication, checkIn, cleanliness}))
-    .catch(async(res) => {const data = await res.json();
+    const newReview = await dispatch(createReview(
+      {guestId, propertyId, content, rating, communication, checkIn, cleanliness}
+    )).catch(async(res) => {
+      const data = await res.json();
       if(data && data.errors) setErrors(data.errors);
     })
+
+    if(newReview?.errors) setErrors(newReview?.errors); 
 
     return closeModal();
   }
 
+
+  useEffect(()=> {
+    const errors = [];
+    // if(name.length > 50) errors.push('Name must be no greater than 50 characters.');
+    if(!content) errors.push('Please write some content');
+    if(rating < 1 || rating > 5) errors.push('Rating must be between 1 and 5.');
+    if(communication < 1 || communication > 5) errors.push('Communication rating must be between 1 and 5.');
+    if(checkIn < 1 || checkIn > 5) errors.push('Check in rating must be between 1 and 5.');
+    if(cleanliness < 1 || cleanliness > 5) errors.push('Cleanliness rating must be between 1 and 5.');
+  
+    setValidationErrors(errors);
+  }, [content, rating, communication, checkIn, cleanliness])
+
+
+
   return (
-    <Form onSub={handleSubmit} errors={errors} buttonName={'How was your stay?'} >
+    <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={'Post'} >
       <ul>
         <li><label htmlFor='content'>Content</label></li>
         <li><textarea 
