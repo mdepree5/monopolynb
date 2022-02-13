@@ -27,7 +27,7 @@ const ReviewEditForm = ({review, closeModal}) => {
         if(data && data.errors) setErrors(data.errors);
     })
 
-    if(updatedReview.errors) setErrors(updatedReview.errors); 
+    if(updatedReview?.errors) setErrors(updatedReview?.errors); 
     
     return closeModal();
   }

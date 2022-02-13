@@ -39,7 +39,6 @@ const ReviewCreateForm = ({closeModal }) => {
 
   useEffect(()=> {
     const errors = [];
-    // if(name.length > 50) errors.push('Name must be no greater than 50 characters.');
     if(!content) errors.push('Please write some content');
     if(rating < 1 || rating > 5) errors.push('Rating must be between 1 and 5.');
     if(communication < 1 || communication > 5) errors.push('Communication rating must be between 1 and 5.');

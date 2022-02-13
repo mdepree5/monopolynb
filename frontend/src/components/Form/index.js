@@ -8,7 +8,7 @@ export const Form = ({onSub, validationErrors, errors, buttonName, children}) =>
     </form>
     {validationErrors.length > 0 && (
       <>
-        <div>Before You Post...</div>
+        <div>Before You Submit...</div>
         <div className='line'></div>
       </>
     )}
