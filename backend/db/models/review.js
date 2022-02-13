@@ -1,6 +1,4 @@
 'use strict';
-const {User} = require('./user')
-
 module.exports = (sequelize, DataTypes) => {
   const Review = sequelize.define('Review', {
     guestId: {
@@ -51,7 +49,7 @@ module.exports = (sequelize, DataTypes) => {
   Review.createReview = async (reqData) => await Review.create(reqData);
   
   Review.getReviewsByPropertyId = async (propertyId) => await Review.findAll(
-    {where: { propertyId }, include: User, order: [['createdAt', 'DESC']]})
+    {where: { propertyId }, order: [['createdAt', 'DESC']]});
 
   Review.getReviewById = async (id) => await Review.findByPk(id);
 

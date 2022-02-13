@@ -23,7 +23,6 @@ router.route('/:propertyId')
   (async (req, res) => {
     const propertyId = await Property.deleteProperty(req.params.propertyId);
     // const message = await Review.deleteReviewsByPropertyId(req.params.propertyId);
-    // return res.json({propertyId, message});
     return res.json(propertyId);
   })
 )
@@ -34,6 +33,12 @@ router.route('/:propertyId/reviews')
 .get(asyncHandler
   (async (req, res) => res.json(await Review.getReviewsByPropertyId(req.params.propertyId)))
 )
+
+router.route('/:propertyId/images')
+.get(asyncHandler
+  (async (req, res) => res.json(await Review.getImagesByPropertyId(req.params.propertyId)))
+)
+
 
 module.exports = router;
 
