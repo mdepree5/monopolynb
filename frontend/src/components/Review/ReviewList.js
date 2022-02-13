@@ -11,7 +11,11 @@ const ReviewDetail = ({review}) => {
   const [belongsToUser, setBelongsToUser] = useState(false);
 
   const sessionUser = useSelector(state => state.session.user);
-  const pageUser = useSelector(state => state.user.currentUser);
+  const pageUser = useSelector(state => state.user);
+
+  // const reviewId = review?.guestId;
+  // console.log(reviewId);
+  console.log('pageUSER', pageUser);
 
   useEffect(() => {dispatch(getUserById(review?.guestId))}, [dispatch]);
 

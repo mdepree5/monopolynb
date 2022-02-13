@@ -24,10 +24,7 @@ export const createReview = (review, propertyId) => async (dispatch) => {
 };
 
 export const getReviewsByPropertyId = propertyId => async (dispatch) => {
-  const response = await fetch(`/api/properties/${propertyId}/reviews`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
+  const response = await fetch(`/api/properties/${propertyId}/reviews`, { method: 'GET' });
 
   if (response.ok) {
     const reviews = await response.json();

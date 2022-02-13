@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import {useParams, NavLink, useHistory} from 'react-router-dom';
+import {useParams, NavLink} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import { getProperty } from '../../store/property';
@@ -14,18 +14,13 @@ import './Property.css';
 
 const PropertyPage = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const {propertyId} = useParams();
   const [belongsToUser, setBelongsToUser] = useState(false);
 
   const property = useSelector(state => state.property[propertyId]);
-  const sessionUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector(state => state?.session?.user);
   const propertyOwner = useSelector(state => state.user.currentUser);
-
-  if(!sessionUser) {
-    history.replace('/');
-  };
 
   useEffect(() => {    
     if(sessionUser?.id === property?.hostId) setBelongsToUser(true);
