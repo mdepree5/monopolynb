@@ -28,7 +28,7 @@ const Review = ({propertyId}) => {
   return (
     <div >
       <ReviewData reviews={reviews} reviewData={reviewData} totalReviews={reviews?.length}/>
-      <ReviewList reviews={reviews} propertyId={propertyId} />
+      <ReviewList reviews={reviews} />
     </div>
   );
 };
