@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import ReviewCreateForm from './ReviewCreateForm';
 
-const ReviewFormModal = ({reviews}) =>  {
+const ImageModal = ({image}) =>  {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -10,13 +9,13 @@ const ReviewFormModal = ({reviews}) =>  {
       <button onClick={e => setShowModal(true)}>Tell us about your stay</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <ReviewCreateForm reviews={reviews} closeModal={() => setShowModal(false)}/>
+        <li>{image.imageURL}</li>
         </Modal>
       )}
     </>
   );
 }
 
-export default ReviewFormModal;
+export default ImageModal;
 
 
