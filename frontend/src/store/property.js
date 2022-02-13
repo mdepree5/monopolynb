@@ -17,11 +17,7 @@ const deleteOneProperty = propertyId => ({ type: DELETE_PROPERTY, propertyId });
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
 export const createProperty = property => async (dispatch) => {
-  const response = await csrfFetch(`/api/properties`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(property)
-  });
+  const response = await csrfFetch(`/api/properties`, { method: 'POST', body: JSON.stringify(property) });
 
   if (response.ok) {
     const newProperty = await response.json();
@@ -32,10 +28,7 @@ export const createProperty = property => async (dispatch) => {
 };
 
 export const getProperties = () => async (dispatch) => {
-  const response = await fetch(`/api/properties`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
+  const response = await fetch(`/api/properties`, { method: 'GET' });
 
   if (response.ok) {
     const properties = await response.json();
@@ -46,10 +39,7 @@ export const getProperties = () => async (dispatch) => {
 };
 
 export const getPropertiesByUserId = userId => async (dispatch) => {
-  const response = await fetch(`/api/users/${userId}/properties`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
+  const response = await fetch(`/api/users/${userId}/properties`, { method: 'GET' });
 
   if (response.ok) {
     const properties = await response.json();
@@ -71,11 +61,7 @@ export const getProperty = id => async (dispatch) => {
 };
 
 export const updateProperty = property => async (dispatch) => {
-  const response = await csrfFetch(`/api/properties/${property.id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(property)
-  });
+  const response = await csrfFetch(`/api/properties/${property.id}`, { method: 'PUT', body: JSON.stringify(property) });
 
   if (response.ok) {
     const updatedProperty = await response.json();
@@ -86,10 +72,7 @@ export const updateProperty = property => async (dispatch) => {
 };
 
 export const deleteProperty = propertyId => async (dispatch) => {
-  const response = await csrfFetch(`/api/properties/${propertyId}`, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-  });
+  const response = await csrfFetch(`/api/properties/${propertyId}`, { method: 'DELETE' });
 
   if (response.ok) {
     const propertyId = await response.json();

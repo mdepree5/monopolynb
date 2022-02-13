@@ -13,11 +13,7 @@ const deleteOneReview = reviewId => ({ type: DELETE_REVIEW, reviewId });
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
 export const createReview = (review, propertyId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/properties/${propertyId}/reviews`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(review)
-  });
+  const response = await csrfFetch(`/api/properties/${propertyId}/reviews`, { method: 'POST', body: JSON.stringify(review) });
 
   if (response.ok) {
     const review = await response.json();
@@ -42,11 +38,7 @@ export const getReviewsByPropertyId = propertyId => async (dispatch) => {
 };
 
 export const updateReview = review => async (dispatch) => {
-  const response = await csrfFetch(`/api/reviews/${review.id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(review)
-  });
+  const response = await csrfFetch(`/api/reviews/${review.id}`, { method: 'PUT', body: JSON.stringify(review) });
 
   if (response.ok) {
     const updatedReview = await response.json();
@@ -57,10 +49,7 @@ export const updateReview = review => async (dispatch) => {
 };
 
 export const deleteReview = reviewId => async (dispatch) => {
-  const response = await csrfFetch(`/api/reviews/${reviewId}`, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-  });
+  const response = await csrfFetch(`/api/reviews/${reviewId}`, { method: 'DELETE' });
 
   if (response.ok) {
     const reviewId = await response.json();

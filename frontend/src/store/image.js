@@ -6,10 +6,7 @@ const getAllImages = (images, propertyId) => ({ type: GET_ALL_IMAGES, images, pr
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
 export const getImagesByPropertyId = propertyId => async (dispatch) => {
-  const response = await fetch(`/api/properties/${propertyId}/images`, {
-    method: 'GET',
-    headers: { 'Content-Type': 'application/json' },
-  });
+  const response = await fetch(`/api/properties/${propertyId}/images`, { method: 'GET' });
 
   if (response.ok) {
     const images = await response.json();
