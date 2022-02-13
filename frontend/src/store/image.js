@@ -33,7 +33,9 @@ const imageReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_IMAGES: {
       const newState = {...state};
-      action.images.forEach(image => newState.listOfImages.push(image))
+      const images = [];
+      action.images.forEach(image => images.push(image));
+      newState.listOfImages = images;
       return newState;
     }
 // todo ——————————————————————————————————————————————————————————————————————————————————

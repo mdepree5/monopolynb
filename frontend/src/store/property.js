@@ -126,46 +126,31 @@ export const deleteProperty = propertyId => async (dispatch) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const initialState = { listOfProperties: [], listOfReviews: [] };
+const initialState = { listOfProperties: [] };
 
 const propertyReducer = (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_PROPERTY: 
-      return {
-      ...state,
-      [action.property.id]: {
-        ...state[action.property.id],
-        ...action.property
-      }
+    case CREATE_PROPERTY: {
+      const newState = {...state, listOfProperties:[...state.listOfProperties]};
+      
+      newState.listOfProperties.unshift(action.property);
+      return newState;
     };
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case GET_ALL_PROPERTIES:
-      // const properties = {}; 
-      // action.properties.forEach(property => {
-      //   properties[property.id] = property;
-      // });
-      return {
-        // ...properties, 
-        ...state,
-        listOfProperties: action.properties
-      };
+    case GET_ALL_PROPERTIES_BY_USER_ID:      
+    case GET_ALL_PROPERTIES: {
+      const newState = {...state};
+      const properties = [];
+      
+      action.properties.forEach(property => properties.push(property));
+      newState.listOfProperties = properties;
+      return newState;
+    };
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case GET_ALL_PROPERTIES_BY_USER_ID:
-
-      return {
-        ...state,
-        listOfProperties: action.properties
-      };
-// todo ——————————————————————————————————————————————————————————————————————————————————
-    case GET_ONE_PROPERTY:
-      return {
-        ...state,
-        
-        [action.property.id]: {
-          ...state[action.property.id],
-          ...action.property
-        }
-      };
+    case GET_ONE_PROPERTY: {
+      const newState = {...state, [action.property.id]: action.property};
+      return newState;
+    }
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_PROPERTY:
       return {
@@ -189,40 +174,3 @@ const propertyReducer = (state = initialState, action) => {
 };
 
 export default propertyReducer;
-
-/* 
-export const createProperty = property => async (dispatch) => {
-  const { image, title, numberOfBeds, price,
-    city, state, zipcode } = property;
-    const formData = new FormData();
-  
-    formData.append("title", title);
-    formData.append("numberOfBeds", numberOfBeds);
-    formData.append("price", price);
-    formData.append("city", city);
-    formData.append("state", state);
-    formData.append("zipcode", zipcode);
-    if (image) formData.append("image", image);
-    for( const key of formData.entries()){
-      console.log(`FORM DATA: ${key[0]}, ${key[1]}`)
-    }
-  // const formData = {
-  //   image: image || null, title, numberOfBeds, price, city, state, zipcode
-  // }
-  console.log('thunk-formData', formData);
-
-  const response = await csrfFetch(`/api/properties`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'multipart/form-data' },
-    body: formData
-    // body: JSON.stringify(property)
-  });
-
-  if (response.ok) {
-    const newProperty = await response.json();
-    dispatch(createOneProperty(newProperty));
-    return newProperty;
-  }
-  return response;
-};
-*/

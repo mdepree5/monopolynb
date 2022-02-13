@@ -95,32 +95,36 @@ const reviewReducer = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_REVIEW: {
       const newState = {...state, listOfReviews:[...state.listOfReviews]}
-      newState.listOfReviews.unshift(action.review);
       
+      newState.listOfReviews.unshift(action.review);
       return newState;
-    }
+    };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS: {
       const newState = {...state};
-      action.reviews.forEach(review => newState.listOfReviews.push(review))
+      const reviews = [];
+      
+      action.reviews.forEach(review => reviews.push(review));
+      newState.listOfReviews = reviews;
       return newState;
-    }
+    };
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case UPDATE_REVIEW:
+    case UPDATE_REVIEW: {
       const newState = {...state}
       const newReview = state.listOfReviews.map(review => 
-        review.id === action.review.id ? review = action.review : review)
+        review.id === action.review.id ? review = action.review : review);
 
-      newState.listOfReviews = newReview
-
+      newState.listOfReviews = newReview;
       return newState;
+    };
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_REVIEW: {
-      const newState = {...state}
+      const newState = {...state};
       const newReviews = state.listOfReviews.filter(review => {
-        return review.id !== action.reviewId
-      })
-      newState.listOfReviews = newReviews
+        return review.id !== action.reviewId;
+      });
+
+      newState.listOfReviews = newReviews;
       return newState;
     }
     default:
