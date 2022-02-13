@@ -1,17 +1,16 @@
 import { useEffect, useState } from 'react';
 import {useParams, NavLink} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 import { getProperty } from '../../store/property';
 import { getUserById } from '../../store/user';
-
 import PropertyEditModal from './PropertyEditModal';
 import PropertyDeleteButton from './PropertyDeleteButton';
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 import Review from '../Review';
 import Image from '../Image';
-
 import './Property.css';
+// todo ——————————————————————————————————————————————————————————————————————————————————
 
 
 const PropertyPage = () => {
