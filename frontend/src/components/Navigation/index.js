@@ -52,7 +52,8 @@ function Navigation({ isLoaded }){
   return (
     <nav className={`nav-bar ${navStatus}`}>
       <ul id='left-nav'>
-        <li><NavLink exact to="/">Home</NavLink></li>
+      <li><img id='home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' /></li>
+        <li><NavLink exact to="/">Monopolynb</NavLink></li>
       </ul>
       <ul id='mid-nav'>
         <li>
