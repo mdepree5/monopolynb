@@ -16,11 +16,14 @@ module.exports = {
     { hostId: 2, title: 'Kentucky Avenue', numberOfBeds: 4, price: 90, address: 'N Kentucky Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
     { hostId: 2, title: 'Indiana Avenue', numberOfBeds: 4, price: 90, address: 'S Indiana Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
     { hostId: 2, title: 'Illinois Avenue', numberOfBeds: 4, price: 100, address: 'S Dr Martin Luther King Jr Blvd', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
-    { hostId: 2, title: 'Atlantic Avenue', numberOfBeds: 4, price: 110, address: 'Atlantic Ave', city: 'Ventnor City', state: 'New Jersey', zipcode: '08406' },
+    { hostId: 2, title: 'Atlantic Avenue', numberOfBeds: 4, price: 110, address: 'Atlantic Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
+    { hostId: 2, title: 'Ventnor Avenue', numberOfBeds: 4, price: 110, address: 'Ventnor Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
+    { hostId: 2, title: 'Marven Gardens', numberOfBeds: 4, price: 120, address: 'Margate City', city: 'Margate City', state: 'New Jersey', zipcode: '08402' },
+    { hostId: 2, title: 'Pacific Avenue', numberOfBeds: 4, price: 130, address: 'Pacific Ave', city: 'Ventnor City', state: 'New Jersey', zipcode: '08401' },
     { hostId: 2, title: 'North Carolina Avenue', numberOfBeds: 4, price: 130, address: 'N North Carolina Ave', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
     { hostId: 2, title: 'Pennsylvania Avenue', numberOfBeds: 4, price: 150, address: 'Pennsylvania Ave', city: 'Absecon', state: 'New Jersey', zipcode: '08201' },
     { hostId: 2, title: 'Park Place', numberOfBeds: 4, price: 175, address: 'Park Pl', city: 'Ocean City', state: 'New Jersey', zipcode: '08226' },
-    { hostId: 2, title: 'Boardwalk', numberOfBeds: 4, price: 200, address: 'Boardwalk', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
+    { hostId: 2, title: 'Boardwalk', numberOfBeds: 20, price: 200, address: 'Boardwalk', city: 'Atlantic City', state: 'New Jersey', zipcode: '08401' },
     
   ], {}),
   
