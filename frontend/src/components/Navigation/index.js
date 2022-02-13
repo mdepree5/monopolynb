@@ -64,9 +64,9 @@ function Navigation({ isLoaded }){
         )}
         </li>
       </ul>
-      <ul id='right-nav'>
-        {sessionLinks}
-      </ul>
+      <div id='right-nav'>
+        <ul id='right-nav-nested'>{sessionLinks}</ul>
+      </div>
     </nav>
   );
 }

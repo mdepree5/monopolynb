@@ -59,9 +59,20 @@
   width: 33%;
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0;
+}
+
+#right-nav-nested{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0;
+  max-width: 333px;
+
 }
 
 /* .profile-dropdown{
