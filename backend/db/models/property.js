@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: { model: 'Users'},
-    },
+    }, 
     title: {
     type: DataTypes.STRING,
       allowNull: false,
@@ -39,6 +39,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {len: [1, 10]}
+    },
+    cardImage: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {});

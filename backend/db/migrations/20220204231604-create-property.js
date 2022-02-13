@@ -39,6 +39,10 @@ module.exports = {
       type: Sequelize.STRING(10),
       allowNull: false,
     },
+    cardImage: {
+      type: Sequelize.STRING(255),
+      allowNull: true,
+    },
     createdAt: {
       allowNull: false,
       type: Sequelize.DATE,

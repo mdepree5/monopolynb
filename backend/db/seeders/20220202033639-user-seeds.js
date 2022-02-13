@@ -12,7 +12,7 @@ module.exports = {
     },
     {
       username: 'yourcousin',
-      firstName: 'Unger',
+      firstName: 'Younger',
       lastName: 'CousinWhoAlwaysCheats',
       email: 'cheaters@neverprosper.com',
       hashedPassword: bcrypt.hashSync('loadedDie'),
@@ -43,7 +43,7 @@ module.exports = {
   down: (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete('Users', {
-      email: { [Op.in]: ['demo@user.io', 'cheaters@neverprosper.com', 'lizzz@genericuniversity.edu', 'byersWill@dialup-hawkins.com'] }
+      email: { [Op.in]: ['demo@user.io', 'cheaters@neverprosper.com', 'lizzz@genericuniversity.edu', 'byersWill@dialup-hawkins.com', 'ralph@fix-it-felix-jr.com'] }
     }, {});
   }
 };
