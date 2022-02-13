@@ -53,7 +53,6 @@ export const getReviewsByPropertyId = propertyId => async (dispatch) => {
   if (response.ok) {
     const reviews = await response.json();
     dispatch(getAllReviews(reviews, propertyId));
-    // return alert('HEY');
     return reviews;
   }
   return response;
@@ -90,7 +89,7 @@ export const deleteReview = reviewId => async (dispatch) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Reducer
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const initialState = { listOfReviews: [], pseudoListOfReviews: {} };
+const initialState = { listOfReviews: [] };
 
 const reviewReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -102,15 +101,12 @@ const reviewReducer = (state = initialState, action) => {
     }
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS: {
-      const newState = {};
-      action.reviews.forEach(review => newState[review.id] = review);
+      const newState = {...state};
+      console.log(action.reviews)
+      const newReviews = state.listOfReviews.filter(review => action.review)
+      newState.listOfReviews = newReviews;
 
-      return {
-        ...newState,
-        ...state,
-        listOfReviews: action.reviews,
-        pseudoListOfReviews: {...newState}
-      };
+      return newState;
     }
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_REVIEW:

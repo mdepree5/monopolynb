@@ -2,7 +2,7 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
 const {validateReview, validateProperty, validatePUT} = require('../middleware/formValidators');
-const {Property, Review} = require('../../db/models');
+const {Property, Review, Image} = require('../../db/models');
 const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3');
 
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -36,7 +36,7 @@ router.route('/:propertyId/reviews')
 
 router.route('/:propertyId/images')
 .get(asyncHandler
-  (async (req, res) => res.json(await Review.getImagesByPropertyId(req.params.propertyId)))
+  (async (req, res) => res.json(await Image.getImagesByPropertyId(req.params.propertyId)))
 )
 
 

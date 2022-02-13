@@ -2,11 +2,12 @@ import { useEffect, useState } from 'react';
 import {useParams, NavLink} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperty } from '../../store/property';
-// import Review from '../Review';
+
 import PropertyEditModal from './PropertyEditModal';
 import PropertyDeleteButton from './PropertyDeleteButton';
 
-import Review from '../Review/';
+import Review from '../Review';
+import Image from '../Image';
 
 import './Property.css';
 
@@ -50,13 +51,13 @@ const PropertyPage = () => {
       <div className='property-price'>{`$${property?.price} / night`}</div>
       
       
+      <Image propertyId={propertyId}/>
 
       <br />
       <Review propertyId={propertyId} />
     </div>
   );
 }
-
 
 
 export default PropertyPage;
