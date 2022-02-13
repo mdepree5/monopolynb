@@ -102,10 +102,7 @@ const reviewReducer = (state = initialState, action) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ALL_REVIEWS: {
       const newState = {...state};
-      console.log(action.reviews)
-      const newReviews = state.listOfReviews.filter(review => action.review)
-      newState.listOfReviews = newReviews;
-
+      action.reviews.forEach(review => newState.listOfReviews.push(review))
       return newState;
     }
 // todo ——————————————————————————————————————————————————————————————————————————————————

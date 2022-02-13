@@ -4,25 +4,22 @@ import { getImagesByPropertyId } from '../../store/image';
 
 import './Image.css';
 
-
 const Image = ({propertyId}) => {
   const dispatch = useDispatch();
 
   const images = useSelector(state => state.image.listOfImages);
 
-  console.log('images', images);
+  console.log('images', images)
 
   useEffect(() => {
     dispatch(getImagesByPropertyId(propertyId));
-  }, [dispatch, propertyId]);
+  }, [dispatch]);
 
   return (
-    <ul >
-      {
-        images.map(image => (
-          <li key={image.id}>{image.imageURL}</li>
-        ))
-      }
+    <ul className='image-container'>
+      {images.map(image => (
+        <li key={image.id}><img className='property-image' src={image.imageURL} alt={`property-${image.id}`} /></li>
+      ))}
     </ul>
   );
 };

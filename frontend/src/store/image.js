@@ -31,23 +31,9 @@ const initialState = { listOfImages: [] };
 
 const imageReducer = (state = initialState, action) => {
   switch (action.type) {
-    // case GET_ALL_IMAGES: {
-    //   const newState = {};
-    //   action.images.forEach(image => newState[image.id] = image);
-
-    //   return {
-    //     ...newState,
-    //     ...state,
-    //     listOfImages: action.reviews,
-    //     pseudoListOfReviews: {...newState}
-    //   };
-    // }
     case GET_ALL_IMAGES: {
       const newState = {...state};
-      console.log(action.images);
-      const newImages = state.listOfImages.filter(image => action.image)
-      newState.listOfImages = newImages;
-
+      action.images.forEach(image => newState.listOfImages.push(image))
       return newState;
     }
 // todo ——————————————————————————————————————————————————————————————————————————————————
