@@ -5,27 +5,10 @@ export const GET_ALL_REVIEWS = 'review/get_all';
 export const UPDATE_REVIEW = 'review/update';
 export const DELETE_REVIEW = 'review/delete';
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const createOneReview = (review, propertyId) => ({
-  type: CREATE_REVIEW,
-  review,
-  propertyId
-});
-
-const getAllReviews = (reviews, propertyId) => ({
-  type: GET_ALL_REVIEWS,
-  reviews,
-  propertyId
-});
-
-const updateOneReview = review => ({
-  type: UPDATE_REVIEW,
-  review
-});
-
-const deleteOneReview = reviewId => ({
-  type: DELETE_REVIEW,
-  reviewId
-});
+const createOneReview = (review, propertyId) => ({ type: CREATE_REVIEW, review, propertyId });
+const getAllReviews = (reviews, propertyId) => ({ type: GET_ALL_REVIEWS, reviews, propertyId });
+const updateOneReview = review => ({ type: UPDATE_REVIEW, review });
+const deleteOneReview = reviewId => ({ type: DELETE_REVIEW, reviewId });
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -111,10 +94,10 @@ const reviewReducer = (state = initialState, action) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case UPDATE_REVIEW: {
       const newState = {...state}
-      const newReview = state.listOfReviews.map(review => 
+      const updatedReview = state.listOfReviews.map(review => 
         review.id === action.review.id ? review = action.review : review);
 
-      newState.listOfReviews = newReview;
+      newState.listOfReviews = updatedReview;
       return newState;
     };
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -127,6 +110,7 @@ const reviewReducer = (state = initialState, action) => {
       newState.listOfReviews = newReviews;
       return newState;
     }
+// todo ——————————————————————————————————————————————————————————————————————————————————
     default:
       return state;
   }

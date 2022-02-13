@@ -1,13 +1,7 @@
 // todo ——————————————————————————————————————————————————————————————————————————————————
 export const GET_ALL_IMAGES = 'image/get_all';
 // todo ——————————————————————————————————————————————————————————————————————————————————
-
-const getAllImages = (images, propertyId) => ({
-  type: GET_ALL_IMAGES,
-  images,
-  propertyId
-});
-
+const getAllImages = (images, propertyId) => ({ type: GET_ALL_IMAGES, images, propertyId });
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————

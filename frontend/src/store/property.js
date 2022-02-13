@@ -7,36 +7,12 @@ const GET_ONE_PROPERTY = 'property/get_one';
 const UPDATE_PROPERTY = 'property/update';
 const DELETE_PROPERTY = 'property/delete';
 // todo ——————————————————————————————————————————————————————————————————————————————————
-const createOneProperty = property => ({
-  type: CREATE_PROPERTY,
-  property
-});
-
-const getAllProperties = properties => ({
-  type: GET_ALL_PROPERTIES,
-  properties
-});
-
-const getAllPropertiesByUserId = (properties, userId) => ({
-  type: GET_ALL_PROPERTIES_BY_USER_ID,
-  properties,
-  userId
-});
-
-const getOneProperty = property => ({
-  type: GET_ONE_PROPERTY,
-  property
-});
-
-const updateOneProperty = property => ({
-  type: UPDATE_PROPERTY,
-  property
-}); 
-
-const deleteOneProperty = propertyId => ({
-  type: DELETE_PROPERTY,
-  propertyId
-});
+const createOneProperty = property => ({ type: CREATE_PROPERTY, property });
+const getAllPropertiesByUserId = (properties, userId) => ({ type: GET_ALL_PROPERTIES_BY_USER_ID, properties, userId });
+const getAllProperties = properties => ({ type: GET_ALL_PROPERTIES, properties });
+const getOneProperty = property => ({ type: GET_ONE_PROPERTY, property });
+const updateOneProperty = property => ({ type: UPDATE_PROPERTY, property }); 
+const deleteOneProperty = propertyId => ({ type: DELETE_PROPERTY, propertyId });
 // todo ——————————————————————————————————————————————————————————————————————————————————
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -64,7 +40,6 @@ export const getProperties = () => async (dispatch) => {
   if (response.ok) {
     const properties = await response.json();
     dispatch(getAllProperties(properties));
-    // return alert('HEY');
     return properties;
   }
   return response;
@@ -152,21 +127,23 @@ const propertyReducer = (state = initialState, action) => {
       return newState;
     }
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case UPDATE_PROPERTY:
-      return {
-        ...state,
-        [action.property.id]: action.property
-      }
+    case UPDATE_PROPERTY: {
+      const newState = {...state}
+      const updatedProperty = state.listOfProperties.map(property => 
+        property.id === action.property.id ? property = action.property : property);
+
+      newState.listOfProperties = updatedProperty;
+      return newState;
+    };
 // todo ——————————————————————————————————————————————————————————————————————————————————
-    case DELETE_PROPERTY: 
-    const deleteOnePropertyState = {
-      ...state,
-      [action.property]: {
-        ...state[action.property],
-        ...action.property
-      }
+    case DELETE_PROPERTY: {
+      const newState = {...state};
+      const newProperties = state.listOfProperties.filter(property => {
+        return property.id !== action.propertyId;
+      })
+      newState.listOfProperties = newProperties;
+      return newState;
     }
-      return deleteOnePropertyState;
 // todo ——————————————————————————————————————————————————————————————————————————————————
     default:
       return state;
