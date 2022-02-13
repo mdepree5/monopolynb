@@ -28,17 +28,13 @@ const PropertyCreateForm = ({closeModal}) => {
     
     const newProperty = await dispatch(createProperty(
       {hostId, title, numberOfBeds, price, address, city, state, zipcode}
-    )).catch(
-      async(res) => {
-        const data = await res.json();
-        if(data && data.errors) setErrors(data.errors);
-      }
-    )
+    )).catch(async(res) => {
+      const data = await res.json();
+      if(data && data.errors) setErrors(data.errors);
+    })
     
     if(newProperty?.errors) setErrors(newProperty?.errors); 
 
-    // if(newProperty || !newProperty.errors) history.push(`/properties/${newProperty.id}`);
-    if(newProperty) alert('HEY')
     if(newProperty) history.push(`/properties/${newProperty.id}`);
     return closeModal();
   }
