@@ -29,14 +29,7 @@ Fast forward 7 days of rigorous full-stack development, Monopolynb is what the w
   </p>
 </div>
 
-<h1 align="center"></h1>
-
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-
 <!-- Built With -->
-<h1 align="center"></h1>
 <h2 align="left">Built with </h2>
 <p align="left">
     <a href="https://reactjs.org/"><strong>React</strong></a>
