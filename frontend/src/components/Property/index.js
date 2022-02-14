@@ -20,9 +20,6 @@ const PropertyPage = () => {
   const sessionUser = useSelector(state => state?.session?.user);
 
   console.log('PROPERTY!!!!!!!!!', property)
-
-
-  console.log(property?.Images)
   
   useEffect(() => {dispatch(getProperty(propertyId))}, [dispatch, propertyId]);
   
@@ -51,22 +48,10 @@ const PropertyPage = () => {
       <Image propertyId={propertyId}/>
       
       <br />
-      {/* <Review propertyId={propertyId} /> */}
+      <Review propertyId={propertyId} />
     </div>
   );
 }
 
 
 export default PropertyPage;
-
-
-
-
-/* 
-  <div className='mainDetails'>
-    <div>Entire Home</div>
-    <div>Enhanced Clean</div>
-    <div>Self check-in</div>
-    <div>Free cancellation before Mar 25</div>
-  </div>
-*/

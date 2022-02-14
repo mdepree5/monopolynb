@@ -10,7 +10,7 @@ const Image = ({propertyId}) => {
   const images = useSelector(state => state.image.listOfImages);
   console.log(images);
 
-  useEffect(() => {dispatch(getImagesByPropertyId(propertyId))}, [dispatch ]);
+  useEffect(() => {dispatch(getImagesByPropertyId(propertyId))}, [dispatch]);
 
   return (
     <ul className='image-container'>

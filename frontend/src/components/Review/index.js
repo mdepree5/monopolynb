@@ -1,9 +1,17 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getReviewsByPropertyId } from '../../store/review';
 import ReviewData from './ReviewData';
 import ReviewList from './ReviewList';
 import './Review.css';
 
 
-const Review = ({reviews}) => {
+const Review = ({propertyId}) => {
+  const dispatch = useDispatch();
+  const reviews = useSelector(state => state.review.listOfReviews);
+
+  useEffect(() => {dispatch(getReviewsByPropertyId(propertyId))}, [dispatch]);
+
   const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
   
   const reviewData = [
