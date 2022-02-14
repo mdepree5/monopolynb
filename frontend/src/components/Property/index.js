@@ -18,9 +18,13 @@ const PropertyPage = () => {
   const {propertyId} = useParams();
   const [belongsToUser, setBelongsToUser] = useState(false);
 
+  
+
+  // const hostId = property?.hostId;
+
   const property = useSelector(state => state.property[propertyId]);
   const sessionUser = useSelector(state => state?.session?.user);
-  const propertyOwner = useSelector(state => state.user.currentUser);
+  const propertyOwner = useSelector(state => state.user[property?.hostId]);
 
   useEffect(() => {    
     if(sessionUser?.id === property?.hostId) setBelongsToUser(true);
@@ -31,7 +35,7 @@ const PropertyPage = () => {
     dispatch(getProperty(propertyId));
   }, [dispatch, propertyId]);
 
-  useEffect(() => {dispatch(getUserById(property?.hostId))}, [dispatch]);
+  // useEffect(() => {dispatch(getUserById(property?.hostId))}, [dispatch]);
 
   useEffect(() => window.scroll({top: 0, left: 0}));
 

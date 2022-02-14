@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
   
   Property.getPropertiesByUserId = async (hostId) => await Property.findAll({
     where: { hostId },
-    order: [['price', 'ASC']]
+    order: [['price', 'ASC']],
   });
 
   Property.getPropertyById = async (id) => await Property.findByPk(id);
@@ -88,22 +88,9 @@ module.exports = (sequelize, DataTypes) => {
   // todo                               Associations
   // todo ————————————————————————————————————————————————————————————————————————————————
   Property.associate = function(models) {
-
-    Property.belongsTo(models.User, {
-      as: 'users',
-      foreignKey: 'hostId'
-    });
-
-    Property.hasMany(models.Review, {
-      as: 'reviews',
-      foreignKey: 'propertyId',
-    });
-    
-    Property.hasMany(models.Image, {
-      as: 'images',
-      foreignKey: 'propertyId',
-    });
-
+    Property.belongsTo(models.User, { foreignKey: 'hostId' });
+    Property.hasMany(models.Review, { foreignKey: 'propertyId' });
+    Property.hasMany(models.Image, { foreignKey: 'propertyId' });
   };
   return Property;
 };

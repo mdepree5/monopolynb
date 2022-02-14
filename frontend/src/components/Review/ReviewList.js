@@ -15,7 +15,7 @@ const ReviewDetail = ({review}) => {
 
   // const reviewId = review?.guestId;
   // console.log(reviewId);
-  console.log('pageUSER', pageUser);
+  // console.log('pageUSER', pageUser);
 
   useEffect(() => {dispatch(getUserById(review?.guestId))}, [dispatch]);
 

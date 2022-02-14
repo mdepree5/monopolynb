@@ -38,7 +38,7 @@ export const getProperties = () => async (dispatch) => {
   return response;
 };
 
-export const getPropertiesByUserId = userId => async (dispatch) => {
+export const getPropertiesByUserId = (userId) => async (dispatch) => {
   const response = await fetch(`/api/users/${userId}/properties`, { method: 'GET' });
 
   if (response.ok) {
@@ -49,8 +49,8 @@ export const getPropertiesByUserId = userId => async (dispatch) => {
   return response;
 };
 
-export const getProperty = id => async (dispatch) => {
-  const response = await fetch(`/api/properties/${id}`);
+export const getProperty = (propertyId) => async (dispatch) => {
+  const response = await fetch(`/api/properties/${propertyId}`, { method: 'GET' });
 
   if (response.ok) {
     const property = await response.json();

@@ -14,7 +14,7 @@ const UserPage = () => {
   const dispatch = useDispatch();
 
   const sessionUser = useSelector(state => state.session.user);
-  const pageUser = useSelector(state => state.user.currentUser);
+  const pageUser = useSelector(state => state.user[userId]);
 
   useEffect(() => {dispatch(getUserById(userId))}, [dispatch, userId]);
 
