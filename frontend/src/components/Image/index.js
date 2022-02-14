@@ -18,7 +18,7 @@ const Image = ({propertyId}) => {
       ))}
     </ul>
   ) : (
-    <div className='image-container'></div>
+    <div className='image-container'>No images yet!</div>
   )
 }
 
