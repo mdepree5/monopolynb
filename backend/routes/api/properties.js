@@ -1,10 +1,8 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
-
+// todo ——————————————————————————————————————————————————————————————————————————————————
 const {validateReview, validateProperty, validatePUT} = require('../middleware/formValidators');
 const {User, Property, Review, Image} = require('../../db/models');
-const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3');
-
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 router.route('/')
@@ -27,7 +25,6 @@ router.route('/:propertyId')
 .delete(asyncHandler
   (async (req, res) => {
     const propertyId = await Property.deleteProperty(req.params.propertyId);
-    // const message = await Review.deleteReviewsByPropertyId(req.params.propertyId);
     return res.json(propertyId);
   })
 )
@@ -36,11 +33,8 @@ router.route('/:propertyId/reviews')
 .post(validateReview, asyncHandler
   (async (req, res) => {
     const review = await Review.create(req.body);
-
     return res.json(await Review.findOne({where: {id: review.id}, include: User }))
   }))
-
-  // (async (req, res) => res.json(await Review.createReview(req.body))))
 .get(asyncHandler
   (async (req, res) => {
     const {propertyId} = req.params;
@@ -49,7 +43,6 @@ router.route('/:propertyId/reviews')
     ))
   })
 )
-// (async (req, res) => res.json(await Review.getReviewsByPropertyId(req.params.propertyId)))
 
 router.route('/:propertyId/images')
 .get(asyncHandler
@@ -61,6 +54,8 @@ module.exports = router;
 
 
 /* 
+const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3');
+
 router.route('/')
 .post(singleMulterUpload, 
   validateProperty,
