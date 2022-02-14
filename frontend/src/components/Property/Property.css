@@ -147,3 +147,28 @@
     width: 90%;
   }
 }
+
+.create-property-form-modal{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.create-property-form-modal input {
+  width: 90%;
+}
+
+.create-property-form-modal > *{
+  width: 50%;
+}
+
+#property-create-form-home-icon-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#property-create-form-home-icon{
+  width: 60%;
+  height: 60%;
+}

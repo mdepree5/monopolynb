@@ -58,15 +58,24 @@ const PropertyCreateForm = ({closeModal}) => {
 
 
   return (
+
     <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={'Host Your Property!'} >
-      <FormInput name='Title' state={title} setState={setTitle} />
-      <FormInput name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
-      <FormInput name='Price' state={price} setState={setPrice} />
-      <FormInput name='Address' state={address} setState={setAddress} />
-      <FormInput name='City' state={city} setState={setCity} />
-      <FormInput name='State' state={state} setState={setState} />
-      <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
+      <div className='create-property-form-modal'>
+        <inputs>
+          <FormInput name='Title' state={title} setState={setTitle} />
+          <FormInput name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
+          <FormInput name='Price' state={price} setState={setPrice} />
+          <FormInput name='Address' state={address} setState={setAddress} />
+          <FormInput name='City' state={city} setState={setCity} />
+          <FormInput name='State' state={state} setState={setState} />
+          <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
+        </inputs>
+        <div id='property-create-form-home-icon-container' >
+          <img id='property-create-form-home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' />
+        </div>
+      </div>
     </Form>
+
   )
 };
 
