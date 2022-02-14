@@ -7,7 +7,11 @@ const {User, Property, Review, Image} = require('../../db/models');
 
 router.route('/')
 .post(validateProperty, asyncHandler
-  (async (req, res) => res.json(await Property.create(req.body))))
+  (async (req, res) => {
+  const image = req.body.cardImage
+    await 
+    res.json(await Property.create(req.body))
+  }))
 .get(asyncHandler
   (async (req, res) => res.json(await Property.getAllProperties()))
 )

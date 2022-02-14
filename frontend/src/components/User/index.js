@@ -27,6 +27,7 @@ const UserPage = () => {
       </div>
       <div style={{width:'40%', marginBottom: '10px'}} className="line"></div>
       <PropertyList userId={userId} />
+      <div className='filler-box' style={{backgroundColor:'white'}}/>
     </div>
     ) : (
     <div className='user-page center-body'>
@@ -38,6 +39,7 @@ const UserPage = () => {
       </div>
       <div style={{width:'40%', marginBottom: '10px'}} className="line"></div>
       <PropertyList userId={userId} />
+      <div className='filler-box' style={{backgroundColor:'white'}}/>
     </div>
     )
 };

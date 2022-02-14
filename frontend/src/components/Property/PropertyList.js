@@ -28,7 +28,6 @@ const PropertyList = ({userId = null}) => {
   ) : (
     <>
       <h3 style={{marginBottom: '10px'}}>No Listings yet... why not start now?</h3>
-      <div className='white-filler-box'></div>
     </>
   );
 };

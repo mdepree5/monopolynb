@@ -18,6 +18,7 @@ const PropertyCreateForm = ({closeModal}) => {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [zipcode, setZipcode] = useState('');
+  const [cardImage, setCardImage] = useState('');
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
 
@@ -27,7 +28,7 @@ const PropertyCreateForm = ({closeModal}) => {
     event.preventDefault();
     
     const newProperty = await dispatch(createProperty(
-      {hostId, title, numberOfBeds, price, address, city, state, zipcode}
+      {hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImage}
     )).catch(async(res) => {
       const data = await res.json();
       if(data && data.errors) setErrors(data.errors);
@@ -58,7 +59,6 @@ const PropertyCreateForm = ({closeModal}) => {
 
 
   return (
-
     <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={'Host Your Property!'} >
       <div className='create-property-form-modal'>
         <inputs>
@@ -69,6 +69,7 @@ const PropertyCreateForm = ({closeModal}) => {
           <FormInput name='City' state={city} setState={setCity} />
           <FormInput name='State' state={state} setState={setState} />
           <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
+          <FormInput name='Image' state={cardImage} setState={setCardImage} />
         </inputs>
         <div id='property-create-form-home-icon-container' >
           <img id='property-create-form-home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' />

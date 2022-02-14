@@ -71,6 +71,8 @@ const PropertyPage = () => {
         <Review propertyId={propertyId} />
         <div className='filler-box' style={{backgroundColor:'white'}}/>
       </div>
+        <div className='filler-box' style={{backgroundColor:'white'}}/>
+        <div className='filler-box' style={{backgroundColor:'white'}}/>
     </div>
   );
 }
