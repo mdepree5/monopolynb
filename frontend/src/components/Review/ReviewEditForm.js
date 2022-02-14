@@ -56,10 +56,10 @@ const ReviewEditForm = ({review, closeModal}) => {
           onChange={e => setContent(e.target.value)}
           placeholder='Content'/></li>
       </ul>
-      <NumberInput min={0} name='Rating' state={rating} setState={setRating} required={false} />
-      <NumberInput min={0} name='Communication' state={communication} setState={setCommunication} required={false} />
-      <NumberInput min={0} name='Check In' state={checkIn} setState={setCheckIn} required={false} />
-      <NumberInput min={0} name='Cleanliness' state={cleanliness} setState={setCleanliness} required={false} />
+      <NumberInput min={1} name='Rating' state={rating} setState={setRating} required={false} />
+      <NumberInput min={1} name='Communication' state={communication} setState={setCommunication} required={false} />
+      <NumberInput min={1} name='Check In' state={checkIn} setState={setCheckIn} required={false} />
+      <NumberInput min={1} name='Cleanliness' state={cleanliness} setState={setCleanliness} required={false} />
     </Form>
   )
 };

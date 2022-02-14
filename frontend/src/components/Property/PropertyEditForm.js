@@ -51,8 +51,8 @@ const PropertyEditForm = ({property, closeModal}) => {
   return (
     <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={'Edit Your Property!'} >
       <FormInput name='Title' state={title} setState={setTitle} />
-      <NumberInput min={0} name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
-      <NumberInput min={0} name='Price' state={price} setState={setPrice} />
+      <NumberInput min={1} name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
+      <NumberInput min={10} name='Price' state={price} setState={setPrice} />
       <FormInput name='Address' state={address} setState={setAddress} />
       <FormInput name='City' state={city} setState={setCity} />
       <FormInput name='State' state={state} setState={setState} />
