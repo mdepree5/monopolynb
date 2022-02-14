@@ -24,41 +24,33 @@ const ReviewData = ({reviewData, totalReviews, reviews}) => {
 
   const ReviewDataLine = ({datum}) => (
     <ul className='review-data-line' >
-      <li>{datum.name}</li>
+      <li>{`${datum.name}:`}</li>
       {datum.value ? (
       <>
         <li><Meter rating={datum.value}/></li>
         <li>{datum.value}</li>
       </>
       ) : (
-        <li>... no reviews yet!</li>
+        <li> ... no reviews yet!</li>
       )}
     </ul>
   );
 
   const ReviewSummary = ({reviewData}) => (
-    <ul className='review-header' >
+    <div className='data-header' >
       {reviewData[0]?.value ? (
-        <>
-          <li><i className='review-star fas fa-star'/></li>
-          <li>{`${reviewData[0]?.value} · ${totalReviews} reviews`} </li>
-        </>
+        <h2><i className='review-star fas fa-star'/>{`${reviewData[0]?.value} · ${totalReviews} reviews`} </h2>
       ) : (
-        <li>{`${totalReviews} reviews`}</li>
+        <div>No reviews yet!</div>
       )}
-    </ul>
+    </div>
   )
 
   return (
     <div className='review-data-container'>
-      <div>
-        <ReviewSummary reviewData={reviewData}/>
-        <div>
-          {reviewData.slice(1).map(datum => (
-            <ReviewDataLine key={datum.name} datum={datum}/>
-          ))
-          }
-        </div>
+      <ReviewSummary reviewData={reviewData}/>
+      <div className='data-line-container'>
+        {reviewData.slice(1).map(datum => (<ReviewDataLine key={datum.name} datum={datum}/>))}
       </div>
       <div>{!belongsToUser && sessionUser && ( <ReviewFormModal reviews={reviews}/>)}</div>
     </div>
