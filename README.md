@@ -31,10 +31,6 @@ Fast forward 7 days of rigorous full-stack development, Monopolynb is what the w
 
 <h1 align="center"></h1>
 
-<!-- ABOUT THE PROJECT -->
-## About The Project
-
-
 <!-- Built With -->
 <h1 align="center"></h1>
 <h2 align="left">Built with </h2>
