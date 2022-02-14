@@ -49,7 +49,7 @@ const PropertyEditForm = ({property, closeModal}) => {
 
 
   return (
-    <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={'Edit Your Property!'} >
+    <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={'Update'} >
       <FormInput name='Title' state={title} setState={setTitle} />
       <NumberInput min={1} name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
       <NumberInput min={10} name='Price' state={price} setState={setPrice} />
