@@ -67,7 +67,7 @@
   height: 25vw;
   min-width: 200;
   min-height: 400;
-  text-align: center;
+  align-items: center;
   padding: 0.4vw;
   margin: 0.4vw;
   cursor: pointer;
@@ -85,16 +85,19 @@
 }
 
 .card-image{
+  object-fit: cover;
   width: 18vw;
   height: 12vw;
-  border: solid black 0.2vw;
+  border: solid black 0.15vw;
+  box-shadow: 0 1px 8px rgb(104, 104, 104);
   border-radius: 1vw;
 }
 
 .property-color-profile{
   /* width: 200px; */
-  height: 50px;
-  border: solid black 2px;
+  width: 100%;
+  height: 25%;
+  border: solid black 0.2vw;
   border-radius: 10px;
   text-align: center;
 }
@@ -107,6 +110,16 @@
   margin-top: 10px;
   margin-bottom: 10px;
   text-align: center;
+}
+
+
+.property-footer-info{
+  /* margin-left: auto;
+  margin-right: auto; */
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .mainDetails{

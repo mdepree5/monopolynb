@@ -22,8 +22,10 @@ const PropertyCard = ({ property }) => {
         <div className='property-color-profile' id={propertyColor} />
         <div><h2 className='property-title'>{property.title}</h2></div>
         <div><img className='card-image' src={property.cardImage} alt='card' /></div>
-        <div className='property-location'>{property.city}</div>
-        <div className='property-price'>{`$${property.price} / night`}</div>
+        <div className='property-footer-info'>
+          <div>{property.city}</div>
+          <div>{`$${property.price} / night`}</div>
+        </div>
       </div>
   )
 };

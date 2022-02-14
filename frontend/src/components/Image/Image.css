@@ -10,7 +10,7 @@
 .property-image{
   width: 18vw;
   height: 12vw;
-  border: solid 1px rgb(70, 70, 70);
+  border: solid 2px rgb(70, 70, 70);
   margin: 0;
   object-fit: cover;
   border-radius: 14px;
