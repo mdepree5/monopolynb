@@ -43,8 +43,8 @@ const PropertyPage = () => {
   return (
     
     <div className='property-page'>
+      <div className='property-card-image' id={propertyColor} />
       <div className='property-data-container'>
-        <div className='property-card-image' id={propertyColor} />
         <ul className='property-head'>
           <li ><ul className='property-title-left'>
             <li><h1 className='property-title'>{property?.title}</h1></li>
@@ -55,14 +55,16 @@ const PropertyPage = () => {
             <li><PropertyDeleteButton propertyId={propertyId} /></li>
           </ul> )}</li>
         </ul>
-        
+        <div style={{width:'250px', margin: 0}} className="line"></div>  
         <br />
         <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} ${property?.User?.lastName.slice(0, 1)}. `}<i className="far fa-user" /></NavLink></div>
         <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
         <div className='property-price'>{`$${property?.price} / night`}</div>
       </div>
-      
+
+      <div style={{width:'80%'}} className="line"></div>
       <Image propertyId={propertyId}/>
+      <div style={{width:'80%'}} className="line"></div>
       <Review propertyId={propertyId} />
       <div className='filler-box' style={{backgroundColor:'white'}}/>
     </div>
