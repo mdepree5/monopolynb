@@ -29,7 +29,7 @@ button{
   background-color: #ff8b94;
   /* color: rgba(255, 0, 0, 0.219); */
   color: black;
-  border: none;
+  border: solid black 2px;
 }
 
 .delete:hover{
@@ -40,6 +40,7 @@ button{
 .edit{
   background-color: #ffbf81;
   border: none;
+  border: solid black 2px;
 }
 
 .edit:hover{

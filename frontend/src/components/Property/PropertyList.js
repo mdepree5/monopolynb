@@ -15,7 +15,7 @@ const PropertyList = ({userId = null}) => {
   useEffect(() => {dispatch(thunk)}, [dispatch]);
 
   return properties.length > 0 ? (
-    <ul className='explore-all-properties'>
+    <div className='properties-container'>
       {properties.map(property => (
         <PropertyCard
           key={property.id}
@@ -24,7 +24,7 @@ const PropertyList = ({userId = null}) => {
           property={property}
         />
       ))}
-    </ul>
+    </div>
   ) : (
     <ul>
       <li><h4>No Listings yet... why not start now?</h4></li>

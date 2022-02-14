@@ -14,19 +14,17 @@ const PropertyCard = ({ property }) => {
   if(property.price > 150) propertyColor = 'blue';
 
   
+  console.log(property);
   const handleClick = () => history.push(`/properties/${property.id}`);
 
   return (
-    <li>
-      <ul onClick={handleClick} className='property-card'>
-        <li className='property-card-image-placeholder' id={propertyColor} />
-        <li><h4 className='property-title'>{property.title}</h4></li>
-        <li />
-        <li className='property-location'>{property.city}</li>
-        <li className='property-price'>{`$${property.price} / night`}</li>
-        <li/>
-      </ul>
-    </li>
+      <div onClick={handleClick} className='property-card'>
+        <div className='property-color-profile' id={propertyColor} />
+        <div><h2 className='property-title'>{property.title}</h2></div>
+        <div><img className='card-image' src={property.cardImage} alt='card' /></div>
+        <div className='property-location'>{property.city}</div>
+        <div className='property-price'>{`$${property.price} / night`}</div>
+      </div>
   )
 };
 

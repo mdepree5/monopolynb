@@ -43,8 +43,7 @@ const PropertyPage = () => {
   return (
     
     <div className='property-page'>
-      <br />
-      <div className='property-card-image-placeholder' id={propertyColor} />
+      <div className='property-card-image' id={propertyColor} />
       <ul className='property-info'>
         <li ><ul className='property-title-left'>
           <li><h2 className='property-title'>{property?.title}</h2></li>
