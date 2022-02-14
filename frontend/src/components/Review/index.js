@@ -1,17 +1,9 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from 'react-redux';
-import { getReviewsByPropertyId } from '../../store/review';
-
 import ReviewData from './ReviewData';
 import ReviewList from './ReviewList';
 import './Review.css';
 
 
-const Review = ({propertyId}) => {
-  const dispatch = useDispatch();
-
-  const reviews = useSelector(state => state.review.listOfReviews);
-
+const Review = ({reviews}) => {
   const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
   
   const reviewData = [
@@ -20,10 +12,6 @@ const Review = ({propertyId}) => {
     {name: 'Check-in', value: +avg(reviews, 'checkIn').toFixed(2)},
     {name: 'Cleanliness', value: +avg(reviews, 'cleanliness').toFixed(2)},
   ]
-
-  useEffect(() => {
-    dispatch(getReviewsByPropertyId(propertyId));
-  }, [dispatch, propertyId]);
 
   return (
     <div >

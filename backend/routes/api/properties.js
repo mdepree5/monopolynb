@@ -34,6 +34,12 @@ router.route('/:propertyId/reviews')
   (async (req, res) => res.json(await Review.getReviewsByPropertyId(req.params.propertyId)))
 )
 
+router.route('/:propertyId/images')
+.get(asyncHandler
+  (async (req, res) => res.json(await Image.getImagesByPropertyId(req.params.propertyId)))
+)
+
+
 module.exports = router;
 
 

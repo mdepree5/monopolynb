@@ -77,17 +77,8 @@ module.exports = (sequelize, DataTypes) => {
   // todo                               Associations
   // todo ————————————————————————————————————————————————————————————————————————————————
   Review.associate = function(models) {
-
-    Review.belongsTo(models.User, {
-      as: 'users',
-      foreignKey: 'guestId'
-    });
-
-    Review.belongsTo(models.Property, {
-      as: 'properties',
-      foreignKey: 'propertyId'
-    });
-
+    Review.belongsTo(models.User, { foreignKey: 'guestId'});
+    Review.belongsTo(models.Property, { foreignKey: 'propertyId' });
   };
   return Review;
 };

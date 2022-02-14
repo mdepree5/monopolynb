@@ -3,7 +3,6 @@ import {useParams, NavLink} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import { getProperty } from '../../store/property';
-import { getUserById } from '../../store/user';
 import PropertyEditModal from './PropertyEditModal';
 import PropertyDeleteButton from './PropertyDeleteButton';
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -16,24 +15,24 @@ const PropertyPage = () => {
   const dispatch = useDispatch();
 
   const {propertyId} = useParams();
+  useEffect(() => {
+    dispatch(getProperty(propertyId))
+  }, [dispatch, propertyId]);
+
   const [belongsToUser, setBelongsToUser] = useState(false);
-
-  
-
-  // const hostId = property?.hostId;
-
-  const property = useSelector(state => state.property[propertyId]);
+ 
+  const property = useSelector(state => state?.property[propertyId]);
   const sessionUser = useSelector(state => state?.session?.user);
-  const propertyOwner = useSelector(state => state.user[property?.hostId]);
+
+  console.log('PROPERTY!!!!!!!!!', property)
+
 
   useEffect(() => {    
     if(sessionUser?.id === property?.hostId) setBelongsToUser(true);
     else setBelongsToUser(false);
   }, [sessionUser, property])
 
-  useEffect(() => {
-    dispatch(getProperty(propertyId));
-  }, [dispatch, propertyId]);
+
 
   // useEffect(() => {dispatch(getUserById(property?.hostId))}, [dispatch]);
 
@@ -50,15 +49,14 @@ const PropertyPage = () => {
         </ul> )}</li>
       </ul>
 
-      <div className='property-host'> <NavLink to={`/users/${propertyOwner?.hostId}`}>{`Hosted by ${propertyOwner?.firstName}`}</NavLink></div>
+      <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName}`}</NavLink></div>
       <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
       <div className='property-price'>{`$${property?.price} / night`}</div>
       
-      
-      <Image propertyId={propertyId}/>
-
+{/*       
+      <Image images={property?.Images}/>
       <br />
-      <Review propertyId={propertyId} />
+      <Review reviews={property?.Reviews} /> */}
     </div>
   );
 }
