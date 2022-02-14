@@ -15,8 +15,8 @@
 button{
   background: none;
   outline: none;
-  /* border: none; */
-  border: solid #b0f2b4 2px;
+  border: none;
+  /* border: solid #b0f2b4 2px; */
   border-radius: 6px;
   color: inherit;
   font: inherit;
@@ -69,9 +69,8 @@ button{
 }
 
 .filler-box{
-  height: 500px;
-  background-color: white;
-  border: solid navy 1px;
+  height: 100px;
+  background-color: black;
 }
 
 /* 
