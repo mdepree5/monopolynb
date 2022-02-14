@@ -43,21 +43,24 @@ const PropertyPage = () => {
   return (
     
     <div className='property-page'>
-      <div className='property-card-image' id={propertyColor} />
-      <ul className='property-info'>
-        <li ><ul className='property-title-left'>
-          <li><h1 className='property-title'>{property?.title}</h1></li>
-          <li><h3 className='property-location'>{`${property?.city}, ${property?.state}`}</h3></li>
-        </ul></li>
-        <li > {belongsToUser &&( <ul className='property-title-right'>
-          <li><PropertyEditModal property={property} /></li>
-          <li><PropertyDeleteButton propertyId={propertyId} /></li>
-        </ul> )}</li>
-      </ul>
-
-      <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} `}<i className="far fa-user" /></NavLink></div>
-      <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
-      <div className='property-price'>{`$${property?.price} / night`}</div>
+      <div className='property-data-container'>
+        <div className='property-card-image' id={propertyColor} />
+        <ul className='property-head'>
+          <li ><ul className='property-title-left'>
+            <li><h1 className='property-title'>{property?.title}</h1></li>
+            <li><h3 className='property-location'>{`${property?.city}, ${property?.state}`}</h3></li>
+          </ul></li>
+          <li > {belongsToUser &&( <ul className='property-title-right'>
+            <li><PropertyEditModal property={property} /></li>
+            <li><PropertyDeleteButton propertyId={propertyId} /></li>
+          </ul> )}</li>
+        </ul>
+        
+        <br />
+        <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} ${property?.User.lastName.slice(0, 1)}. `}<i className="far fa-user" /></NavLink></div>
+        <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
+        <div className='property-price'>{`$${property?.price} / night`}</div>
+      </div>
       
       <Image propertyId={propertyId}/>
       <Review propertyId={propertyId} />
