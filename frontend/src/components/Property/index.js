@@ -13,29 +13,24 @@ import './Property.css';
 
 const PropertyPage = () => {
   const dispatch = useDispatch();
-
-  const {propertyId} = useParams();
-  useEffect(() => {
-    dispatch(getProperty(propertyId))
-  }, [dispatch, propertyId]);
-
   const [belongsToUser, setBelongsToUser] = useState(false);
- 
+  const {propertyId} = useParams();
+
   const property = useSelector(state => state?.property[propertyId]);
   const sessionUser = useSelector(state => state?.session?.user);
 
   console.log('PROPERTY!!!!!!!!!', property)
 
 
+  console.log(property?.Images)
+  
+  useEffect(() => {dispatch(getProperty(propertyId))}, [dispatch, propertyId]);
+  
   useEffect(() => {    
     if(sessionUser?.id === property?.hostId) setBelongsToUser(true);
     else setBelongsToUser(false);
   }, [sessionUser, property])
-
-
-
-  // useEffect(() => {dispatch(getUserById(property?.hostId))}, [dispatch]);
-
+  
   useEffect(() => window.scroll({top: 0, left: 0}));
 
   return (
@@ -53,10 +48,10 @@ const PropertyPage = () => {
       <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
       <div className='property-price'>{`$${property?.price} / night`}</div>
       
-{/*       
-      <Image images={property?.Images}/>
+      <Image propertyId={propertyId}/>
+      
       <br />
-      <Review reviews={property?.Reviews} /> */}
+      {/* <Review propertyId={propertyId} /> */}
     </div>
   );
 }
