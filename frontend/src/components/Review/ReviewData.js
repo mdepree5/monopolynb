@@ -52,7 +52,7 @@ const ReviewData = ({reviewData, totalReviews, reviews}) => {
       <div className='data-line-container'>
         {reviewData.slice(1).map(datum => (<ReviewDataLine key={datum.name} datum={datum}/>))}
       </div>
-      <div>{!belongsToUser && sessionUser && ( <ReviewFormModal reviews={reviews}/>)}</div>
+      {!belongsToUser && sessionUser && ( <ReviewFormModal reviews={reviews}/>)}
     </div>
   )
 }

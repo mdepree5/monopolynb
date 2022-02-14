@@ -10,6 +10,9 @@
 }
 
 .review-data-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
   width: 90%;
@@ -96,4 +99,15 @@
 
 .review-star{
   margin-right: 4px;
+}
+
+
+#new-review-button{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  border: solid black 2px;
+  border-radius: 10px;;
+  width: 140px;
+  color: #005c0c;
 }
