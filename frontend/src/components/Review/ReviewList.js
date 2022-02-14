@@ -1,23 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // todo ——————————————————————————————————————————————————————————————————————————————————
-import { getUserById } from '../../store/user';
 import ReviewEditModal from './ReviewEditModal';
 import ReviewDeleteButton from './ReviewDeleteButton';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 const ReviewDetail = ({review}) => {
-  const dispatch = useDispatch();
   const [belongsToUser, setBelongsToUser] = useState(false);
 
   const sessionUser = useSelector(state => state.session.user);
-  const pageUser = useSelector(state => state.user);
 
-  // const reviewId = review?.guestId;
-  // console.log(reviewId);
-  // console.log('pageUSER', pageUser);
-
-  useEffect(() => {dispatch(getUserById(review?.guestId))}, [dispatch]);
 
   useEffect(() => {    
     if(sessionUser?.id === review?.guestId) setBelongsToUser(true);
@@ -36,7 +28,7 @@ const ReviewDetail = ({review}) => {
   <ul className='review-detail'>
       <li>
         <ul className='review-nav'>
-          <li>{`${pageUser?.firstName}`}</li>
+          <li>{`${review?.User.firstName}`}</li>
           <li>{`${month} ${year}`}</li>
           <li>{belongsToUser && (<>
               <ReviewEditModal review={review}/>

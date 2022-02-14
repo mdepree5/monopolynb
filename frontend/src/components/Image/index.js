@@ -8,7 +8,6 @@ import './Image.css';
 const Image = ({propertyId}) => {
   const dispatch = useDispatch();
   const images = useSelector(state => state.image.listOfImages);
-  console.log(images);
 
   useEffect(() => {dispatch(getImagesByPropertyId(propertyId))}, [dispatch]);
 

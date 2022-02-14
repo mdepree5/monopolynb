@@ -31,7 +31,14 @@ router.route('/:propertyId/reviews')
 .post(validateReview, asyncHandler
   (async (req, res) => res.json(await Review.createReview(req.body))))
 .get(asyncHandler
-  (async (req, res) => res.json(await Review.getReviewsByPropertyId(req.params.propertyId)))
+  // (async (req, res) => res.json(await Review.getReviewsByPropertyId(req.params.propertyId)))
+  (async (req, res) => {
+    const {propertyId} = req.params;
+    res.json(await Review.findAll(
+      {where: {propertyId}, order: [['createdAt', 'DESC']], include: User }
+    ))
+  }
+  )
 )
 
 router.route('/:propertyId/images')
