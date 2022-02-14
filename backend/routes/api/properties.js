@@ -18,7 +18,18 @@ router.route('/:propertyId')
 .get(asyncHandler
   (async (req, res) => res.json(await Property.findByPk(req.params.propertyId, {include: [User, Review, Image]}))))
 .put(validateProperty, validatePUT, asyncHandler
-  (async (req, res) => res.json(await Property.updateProperty(req.body))))
+  (async (req, res) => {
+    // const details = req.body
+  const id = req.body.id; 
+  delete req.body.id; 
+  const updatedProperty = await Property.update(req.body, {
+    where: { id },
+    returning: true,
+    plain: true,
+  });
+  // await updatedProperty.save();
+  return res.json(await Property.findByPk(id, {include: [User]}))
+}))
 .delete(asyncHandler
   (async (req, res) => {
     const propertyId = await Property.deleteProperty(req.params.propertyId);
