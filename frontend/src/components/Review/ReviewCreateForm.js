@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import { createReview, getReviewsByPropertyId } from '../../store/review';
-import {Form, FormInput} from '../Form';
+import {Form, NumberInput} from '../Form';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 const ReviewCreateForm = ({closeModal }) => {
@@ -60,10 +60,10 @@ const ReviewCreateForm = ({closeModal }) => {
           onChange={e => setContent(e.target.value)}
           placeholder='Content'/></li>
       </ul>
-      <FormInput name='Rating' state={rating} setState={setRating} />
-      <FormInput name='Communication' state={communication} setState={setCommunication} />
-      <FormInput name='Check In' state={checkIn} setState={setCheckIn} />
-      <FormInput name='Cleanliness' state={cleanliness} setState={setCleanliness} />
+      <NumberInput min={0} name='Rating' state={rating} setState={setRating} required={false} />
+      <NumberInput min={0} name='Communication' state={communication} setState={setCommunication} required={false} />
+      <NumberInput min={0} name='Check In' state={checkIn} setState={setCheckIn} required={false} />
+      <NumberInput min={0} name='Cleanliness' state={cleanliness} setState={setCleanliness} required={false} />
     </Form>
   )
 };

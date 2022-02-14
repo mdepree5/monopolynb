@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import {updateReview} from "../../store/review";
-import {Form, FormInput} from '../Form';
+import {Form, NumberInput} from '../Form';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 const ReviewEditForm = ({review, closeModal}) => {
@@ -56,10 +56,10 @@ const ReviewEditForm = ({review, closeModal}) => {
           onChange={e => setContent(e.target.value)}
           placeholder='Content'/></li>
       </ul>
-      <FormInput name='Rating' state={rating} setState={setRating} required={false} />
-      <FormInput name='Communication' state={communication} setState={setCommunication} required={false} />
-      <FormInput name='Check In' state={checkIn} setState={setCheckIn} required={false} />
-      <FormInput name='Cleanliness' state={cleanliness} setState={setCleanliness} required={false} />
+      <NumberInput min={0} name='Rating' state={rating} setState={setRating} required={false} />
+      <NumberInput min={0} name='Communication' state={communication} setState={setCommunication} required={false} />
+      <NumberInput min={0} name='Check In' state={checkIn} setState={setCheckIn} required={false} />
+      <NumberInput min={0} name='Cleanliness' state={cleanliness} setState={setCleanliness} required={false} />
     </Form>
   )
 };

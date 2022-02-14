@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import * as propertyActions from "../../store/property";
-import {Form, FormInput} from '../Form';
+import {Form, FormInput, NumberInput} from '../Form';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 const PropertyEditForm = ({property, closeModal}) => {
@@ -51,8 +51,8 @@ const PropertyEditForm = ({property, closeModal}) => {
   return (
     <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={'Edit Your Property!'} >
       <FormInput name='Title' state={title} setState={setTitle} />
-      <FormInput name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
-      <FormInput name='Price' state={price} setState={setPrice} />
+      <NumberInput min={0} name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
+      <NumberInput min={0} name='Price' state={price} setState={setPrice} />
       <FormInput name='Address' state={address} setState={setAddress} />
       <FormInput name='City' state={city} setState={setCity} />
       <FormInput name='State' state={state} setState={setState} />
