@@ -7,7 +7,7 @@ const PropertyFormModal = ({property}) => {
 
   return (
     <>
-      <button className='edit' onClick={() => setShowModal(true)}>Edit your Property</button>
+      <button className='edit' onClick={() => setShowModal(true)}>Edit Property</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <PropertyEditForm closeModal={() => setShowModal(false)} property={property}/>

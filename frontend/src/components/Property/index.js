@@ -46,9 +46,11 @@ const PropertyPage = () => {
       <br />
       <div className='property-card-image-placeholder' id={propertyColor} />
       <ul className='property-info'>
-        <li><div className='property-location'>{`${property?.city}, ${property?.state}`}</div></li>
-        <li><h3 className='property-title'>{property?.title}</h3></li>
-        <li> {belongsToUser &&( <ul>
+        <li ><ul className='property-title-left'>
+          <li><h2 className='property-title'>{property?.title}</h2></li>
+          <li><div className='property-location'>{`${property?.city}, ${property?.state}`}</div></li>
+        </ul></li>
+        <li > {belongsToUser &&( <ul className='property-title-right'>
           <li><PropertyEditModal property={property} /></li>
           <li><PropertyDeleteButton propertyId={propertyId} /></li>
         </ul> )}</li>
@@ -66,6 +68,7 @@ const PropertyPage = () => {
     </div>
   );
 }
+
 
 
 export default PropertyPage;
