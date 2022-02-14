@@ -51,11 +51,9 @@ module.exports = (sequelize, DataTypes) => {
   // todo                               Methods
   // todo ————————————————————————————————————————————————————————————————————————————————
 
-  Property.createProperty = async (reqData) => {await Property.create(reqData);
+  Property.createProperty = async (reqData) => await Property.create(reqData);
   
-  Property.getAllProperties = async () => await Property.findAll({
-    order: [['price', 'ASC']]
-  });
+  Property.getAllProperties = async () => await Property.findAll({ order: [['price', 'ASC']] });
   
   Property.getPropertiesByUserId = async (hostId) => await Property.findAll({
     where: { hostId },

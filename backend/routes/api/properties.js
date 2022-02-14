@@ -9,7 +9,7 @@ router.route('/')
 .post(validateProperty, asyncHandler
   (async (req, res) => {
   const image = req.body.cardImage
-    await 
+    await Image.create(image);
     res.json(await Property.create(req.body))
   }))
 .get(asyncHandler
