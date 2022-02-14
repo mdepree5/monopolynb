@@ -43,13 +43,11 @@ const ReviewDetail = ({review}) => {
 }
 
 const ReviewList = ({reviews}) => (
-    <ul className='review-list-container'>
+    <div className='review-list-container'>
       {reviews.map(review => (
-        <li key={review.id}> 
-          <ReviewDetail review={review} />
-        </li>
+        <ReviewDetail key={review.id} review={review} />
       ))}
-    </ul>
+    </div>
 )
 
 export default ReviewList;
