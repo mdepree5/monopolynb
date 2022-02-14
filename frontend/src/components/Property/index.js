@@ -55,7 +55,7 @@ const PropertyPage = () => {
         </ul> )}</li>
       </ul>
 
-      <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName}`}</NavLink></div>
+      <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} `}<i className="far fa-user" /></NavLink></div>
       <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
       <div className='property-price'>{`$${property?.price} / night`}</div>
       

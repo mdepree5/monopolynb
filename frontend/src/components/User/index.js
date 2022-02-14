@@ -20,11 +20,11 @@ const UserPage = () => {
 
   return sessionUser?.id === pageUser?.id ? (
     <div className='center-body'>
-      <ul className='user-splash'>
-        <li><h2>{`Welcome Back, ${pageUser?.firstName}`}</h2></li>
-        <li><h3>Your Properties</h3></li>
-        <li><PropertyFormModal /></li>
-      </ul>
+      <div className='user-splash'>
+        <h1>{`Welcome Back, ${pageUser?.firstName} `}<i className="far fa-user" /></h1>
+        <h3>Your Properties</h3>
+        <PropertyFormModal />
+      </div>
       <PropertyList userId={userId} />
     </div>
     ) : (
