@@ -1,8 +1,34 @@
 .review-container{
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* border-top: solid black 2px;
+  border-bottom: solid black 2px; */
+}
+/* 
+
+.review-container{
+  
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+} */
+
+.review-data-container{
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+  border: solid black 2px;
+  box-shadow: 0 1px 8px rgb(104, 104, 104);  
+  border-radius: 10px;
+  margin-bottom: 20px;
+  padding: 10px;
 }
 
 .review-header{
@@ -16,15 +42,7 @@
   justify-content: space-between;
 }
 
-.review-data-container{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  
-}
+
 
 .review-data-line{
   display: flex;
