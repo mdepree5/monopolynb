@@ -10,9 +10,7 @@ router.route('/:reviewId')
 .put(validateReview, validatePUT, asyncHandler
   (async (req, res) => res.json(await Review.updateReview(req.body))))
 .delete(asyncHandler
-  (async (req, res) => {
-    res.json(await Review.deleteReview(req.params.reviewId))
-  })
+  (async (req, res) => res.json(await Review.deleteReview(req.params.reviewId)))
 )
 
 module.exports = router;

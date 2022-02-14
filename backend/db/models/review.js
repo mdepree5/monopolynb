@@ -61,7 +61,7 @@ module.exports = (sequelize, DataTypes) => {
       returning: true,
       plain: true 
     });
-    return await Review.findByPk(id);
+    return await Review.findByPk(id,);
   };
   
   Review.deleteReview = async (id) => {

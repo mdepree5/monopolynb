@@ -13,8 +13,6 @@ const PropertyCard = ({ property }) => {
   if(property.price > 120 && property.price <= 150) propertyColor = 'green';
   if(property.price > 150) propertyColor = 'blue';
 
-  
-  console.log(property);
   const handleClick = () => history.push(`/properties/${property.id}`);
 
   return (

@@ -28,7 +28,7 @@ const ReviewDetail = ({review}) => {
   <ul className='review-detail'>
       <li>
         <ul className='review-nav'>
-          <li>{`${review?.User.firstName}`}</li>
+          <li>{`${review?.User?.firstName}`}</li>
           <li>{`${month} ${year}`}</li>
           <li>{belongsToUser && (<>
               <ReviewEditModal review={review}/>

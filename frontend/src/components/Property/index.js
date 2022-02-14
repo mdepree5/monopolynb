@@ -16,6 +16,8 @@ const PropertyPage = () => {
   const [belongsToUser, setBelongsToUser] = useState(false);
   const {propertyId} = useParams();
 
+  // const property = useSelector(state => state?.property?.listOfProperties[0]);
+
   const property = useSelector(state => state?.property[propertyId]);
   const sessionUser = useSelector(state => state?.session?.user);
   
@@ -55,7 +57,7 @@ const PropertyPage = () => {
         </ul>
         
         <br />
-        <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} ${property?.User.lastName.slice(0, 1)}. `}<i className="far fa-user" /></NavLink></div>
+        <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} ${property?.User?.lastName.slice(0, 1)}. `}<i className="far fa-user" /></NavLink></div>
         <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
         <div className='property-price'>{`$${property?.price} / night`}</div>
       </div>

@@ -107,6 +107,9 @@ const propertyReducer = (state = initialState, action) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case GET_ONE_PROPERTY: {
       const newState = {...state, [action.property.id]: action.property};
+      // const newState = {...state};
+
+      // newState.listOfProperties.push(action.property)
       return newState;
     }
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -115,6 +118,7 @@ const propertyReducer = (state = initialState, action) => {
       const updatedProperty = state.listOfProperties.map(property => 
         property.id === action.property.id ? property = action.property : property);
 
+      newState[action.property.id] = action.property;
       newState.listOfProperties = updatedProperty;
       return newState;
     };
