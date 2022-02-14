@@ -30,23 +30,26 @@ button{
   /* color: rgba(255, 0, 0, 0.219); */
   color: black;
   border: solid black 2px;
+  margin: 1px;
 }
 
 .delete:hover{
   /* color: rgb(228, 228, 228); */
   color: white;
-  
+  margin: 1px;
 }
 
 .edit{
   background-color: #ffbf81;
   border: none;
   border: solid black 2px;
+  margin: 1px;
 }
 
 .edit:hover{
   /* color: rgb(228, 228, 228); */
   color: white;
+  margin: 1px;
 }
 
 

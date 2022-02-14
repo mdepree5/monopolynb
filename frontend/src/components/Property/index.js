@@ -65,9 +65,9 @@ const PropertyPage = () => {
           <div className='property-price'>{`$${property?.price} / night`}</div>
         </div>
 
-        <div style={{width:'80%'}} className="line"></div>
+        <div style={{width:'75%'}} className="line"></div>
         <Image propertyId={propertyId}/>
-        <div style={{width:'80%'}} className="line"></div>
+        <div style={{width:'75%'}} className="line"></div>
         <Review propertyId={propertyId} />
         <div className='filler-box' style={{backgroundColor:'white'}}/>
       </div>

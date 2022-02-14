@@ -11,6 +11,7 @@ const ReviewDetail = ({review}) => {
   const sessionUser = useSelector(state => state.session.user);
 
 
+
   useEffect(() => {    
     if(sessionUser?.id === review?.guestId) setBelongsToUser(true);
     else setBelongsToUser(false);
@@ -25,20 +26,22 @@ const ReviewDetail = ({review}) => {
   const year = review.createdAt.split('-')[0];
 
   return (
-  <ul className='review-detail'>
-      <li>
-        <ul className='review-nav'>
-          <li>{`${review?.User?.firstName}`}</li>
-          <li>{`${month} ${year}`}</li>
-          <li>{belongsToUser && (<>
-              <ReviewEditModal review={review}/>
-              <ReviewDeleteButton reviewId={review.id} />
-            </>)}
-          </li>
-        </ul>
-      </li>
-      <li className='review-body'>{review.content}</li>
-  </ul>
+    <>
+    <div className='review-detail'>
+      <ul className='review-list-left'>
+        <div><strong>{`${review?.User?.firstName} `}</strong> <i className="far fa-user"/>{` ${month} ${year}`}</div>
+        <div className='review-body'>{review.content}</div>
+      </ul>
+      <div className='review-list-right'>
+        {belongsToUser && (<>
+          <ReviewEditModal review={review}/>
+          <ReviewDeleteButton reviewId={review.id} />
+        </>)}
+      </div>
+    </div>
+    <div style={{width:'200px', margin: 0}} className="line"></div>  
+    {belongsToUser && (<div style={{width:'110px', marginRight: '10px'}} className="line"></div>  )}
+  </>
 )
 }
 
