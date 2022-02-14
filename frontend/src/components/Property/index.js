@@ -46,8 +46,8 @@ const PropertyPage = () => {
       <div className='property-card-image' id={propertyColor} />
       <ul className='property-info'>
         <li ><ul className='property-title-left'>
-          <li><h2 className='property-title'>{property?.title}</h2></li>
-          <li><div className='property-location'>{`${property?.city}, ${property?.state}`}</div></li>
+          <li><h1 className='property-title'>{property?.title}</h1></li>
+          <li><h3 className='property-location'>{`${property?.city}, ${property?.state}`}</h3></li>
         </ul></li>
         <li > {belongsToUser &&( <ul className='property-title-right'>
           <li><PropertyEditModal property={property} /></li>

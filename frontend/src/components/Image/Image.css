@@ -5,6 +5,8 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+  border-top: solid black 2px;
+  padding-top: 20px;
 }
 
 .property-image{
