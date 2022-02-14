@@ -49,6 +49,26 @@ export const FormInput = ({ type, name, state, setState }) => {
   ) 
 }
 
+export const NumberInput = ({ min, name, state, setState }) => {
+  const formatName = name.toLowerCase().split(' ').join('-');
+
+  return (
+  <ul className='number-input'>
+    <li><label htmlFor={formatName}>{name}</label></li>
+    <li><input 
+      className='inputField'
+      min={min}
+      type='number'
+      id={formatName} 
+      value={state}
+      onChange={e => setState(e.target.value)}
+      placeholder={name}
+      required={false}
+      /></li>
+  </ul>
+  ) 
+}
+
 // const [input, setInput] = useState('')
 // const handleChange = event => {
 //   setInput(event.target.value.toLowerCase())

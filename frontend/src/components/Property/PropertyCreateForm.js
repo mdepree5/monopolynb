@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import {createProperty} from "../../store/property";
-import {Form, FormInput} from '../Form';
+import {Form, FormInput, NumberInput} from '../Form';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 
@@ -63,8 +63,8 @@ const PropertyCreateForm = ({closeModal}) => {
       <div className='create-property-form-modal'>
         <inputs>
           <FormInput name='Title' state={title} setState={setTitle} />
-          <FormInput name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
-          <FormInput name='Price' state={price} setState={setPrice} />
+          <NumberInput min={0} name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
+          <NumberInput min={0} name='Price' state={price} setState={setPrice} />
           <FormInput name='Address' state={address} setState={setAddress} />
           <FormInput name='City' state={city} setState={setCity} />
           <FormInput name='State' state={state} setState={setState} />
