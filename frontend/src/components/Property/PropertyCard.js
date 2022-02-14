@@ -11,7 +11,6 @@ const PropertyCard = ({ property }) => {
   if(property.price > 80 && property.price <= 100) propertyColor = 'red';
   if(property.price > 100 && property.price <= 120) propertyColor = 'yellow';
   if(property.price > 120 && property.price <= 150) propertyColor = 'green';
-  // if(property.price > 150 && property.price <= 200) propertyColor = 'blue';
   if(property.price > 150) propertyColor = 'blue';
 
   
