@@ -33,39 +33,37 @@ const Navigation = () => {
 
   const sessionLinks = sessionUser ? (
     <>
-      <li><PropertyFormModal /></li>
-      <li className='dot'>·</li>
-      <li><NavLink to={`/users/${sessionUser.id}`}>My Page</NavLink></li>
-      <li className='dot'>·</li>
-      <li><button onClick={logout}>Log Out</button></li>
+      <PropertyFormModal />
+      <div className='dot'>·</div>
+      <NavLink to={`/users/${sessionUser.id}`}>My Page</NavLink>
+      <div className='dot'>·</div>
+      <button onClick={logout}>Log Out</button>
     </>
   ) : (
     <>
-      <li><DemoLogin/></li>
+      <DemoLogin/>
+      <div className='dot'>·</div>
+      <LoginFormModal />
       <li className='dot'>·</li>
-      <li><LoginFormModal /></li>
-      <li className='dot'>·</li>
-      <li><SignupFormModal /></li>
+      <SignupFormModal />
     </>
   );
 
   return (
     <nav className={`nav-bar ${navStatus}`}>
-      <ul id='left-nav'>
-      <li><img id='home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' /></li>
-        <li><NavLink exact to="/">Monopolynb</NavLink></li>
-      </ul>
-      <ul id='mid-nav'>
-        <li>
+      <div id='left-nav'>
+        <img id='home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' />
+        <NavLink exact to="/">Monopolynb</NavLink>
+      </div>
+      <div id='mid-nav'>
         {navStatus === 'nav-top' ? (
-          <NavLink exact to="/properties">Explore</NavLink>
+          <NavLink style={{color:'#3efa57', boxShadow:'0 3px 8px 0 green'}} exact to="/properties">Explore</NavLink>
         ) : (
           <NavLink exact to="/properties">Explore</NavLink>
         )}
-        </li>
-      </ul>
+      </div>
       <div id='right-nav'>
-        <ul id='right-nav-nested'>{sessionLinks}</ul>
+        <div id='right-nav-nested'>{sessionLinks}</div>
       </div>
     </nav>
   );
