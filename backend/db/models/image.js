@@ -14,19 +14,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
 
   // todo ————————————————————————————————————————————————————————————————————————————————
-  // todo                               Methods
-  // todo ————————————————————————————————————————————————————————————————————————————————
-
-  Image.getImagesByPropertyId = async (propertyId) => await Image.findAll({where: { propertyId }});
-
-  // todo ————————————————————————————————————————————————————————————————————————————————
   // todo                               Associations
   // todo ————————————————————————————————————————————————————————————————————————————————
   Image.associate = function(models) {
-    Image.belongsTo(models.Property, {
-      as: 'properties',
-      foreignKey: 'propertyId'
-    });
+    Image.belongsTo(models.Property, { foreignKey: 'propertyId' });
   };
   return Image;
 };

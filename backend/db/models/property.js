@@ -62,7 +62,7 @@ module.exports = (sequelize, DataTypes) => {
     order: [['price', 'ASC']],
   });
 
-  Property.getPropertyById = async (id) => await Property.findByPk(id);
+  // Property.getPropertyById = async (id) => await Property.findByPk(id);
 
   Property.updateProperty = async (details) => {
     const id = details.id; 

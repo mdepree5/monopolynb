@@ -16,7 +16,7 @@ router.route('/')
 
 router.route('/:propertyId')
 .get(asyncHandler
-  (async (req, res) => res.json(await Property.findByPk(req.params.propertyId, {include: [User, Review]}))))
+  (async (req, res) => res.json(await Property.findByPk(req.params.propertyId, {include: [User, Review, Image]}))))
 .put(validateProperty, validatePUT, asyncHandler
   (async (req, res) => res.json(await Property.updateProperty(req.body))))
 .delete(asyncHandler
@@ -33,12 +33,6 @@ router.route('/:propertyId/reviews')
 .get(asyncHandler
   (async (req, res) => res.json(await Review.getReviewsByPropertyId(req.params.propertyId)))
 )
-
-router.route('/:propertyId/images')
-.get(asyncHandler
-  (async (req, res) => res.json(await Image.getImagesByPropertyId(req.params.propertyId)))
-)
-
 
 module.exports = router;
 
