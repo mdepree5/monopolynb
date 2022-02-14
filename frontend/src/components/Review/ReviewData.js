@@ -31,7 +31,7 @@ const ReviewData = ({reviewData, totalReviews, reviews}) => {
         <li>{datum.value}</li>
       </>
       ) : (
-        <li> ... no reviews yet!</li>
+        <li>no reviews yet!</li>
       )}
     </ul>
   );

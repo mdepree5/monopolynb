@@ -21,10 +21,11 @@ const UserPage = () => {
   return sessionUser?.id === pageUser?.id ? (
     <div className='user-page center-body'>
       <div className='user-splash'>
-        <h1>{`Welcome Back, ${pageUser?.firstName} `}<i className="far fa-user" /></h1>
-        <h3 style={{marginBottom:'10px'}} >Your Properties</h3>
+        <h1 style={{marginBottom:'10px'}}>{`Welcome back, ${pageUser?.firstName} `}<i className="far fa-user" /></h1>
+        {/* <h3 style={{marginBottom:'10px'}} >Your Properties</h3> */}
         <PropertyFormModal />
       </div>
+      <div style={{width:'40%', marginBottom: '10px'}} className="line"></div>
       <PropertyList userId={userId} />
     </div>
     ) : (
@@ -35,6 +36,7 @@ const UserPage = () => {
           ${pageUser?.lastName.slice(0, 1)}${pageUser?.lastName.slice(0, 1).endsWith('s') ? '\'' : '\'s'} Listings`}
         </h3>
       </div>
+      <div style={{width:'40%', marginBottom: '10px'}} className="line"></div>
       <PropertyList userId={userId} />
     </div>
     )

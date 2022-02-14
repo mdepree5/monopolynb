@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProperties, getPropertiesByUserId } from '../../store/property';
-import PropertyFormModal from './PropertyFormModal';
+
 import PropertyCard from './PropertyCard';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
@@ -26,10 +26,10 @@ const PropertyList = ({userId = null}) => {
       ))}
     </div>
   ) : (
-    <ul>
-      <li><h4>No Listings yet... why not start now?</h4></li>
-      <li><PropertyFormModal /></li>
-    </ul>
+    <>
+      <h3 style={{marginBottom: '10px'}}>No Listings yet... why not start now?</h3>
+      <div className='white-filler-box'></div>
+    </>
   );
 };
 

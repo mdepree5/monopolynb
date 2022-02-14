@@ -104,9 +104,9 @@
 }
 
 .property-card:hover {
-  border: solid gray 0.3vw;
-  box-shadow: 0 1px 10px gray;
-  color: gray;
+  border: solid rgb(61, 61, 61) 0.3vw;
+  box-shadow: 0 1px 10px rgb(61, 61, 61);
+  color: rgb(61, 61, 61);
   transform: translateY(-0.7vw);
 }
 
