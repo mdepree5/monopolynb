@@ -8,12 +8,14 @@ import './Review.css';
 
 const Review = ({propertyId}) => {
   const dispatch = useDispatch();
+  const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
+
   const reviews = useSelector(state => state.review.listOfReviews);
+
+  console.log(reviews);
 
   useEffect(() => {dispatch(getReviewsByPropertyId(propertyId))}, [dispatch]);
 
-  const avg = (reviews, key) => (reviews.reduce((prev, curr) => prev + curr[key], 0)) / reviews.length;
-  
   const reviewData = [
     {name: 'Rating', value: +avg(reviews, 'rating').toFixed(2)},
     {name: 'Communication', value: +avg(reviews, 'communication').toFixed(2)},
