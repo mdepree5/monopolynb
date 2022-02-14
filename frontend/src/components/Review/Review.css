@@ -1,12 +1,8 @@
 .review-container{
   display: flex;
   flex-direction: column;
-  width: 500px;
-  height: 500px;
-  /* border: solid black 2px; */
-  border-radius: 3px;
-  padding: 10px;
-  margin: 5px;
+  justify-content: center;
+  align-items: center;
 }
 
 .review-header{
@@ -25,7 +21,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-top: solid black 2px;
   padding-top: 10px;
   padding-bottom: 10px;
   
@@ -40,8 +35,8 @@
   display: flex;
   flex-direction: column;
 
-  width: 100%;
-  height: 300px;
+  width: 50%;
+  height: 100%;
   border-top: solid black 2px;
   padding-top: 10px;
   padding-bottom: 10px;

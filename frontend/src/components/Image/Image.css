@@ -7,6 +7,8 @@
   margin-right: auto;
   border-top: solid black 2px;
   padding-top: 20px;
+  border-bottom: solid black 2px;
+  padding-bottom: 20px;
 }
 
 .property-image{

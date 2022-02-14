@@ -24,7 +24,7 @@ const Review = ({propertyId}) => {
   ]
 
   return (
-    <div >
+    <div className='review-container'>
       <ReviewData reviews={reviews} reviewData={reviewData} totalReviews={reviews?.length}/>
       <ReviewList reviews={reviews} />
     </div>

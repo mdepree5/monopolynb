@@ -59,11 +59,9 @@ const PropertyPage = () => {
       <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
       <div className='property-price'>{`$${property?.price} / night`}</div>
       
-      <br />
       <Image propertyId={propertyId}/>
-      <br />
       <Review propertyId={propertyId} />
-      <br />
+      <div className='filler-box' style={{backgroundColor:'white'}}/>
     </div>
   );
 }
