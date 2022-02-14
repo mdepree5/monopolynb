@@ -9,7 +9,7 @@ const {singlePublicFileUpload, singleMulterUpload} = require('../../awsS3');
 
 router.route('/')
 .post(validateProperty, asyncHandler
-  (async (req, res) => res.json(await Property.createProperty(req.body))))
+  (async (req, res) => res.json(await Property.create(req.body))))
 .get(asyncHandler
   (async (req, res) => res.json(await Property.getAllProperties()))
 )
@@ -19,15 +19,9 @@ router.route('/:propertyId')
   (async (req, res) => res.json(await Property.findByPk(req.params.propertyId, {include: [User, Review, Image]}))))
 .put(validateProperty, validatePUT, asyncHandler
   (async (req, res) => {
-    // const details = req.body
   const id = req.body.id; 
   delete req.body.id; 
-  const updatedProperty = await Property.update(req.body, {
-    where: { id },
-    returning: true,
-    plain: true,
-  });
-  // await updatedProperty.save();
+  const updatedProperty = await Property.update(req.body, {where: { id }, returning: true, plain: true});
   return res.json(await Property.findByPk(id, {include: [User]}))
 }))
 .delete(asyncHandler
@@ -40,11 +34,17 @@ router.route('/:propertyId')
 
 router.route('/:propertyId/reviews')
 .post(validateReview, asyncHandler
-  (async (req, res) => res.json(await Review.createReview(req.body))))
+  (async (req, res) => {
+    const review = await Review.create(req.body);
+
+    return res.json(await Review.findOne({where: {id: review.id}, include: User }))
+  }))
+
+  // (async (req, res) => res.json(await Review.createReview(req.body))))
 .get(asyncHandler
   (async (req, res) => {
     const {propertyId} = req.params;
-    res.json(await Review.findAll(
+    return res.json(await Review.findAll(
       {where: {propertyId}, order: [['createdAt', 'DESC']], include: User }
     ))
   })
