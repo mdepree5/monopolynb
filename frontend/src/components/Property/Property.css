@@ -74,10 +74,10 @@
 }
 
 .property-card:hover {
-  border: solid gray 2px;
+  border: solid gray 0.3vw;
   box-shadow: 0 1px 10px gray;
   color: gray;
-  transform: translateY(-20px);
+  transform: translateY(-0.7vw);
 }
 
 .property-card > li {
@@ -88,8 +88,10 @@
   object-fit: cover;
   width: 18vw;
   height: 12vw;
-  border: solid black 0.15vw;
+  border: solid black 2px;
   box-shadow: 0 1px 8px rgb(104, 104, 104);
+  background-color: black;
+  opacity: 80%;
   border-radius: 1vw;
 }
 
