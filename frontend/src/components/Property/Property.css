@@ -57,6 +57,7 @@
   padding-top: 20px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 10px;
   border-radius: 3px;
   overflow: auto;
   white-space: normal;
@@ -212,4 +213,14 @@
   border-top: solid black 2px;
   margin-left: auto;
   margin-right: auto;
+}
+
+
+.host-new-property{
+  border: solid black 2px;
+  border-radius: 20px;
+}
+
+.host-new-property:hover{
+  box-shadow: 0 1px 7px rgb(104, 104, 104); 
 }
