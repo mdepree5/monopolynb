@@ -121,9 +121,7 @@ const propertyReducer = (state = initialState, action) => {
 // todo ——————————————————————————————————————————————————————————————————————————————————
     case DELETE_PROPERTY: {
       const newState = {...state};
-      const newProperties = state.listOfProperties.filter(property => {
-        return property.id !== action.propertyId;
-      })
+      const newProperties = state.listOfProperties.filter(property => property.id !== action.propertyId)
       newState.listOfProperties = newProperties;
       return newState;
     }

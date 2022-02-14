@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import * as propertyActions from "../../store/property";
@@ -18,13 +18,12 @@ const PropertyEditForm = ({property, closeModal}) => {
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
 
-  const hostId = useSelector(state => state.session.user.id);
 
   const handleSubmit = async(event) => {
     event.preventDefault();
 
     const updatedProperty = await dispatch(propertyActions.updateProperty(
-      {...property, hostId, title, numberOfBeds, price, address, city, state, zipcode}
+      {...property, title, numberOfBeds, price, address, city, state, zipcode}
     )).catch(async(res) => {
       const data = await res.json();
       if(data && data.errors) setErrors(data.errors);

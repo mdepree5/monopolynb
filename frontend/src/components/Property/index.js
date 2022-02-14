@@ -18,8 +18,6 @@ const PropertyPage = () => {
 
   const property = useSelector(state => state?.property[propertyId]);
   const sessionUser = useSelector(state => state?.session?.user);
-
-  console.log('PROPERTY!!!!!!!!!', property);
   
   useEffect(() => {dispatch(getProperty(propertyId))}, [dispatch, propertyId]);
   
