@@ -24,22 +24,6 @@ const PropertyForm = ({edit, property, closeModal}) => {
 
   const hostId = useSelector(state => state.session.user.id);  
 
-  //   const handleSubmit = async(event) => {
-  //   event.preventDefault();
-    
-  //   const newProperty = await dispatch(createProperty(
-  //     {hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImage}
-  //   )).catch(async(res) => {
-  //     const data = await res.json();
-  //     if(data && data.errors) setErrors(data.errors);
-  //   })
-    
-  //   if(newProperty?.errors) setErrors(newProperty?.errors); 
-
-  //   if(newProperty) history.push(`/properties/${newProperty.id}`);
-  //   return closeModal();
-  // }
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const propertyData = {...property, hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImage}

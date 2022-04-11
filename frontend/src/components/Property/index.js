@@ -3,7 +3,6 @@ import {useParams, NavLink} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import { getProperty } from '../../store/property';
-// import PropertyEditModal from './PropertyEditModal';
 import PropertyFormModal from '../Property/PropertyModal';
 import PropertyDeleteButton from './PropertyDeleteButton';
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -17,18 +16,11 @@ const PropertyPage = () => {
   const [belongsToUser, setBelongsToUser] = useState(false);
   const {propertyId} = useParams();
 
-  // const property = useSelector(state => state?.property?.listOfProperties[0]);
-
   const property = useSelector(state => state?.property[propertyId]);
   const sessionUser = useSelector(state => state?.session?.user);
   
   useEffect(() => {dispatch(getProperty(propertyId))}, [dispatch, propertyId]);
-  
-  useEffect(() => {    
-    if(sessionUser?.id === property?.hostId) setBelongsToUser(true);
-    else setBelongsToUser(false);
-  }, [sessionUser, property])
-  
+  useEffect(() => setBelongsToUser(sessionUser?.id === property?.hostId), [sessionUser, property])
   useEffect(() => window.scroll({top: 0, left: 0}));
 
   let propertyColor;
