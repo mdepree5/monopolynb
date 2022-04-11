@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserById } from '../../store/user';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import PropertyList from '../Property/PropertyList';
-import PropertyFormModal from '../Property/PropertyFormModal';
+import PropertyFormModal from '../Property/PropertyModal';
 import './User.css';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 

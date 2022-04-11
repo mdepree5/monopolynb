@@ -2,43 +2,66 @@ import {useHistory} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // todo ——————————————————————————————————————————————————————————————————————————————————
-import {createProperty} from "../../store/property";
+import {createProperty, updateProperty} from "../../store/property";
 import {Form, FormInput, NumberInput} from '../Form';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 
-const PropertyCreateForm = ({closeModal}) => {
+const PropertyForm = ({edit, property, closeModal}) => {
   const dispatch = useDispatch();
   const history = useHistory();
-    
-  const [title, setTitle] = useState('');
-  const [numberOfBeds, setNumberOfBeds] = useState('');
-  const [price, setPrice] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [zipcode, setZipcode] = useState('');
-  const [cardImage, setCardImage] = useState('');
+  
+  const [title, setTitle] = useState(edit ? property?.title : '');
+  const [numberOfBeds, setNumberOfBeds] = useState(edit ? property?.numberOfBeds : '');
+  const [price, setPrice] = useState(edit ? property?.price : '');
+  const [address, setAddress] = useState(edit ? property?.address : '');
+  const [city, setCity] = useState(edit ? property?.city : '');
+  const [state, setState] = useState(edit ? property?.state : '');
+  const [zipcode, setZipcode] = useState(edit ? property?.zipcode : '');
+  const [cardImage, setCardImage] = useState(edit ? property?.cardImage : '');
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
 
   const hostId = useSelector(state => state.session.user.id);  
 
-    const handleSubmit = async(event) => {
-    event.preventDefault();
+  //   const handleSubmit = async(event) => {
+  //   event.preventDefault();
     
-    const newProperty = await dispatch(createProperty(
-      {hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImage}
-    )).catch(async(res) => {
-      const data = await res.json();
-      if(data && data.errors) setErrors(data.errors);
-    })
+  //   const newProperty = await dispatch(createProperty(
+  //     {hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImage}
+  //   )).catch(async(res) => {
+  //     const data = await res.json();
+  //     if(data && data.errors) setErrors(data.errors);
+  //   })
     
-    if(newProperty?.errors) setErrors(newProperty?.errors); 
+  //   if(newProperty?.errors) setErrors(newProperty?.errors); 
 
-    if(newProperty) history.push(`/properties/${newProperty.id}`);
-    return closeModal();
-  }
+  //   if(newProperty) history.push(`/properties/${newProperty.id}`);
+  //   return closeModal();
+  // }
+
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const propertyData = {...property, hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImage}
+
+    if (edit) {
+      const updated = await dispatch(updateProperty(propertyData, property?.id));
+      if (updated?.errors) setErrors(updated?.errors);
+      return closeModal();
+    }
+
+    const created = await dispatch(createProperty(propertyData));
+
+    if (created?.errors) setErrors(created?.errors);
+    if (created?.id) {
+      history.push(`/properties/${created?.id}`);
+      return closeModal();
+    }
+    return 'Failed to Create';
+  };
+
+
 
 
   useEffect(()=> {
@@ -80,4 +103,4 @@ const PropertyCreateForm = ({closeModal}) => {
   )
 };
 
-export default PropertyCreateForm;
+export default PropertyForm;
