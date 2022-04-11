@@ -3,7 +3,8 @@ import {useParams, NavLink} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import { getProperty } from '../../store/property';
-import PropertyEditModal from './PropertyEditModal';
+// import PropertyEditModal from './PropertyEditModal';
+import PropertyFormModal from '../Property/PropertyModal';
 import PropertyDeleteButton from './PropertyDeleteButton';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import Review from '../Review';
@@ -53,7 +54,7 @@ const PropertyPage = () => {
             </ul>
             <div className='property-title-right'> {belongsToUser &&(
               <>
-                <PropertyEditModal property={property} />
+                <PropertyFormModal name='Edit Property' edit={true} property={property} />
                 <PropertyDeleteButton propertyId={propertyId} />
               </>
             )}</div>

@@ -26,9 +26,7 @@ const PropertyList = ({userId = null}) => {
       ))}
     </div>
   ) : (
-    <>
-      <h3 style={{marginBottom: '10px'}}>No Listings yet... why not start now?</h3>
-    </>
+    <h3 style={{marginBottom: '10px'}}>No Listings yet... why not start now?</h3>
   );
 };
 

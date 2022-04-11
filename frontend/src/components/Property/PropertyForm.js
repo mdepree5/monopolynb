@@ -40,7 +40,6 @@ const PropertyForm = ({edit, property, closeModal}) => {
   //   return closeModal();
   // }
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const propertyData = {...property, hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImage}
@@ -69,22 +68,20 @@ const PropertyForm = ({edit, property, closeModal}) => {
     if(!title) errors.push('What is your property called? We\'d love to know!');
     if(numberOfBeds < 1 || numberOfBeds > 1000) errors.push('Please list between 1 and 1000 beds for your property.');
     if(price < 10 || price > 3000) errors.push('Please provide a price between $10 and $3,000 dollars for your property.');
-    if(address.length < 3) errors.push('Please provide an address for your property.');
-    if(city.length < 2) errors.push('Please provide a city for your property.');
-    if(state.length < 2) errors.push('Please provide a state for your property.');
-    if(zipcode.length !== 5) errors.push('Please provide a zipcode for your property.');
+    if(address?.length < 3) errors.push('Please provide an address for your property.');
+    if(city?.length < 2) errors.push('Please provide a city for your property.');
+    if(state?.length < 2) errors.push('Please provide a state for your property.');
+    if(zipcode?.length !== 5) errors.push('Please provide a zipcode for your property.');
   
     setValidationErrors(errors);
   }, [title, numberOfBeds, price, address, city, state, zipcode])
 
 
 
-
-
   return (
-    <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={'Host Your Property!'} >
-      <div className='create-property-form-modal'>
-        <inputs>
+    <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={edit ? 'Update' : 'Host Your Property!'} >
+      <div className={edit ? '' : 'create-property-form-modal'}>
+        <div>
           <FormInput name='Title' state={title} setState={setTitle} />
           <NumberInput min={1} name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
           <NumberInput min={10} name='Price' state={price} setState={setPrice} />
@@ -93,7 +90,7 @@ const PropertyForm = ({edit, property, closeModal}) => {
           <FormInput name='State' state={state} setState={setState} />
           <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
           <FormInput name='Image' state={cardImage} setState={setCardImage} />
-        </inputs>
+        </div>
         <div id='property-create-form-home-icon-container' >
           <img id='property-create-form-home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' />
         </div>
