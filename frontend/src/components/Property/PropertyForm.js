@@ -1,6 +1,7 @@
 import {useHistory} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { singlePublicFileUpload, singleMulterUpload } from '../../awsS3';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import {createProperty, updateProperty} from "../../store/property";
 import {Form, FormInput, NumberInput} from '../Form';
