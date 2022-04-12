@@ -25,6 +25,9 @@ const App = () => {
 
   useEffect(() => window.scroll({top: 0, left: 0, behavior: 'smooth'}));
 
+  // const env = process.env.NODE_ENV
+  // console.log(`%c env:`, `color:yellow`, env)
+
   return (
     <>
       <Navigation isLoaded={isLoaded} />
