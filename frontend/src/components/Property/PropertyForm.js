@@ -27,6 +27,11 @@ const PropertyForm = ({edit, property, closeModal}) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
+    const imageUrl = await singlePublicFileUpload(cardImage); //! => Expect String URL
+    console.log(`%c imageUrl:`, `color:yellow`, imageUrl)
+
+
     const propertyData = {...property, hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImage}
 
     if (edit) {
@@ -74,7 +79,13 @@ const PropertyForm = ({edit, property, closeModal}) => {
           <FormInput name='City' state={city} setState={setCity} />
           <FormInput name='State' state={state} setState={setState} />
           <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
-          <FormInput name='Image' state={cardImage} setState={setCardImage} />
+          
+          {/* <FormInput name='Image' state={cardImage} setState={setCardImage} /> */}
+
+          <input style={{cursor:'pointer'}} type='file' accept='image/*'
+            onChange={e => setCardImage(e.target.files[0])}/>
+
+
         </div>
         <div id='property-create-form-home-icon-container' >
           <img id='property-create-form-home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' />
