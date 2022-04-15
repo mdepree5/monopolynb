@@ -20,7 +20,7 @@ const singlePublicFileUpload = async (file) => {
   const path = require("path");
 
   const Key = new Date().getTime().toString() + path.extname(originalname);
-  const result = await s3.upload({ Bucket: NAME_OF_BUCKET, Key, Body: buffer, ACL: "public-read" }).promise();
+  const result = await s3.upload({ Bucket: NAME_OF_BUCKET, Key, Body: file, ACL: "public-read" }).promise();
 
   console.log(`%c Key:`, `color:yellow`, Key)
   console.log(`%c buffer:`, `color:yellow`, buffer)

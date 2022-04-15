@@ -28,6 +28,10 @@ const PropertyForm = ({edit, property, closeModal}) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
+    console.log(`%c cardImage:`, `color:yellow`, cardImage)
+    const { originalname, buffer } = cardImage;
+    console.log(`%c originalname:`, `color:yellow`, originalname)
+    console.log(`%c originalname:`, `color:yellow`, buffer)
     const imageUrl = await singlePublicFileUpload(cardImage); //! => Expect String URL
     console.log(`%c imageUrl:`, `color:yellow`, imageUrl)
 
