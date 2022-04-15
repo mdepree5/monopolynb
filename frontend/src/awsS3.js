@@ -8,6 +8,21 @@ const AWS = require("aws-sdk");
 const multer = require("multer");
 
 // const { aws } = require('./config')
+// const config = {
+  // apiVersion: "2010-12-01",
+//   apiVersion: "2006-03-01",
+//   accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID, // hardcoding credentials is a bad practice
+//   accessSecretKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY, // please use env vars instead
+//   region: "us-east-1"
+// }
+// AWS.config.update(config)?
+
+// AWS.config.credentials = {
+//   accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+//   accessSecretKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY
+// }
+
+// console.log(`%c AWS.config:`, `color:yellow`, AWS.config.credentials)
 
 const NAME_OF_BUCKET = process.env.REACT_APP_AWS_NAME_OF_BUCKET
 
