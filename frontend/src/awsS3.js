@@ -7,11 +7,12 @@
 const AWS = require("aws-sdk");
 const multer = require("multer");
 
-
 // const { aws } = require('./config')
+
 const NAME_OF_BUCKET = process.env.REACT_APP_AWS_NAME_OF_BUCKET
 
-const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
+// const s3 = new AWS.S3({ apiVersion: "2006-03-01" });
+const s3 = new AWS.S3();
 // --------------------------- Public UPLOAD ------------------------
 
 const singlePublicFileUpload = async (file) => {
@@ -19,7 +20,11 @@ const singlePublicFileUpload = async (file) => {
   const path = require("path");
 
   const Key = new Date().getTime().toString() + path.extname(originalname);
-  const result = await s3.upload({ Bucket: NAME_OF_BUCKET, Key, Body: buffer, ACL: "public-read" }).promise();
+  const result = await s3.upload({ Bucket: NAME_OF_BUCKET, Key, Body: file, ACL: "public-read" }).promise();
+
+  console.log(`%c Key:`, `color:yellow`, Key)
+  console.log(`%c buffer:`, `color:yellow`, buffer)
+  console.log(`%c result:`, `color:yellow`, result)
 
   return result.Location; //! => expect a string URL???
 };

@@ -1,7 +1,7 @@
 import {useHistory} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { singlePublicFileUpload, singleMulterUpload } from '../../awsS3';
+import { singlePublicFileUpload, singleMulterUpload } from '../../awsS3';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import {createProperty, updateProperty} from "../../store/property";
 import {Form, FormInput, NumberInput} from '../Form';
@@ -28,8 +28,12 @@ const PropertyForm = ({edit, property, closeModal}) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    // const imageUrl = await singlePublicFileUpload(cardImage); //! => Expect String URL
-    // console.log(`%c imageUrl:`, `color:yellow`, imageUrl)
+    console.log(`%c cardImage:`, `color:yellow`, cardImage)
+    const { originalname, buffer } = cardImage;
+    console.log(`%c originalname:`, `color:yellow`, originalname)
+    console.log(`%c originalname:`, `color:yellow`, buffer)
+    const imageUrl = await singlePublicFileUpload(cardImage); //! => Expect String URL
+    console.log(`%c imageUrl:`, `color:yellow`, imageUrl)
 
 
     const propertyData = {...property, hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImage}
@@ -82,8 +86,8 @@ const PropertyForm = ({edit, property, closeModal}) => {
           
           <FormInput name='Image' state={cardImage} setState={setCardImage} />
 
-          {/* <input style={{cursor:'pointer'}} type='file' accept='image/*'
-            onChange={e => setCardImage(e.target.files[0])}/> */}
+          <input style={{cursor:'pointer'}} type='file' accept='image/*'
+            onChange={e => setCardImage(e.target.files[0])}/>
 
 
         </div>
