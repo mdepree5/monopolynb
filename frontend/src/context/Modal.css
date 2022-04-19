@@ -29,3 +29,15 @@
   min-height: 200px;
   min-width: 200px;
 }
+
+#modal-image {
+  position: absolute;
+}
+
+#modal-image > * {
+  width: 51.6vw;
+  height: 39vw;
+  border: solid 2px black;
+  border-radius: 20px;
+  box-shadow: 0 1px 10px white;
+}

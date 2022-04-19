@@ -16,7 +16,7 @@ const Image = ({propertyId}) => {
       {images.map(image => (
         <>
           <ImageModal image={image} />
-          <li key={image?.imageURL}><img className='property-image' src={image?.imageURL} alt={`property-${image?.id}`}/></li>
+          {/* <li key={image?.imageURL}><img className='property-image' src={image?.imageURL} alt={`property-${image?.id}`}/></li> */}
         </>
       ))}
     </ul>
@@ -41,7 +41,7 @@ const ImageModal = ({image}) => {
 
       {/* <button className={edit ? 'edit' : 'host-new-property'} onClick={e => setShowModal(true)}>{name}</button> */}
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal image={true} onClose={() => setShowModal(false)}>
           <img className='property-image' src={image?.imageURL} alt={`property-${image?.id}`}/>
         </Modal>
       )}

@@ -22,14 +22,14 @@ export function ModalProvider({ children }) {
   );
 }
 
-export function Modal({ onClose, children }) {
+export function Modal({ onClose, children, image=false }) {
   const modalNode = useContext(ModalContext);
   if (!modalNode) return null;
 
   return ReactDOM.createPortal(
     <div className="modal-container">
       <div id="modal-background" onClick={onClose} />
-        <div id="modal-content">
+        <div id={image ? 'modal-image' : 'modal-content'}>
           {children}
         </div>
     </div>,
