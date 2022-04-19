@@ -1,15 +1,20 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 // todo ——————————————————————————————————————————————————————————————————————————————————
+const { singleMulterUpload, singlePublicFileUpload, multipleMulterUpload, multiplePublicFileUpload } = require('../../awsS3');
 const {validateReview, validateProperty, validatePUT} = require('../middleware/formValidators');
 const {User, Property, Review, Image} = require('../../db/models');
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
+// .post(validateProperty, singleMulterUpload('image'), asyncHandler
 router.route('/')
-.post(validateProperty, asyncHandler
+.post(singleMulterUpload('image'), asyncHandler
   (async (req, res) => {
-  const newProperty = await Property.create(req.body);
-  await Image.create({propertyId: newProperty.id, imageURL: req.body.cardImage});
+    const imageUrl = await singlePublicFileUpload(req.file)
+    
+    const newProperty = await Property.create(req.body);
+    await Image.create({propertyId: newProperty.id, imageURL: imageUrl});
+  // await Image.create({propertyId: newProperty.id, imageURL: req.body.cardImage});
   res.json(newProperty);
 }))
 .get(asyncHandler

@@ -17,7 +17,15 @@ const deleteOneProperty = propertyId => ({ type: DELETE_PROPERTY, propertyId });
 // todo                                 Thunks
 // todo ——————————————————————————————————————————————————————————————————————————————————
 export const createProperty = property => async (dispatch) => {
-  const response = await csrfFetch(`/api/properties`, { method: 'POST', body: JSON.stringify(property) });
+  const response = await csrfFetch(`/api/properties`, 
+  {
+    method: 'POST', 
+    headers: {'Content-Type': 'multipart/form-data'},
+    body: property
+  });
+  // {
+  //   method: 'POST', body: JSON.stringify(property) 
+  // });
 
   if (response.ok) {
     const newProperty = await response.json();

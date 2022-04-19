@@ -34,13 +34,24 @@ const PropertyForm = ({edit, property, closeModal}) => {
 
     const propertyData = {...property, hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImage}
 
+    const formData = new FormData();
+    formData.append('hostId', hostId)
+    formData.append('title', title)
+    formData.append('numberOfBeds', numberOfBeds)
+    formData.append('price', price)
+    formData.append('address', address)
+    formData.append('city', city)
+    formData.append('state', state)
+    formData.append('zipcode', zipcode)
+    formData.append('image', cardImage)
+
     if (edit) {
       const updated = await dispatch(updateProperty(propertyData, property?.id));
       if (updated?.errors) setErrors(updated?.errors);
       return closeModal();
     }
 
-    const created = await dispatch(createProperty(propertyData));
+    const created = await dispatch(createProperty(formData));
 
     if (created?.errors) setErrors(created?.errors);
     if (created?.id) {
@@ -82,8 +93,8 @@ const PropertyForm = ({edit, property, closeModal}) => {
           
           <FormInput name='Image' state={cardImage} setState={setCardImage} />
 
-          {/* <input style={{cursor:'pointer'}} type='file' accept='image/*'
-            onChange={e => setCardImage(e.target.files[0])}/> */}
+          <input style={{cursor:'pointer'}} type='file' accept='image/*'
+            onChange={e => setCardImage(e.target.files[0])}/>
 
 
         </div>
