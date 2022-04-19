@@ -19,7 +19,7 @@ const PropertyForm = ({edit, property, closeModal}) => {
   const [city, setCity] = useState(edit ? property?.city : '');
   const [state, setState] = useState(edit ? property?.state : '');
   const [zipcode, setZipcode] = useState(edit ? property?.zipcode : '');
-  const [cardImage, setCardImage] = useState(edit ? property?.cardImage : '');
+  const [cardImages, setCardImages] = useState(edit ? property?.cardImage : '');
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
 
@@ -30,9 +30,8 @@ const PropertyForm = ({edit, property, closeModal}) => {
     
     // const imageUrl = await singlePublicFileUpload(cardImage); //! => Expect String URL
     // console.log(`%c imageUrl:`, `color:yellow`, imageUrl)
-
-
-    const propertyData = {...property, hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImage}
+    
+    // const propertyData = {...property, hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImages}
 
     const formData = new FormData();
     formData.append('hostId', hostId)
@@ -43,10 +42,12 @@ const PropertyForm = ({edit, property, closeModal}) => {
     formData.append('city', city)
     formData.append('state', state)
     formData.append('zipcode', zipcode)
-    formData.append('image', cardImage)
+    for (let cardImage of cardImages) {
+      formData.append('images', cardImage)
+    }
 
     if (edit) {
-      const updated = await dispatch(updateProperty(propertyData, property?.id));
+      const updated = await dispatch(updateProperty(formData, property?.id));
       if (updated?.errors) setErrors(updated?.errors);
       return closeModal();
     }
@@ -91,10 +92,11 @@ const PropertyForm = ({edit, property, closeModal}) => {
           <FormInput name='State' state={state} setState={setState} />
           <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
           
-          <FormInput name='Image' state={cardImage} setState={setCardImage} />
+          <FormInput name='Image' state={cardImages} setState={setCardImages} />
 
           <input style={{cursor:'pointer'}} type='file' accept='image/*'
-            onChange={e => setCardImage(e.target.files[0])}/>
+            multiple
+            onChange={e => setCardImages(e.target.files)}/>
 
 
         </div>

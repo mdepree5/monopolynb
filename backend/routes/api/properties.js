@@ -1,20 +1,37 @@
 const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
+const Op = require('sequelize').Op;
 // todo ——————————————————————————————————————————————————————————————————————————————————
 const { singleMulterUpload, singlePublicFileUpload, multipleMulterUpload, multiplePublicFileUpload } = require('../../awsS3');
 const {validateReview, validateProperty, validatePUT} = require('../middleware/formValidators');
 const {User, Property, Review, Image} = require('../../db/models');
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
+
+async function createImages(propertyId, imageURLs) {
+  const imageIds = [];
+
+  for (let imageURL of imageURLs) {
+    const created = await Image.create({ propertyId, imageURL })
+    imageIds.push(created.id);
+  }
+
+  return await Image.findAll({
+    where: { id: { [Op.or]: imageIds } },
+  })
+};
+
 // .post(validateProperty, singleMulterUpload('image'), asyncHandler
 router.route('/')
-.post(singleMulterUpload('image'), asyncHandler
+// .post(singleMulterUpload('image'), asyncHandler
+.post(multipleMulterUpload('images'), asyncHandler
   (async (req, res) => {
-    const imageUrl = await singlePublicFileUpload(req.file)
-    
+    // const imageUrl = await singlePublicFileUpload(req.file)
+    // await Image.create({propertyId: newProperty.id, imageURL: imageUrl});
     const newProperty = await Property.create(req.body);
-    await Image.create({propertyId: newProperty.id, imageURL: imageUrl});
-  // await Image.create({propertyId: newProperty.id, imageURL: req.body.cardImage});
+    const imageURLs = await multiplePublicFileUpload(req.files)
+    const images = await createImages(newProperty.id, imageURLs)
+
   res.json(newProperty);
 }))
 .get(asyncHandler
