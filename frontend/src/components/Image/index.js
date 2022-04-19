@@ -17,7 +17,6 @@ const Image = ({propertyId}) => {
         <>
           <ImageModal image={image} />
           <li key={image?.imageURL}><img className='property-image' src={image?.imageURL} alt={`property-${image?.id}`}/></li>
-
         </>
       ))}
     </ul>
