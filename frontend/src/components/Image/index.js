@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Modal } from '../../context/Modal';
 import { useDispatch, useSelector } from 'react-redux';
 // todo ——————————————————————————————————————————————————————————————————————————————————
@@ -39,7 +39,7 @@ const ImageModal = ({image}) => {
         <img className='property-image' src={image?.imageURL} alt={`property-${image?.id}`}/>
       </li>
 
-      <button className={edit ? 'edit' : 'host-new-property'} onClick={e => setShowModal(true)}>{name}</button>
+      {/* <button className={edit ? 'edit' : 'host-new-property'} onClick={e => setShowModal(true)}>{name}</button> */}
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <img className='property-image' src={image?.imageURL} alt={`property-${image?.id}`}/>

@@ -18,3 +18,12 @@
 .footer:visited{
   color: black;
 }
+
+.about{
+  height: 2em;
+  width: 3em;
+  cursor: pointer;
+  /* border-radius: 0.3em; */
+  /* border: 0.06em solid black; */
+  /* box-shadow: 0 0 10px white; */
+}

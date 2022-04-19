@@ -6,15 +6,15 @@ const Footer = () => {
 
   return (
     <div className='footer'>
-      <div style={{cursor: 'pointer'}} onClick={handleClick}>Top</div>
+      <strong style={{cursor: 'pointer'}} onClick={handleClick}>Top</strong>
       <AboutLink link='https://github.com/mdepree5' image='https://monopolynb.s3.amazonaws.com/github-original-wordmark.svg' />
-      <AboutLink link='https://www.linkedin.com/in/mitch-depree-4a5686155/' image='https://monopolynb.s3.amazonaws.com/linkedin-plain-wordmark.svg' />
+      <AboutLink style={{height:'4em', width:'4em'}} link='https://www.linkedin.com/in/mitch-depree-4a5686155/' image='https://monopolynb.s3.amazonaws.com/linkedin-plain-wordmark.svg' />
     </div>
   )
 }
 
-const AboutLink = ({link, image}) => (
-<img className='about' onClick={()=>window.open(link)} src={image} alt='about-link' />
+const AboutLink = ({style, link, image}) => (
+  <img style={style} className='about' onClick={()=>window.open(link)} src={image} alt='about-link' />
 )
 
 export default Footer;
