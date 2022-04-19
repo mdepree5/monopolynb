@@ -7,10 +7,14 @@ const Footer = () => {
   return (
     <div className='footer'>
       <div style={{cursor: 'pointer'}} onClick={handleClick}>Top</div>
-      <a href='https://github.com/mdepree5'>Github</a>
-      <a href='https://www.appacademy.io/'>App Academy</a>
+      <AboutLink link='https://github.com/mdepree5' image='https://monopolynb.s3.amazonaws.com/github-original-wordmark.svg' />
+      <AboutLink link='https://www.linkedin.com/in/mitch-depree-4a5686155/' image='https://monopolynb.s3.amazonaws.com/linkedin-plain-wordmark.svg' />
     </div>
   )
 }
+
+const AboutLink = ({link, image}) => (
+<img className='about' onClick={()=>window.open(link)} src={image} alt='about-link' />
+)
 
 export default Footer;
