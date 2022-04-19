@@ -30,10 +30,13 @@ const PropertyForm = ({edit, property, closeModal}) => {
     
     // const imageUrl = await singlePublicFileUpload(cardImage); //! => Expect String URL
     // console.log(`%c imageUrl:`, `color:yellow`, imageUrl)
-    
+
     // const propertyData = {...property, hostId, title, numberOfBeds, price, address, city, state, zipcode, cardImages}
 
     const formData = new FormData();
+    if(edit) {
+      formData.append('id', property?.id)
+    }
     formData.append('hostId', hostId)
     formData.append('title', title)
     formData.append('numberOfBeds', numberOfBeds)
@@ -42,8 +45,10 @@ const PropertyForm = ({edit, property, closeModal}) => {
     formData.append('city', city)
     formData.append('state', state)
     formData.append('zipcode', zipcode)
-    for (let cardImage of cardImages) {
-      formData.append('images', cardImage)
+    if(cardImages) {
+      for (let cardImage of cardImages) {
+        formData.append('images', cardImage)
+      }
     }
 
     if (edit) {
@@ -92,7 +97,7 @@ const PropertyForm = ({edit, property, closeModal}) => {
           <FormInput name='State' state={state} setState={setState} />
           <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
           
-          <FormInput name='Image' state={cardImages} setState={setCardImages} />
+          {/* <FormInput name='Image' state={cardImages} setState={setCardImages} /> */}
 
           <input style={{cursor:'pointer'}} type='file' accept='image/*'
             multiple
