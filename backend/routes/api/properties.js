@@ -41,11 +41,17 @@ router.route('/')
 router.route('/:propertyId')
 .get(asyncHandler
   (async (req, res) => res.json(await Property.findByPk(req.params.propertyId, {include: [User, Review, Image]}))))
-.put(validateProperty, validatePUT, asyncHandler
+// .put(validateProperty, validatePUT, asyncHandler
+.put(MultipleMulterUpload('images'), validatePUT, asyncHandler
   (async (req, res) => {
   const id = req.body.id; 
   delete req.body.id; 
+  
   const updatedProperty = await Property.update(req.body, {where: { id }, returning: true, plain: true});
+  
+  const imageURLs = await multiplePublicFileUpload(req.files)
+  const images = await createImages(newProperty.id, imageURLs)
+
   return res.json(await Property.findByPk(id, {include: [User]}))
 }))
 .delete(asyncHandler

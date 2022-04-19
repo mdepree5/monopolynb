@@ -68,8 +68,17 @@ export const getProperty = (propertyId) => async (dispatch) => {
   return response;
 };
 
-export const updateProperty = property => async (dispatch) => {
-  const response = await csrfFetch(`/api/properties/${property.id}`, { method: 'PUT', body: JSON.stringify(property) });
+export const updateProperty = (property, propertyId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/properties/${propertyId}`, 
+  {
+    method: 'PUT', 
+    headers: {'Content-Type': 'multipart/form-data'},
+    body: property
+  });
+  // {
+  //   method: 'PUT', 
+  //   body: JSON.stringify(property) 
+  // });
 
   if (response.ok) {
     const updatedProperty = await response.json();
