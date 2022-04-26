@@ -25,11 +25,8 @@ const App = () => {
 
   useEffect(() => window.scroll({top: 0, left: 0, behavior: 'smooth'}));
 
-  // const env = process.env.NODE_ENV
-  // console.log(`%c env:`, `color:yellow`, env)
-
   return (
-    <>
+    <div className='app'>
       <Navigation isLoaded={isLoaded} />
       <div className='main-body'>
         <Switch>
@@ -42,7 +39,8 @@ const App = () => {
         </Switch>
       </div>      
       <Footer />
-    </>
+      <div>hey</div>
+    </div>
   );
 }
 

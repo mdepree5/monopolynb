@@ -32,7 +32,6 @@ button{
   margin-left: auto; margin-right: auto;
 }
 
-
 #brown{ background-color: #ceb5a7 }
 #skyblue{ background-color: #b5e4f2 }
 #orchid{ background-color: #deaaff }
@@ -51,6 +50,13 @@ button{
 
 .filler-box{ height: 5em; background-color: black; }
 
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             App                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+.app{
+  min-height: 100vh;
+  border: 0.05em solid red;
+}
 .main-body{ flex-grow: 1; }
 
 /* 
