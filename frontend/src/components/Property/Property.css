@@ -128,46 +128,25 @@
 .create-property-form-modal input { width: 90%; }
 .create-property-form-modal > *{ width: 50%; }
 
+
 #property-create-form-home-icon-container{
   display: flex; align-items: center; justify-content: center;
 }
 
-#property-create-form-home-icon{
-  height: 50%; width: 60%;
-}
+#property-create-form-home-icon{ height: 50%; width: 60%; }
 
-
-
-.host-new-property{
-  border: solid black 2px;
-  border-radius: 20px;
-}
-
-.host-new-property:hover{
-  box-shadow: 0 1px 7px rgb(104, 104, 104); 
-}
-
+.host-new-property{ border: 0.1em solid black; border-radius: 1em; }
+.host-new-property:hover{ box-shadow: 0 0.05em 0.5em rgb(104, 104, 104);  }
 
 @media (max-width: 850px){
-  .properties-container{
-    width: 40%;
-  }
-  .property-card h2 {
-    font-size: small;
-  }
+  .properties-container{ width: 40%; }
+  .property-card h2 { font-size: small; }
 }
-
 
 @media (min-width: 850px) and (max-width: 1250px){
-  .properties-container{
-    width: 60%;
-  }
-  .property-card h2 {
-    font-size: medium;
-  }
+  .properties-container{ width: 60%; }
+  .property-card h2 { font-size: medium; }
 }
 @media (min-width: 1251px){
-  .properties-container{
-    width: 80%;
-  }
+  .properties-container{ width: 80%; }
 }
