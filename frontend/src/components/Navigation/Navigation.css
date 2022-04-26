@@ -19,69 +19,33 @@
   margin-right: 5px;
 }
 
-.nav-top{
-  background-color: black;
-  color: white;
-}
-
-.nav-top a{
-  color: white;
-}
+.nav-top{ background-color: black; color: white; }
+.nav-top a{ color: white; }
 
 .nav-not-top{
   background-color: white;
   box-shadow: 0 1px 10px rgb(218, 218, 218);
-  border-bottom: rgb(218, 218, 218) 1px solid;
+  border-bottom: 1px solid rgb(218, 218, 218);
   color: black;
 }
+.nav-not-top a{ color: black; }
 
-.nav-not-top a{
-  color: black;
+.nav-bar > * {
+  width: 33%; padding: 0;
+  display: flex; flex-direction: row;
+  align-items: center; text-align: center;
 }
 
+#left-nav{ justify-content: flex-start; }
+#mid-nav{ justify-content: center; }
+#right-nav{ justify-content: flex-end; }
 
-#left-nav{
-  width: 33%;
-  display: flex;
-  flex-direction: row;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0;
-}
-#mid-nav{
-  width: 33%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 0;
-}
-#right-nav{
-  width: 33%;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0;
+.session-links{
+  display: flex; flex-direction: row;
+  align-items: center; justify-content: space-between;
+  width: 100%; max-width: 333px; padding: 0;
 }
 
-#right-nav-nested{
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0;
-  max-width: 333px;
+.demo-login{ border: solid black 2px; border-radius: 20px; }
 
-}
-
-.demo-login{
-  border: solid black 2px;
-  border-radius: 20px;
-}
-
-.demo-login:hover{
-  box-shadow: 0 1px 7px rgb(104, 104, 104); 
-}
+.demo-login:hover{ box-shadow: 0 1px 7px rgb(104, 104, 104);  }

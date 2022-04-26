@@ -55,6 +55,7 @@ const Navigation = () => {
         <img id='home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' />
         <NavLink exact to="/">Monopolynb</NavLink>
       </div>
+
       <div id='mid-nav'>
         {navStatus === 'nav-top' ? (
           <NavLink style={{color:'#3efa57', boxShadow:'0 3px 8px 0 green'}} exact to="/properties">Explore</NavLink>
@@ -62,8 +63,9 @@ const Navigation = () => {
           <NavLink exact to="/properties">Explore</NavLink>
         )}
       </div>
+
       <div id='right-nav'>
-        <div id='right-nav-nested'>{sessionLinks}</div>
+        <div className='session-links'>{sessionLinks}</div>
       </div>
     </nav>
   );
