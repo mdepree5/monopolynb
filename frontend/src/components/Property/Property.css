@@ -115,44 +115,27 @@
 }
 
 .img-placeholder{
-  width: 10em;
-  height: 10em;
-  border: solid black 2px;
-  border-radius: 3px;
+  height: 10em; width: 10em;
+  border: 0.1em solid black; border-radius: 0.5em;
   text-align: center;
 }
 
 .create-property-form-modal{
-  display: flex;
-  flex-direction: row;
+  display: flex; flex-direction: row;
   justify-content: space-between;
 }
 
-.create-property-form-modal input {
-  width: 90%;
-}
-
-.create-property-form-modal > *{
-  width: 50%;
-}
+.create-property-form-modal input { width: 90%; }
+.create-property-form-modal > *{ width: 50%; }
 
 #property-create-form-home-icon-container{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
 }
 
 #property-create-form-home-icon{
-  width: 60%;
-  height: 50%;
+  height: 50%; width: 60%;
 }
 
-
-.line{
-  border-top: solid black 2px;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 
 .host-new-property{

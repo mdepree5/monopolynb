@@ -21,5 +21,3 @@
 .inputField:hover{ background-color: white; border: solid 0.1em #b5e4f2; }
 .inputField:focus{ background-color: white; border: solid 0.05em #b5e4f2;} 
 
-.line{ border-top: 0.05em solid black; }
-

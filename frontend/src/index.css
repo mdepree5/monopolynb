@@ -27,6 +27,12 @@ button{
 .delete{ background-color: #ff8b94; color: black; border: solid black 0.1em; margin: 0.05em; }
 .delete:hover{ color: white; }
 
+.line{
+  border-top: 0.1em solid black;
+  margin-left: auto; margin-right: auto;
+}
+
+
 #brown{ background-color: #ceb5a7 }
 #skyblue{ background-color: #b5e4f2 }
 #orchid{ background-color: #deaaff }
