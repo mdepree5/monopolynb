@@ -1,22 +1,12 @@
 .user-page{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: flex; flex-direction: column; align-items: center;
   justify-content: center;;
 }
 
 .user-splash{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  display: flex; flex-direction: column; align-items: center;
+  width: 70%; margin-left: auto; margin-right: auto;
+  margin-top: 1em; margin-bottom: 1em;
 }
 
-
-.white-filler-box{
-  height: 650px;
-}
+.white-filler-box{ height: 32em; }
