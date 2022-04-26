@@ -1,18 +1,16 @@
 import { useEffect } from 'react';
 import {useParams} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserById } from '../../store/user';
-// todo ——————————————————————————————————————————————————————————————————————————————————
+// ???? ——————————————————————————————————————————————————————————————————————————————————
 import PropertyList from '../Property/PropertyList';
 import PropertyFormModal from '../Property/PropertyModal';
+import { getUserById } from '../../store/user';
 import './User.css';
-// todo ——————————————————————————————————————————————————————————————————————————————————
+// ???? ——————————————————————————————————————————————————————————————————————————————————
 
 const UserPage = () => {
   const {userId} = useParams();
-
   const dispatch = useDispatch();
-
   const sessionUser = useSelector(state => state.session.user);
   const pageUser = useSelector(state => state.user[userId]);
 
