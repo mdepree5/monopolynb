@@ -1,49 +1,32 @@
 .splash-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: flex; flex-direction: column; align-items: center;
   justify-content: center;
   width: 100%;
-  /* height: 50%; */
-  /* border: 2px solid black; */
-  border-radius: 2px;
-  background-color: black;
-  color: white;
+  background-color: black; color: white;
+  border-radius: 0.5em;
 }
 
 .floating-message{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: flex; flex-direction: column; align-items: center;
   position: absolute;
-  /* background-color: rgba(0, 0, 0, 0.54); */
-  padding: 20px;
-  border-radius: 30px;
+  border-radius: 2em;
+  padding: 2em;
 }
 
 
 #splash-button-white{
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column; align-items: center;
   justify-content: center;
-  align-items: center;
-  background-color: white;
-  width: 180px;
-  height: 50px;
-  border-radius: 50px;
-  color: black;
-  /* cursor: pointer; */
+  background-color: white; color: black;
+  height: 3em; width: 9em;
+  border-radius: 2em;
 }
 
-#splash-image{
-  width: 70%;
-  height: 70%;
-  opacity: 50%;
-  border-radius: 20px;
-}
+#splash-image{ height: 70%; width: 70%; opacity: 50%; border-radius: 1em; }
 
-@media (max-width: 560px){#splash-image{ width: 100%; height: 100% }}
-
-@media (min-width: 561px) and (max-width: 1120px){#splash-image{ width: 95%; height: 95% }}
-
-@media (min-width: 1121px) and (max-width: 1680px){#splash-image{ width: 85%; height: 85% }}
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Media                  */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+@media (max-width: 560px){#splash-image{ height: 100%; width: 100%; }}
+@media (min-width: 561px) and (max-width: 1120px){#splash-image{ height: 95%; width: 95%; }}
+@media (min-width: 1121px) and (max-width: 1680px){#splash-image{ height: 85%; width: 85%; }}
