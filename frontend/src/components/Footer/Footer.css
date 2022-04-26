@@ -1,31 +1,9 @@
 .footer{
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  background-color: black;
-  background-color: #e3e3e3;
-  border-top: solid black 1px;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  height: 80px;
-  text-decoration: none;
-  color: black;
-  z-index: 97;
-  
-  flex-shrink: 0;
+  display: flex; flex-direction: row;
+  align-items: center; justify-content: space-evenly;
+  width: 100%; height: 80px;
+  background-color: #e3e3e3; color: black; border-top: solid black 1px;
+  z-index: 97; flex-shrink: 0;
 }
 
-.footer:visited{
-  color: black;
-}
-
-.about{
-  height: 2em;
-  width: 3em;
-  cursor: pointer;
-  /* border-radius: 0.3em; */
-  /* border: 0.06em solid black; */
-  /* box-shadow: 0 0 10px white; */
-}
+.about{ height: 2em; width: 3em; cursor: pointer; }
