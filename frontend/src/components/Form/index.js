@@ -6,24 +6,22 @@ export const Form = ({onSub, validationErrors, errors, buttonName, children}) =>
       {children}
       <button className='form-button' type='submit' disabled={validationErrors.length > 0} >{buttonName}</button>
     </form>
-    {validationErrors.length > 0 && (
-      <>
-        <div>Before You Submit...</div>
-        <div className='line'></div>
-      </>
-    )}
+    
+    {validationErrors.length > 0 && (<>
+      <div>Before You Submit...</div>
+      <div className='line'></div>
+    </>)}
+
     <ul className='state-errors'>
-        {validationErrors.length > 0 &&
-        validationErrors.map(error => (
-          <li key={error} className='error'>{error}</li>
-        ))}
+      {validationErrors.length > 0 && validationErrors.map(error => 
+        <li key={error} className='error'>{error}</li>
+      )}
     </ul>
+
     <ul className='form-errors'>
       {errors.lenth > 0 && (<li className='line'></li>)}
       {errors.length > 0 && errors.filter(error => error !== 'Invalid value')
-        .map((error, id) => (
-          <li key={id}>{error}</li>
-        ))
+        .map((error, id) => <li key={id}>{error}</li> )
       }
     </ul>
   </>

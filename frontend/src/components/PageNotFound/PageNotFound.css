@@ -1,10 +1,3 @@
-.page-not-found{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+.page-not-found{ display: flex; flex-direction: column; align-items: center; }
 
-#not-found-image{
-  width: 400px;
-  height: 400px;
-}
+#not-found-image{ width: 20em; height: 20em; }
