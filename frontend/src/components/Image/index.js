@@ -9,11 +9,11 @@ const Image = ({propertyId}) => {
   const dispatch = useDispatch();
   const images = useSelector(state => state?.image?.listOfImages);
 
-  useEffect(() => {dispatch(getImagesByPropertyId(propertyId))}, [dispatch]);
+  useEffect(() => {dispatch(getImagesByPropertyId(propertyId))}, [dispatch, propertyId]);
 
   return images.length > 0 ? (
-    <div className='image-container'>
-      {images.map(image => <ImageModal image={image}/>)}
+    <div className='image-container row-list'>
+      {images.map(image => <ImageModal key={image?.id} image={image}/>)}
     </div>
   ) : (
     <div className='image-container'>No images yet!</div>
