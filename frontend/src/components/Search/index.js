@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { getProperties } from '../../store/property';
 
-const PropertySearchBar = ({placeholderText}) => {
+const Search = ({placeholderText}) => {
   const dispatch = useDispatch();
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -46,4 +46,4 @@ const PropertySearchBar = ({placeholderText}) => {
   )
 }
 
-export default PropertySearchBar;
+export default Search;

@@ -18,25 +18,25 @@ const UserPage = () => {
 
   useEffect(() => {dispatch(getUserById(userId))}, [dispatch, userId]);
 
-  return sessionUser?.id === pageUser?.id ? (
-    <div className='user-page center-body'>
-      <div className='user-splash'>
-        <h1 style={{marginBottom:'10px'}}>{`Welcome back, ${pageUser?.firstName} `}<i className="far fa-user" /></h1>
-        {/* <h3 style={{marginBottom:'10px'}} >Your Properties</h3> */}
-        <PropertyFormModal />
+  return  (
+    <div className='user-page col-list center-body'>
+      <div className='user-splash col-list'>
+        {sessionUser?.id === pageUser?.id ?
+          (<>
+            <h1 style={{marginBottom:'10px'}}>{`Welcome back, ${pageUser?.firstName} `}<i className="far fa-user" /></h1>
+            {/* <h3 style={{marginBottom:'10px'}} >Your Properties</h3> */}
+            <PropertyFormModal />
+          </>)
+          : 
+          (<>
+            <h2>{`${pageUser?.firstName} ${pageUser?.lastName.slice(0, 1)}`} </h2>
+            <h3>{`${pageUser?.firstName}
+              ${pageUser?.lastName.slice(0, 1)}${pageUser?.lastName.slice(0, 1).endsWith('s') ? '\'' : '\'s'} Listings`}
+            </h3>
+          </>)
+        }
       </div>
-      <div style={{width:'40%', marginBottom: '10px'}} className="line"></div>
-      <PropertyList userId={userId} />
-      <div className='filler-box' style={{backgroundColor:'white'}}/>
-    </div>
-    ) : (
-    <div className='user-page center-body'>
-      <div className='user-splash'>
-        <h2>{`${pageUser?.firstName} ${pageUser?.lastName.slice(0, 1)}`} </h2>
-        <h3>{`${pageUser?.firstName}
-          ${pageUser?.lastName.slice(0, 1)}${pageUser?.lastName.slice(0, 1).endsWith('s') ? '\'' : '\'s'} Listings`}
-        </h3>
-      </div>
+
       <div style={{width:'40%', marginBottom: '10px'}} className="line"></div>
       <PropertyList userId={userId} />
       <div className='filler-box' style={{backgroundColor:'white'}}/>

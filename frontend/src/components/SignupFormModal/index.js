@@ -7,11 +7,7 @@ function SignUpFormModal() {
 
   return (
     <>
-      <button onClick={e => {
-      e.stopPropagation();
-      setShowModal(true)
-      }
-      }>Sign Up</button>
+      <button onClick={() => setShowModal(true)}>Sign Up</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <SignupForm />
