@@ -9,11 +9,9 @@ const PropertyDeleteButton = ({propertyId}) => {
 
   const sessionUser = useSelector(state => state.session.user);
   
-  const handleDelete = async(event) => {
-    event.preventDefault();
-
+  const handleDelete = async(e) => {
+    e.preventDefault();
     const deletedProperty = await dispatch(propertyActions.deleteProperty(propertyId));
-
     if(deletedProperty) return history.push(`/users/${sessionUser.id}`);
   }
 

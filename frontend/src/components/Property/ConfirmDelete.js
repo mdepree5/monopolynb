@@ -2,7 +2,6 @@ import {NavLink} from 'react-router-dom';
 import { useSelector } from "react-redux";
 
 const ConfirmDelete = () => {
-  
   const userId = useSelector(state => state.session.user.id);
 
   return (

@@ -16,11 +16,12 @@ const PropertyCard = ({ property }) => {
   const handleClick = () => history.push(`/properties/${property.id}`);
 
   return (
-      <div onClick={handleClick} className='property-card'>
+      <div onClick={handleClick} className='property-card col-list'>
         <div className='property-color-profile' id={propertyColor} />
-        <div><h2 className='property-title'>{property.title}</h2></div>
-        <div><img className='card-image' src={property.cardImage} alt='card' /></div>
-        <div className='property-footer-info'>
+        <h2 className='property-title'>{property.title}</h2>
+        <img className='card-image' src={property.cardImage} alt='card' />
+        
+        <div className='property-footer-info row-list'>
           <div>{property.city}</div>
           <div>{`$${property.price} / night`}</div>
         </div>

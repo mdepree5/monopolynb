@@ -67,7 +67,7 @@ const Navigation = () => {
       </div>
 
       <div className='row-list' id='right-nav'>
-        <div className='session-links'>{sessionLinks}</div>
+        <div className='session-links row-list'>{sessionLinks}</div>
       </div>
     </nav>
   );
@@ -85,3 +85,4 @@ import PropertySearchBar from '../PropertySearchBar';
 import ProfileButton from './ProfileButton';
 <li><ProfileButton isLoaded={isLoaded} /></li>
  */
+

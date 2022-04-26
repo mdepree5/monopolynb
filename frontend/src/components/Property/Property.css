@@ -1,29 +1,36 @@
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Properties Container (PropertyList.js)                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+.properties-container{
+  justify-content: center;
+  flex-wrap: wrap;
+
+  margin-left: auto; margin-right: auto;
+  padding-top: 1em; margin-bottom: 1em;
+
+  border-radius: 0.1em;
+  overflow: auto; white-space: normal; width: 70%;
+}
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Property Page                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
 .property-page{
-  display: flex; flex-direction: column; align-items: center;
   width: 70%; margin-right: auto; margin-left: auto;
   border-radius: 0.1em;
 }
-
-.property-card-image{
-  height: 3em; width: 90%;
-  height: 3em; width: 5em;
-  border: solid black 0.1em; border-radius: 0.5em;
-  /* border: solid black 0.1em; border-radius: 1em; */
-  box-shadow: 0 0.05em 0.5em rgb(104, 104, 104); 
-  padding-left: 1em; padding-right: 1em; margin-bottom: 1em;
-}
-
 .property-page-wrapper{
-  display: flex; flex-direction: column; align-items: center;
   border: solid black 0.1em; border-radius: 0.5em;
   padding: 1em; padding-bottom: 0;
   margin-top: 1em; margin-bottom: 1em;
   width: 90%;
 }
 
-.property-head{
-  display: flex; flex-direction: row; 
-  align-items: center; justify-content: space-between;
+.property-card-image{
+  height: 3em; width: 90%;
+  height: 3em; width: 5em;
+  border: solid black 0.1em; border-radius: 0.5em;
+  box-shadow: 0 0.05em 0.5em rgb(104, 104, 104); 
+  padding-left: 1em; padding-right: 1em; margin-bottom: 1em;
 }
 
 .property-data-container{
@@ -34,25 +41,21 @@
   padding: 1em; margin-bottom: 2em;
 }
 
-.properties-container{
-  display: flex; flex-direction: row;
-  align-items: flex-end; justify-content: center;
-  flex-wrap: wrap;
-
-  margin-left: auto; margin-right: auto;
-  padding-top: 1em; margin-bottom: 1em;
-
-  border-radius: 0.1em;
-  overflow: auto; white-space: normal; width: 70%;
-}
+.property-head{ justify-content: space-between; }
 
 .property-title-left{ display: flex; flex-direction: column; align-items: flex-start; }
 .property-title-right{ display: flex; flex-direction: column; align-items: flex-end; }
+
 .property-title-right > *{  margin-bottom: 0.05em; }
 
+
+
+
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Property Card                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
 .property-card{
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: space-between;
+  justify-content: space-between;
   background-color: white; color: rgb(61, 61, 61); cursor: pointer;
   
   border: solid black 0.3vw; border-radius: 1vw;
@@ -71,7 +74,13 @@
   transform: translateY(-0.1em);
 }
 
-.property-card > li { margin-bottom: 1em; }
+.property-card > * { margin-bottom: 1em; }
+
+.property-color-profile{
+  border: 0.1em solid black; border-radius: 0.5em;
+  height: 25%; width: 100%;
+  text-align: center;
+}
 
 .card-image{
   /* height: 12vw; width: 18vw; */
@@ -84,42 +93,18 @@
   object-fit: cover;
 }
 
-.property-color-profile{
-  border: 0.1em solid black; border-radius: 0.5em;
-  height: 25%; width: 100%;
-  text-align: center;
-}
-
-
 .property-footer-info{
-  display: flex; flex-direction: row; 
   justify-content: space-between;
   width: 80%;
 }
-
-.mainDetails{
-  border-top: 0.05em solid black; border-bottom: 0.05em solid black;
-  padding-top: 2em; padding-bottom: 2em;
-}
-
-.img-container{
-  display: flex; flex-direction: column;
-  height: 25em; width: 100%;
-  border: solid black 0.1em; border-radius: 0.5em;
-}
-
-.img-placeholder-main{
-  height: 20em; width: 20em;
-  border: 0.1em solid black; border-radius: 0.5em;
-  text-align: center;
-}
-
-.img-placeholder{
-  height: 10em; width: 10em;
-  border: 0.1em solid black; border-radius: 0.5em;
-  text-align: center;
-}
-
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Property Form Modal                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+.host-new-property{ border: 0.1em solid black; border-radius: 1em; }
+.host-new-property:hover{ box-shadow: 0 0.05em 0.5em rgb(104, 104, 104); }
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Property Form                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
 .create-property-form-modal{
   display: flex; flex-direction: row;
   justify-content: space-between;
@@ -135,9 +120,10 @@
 
 #property-create-form-home-icon{ height: 50%; width: 60%; }
 
-.host-new-property{ border: 0.1em solid black; border-radius: 1em; }
-.host-new-property:hover{ box-shadow: 0 0.05em 0.5em rgb(104, 104, 104);  }
 
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Media                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
 @media (max-width: 850px){
   .properties-container{ width: 40%; }
   .property-card h2 { font-size: small; }

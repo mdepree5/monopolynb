@@ -34,35 +34,35 @@ const PropertyPage = () => {
   if(property?.price > 150) propertyColor = 'blue';
 
   return (
-    
-    <div className='property-page'>
-      <div className='property-page-wrapper'>
+    <div className='property-page col-list'>
+      <div className='property-page-wrapper col-list'>
         <div className='property-card-image' id={propertyColor} />
-        <div className='property-data-container'>
-          <div className='property-head'>
-            <ul className='property-title-left'>
-              <h1 className='property-title'>{property?.title}</h1>
-              <h3 className='property-location'>{`${property?.city}, ${property?.state}`}</h3>
-            </ul>
-            <div className='property-title-right'> {belongsToUser &&(
-              <>
-                <PropertyFormModal name='Edit Property' edit={true} property={property} />
-                <PropertyDeleteButton propertyId={propertyId} />
-              </>
-            )}</div>
-          </div>
-          <div style={{width:'250px', margin: 0}} className="line"></div>  
-          <br />
-          <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} ${property?.User?.lastName.slice(0, 1)}. `}<i className="far fa-user" /></NavLink></div>
-          <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
-          <div className='property-price'>{`$${property?.price} / night`}</div>
-        </div>
 
-        <div style={{width:'75%'}} className="line"></div>
-        <Image propertyId={propertyId}/>
-        <div style={{width:'75%'}} className="line"></div>
-        <Review propertyId={propertyId} />
-        <div className='filler-box' style={{backgroundColor:'white'}}/>
+          <div className='property-data-container'>
+            <div className='property-head row-list'>
+              <div className='property-title-left'>
+                <h1 className='property-title'>{property?.title}</h1>
+                <h3 className='property-location'>{`${property?.city}, ${property?.state}`}</h3>
+              </div>
+
+              <div className='property-title-right'> {belongsToUser &&(<>
+                  <PropertyFormModal name='Edit Property' edit={true} property={property} />
+                  <PropertyDeleteButton propertyId={propertyId} />
+              </>)}</div>
+            </div>
+
+            <div style={{width:'250px', margin: 0}} className="line"/>
+            <br />
+            <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} ${property?.User?.lastName.slice(0, 1)}. `}<i className="far fa-user" /></NavLink></div>
+            <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
+            <div className='property-price'>{`$${property?.price} / night`}</div>
+          </div>
+
+          <div style={{width:'75%'}} className="line"/>
+          <Image propertyId={propertyId}/>
+          <div style={{width:'75%'}} className="line"/>
+          <Review propertyId={propertyId} />
+          <div className='filler-box' style={{backgroundColor:'white'}}/>
       </div>
         <div className='filler-box' style={{backgroundColor:'white'}}/>
         <div className='filler-box' style={{backgroundColor:'white'}}/>
