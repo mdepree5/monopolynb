@@ -34,37 +34,39 @@ const Navigation = () => {
   const sessionLinks = sessionUser ? (
     <>
       <PropertyFormModal />
-      <div className='dot'>·</div>
+      •
       <NavLink to={`/users/${sessionUser.id}`}>My Page</NavLink>
-      <div className='dot'>·</div>
+      •
       <button onClick={logout}>Log Out</button>
     </>
   ) : (
     <>
       <DemoLogin/>
-      <div className='dot'>·</div>
+      •
       <LoginFormModal />
-      <li className='dot'>·</li>
+      •
       <SignupFormModal />
     </>
   );
 
   return (
-    <nav className={`nav-bar ${navStatus}`}>
-      <div id='left-nav'>
-        <img id='home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' />
-        <NavLink exact to="/">Monopolynb</NavLink>
+    <nav className={`nav-bar ${navStatus} row-list`}>
+      <div className='row-list' id='left-nav'>
+        <NavLink className='row-list' exact to="/">
+          <img id='home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' />
+          Monopolynb
+        </NavLink>
       </div>
 
-      <div id='mid-nav'>
+      <div className='row-list' id='mid-nav'>
         {navStatus === 'nav-top' ? (
-          <NavLink style={{color:'#3efa57', boxShadow:'0 3px 8px 0 green'}} exact to="/properties">Explore</NavLink>
+          <NavLink className='explore' style={{color:'#3efa57'}} exact to="/properties">Explore</NavLink>
         ) : (
-          <NavLink exact to="/properties">Explore</NavLink>
+          <NavLink className='explore' exact to="/properties">Explore</NavLink>
         )}
       </div>
 
-      <div id='right-nav'>
+      <div className='row-list' id='right-nav'>
         <div className='session-links'>{sessionLinks}</div>
       </div>
     </nav>
