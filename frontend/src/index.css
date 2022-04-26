@@ -11,20 +11,21 @@
 /* todo             Elements                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 button{
-  background: none; outline: none; border: none; border-radius: 6px;
+  background: none; outline: none; border: none; border-radius: 0.5em;
+  /* background: none; outline: none; border: none; border-radius: 2em; */
   color: inherit; font: inherit;
-  padding: 5px; cursor: pointer; 
+  padding: 0.5em; cursor: pointer; 
 }
 
 
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Common Classes                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
-.edit{ background-color: #ffbf81; border: solid black 2px; margin: 1px; }
-.edit:hover{ color: white; margin: 1px; }
+.edit{ background-color: #ffbf81; border: solid black 0.1em; margin: 0.05em; }
+.edit:hover{ color: white; }
 
-.delete{ background-color: #ff8b94; color: black; border: solid black 2px; margin: 1px; }
-.delete:hover{ color: white; margin: 1px; }
+.delete{ background-color: #ff8b94; color: black; border: solid black 0.1em; margin: 0.05em; }
+.delete:hover{ color: white; }
 
 #brown{ background-color: #ceb5a7 }
 #skyblue{ background-color: #b5e4f2 }
@@ -42,7 +43,7 @@ button{
 
 .center-body{ margin-right: auto; margin-left: auto; }
 
-.filler-box{ height: 100px; background-color: black; }
+.filler-box{ height: 5em; background-color: black; }
 
 .main-body{ flex-grow: 1; }
 
