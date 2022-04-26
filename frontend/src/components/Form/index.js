@@ -2,7 +2,7 @@ import './Form.css';
 
 export const Form = ({onSub, validationErrors, errors, buttonName, children}) => (
   <>
-    <form className='form' onSubmit={onSub}>
+    <form className='col-list' onSubmit={onSub}>
       {children}
       <button className='form-button' type='submit' disabled={validationErrors.length > 0} >{buttonName}</button>
     </form>
@@ -32,9 +32,9 @@ export const FormInput = ({ type, name, state, setState }) => {
   const formatName = name.toLowerCase().split(' ').join('-');
 
   return (
-  <ul className='form-input'>
-    <li><label htmlFor={formatName}>{name}</label></li>
-    <li><input 
+  <div className='form-input'>
+    <label htmlFor={formatName}>{name}</label>
+    <input 
       className='inputField'
       type={type || 'text'}
       id={formatName} 
@@ -42,8 +42,8 @@ export const FormInput = ({ type, name, state, setState }) => {
       onChange={e => setState(e.target.value)}
       placeholder={name}
       required={false}
-      /></li>
-  </ul>
+    />
+  </div>
   ) 
 }
 
@@ -51,9 +51,9 @@ export const NumberInput = ({ min, name, state, setState }) => {
   const formatName = name.toLowerCase().split(' ').join('-');
 
   return (
-  <ul className='number-input'>
-    <li><label htmlFor={formatName}>{name}</label></li>
-    <li><input 
+  <div className='number-input'>
+    <label htmlFor={formatName}>{name}</label>
+    <input 
       className='inputField'
       min={min}
       type='number'
@@ -62,8 +62,8 @@ export const NumberInput = ({ min, name, state, setState }) => {
       onChange={e => setState(e.target.value)}
       placeholder={name}
       required={false}
-      /></li>
-  </ul>
+    />
+  </div>
   ) 
 }
 

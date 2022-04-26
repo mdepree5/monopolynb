@@ -27,10 +27,16 @@ button{
 .delete{ background-color: #ff8b94; color: black; border: solid black 0.1em; margin: 0.05em; }
 .delete:hover{ color: white; }
 
+.row-list{ display: flex; flex-direction: row; align-items: center; }
+.col-list{ display: flex; flex-direction: column; align-items: center; }
+
+
 .line{
   border-top: 0.1em solid black;
   margin-left: auto; margin-right: auto;
 }
+
+
 
 #brown{ background-color: #ceb5a7 }
 #skyblue{ background-color: #b5e4f2 }
@@ -55,7 +61,6 @@ button{
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 .app{
   min-height: 100vh;
-  border: 0.05em solid red;
 }
 .main-body{ flex-grow: 1; }
 

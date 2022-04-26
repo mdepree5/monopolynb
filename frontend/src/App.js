@@ -14,7 +14,6 @@ import PageNotFound from './components/PageNotFound';
 import Footer from './components/Footer';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
-
 const App = () => {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -28,6 +27,7 @@ const App = () => {
   return (
     <div className='app'>
       <Navigation isLoaded={isLoaded} />
+      
       <div className='main-body'>
         <Switch>
           <Route exact path={'/'}><Splash /></Route>
@@ -37,9 +37,10 @@ const App = () => {
           <Route path='/confirmDelete'><ConfirmDelete/></Route>
           <Route><PageNotFound /></Route>
         </Switch>
-      </div>      
+      </div>
+
       <Footer />
-      <div>hey</div>
+      <div style={{border:'0.5em solid red'}} >hey</div>
     </div>
   );
 }

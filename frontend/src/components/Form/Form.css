@@ -1,8 +1,6 @@
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Form                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
-.form{ display: flex; flex-direction: column; }
-
 .form-button{
   background-color: #e3e3e3; border: solid black 0.05em; border-radius: 0.1em;
   padding: 0.5em; margin: 0.5em;
@@ -10,7 +8,7 @@
 .form-button:hover{ box-shadow: 0 0.05em 1em #b5e4f2; }
 
 .form-errors, .state-errors{
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; align-items: flex-start;
   padding-top: 1em; font-size: 0.75em;
   color: #ff8b94;
 }
@@ -18,6 +16,4 @@
 /* todo             Form Input                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 .form-input{ padding: 0; margin: 0; }
-.inputField:hover{ background-color: white; border: solid 0.1em #b5e4f2; }
-.inputField:focus{ background-color: white; border: solid 0.05em #b5e4f2;} 
 
