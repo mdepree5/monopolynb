@@ -13,6 +13,8 @@
   text-decoration: none;
   color: black;
   z-index: 97;
+  
+  flex-shrink: 0;
 }
 
 .footer:visited{
