@@ -12,14 +12,9 @@ const Image = ({propertyId}) => {
   useEffect(() => {dispatch(getImagesByPropertyId(propertyId))}, [dispatch]);
 
   return images.length > 0 ? (
-    <ul className='image-container'>
-      {images.map(image => (
-        <>
-          <ImageModal image={image} />
-          {/* <li key={image?.imageURL}><img className='property-image' src={image?.imageURL} alt={`property-${image?.id}`}/></li> */}
-        </>
-      ))}
-    </ul>
+    <div className='image-container'>
+      {images.map(image => <ImageModal image={image}/>)}
+    </div>
   ) : (
     <div className='image-container'>No images yet!</div>
   )
@@ -31,13 +26,13 @@ const ImageModal = ({image}) => {
 
   return (
     <>
-      <li 
+      <div
         key={image?.imageURL}
         style={{cursor:'pointer'}}
         onClick={e => setShowModal(true)}
       >
         <img className='property-image' src={image?.imageURL} alt={`property-${image?.id}`}/>
-      </li>
+      </div>
 
       {/* <button className={edit ? 'edit' : 'host-new-property'} onClick={e => setShowModal(true)}>{name}</button> */}
       {showModal && (
