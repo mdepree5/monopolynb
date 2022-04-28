@@ -16,7 +16,14 @@
 
 #left-nav{ justify-content: flex-start; }
 #mid-nav{ justify-content: center; }
-#right-nav{ justify-content: flex-end; }
+#right-nav{ 
+  display: flex;
+  flex-direction: row;
+
+  justify-content: flex-end; 
+  width: 100%; max-width: 20em; padding: 0;
+  justify-content: space-between;
+}
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Nav colors                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
@@ -36,10 +43,3 @@
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Session Links                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
-.session-links{
-  justify-content: space-between;
-  width: 100%; max-width: 16em; padding: 0;
-}
-
-.demo-login{ border: solid black 0.1em; border-radius: 2em; }
-.demo-login:hover{ box-shadow: 0 0.05em 0.5em rgb(104, 104, 104);  }

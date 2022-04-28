@@ -67,7 +67,7 @@ const Navigation = () => {
       </div>
 
       <div className='row-list' id='right-nav'>
-        <div className='session-links row-list'>{sessionLinks}</div>
+        {sessionLinks}
       </div>
     </nav>
   );

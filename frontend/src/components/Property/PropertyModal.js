@@ -7,7 +7,7 @@ function PropertyFormModal({name='Host New Property', edit=false, property=null}
 
   return (
     <>
-      <button className={edit ? 'edit' : 'host-new-property'} onClick={e => setShowModal(true)}>{name}</button>
+      <button className={edit ? 'edit' : ''} onClick={e => setShowModal(true)}>{name}</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <PropertyForm edit={edit} property={property} closeModal={() => setShowModal(false)}/>
