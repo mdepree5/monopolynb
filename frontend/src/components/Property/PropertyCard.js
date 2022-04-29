@@ -16,7 +16,7 @@ const PropertyCard = ({ property }) => {
   const handleClick = () => history.push(`/properties/${property.id}`);
 
   return (
-      <div onClick={handleClick} className='property-card col-list'>
+      <div onClick={handleClick} className='property-card'>
         <div className='property-color-profile' id={propertyColor} />
         <h2 className='property-title'>{property.title}</h2>
         <img className='card-image' src={property.cardImage} alt='card' />

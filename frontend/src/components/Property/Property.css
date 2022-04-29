@@ -5,11 +5,11 @@
   justify-content: center;
   flex-wrap: wrap;
 
-  margin-left: auto; margin-right: auto;
+  width: 75%; margin-left: auto; margin-right: auto;
   padding-top: 1em; margin-bottom: 1em;
 
   border-radius: 0.1em;
-  overflow: auto; white-space: normal; width: 70%;
+  overflow: auto; white-space: normal;
 }
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Property Page                   */
@@ -55,6 +55,8 @@
 /* todo             Property Card                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 .property-card{
+  display: flex; flex-direction: column;
+  align-items: center;
   justify-content: space-between;
   background-color: white; color: rgb(61, 61, 61); cursor: pointer;
   
@@ -69,19 +71,16 @@
   transform: translateY(-0.1em);
 }
 
+.property-card > h2 { font-size: 1.2em }
 .property-card > * { margin-bottom: 1em; }
 
 .property-color-profile{
   border: 0.1em solid black; border-radius: 0.5em;
-  height: 25%; width: 100%;
-  text-align: center;
+  height: 4em; width: 15em;
 }
 
 .card-image{
-  /* height: 12vw; width: 18vw; */
-  /* background-color: black; */
-
-  height: 8em; width: 15em;
+  height: 8em; width: 14em;
   border: 0.1em solid black; border-radius: 0.5em;
   opacity: 80%;
   object-fit: cover;
@@ -114,14 +113,14 @@
 /* todo             Media                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 @media (max-width: 850px){
-  .properties-container{ width: 40%; }
-  .property-card h2 { font-size: small; }
+  #properties-container{ width: 75%; }
+  /* .property-card h2 { font-size: small; } */
 }
 
 @media (min-width: 850px) and (max-width: 1250px){
-  .properties-container{ width: 60%; }
-  .property-card h2 { font-size: medium; }
+  #properties-container{ width: 75%; }
+  /* .property-card h2 { font-size: medium; } */
 }
-@media (min-width: 1251px){
-  .properties-container{ width: 80%; }
-}
+/* @media (min-width: 1251px){
+  #properties-container{ width: 80%; }
+} */
