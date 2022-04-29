@@ -19,11 +19,12 @@ const PropertyCard = ({ property }) => {
       <div onClick={handleClick} className='property-card'>
         <div className='property-color-profile' id={propertyColor} />
         <h2 className='property-title'>{property.title}</h2>
+        
         <img className='card-image' src={property.cardImage} alt='card' />
         
         <div className='property-footer-info row-list'>
           <div>{property.city}</div>
-          <div>{`$${property.price} / night`}</div>
+          <div><strong>${property.price}</strong> night</div>
         </div>
       </div>
   )

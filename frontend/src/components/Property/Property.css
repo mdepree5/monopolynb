@@ -5,7 +5,7 @@
   justify-content: center;
   flex-wrap: wrap;
 
-  width: 75%; margin-left: auto; margin-right: auto;
+  width: 80%; margin-left: auto; margin-right: auto;
   padding-top: 1em; margin-bottom: 1em;
 
   border-radius: 0.1em;
@@ -76,11 +76,12 @@
 
 .property-color-profile{
   border: 0.1em solid black; border-radius: 0.5em;
-  height: 4em; width: 15em;
+  min-height: 4em; width: 15em; 
 }
 
 .card-image{
-  height: 8em; width: 14em;
+  /* height: 8em; width: 14em; */
+  height: 50%; width: 100%;
   border: 0.1em solid black; border-radius: 0.5em;
   opacity: 80%;
   object-fit: cover;
@@ -113,12 +114,22 @@
 /* todo             Media                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 @media (max-width: 850px){
-  #properties-container{ width: 75%; }
-  /* .property-card h2 { font-size: small; } */
+  /* #properties-container{ width: 75%; } */
+  .property-color-profile {
+    /* display: none; */
+    
+    height: 30%; width: 100%;
+  }
+  .property-card {
+    height: 30%; width: 100%;
+  }
+  .card-image{
+    width: 90%;
+  }
 }
 
 @media (min-width: 850px) and (max-width: 1250px){
-  #properties-container{ width: 75%; }
+  /* #properties-container{ width: 75%; } */
   /* .property-card h2 { font-size: medium; } */
 }
 /* @media (min-width: 1251px){
