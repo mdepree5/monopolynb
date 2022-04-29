@@ -50,15 +50,15 @@ const Navigation = () => {
   );
 
   return (
-    <nav className={`nav-bar ${navStatus} row-list`}>
-      <div className='row-list' id='left-nav'>
+    <nav className={`nav-bar ${navStatus}`}>
+      <div id='left-nav'>
         <NavLink className='row-list' exact to="/">
           <img id='home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' />
           Monopolynb
         </NavLink>
       </div>
 
-      <div className='row-list' id='mid-nav'>
+      <div id='mid-nav'>
         {navStatus === 'nav-top' ? (
           <NavLink className='explore' style={{color:'#3efa57'}} exact to="/properties">Explore</NavLink>
         ) : (
@@ -66,7 +66,7 @@ const Navigation = () => {
         )}
       </div>
 
-      <div className='row-list' id='right-nav'>
+      <div id='right-nav'>
         {sessionLinks}
       </div>
     </nav>

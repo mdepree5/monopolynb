@@ -2,27 +2,30 @@
 /* todo             Nav Bar Layout                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 .nav-bar{
+  display: flex; flex-direction: row;
   justify-content: space-between;
   position: sticky;
-  top: 0; height: 4em;
-  padding-left: 1em; padding-right: 1em;
+  top: 0; height: 4em; width: 100%;
   z-index: 10; flex-shrink: 0;
+  padding-left: 2em; padding-right: 2em;
 }
 
 .nav-bar > * {
-  width: 33%; padding: 0;
-  text-align: center;
+  min-width: 33%; max-width: 33%; 
+  width: 33%; 
+  padding: 0;
+  display: flex; flex-direction: row;
+  align-items: center; text-align: center;
 }
 
-#left-nav{ justify-content: flex-start; }
+#left-nav{ justify-content: flex-start; padding-left: 1em; }
 #mid-nav{ justify-content: center; }
 #right-nav{ 
-  display: flex;
-  flex-direction: row;
-
-  justify-content: flex-end; 
-  width: 100%; max-width: 20em; padding: 0;
+  display: flex; flex-direction: row;
+  width: 100%; 
+  padding: 0; padding-right: 1em;
   justify-content: space-between;
+  justify-content: center;
 }
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Nav colors                   */

@@ -10,7 +10,9 @@ const Splash = () => (
       <div className='floating-message col-list'>
         <h1>Where would you like to stay?</h1>
         <br />
-        <NavLink id='splash-button-white' to='/properties'>Where the dice land</NavLink> 
+        <NavLink id='splash-button-white' to='/properties'>
+            Where the dice land
+        </NavLink> 
       </div>
     </div>
     <div className='filler-box' />

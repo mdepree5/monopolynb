@@ -12,10 +12,16 @@
 }
 
 #splash-button-white{
-  justify-content: center;
+  text-align: center;
   background-color: white; color: black;
-  height: 3em; width: 9em;
+  height: 2em; width: 10em;
   border-radius: 2em;
+  padding: 0.1em;
+  padding-top: 1em;
+}
+
+#splash-button-white:hover{
+  box-shadow: 0 0.03em 0.5em rgb(218, 218, 218);
 }
 
 #splash-image{ height: 70%; width: 70%; opacity: 50%; border-radius: 1em; }

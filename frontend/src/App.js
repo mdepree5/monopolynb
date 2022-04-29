@@ -25,7 +25,7 @@ const App = () => {
   useEffect(() => window.scroll({top: 0, left: 0, behavior: 'smooth'}));
 
   return (
-    <div className='app'>
+    <div className='app col-list'>
       <Navigation isLoaded={isLoaded} />
       
       <div className='main-body'>
@@ -40,7 +40,6 @@ const App = () => {
       </div>
 
       <Footer />
-      <div style={{border:'0.5em solid red'}} >hey</div>
     </div>
   );
 }
