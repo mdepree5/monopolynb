@@ -1,7 +1,7 @@
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Properties Container (PropertyList.js)                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
-.properties-container{
+#properties-container{
   justify-content: center;
   flex-wrap: wrap;
 
@@ -58,13 +58,8 @@
   justify-content: space-between;
   background-color: white; color: rgb(61, 61, 61); cursor: pointer;
   
-  border: solid black 0.3vw; border-radius: 1vw;
-  height: 25vw; width: 20vw;
-  min-height: 400; min-width: 200;
-  padding: 0.4vw; margin: 0.4vw;
-  
   border: solid black 0.1em; border-radius: 0.5em;
-  height: 50em; width: 30em;
+  height: 20em; width: 15em;
   padding: 0.5em; margin: 0.5em;
 }
 
@@ -86,9 +81,8 @@
   /* height: 12vw; width: 18vw; */
   /* background-color: black; */
 
-  height: 20em; width: 30em;
-  border: 0.5em solid black; border-radius: 0.5em;
-  box-shadow: 0 0.05em 1em rgb(104, 104, 104);
+  height: 8em; width: 15em;
+  border: 0.1em solid black; border-radius: 0.5em;
   opacity: 80%;
   object-fit: cover;
 }

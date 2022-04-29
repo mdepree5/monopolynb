@@ -15,7 +15,7 @@ const PropertyList = ({userId = null}) => {
   useEffect(() => {dispatch(thunk)}, [dispatch]);
 
   return properties.length > 0 ? (
-    <div className='properties-container row-list'>
+    <div className='row-list' id='properties-container'>
       {properties.map(property => (
         <PropertyCard
           key={property.id}
