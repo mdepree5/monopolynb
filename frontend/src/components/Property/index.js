@@ -35,7 +35,6 @@ const PropertyPage = () => {
 
   return (
     <div className='property-page col-list'>
-      <div className='property-page-wrapper col-list'>
         <div className='property-card-image' id={propertyColor} />
 
           <div className='property-data-container'>
@@ -46,8 +45,8 @@ const PropertyPage = () => {
               </div>
 
               <div className='property-title-right'> {belongsToUser &&(<>
-                  <PropertyFormModal name='Edit Property' edit={true} property={property} />
-                  <PropertyDeleteButton propertyId={propertyId} />
+                <PropertyFormModal name='Edit Property' edit={true} property={property} />
+                <PropertyDeleteButton propertyId={propertyId} />
               </>)}</div>
             </div>
 
@@ -62,10 +61,9 @@ const PropertyPage = () => {
           <Image propertyId={propertyId}/>
           <div style={{width:'75%'}} className="line"/>
           <Review propertyId={propertyId} />
+          
           <div className='filler-box' style={{backgroundColor:'white'}}/>
-      </div>
-        <div className='filler-box' style={{backgroundColor:'white'}}/>
-        <div className='filler-box' style={{backgroundColor:'white'}}/>
+        
     </div>
   );
 }
