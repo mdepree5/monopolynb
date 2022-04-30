@@ -1,12 +1,8 @@
-.review-container{
-  display: flex; flex-direction: column;
-  justify-content: space-evenly;
-  width: 100%; margin-left: auto; margin-right: auto;
-  padding-top: 1em; padding-bottom: 1em;
-}
-
-.review-data-container{
-  display: flex; flex-direction: column;
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Review Header                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+.review-header{
+  display: flex; flex-direction: column; align-items: center;
   justify-content: center;
   width: 90%; margin-left: auto; margin-right: auto;
   border: solid black 0.1em; border-radius: 0.5em;
@@ -14,13 +10,32 @@
   margin-bottom: 1em; padding: 1em;
 }
 
-.data-header{
-  width: 20%; margin-left: auto; margin-right: auto;
-  display: flex; flex-direction: row; align-items: center;
-  justify-content: center;
-  border: solid black 0.1em; 
-  margin-bottom: 1em; padding-bottom: 1em;
+.review-star{ margin-right: 0.5em; }
+
+.review-meter-container{
+  display: flex; flex-direction: row; justify-content: space-evenly;
+  margin-top: 1em;
+  border-top: 0.1em solid black;
+  padding-top: 1em;
 }
+
+.review-meter{
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center;
+  width: 12em;
+}
+
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Review List                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+
+.review-container{
+  display: flex; flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%; margin-left: auto; margin-right: auto;
+  padding-top: 1em; padding-bottom: 1em;
+}
+
 
 .review-nav{ display: flex; flex-direction: row; justify-content: space-between; }
 
@@ -38,19 +53,6 @@
   margin-bottom: 1em; padding-bottom: 1em;
 }
 
-.data-line-container{
-  display: flex; flex-direction: row;
-  justify-content: space-evenly;
-}
-
-.review-data-line{
-  display: flex; flex-direction: row;
-  justify-content: center;
-  width: 12em;
-}
-
-.review-data-line li { margin-left: 0.5em; margin-right: 0.5em; }
-.review-star{ margin-right: 0.5em; }
 
 #new-review-button{
   width: 7em; margin-left: auto; margin-right: auto;
