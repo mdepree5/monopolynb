@@ -33,17 +33,14 @@ const PropertyPage = () => {
 
   return (
     <div className='property-page col-list'>
-        <div className='property-card-image' id={propertyColor} />
+      <div className='property-card-image' id={propertyColor} />
 
-          <PropertyHeader property={property}/>
-
-          <div style={{width:'75%'}} className="line"/>
-          <Image propertyId={propertyId}/>
-          <div style={{width:'75%'}} className="line"/>
-          <Review propertyId={propertyId} />
-
-          <div className='filler-box' style={{backgroundColor:'white'}}/>
-        
+      <PropertyHeader property={property}/>
+        <div style={{width:'75%'}} className="line"/>
+      <Image propertyId={propertyId}/>
+        <div style={{width:'75%'}} className="line"/>
+      <Review propertyId={propertyId} />
+        {/* <div className='filler-box' style={{backgroundColor:'white'}}/> */}
     </div>
   );
 }
@@ -54,25 +51,25 @@ const PropertyHeader = ({property}) => {
   const sessionUser = useSelector(state => state?.session?.user);
 
   return (
-    <div className='property-data-container'>
-      <div className='property-head row-list'>
-        <div className='property-title-left'>
-          <h1 className='property-title'>{property?.title}</h1>
-          <h3 className='property-location'>{`${property?.city}, ${property?.state}`}</h3>
+    <div className='property-header row-list'>
+      
+        <div className='property-header-left'>
+          <h1>{property?.title}</h1>
+          <h3>{`${property?.city}, ${property?.state}`}</h3>
+          
+          <div style={{width:'14em', margin: 0}} className="line"/>
+
+          <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} ${property?.User?.lastName.slice(0, 1)}. `}<i className="far fa-user" /></NavLink>
+          <div>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
+          <div><strong>${property?.price}</strong> night</div>
         </div>
 
-        <div className='property-title-right'> {sessionUser?.id === property?.hostId &&(<>
-          <PropertyFormModal name='Edit Property' edit={true} property={property} />
-          <PropertyDeleteButton propertyId={propertyId} />
-        </>)}</div>
-      </div>
-
-      <div style={{width:'250px', margin: 0}} className="line"/>
-      <br />
-
-      <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} ${property?.User?.lastName.slice(0, 1)}. `}<i className="far fa-user" /></NavLink></div>
-      <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
-      <div className='property-price'>{`$${property?.price} / night`}</div>
+        <div className='property-header-right'> {sessionUser?.id === property?.hostId &&(<>
+            <PropertyFormModal name='Edit Property' edit={true} property={property} />
+            <PropertyDeleteButton propertyId={propertyId} />
+          </>)}
+        </div>
+    
   </div>
   )
 }

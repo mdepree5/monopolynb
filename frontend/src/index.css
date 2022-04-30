@@ -63,7 +63,10 @@ button{
 .app{
   min-height: 100vh;
 }
-.main-body{ flex-grow: 1; }
+.main-body{ 
+  flex-grow: 1; 
+  min-height: calc(100vh - 8em);
+}
 
 /* 
 @media (max-width: 560px){

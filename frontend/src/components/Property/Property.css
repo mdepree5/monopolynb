@@ -15,42 +15,29 @@
 /* todo             Property Page                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 .property-page{
-  width: 70%; margin-right: auto; margin-left: auto;
-  width: 100%; 
-  border-radius: 0.1em;
-  
+  width: 90%; margin-right: auto; margin-left: auto;
   border: solid black 0.1em; border-radius: 0.5em;
   padding: 1em; padding-bottom: 0;
   margin-top: 1em; margin-bottom: 1em;
-  width: 90%;
+  min-height: calc(100vh - 8em);
 }
 
 .property-card-image{
   height: 3em; width: 90%;
-  height: 3em; width: 5em;
   border: solid black 0.1em; border-radius: 0.5em;
   box-shadow: 0 0.05em 0.3em rgb(70, 70, 70);
   padding-left: 1em; padding-right: 1em; margin-bottom: 1em;
 }
 
-.property-data-container{
+.property-header{
   width: 90%; margin-left: auto; margin-right: auto;
   box-shadow: 0 0.05em 0.3em rgb(70, 70, 70);
   border: solid black 0.1em; border-radius: 0.5em;
   padding: 1em; margin-bottom: 1.5em;
-  padding: 1em; margin-bottom: 2em;
+  justify-content: space-between;
 }
 
-.property-head{ justify-content: space-between; }
-
-.property-title-left{ display: flex; flex-direction: column; align-items: flex-start; }
-.property-title-right{ display: flex; flex-direction: column; align-items: flex-end; }
-
-.property-title-right > *{  margin-bottom: 0.05em; }
-
-
-
-
+.property-header-right{ display: flex; flex-direction: column; align-items: flex-end; }
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Property Card                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
