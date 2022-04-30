@@ -10,8 +10,6 @@ const ReviewDetail = ({review}) => {
 
   const sessionUser = useSelector(state => state.session.user);
 
-
-
   useEffect(() => {    
     if(sessionUser?.id === review?.guestId) setBelongsToUser(true);
     else setBelongsToUser(false);
@@ -27,30 +25,33 @@ const ReviewDetail = ({review}) => {
 
   return (
     <>
-    <div className='review-detail'>
-      <ul className='review-list-left'>
-        <div><strong>{`${review?.User?.firstName} `}</strong> <i className="far fa-user"/>{` ${month} ${year}`}</div>
-        <div className='review-body'>{review.content}</div>
-      </ul>
-      <div className='review-list-right'>
-        {belongsToUser && (<>
-          <ReviewEditModal review={review}/>
-          <ReviewDeleteButton reviewId={review.id} />
-        </>)}
+      <div className='review-detail'>
+        <div className='review-list-left'>
+          <div><strong>{`${review?.User?.firstName} `}</strong> <i className="far fa-user"/>{` ${month} ${year}`}</div>
+          <div className='review-body'>{review.content}</div>
+        </div>
+        <div className='review-list-right'>
+          {belongsToUser && (<>
+            <ReviewEditModal review={review}/>
+            <ReviewDeleteButton reviewId={review.id} />
+          </>)}
+        </div>
       </div>
-    </div>
-    <div style={{width:'200px', margin: 0}} className="line"></div>  
-    {belongsToUser && (<div style={{width:'110px', marginRight: '10px'}} className="line"></div>  )}
+      <div style={{width:'95%', margin: 0 }} className="line"></div>  
+      {belongsToUser && (<div style={{width:'110px', marginRight: '10px'}} className="line"></div>  )}
   </>
 )
 }
 
-const ReviewList = ({reviews}) => (
+const ReviewList = ({reviews}) => {
+
+  return (
     <div className='review-list-container'>
       {reviews.map(review => (
         <ReviewDetail key={review.id} review={review} />
       ))}
     </div>
-)
+  )
+}
 
 export default ReviewList;

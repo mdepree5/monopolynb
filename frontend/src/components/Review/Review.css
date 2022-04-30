@@ -26,24 +26,22 @@
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Review List                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
-
-
-
 .review-nav{ display: flex; flex-direction: row; justify-content: space-between; }
 
 .review-list-container{
-  display: flex; flex-direction: column;
-  height: 100%; width: 50%;
-  border: solid black 0.1em; 
-  margin-bottom: 1em; padding-bottom: 1em;
+  display: flex; flex-direction: column; align-items: center;
+  box-shadow: 0 0.05em 0.3em rgb(70, 70, 70);
+  border: solid black 0.1em; border-radius: 0.5em;
+  margin-bottom: 1em;
+  padding: 1em;
 }
 
-.review-list-container{
-  width: 90%; margin-left: auto; margin-right: auto;
-  border: solid black 0.1em; border-radius: 0.5em;
-  box-shadow: 0 0.05em 0.3em rgb(70, 70, 70);
-  margin-bottom: 1em; padding-bottom: 1em;
+.review-detail{
+  width: 95%;
+  border-radius: 0.5em;
+  padding: 0.5em;
 }
+.review-detail:hover{ background-color: rgb(229, 229, 229); }
 
 
 #new-review-button{
@@ -51,14 +49,6 @@
   border: solid black 0.1em; border-radius: 0.5em;  
   margin-top: 1em;
   color: #005c0c;
-}
-
-
-.review-detail{
-  display: flex; flex-direction: row;
-  justify-content: space-between;
-  border-radius: 0.1em;
-  padding: 1em;
 }
 
 /* .review-list-right{ display: flex; flex-direction: column; } */
