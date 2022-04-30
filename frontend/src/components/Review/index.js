@@ -21,12 +21,10 @@ const Review = ({propertyId}) => {
     {name: 'Cleanliness', value: +avg(reviews, 'cleanliness').toFixed(2)},
   ]
 
-  return (
-    <div className='review-container'>
-      <ReviewData reviews={reviews} reviewData={reviewData} totalReviews={reviews?.length}/>
-      <ReviewList reviews={reviews} />
-    </div>
-  );
+  return (<>
+    <ReviewData reviews={reviews} reviewData={reviewData} totalReviews={reviews?.length}/>
+    <ReviewList reviews={reviews} />
+  </>);
 };
 
 export default Review;

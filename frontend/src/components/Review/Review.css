@@ -4,7 +4,6 @@
 .review-header{
   display: flex; flex-direction: column; align-items: center;
   justify-content: center;
-  width: 90%; margin-left: auto; margin-right: auto;
   border: solid black 0.1em; border-radius: 0.5em;
   box-shadow: 0 0.05em 0.3em rgb(70, 70, 70);
   margin-bottom: 1em; padding: 1em;
@@ -14,9 +13,8 @@
 
 .review-meter-container{
   display: flex; flex-direction: row; justify-content: space-evenly;
-  margin-top: 1em;
-  border-top: 0.1em solid black;
-  padding-top: 1em;
+  margin-top: 1em; border-top: 0.1em solid black; padding-top: 1em;
+  width: 100%;
 }
 
 .review-meter{
@@ -29,12 +27,6 @@
 /* todo             Review List                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 
-.review-container{
-  display: flex; flex-direction: column;
-  justify-content: space-evenly;
-  width: 100%; margin-left: auto; margin-right: auto;
-  padding-top: 1em; padding-bottom: 1em;
-}
 
 
 .review-nav{ display: flex; flex-direction: row; justify-content: space-between; }

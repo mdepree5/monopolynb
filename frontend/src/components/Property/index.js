@@ -37,8 +37,8 @@ const PropertyPage = () => {
 
       <PropertyHeader property={property}/>
         <div style={{width:'75%'}} className="line"/>
-      <Image propertyId={propertyId}/>
-        <div style={{width:'75%'}} className="line"/>
+      {/* <Image propertyId={propertyId}/>
+        <div style={{width:'75%'}} className="line"/> */}
       <Review propertyId={propertyId} />
         {/* <div className='filler-box' style={{backgroundColor:'white'}}/> */}
     </div>

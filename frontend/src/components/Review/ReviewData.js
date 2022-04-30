@@ -37,7 +37,6 @@ const ReviewData = ({reviewData, totalReviews, reviews}) => {
 
   return (
     <div className='review-header'>
-      
       {!reviewData[0]?.value ? <div>No reviews yet!</div> :
         <h2><i className='review-star fas fa-star'/>{`${reviewData[0]?.value} · ${totalReviews} reviews`} </h2>
       }
