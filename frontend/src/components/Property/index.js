@@ -13,14 +13,12 @@ import './Property.css';
 
 const PropertyPage = () => {
   const dispatch = useDispatch();
-  const [belongsToUser, setBelongsToUser] = useState(false);
   const {propertyId} = useParams();
 
   const property = useSelector(state => state?.property[propertyId]);
-  const sessionUser = useSelector(state => state?.session?.user);
   
   useEffect(() => {dispatch(getProperty(propertyId))}, [dispatch, propertyId]);
-  useEffect(() => setBelongsToUser(sessionUser?.id === property?.hostId), [sessionUser, property])
+
   useEffect(() => window.scroll({top: 0, left: 0}));
 
   let propertyColor;
@@ -37,31 +35,13 @@ const PropertyPage = () => {
     <div className='property-page col-list'>
         <div className='property-card-image' id={propertyColor} />
 
-          <div className='property-data-container'>
-            <div className='property-head row-list'>
-              <div className='property-title-left'>
-                <h1 className='property-title'>{property?.title}</h1>
-                <h3 className='property-location'>{`${property?.city}, ${property?.state}`}</h3>
-              </div>
-
-              <div className='property-title-right'> {belongsToUser &&(<>
-                <PropertyFormModal name='Edit Property' edit={true} property={property} />
-                <PropertyDeleteButton propertyId={propertyId} />
-              </>)}</div>
-            </div>
-
-            <div style={{width:'250px', margin: 0}} className="line"/>
-            <br />
-            <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} ${property?.User?.lastName.slice(0, 1)}. `}<i className="far fa-user" /></NavLink></div>
-            <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
-            <div className='property-price'>{`$${property?.price} / night`}</div>
-          </div>
+          <PropertyHeader property={property}/>
 
           <div style={{width:'75%'}} className="line"/>
           <Image propertyId={propertyId}/>
           <div style={{width:'75%'}} className="line"/>
           <Review propertyId={propertyId} />
-          
+
           <div className='filler-box' style={{backgroundColor:'white'}}/>
         
     </div>
@@ -69,5 +49,32 @@ const PropertyPage = () => {
 }
 
 
+const PropertyHeader = ({property}) => {
+  const {propertyId} = useParams();
+  const sessionUser = useSelector(state => state?.session?.user);
+
+  return (
+    <div className='property-data-container'>
+      <div className='property-head row-list'>
+        <div className='property-title-left'>
+          <h1 className='property-title'>{property?.title}</h1>
+          <h3 className='property-location'>{`${property?.city}, ${property?.state}`}</h3>
+        </div>
+
+        <div className='property-title-right'> {sessionUser?.id === property?.hostId &&(<>
+          <PropertyFormModal name='Edit Property' edit={true} property={property} />
+          <PropertyDeleteButton propertyId={propertyId} />
+        </>)}</div>
+      </div>
+
+      <div style={{width:'250px', margin: 0}} className="line"/>
+      <br />
+
+      <div className='property-host'> <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} ${property?.User?.lastName.slice(0, 1)}. `}<i className="far fa-user" /></NavLink></div>
+      <div className='property-number-of-beds'>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
+      <div className='property-price'>{`$${property?.price} / night`}</div>
+  </div>
+  )
+}
 
 export default PropertyPage;

@@ -29,13 +29,13 @@
   height: 3em; width: 90%;
   height: 3em; width: 5em;
   border: solid black 0.1em; border-radius: 0.5em;
-  /* box-shadow: 0 0.05em 0.5em rgb(104, 104, 104);  */
+  box-shadow: 0 0.05em 0.3em rgb(70, 70, 70);
   padding-left: 1em; padding-right: 1em; margin-bottom: 1em;
 }
 
 .property-data-container{
   width: 90%; margin-left: auto; margin-right: auto;
-  /* box-shadow: 0 0.05em 0.5em rgb(104, 104, 104);   */
+  box-shadow: 0 0.05em 0.3em rgb(70, 70, 70);
   border: solid black 0.1em; border-radius: 0.5em;
   padding: 1em; margin-bottom: 1.5em;
   padding: 1em; margin-bottom: 2em;

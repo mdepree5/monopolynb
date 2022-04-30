@@ -10,7 +10,7 @@
   justify-content: center;
   width: 90%; margin-left: auto; margin-right: auto;
   border: solid black 0.1em; border-radius: 0.5em;
-  box-shadow: 0 0.05em 0.5em rgb(104, 104, 104); 
+  box-shadow: 0 0.05em 0.3em rgb(70, 70, 70);
   margin-bottom: 1em; padding: 1em;
 }
 
@@ -34,7 +34,7 @@
 .review-list-container{
   width: 90%; margin-left: auto; margin-right: auto;
   border: solid black 0.1em; border-radius: 0.5em;
-  box-shadow: 0 0.05em 0.5em rgb(104, 104, 104); 
+  box-shadow: 0 0.05em 0.3em rgb(70, 70, 70);
   margin-bottom: 1em; padding-bottom: 1em;
 }
 
