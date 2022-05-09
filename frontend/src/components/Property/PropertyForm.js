@@ -98,11 +98,11 @@ const PropertyForm = ({edit, property, closeModal}) => {
           <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
           
           {/* <FormInput name='Image' state={cardImages} setState={setCardImages} /> */}
-
+          <label htmlFor='images'>Image(s)</label>
           <input style={{cursor:'pointer'}} type='file' accept='image/*'
             multiple
+            id='images'
             onChange={e => setCardImages(e.target.files)}/>
-
 
         </div>
         <div id='property-create-form-home-icon-container' >
