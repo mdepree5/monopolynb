@@ -20,7 +20,11 @@ const PropertyCard = ({ property }) => {
         <div className='property-color-profile' id={propertyColor} />
         <h2 className='property-title'>{property.title}</h2>
         
-        <img className='card-image' src={property.cardImage} alt='card' />
+        {property?.cardImage ? 
+          <img className='card-image' src={property?.cardImage} alt='card' />
+          :
+          <img className='card-image' src='https://monopolynb.s3.amazonaws.com/monopolynb-no-image.png' alt='card' />
+        }
         
         <div className='property-footer-info row-list'>
           <div>{property.city}</div>

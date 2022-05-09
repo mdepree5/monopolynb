@@ -28,8 +28,10 @@ router.route('/')
   (async (req, res) => {
     // const imageUrl = await singlePublicFileUpload(req.file)
     // await Image.create({propertyId: newProperty.id, imageURL: imageUrl});
-    const newProperty = await Property.create(req.body);
     const imageURLs = await multiplePublicFileUpload(req.files)
+    
+    const newProperty = await Property.create({...req.body, cardImage: imageURLs[0]});
+
     const images = await createImages(newProperty.id, imageURLs)
 
   res.json(newProperty);
