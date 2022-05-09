@@ -34,7 +34,10 @@ const Navigation = () => {
     return history.replace('/');
   };
 
-  const closeDropdown = e => toggleDropdown(false);
+  const closeDropdown = e => {
+    e.stopPropagation();
+    return toggleDropdown(false);
+  }
 
   const sessionLinks = sessionUser ? (
     <>
@@ -70,7 +73,8 @@ const Navigation = () => {
 
       <div id='right-nav'>
         <Hamburger toggled={dropdown} toggle={toggleDropdown} />
-        {dropdown && <div className='dropdown-background' onClick={()=> toggleDropdown(false)} >
+        {/* {dropdown && <div className='dropdown-background' onClick={()=> toggleDropdown(false)} > */}
+        {dropdown && <div className='dropdown-background' onClick={closeDropdown} >
           <div className={`dropdown-content dropdown-${navStatus}`} >
             {sessionLinks}
           </div>

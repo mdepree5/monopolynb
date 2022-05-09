@@ -10,9 +10,14 @@ function PropertyFormModal({name='Host New Property', edit=false, property=null,
     return setShowModal(false);
   }
 
+  const openModal = e => {
+    e.stopPropagation();
+    return setShowModal(true);
+  }
+
   return (
     <>
-      <button className={edit ? 'edit' : ''} onClick={e => setShowModal(true)}>{name}</button>
+      <button className={edit ? 'edit' : 'host-new-property'} onClick={openModal}>{name}</button>
       {showModal && (
         <Modal onClose={closeModal}>
           <PropertyForm edit={edit} property={property} closeModal={closeModal}/>

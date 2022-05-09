@@ -40,8 +40,6 @@ button{
   margin-bottom: 1.5em;
 }
 
-
-
 #brown{ background-color: #ceb5a7 }
 #skyblue{ background-color: #b5e4f2 }
 #orchid{ background-color: #deaaff }
@@ -70,6 +68,7 @@ button{
 .main-body{ 
   flex-grow: 1; 
   min-height: calc(100vh - 8em);
+  width: 100%;
 }
 
 /* 

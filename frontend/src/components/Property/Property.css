@@ -92,14 +92,11 @@
 .create-property-form-modal input { width: 90%; }
 .create-property-form-modal > *{ width: 50%; }
 
-
 #property-create-form-home-icon-container{
   display: flex; align-items: center; justify-content: center;
 }
 
 #property-create-form-home-icon{ height: 8em; width: 8em; }
-
-
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Media                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
