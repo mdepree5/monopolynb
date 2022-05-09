@@ -31,7 +31,6 @@ router.route('/')
     const imageURLs = await multiplePublicFileUpload(req.files)
     
     const newProperty = await Property.create({...req.body, cardImage: imageURLs[0]});
-
     const images = await createImages(newProperty.id, imageURLs)
 
   res.json(newProperty);
@@ -49,9 +48,13 @@ router.route('/:propertyId')
   const id = req.body.id;
   delete req.body.id; 
   
-  const updatedProperty = await Property.update(req.body, {where: { id }, returning: true, plain: true});
+  const imageURLs = await multiplePublicFileUpload(req.files);
+
+  const updatedProperty = await Property.update(
+    {...req.body, cardImage: imageURLs[0]},
+    {where: { id }, returning: true, plain: true}
+    );
   
-  const imageURLs = await multiplePublicFileUpload(req.files)
   const images = await createImages(id, imageURLs)
 
   return res.json(await Property.findByPk(id, {include: [User]}))

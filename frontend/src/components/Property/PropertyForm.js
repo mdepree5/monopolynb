@@ -54,7 +54,12 @@ const PropertyForm = ({edit, property, closeModal}) => {
     if (edit) {
       const updated = await dispatch(updateProperty(formData, property?.id));
       if (updated?.errors) setErrors(updated?.errors);
-      return closeModal();
+      if (updated?.id){
+        history.push(`/`);
+        history.push(`/properties/${updated?.id}`);
+        return closeModal();
+      }
+      return 'failed to edit';
     }
 
     const created = await dispatch(createProperty(formData));

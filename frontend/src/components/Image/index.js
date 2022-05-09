@@ -37,7 +37,7 @@ const ImageModal = ({image}) => {
       {/* <button className={edit ? 'edit' : 'host-new-property'} onClick={e => setShowModal(true)}>{name}</button> */}
       {showModal && (
         <Modal image={true} onClose={() => setShowModal(false)}>
-          <img className='property-image' src={image?.imageURL} alt={`property-${image?.id}`}/>
+          <img className='property-image' id='property-image-modal' src={image?.imageURL} alt={`property-${image?.id}`}/>
         </Modal>
       )}
     </>

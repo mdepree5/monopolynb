@@ -16,8 +16,8 @@
   object-fit: cover;
 }
 
-.property-image:hover{ border-radius: 1.5em; }
-
+.property-image:hover{ opacity: 90%; }
+#property-image-modal:hover { opacity: 100%; }
 
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Media                   */
