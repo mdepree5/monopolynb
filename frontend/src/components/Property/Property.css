@@ -110,8 +110,8 @@
   .property-color-profile { height: 30%; width: 100%; }
   .property-card { height: 30%; width: 100%; }
   .card-image{ 
-    min-width: 20em; max-width: 20em;
-    min-height: 14em; max-height: 14em;
+    min-width: 18em; max-width: 18em;
+    min-height: 12em; max-height: 12em;
   }
 }
 
