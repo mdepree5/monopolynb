@@ -23,9 +23,7 @@
   min-height: calc(100vh - 8em);
 }
 
-.property-page > * { 
-  width: 90%; margin-left: auto; margin-right: auto;
-}
+.property-page > * { width: 90%; margin-left: auto; margin-right: auto; }
 
 .property-card-image{
   height: 3em; 
@@ -41,8 +39,9 @@
   padding: 1em;
   justify-content: space-between;
 }
-
-.property-header-right{ display: flex; flex-direction: column; align-items: flex-end; }
+.property-header-left{ display: flex; flex-direction: column; align-items: flex-start; width: 100%; }
+.property-header-left > a{ border-top: solid black 0.1em; padding-top: 0.5em; margin-top: 0.5em; }
+.property-header-right{ display: flex; flex-direction: column; align-items: flex-end; width: 100%; }
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Property Card                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
@@ -116,6 +115,8 @@
   /* .property-page{ width: 80%; } */
   .property-page{ width: 40%; }
   .property-header{ flex-direction: column; }
+  .property-header-left{ align-items: center; }
+  .property-header-right{ align-items: center; }
 }
 
 @media (min-width: 850px) and (max-width: 1250px){

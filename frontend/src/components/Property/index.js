@@ -56,8 +56,6 @@ const PropertyHeader = ({property}) => {
         <div className='property-header-left'>
           <h1>{property?.title}</h1>
           <h3>{`${property?.city}, ${property?.state}`}</h3>
-          
-          <div style={{width:'14em', margin: 0}} className="line"/>
 
           <NavLink to={`/users/${property?.hostId}`}>{`Hosted by ${property?.User?.firstName} ${property?.User?.lastName.slice(0, 1)}. `}<i className="far fa-user" /></NavLink>
           <div>{`${property?.numberOfBeds} Bed${property?.numberOfBeds === 1 ? '' : 's'}`}</div>
