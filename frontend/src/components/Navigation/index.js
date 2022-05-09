@@ -34,17 +34,17 @@ const Navigation = () => {
   const sessionLinks = sessionUser ? (
     <>
       <PropertyFormModal />
-      •
-      <NavLink to={`/users/${sessionUser.id}`}>My Page</NavLink>
-      •
+      <div> • </div>
+      <button><NavLink to={`/users/${sessionUser.id}`}>My Page</NavLink></button>
+      <div> • </div>
       <button onClick={logout}>Log Out</button>
     </>
   ) : (
     <>
       <DemoLogin/>
-      •
+      <div> • </div>
       <LoginFormModal />
-      •
+      <div> • </div>
       <SignupFormModal />
     </>
   );
