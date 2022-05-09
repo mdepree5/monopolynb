@@ -21,15 +21,7 @@
 
 #left-nav{ justify-content: flex-start; padding-left: 1em; }
 #mid-nav{ justify-content: center; }
-#right-nav{ 
-  display: flex; flex-direction: row;
-  width: 100%; 
-  padding: 0;
-  justify-content: center;
-}
-#right-nav > * {
-  margin-left: 0.1em; margin-right: 0.1em;
-}
+#right-nav{ justify-content: flex-end; }
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Nav colors                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
@@ -46,3 +38,29 @@
 .nav-not-top a{ color: black; }
 .explore:hover{ border-bottom: 0.1em solid black; }
 
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Dropdown                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+.dropdown-background{
+  display: flex; flex-direction: row-reverse;
+  position: fixed; top: 0; right: 0; left: 0; bottom: 0;
+  background: none;
+}
+
+.dropdown-content{
+  display: flex; flex-direction: column;
+  position: absolute; top: 3.5em; right: 0.5em;
+  width: 10em; z-index: 12;
+  box-shadow: 0 0 8px gray; border-radius: 0.8em;
+  overflow: hidden;
+  background-color: black;
+}
+
+.dropdown-nav-not-top{ 
+  background-color: white;
+  color: black;
+}
+
+.dropdown-content > *{ padding: 1em; border-radius: 0; }
+.dropdown-content > *:hover{ background-color: #2a2a2a; }
+.dropdown-nav-not-top > *:hover{ background-color: #eeeeee; }

@@ -1,6 +1,7 @@
 import {NavLink, useHistory} from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Squash as Hamburger } from 'hamburger-react'
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
@@ -15,6 +16,7 @@ const Navigation = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   
+  const [dropdown, toggleDropdown] = useState(false)
   const [navStatus, setNavStatus] = useState('nav-top');
   const sessionUser = useSelector(state => state.session.user);
 
@@ -34,17 +36,17 @@ const Navigation = () => {
   const sessionLinks = sessionUser ? (
     <>
       <PropertyFormModal />
-      <div> • </div>
+      {/* <div> • </div> */}
       <button><NavLink to={`/users/${sessionUser.id}`}>My Page</NavLink></button>
-      <div> • </div>
+      {/* <div> • </div> */}
       <button onClick={logout}>Log Out</button>
     </>
   ) : (
     <>
       <DemoLogin/>
-      <div> • </div>
+      {/* <div> • </div> */}
       <LoginFormModal />
-      <div> • </div>
+      {/* <div> • </div> */}
       <SignupFormModal />
     </>
   );
@@ -67,22 +69,15 @@ const Navigation = () => {
       </div>
 
       <div id='right-nav'>
-        {sessionLinks}
+        <Hamburger toggled={dropdown} toggle={toggleDropdown} />
+        {dropdown && <div className='dropdown-background' onClick={()=> toggleDropdown(false)} >
+          <div className={`dropdown-content dropdown-${navStatus}`}>
+            {sessionLinks}
+          </div>
+        </div>}
       </div>
     </nav>
   );
 }
 
-
 export default Navigation;
-
-/* 
-import PropertySearchBar from '../PropertySearchBar';
-<PropertySearchBar placeholderText='Search for Properties'/>
-*/
-
-/* 
-import ProfileButton from './ProfileButton';
-<li><ProfileButton isLoaded={isLoaded} /></li>
- */
-
