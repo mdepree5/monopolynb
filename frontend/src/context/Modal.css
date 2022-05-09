@@ -16,18 +16,19 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #000000b3;
 }
 
 #modal-content {
   position: absolute;
-  padding: 20px;
+  padding: 1.8em;
   background-color: white;
-  border: solid black 2px;
-  box-shadow: 0 1px 10px white;
-  border-radius: 10px;
-  min-height: 200px;
+  border: solid black 0.1em;
+  box-shadow: 0 0.05em 0.5em white;
+  border-radius: 1em;
+  min-height: 20em;
   min-width: 200px;
+  min-width: 20em;
 }
 
 #modal-image {

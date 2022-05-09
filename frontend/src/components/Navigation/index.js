@@ -73,13 +73,11 @@ const Navigation = () => {
 
       <div id='right-nav'>
         <Hamburger toggled={dropdown} toggle={toggleDropdown} />
-        {/* {dropdown && <div className='dropdown-background' onClick={()=> toggleDropdown(false)} > */}
-        {/* {dropdown && <div className='dropdown-background' onClick={closeDropdown} > */}
-        {dropdown && <div className='dropdown-background'  >
+        {dropdown && 
           <div className={`dropdown-content dropdown-${navStatus}`} >
             {sessionLinks}
           </div>
-        </div>}
+        }
       </div>
     </nav>
   );

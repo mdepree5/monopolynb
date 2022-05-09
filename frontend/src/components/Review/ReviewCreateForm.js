@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 // todo ——————————————————————————————————————————————————————————————————————————————————
 import { createReview, getReviewsByPropertyId } from '../../store/review';
 import {Form, NumberInput} from '../Form';
+import '../Form/Form.css';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
 const ReviewCreateForm = ({closeModal }) => {
@@ -52,18 +53,20 @@ const ReviewCreateForm = ({closeModal }) => {
 
   return (
     <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={'Post'} >
-      <ul>
-        <li><label htmlFor='content'>Content</label></li>
-        <li><textarea 
-          id='content'
-          value={content}
-          onChange={e => setContent(e.target.value)}
-          placeholder='Content'/></li>
-      </ul>
-      <NumberInput min={1} name='Rating' state={rating} setState={setRating} required={false} />
-      <NumberInput min={1} name='Communication' state={communication} setState={setCommunication} required={false} />
-      <NumberInput min={1} name='Check In' state={checkIn} setState={setCheckIn} required={false} />
-      <NumberInput min={1} name='Cleanliness' state={cleanliness} setState={setCleanliness} required={false} />
+      <div className='review-form'>
+        <div className='form-input'>
+          <label htmlFor='content'>Content</label>
+          <textarea 
+            id='content'
+            value={content}
+            onChange={e => setContent(e.target.value)}
+            placeholder='Content'/>
+        </div>
+        <NumberInput min={1} max={5} name='Rating' state={rating} setState={setRating} required={false} />
+        <NumberInput min={1} max={5} name='Communication' state={communication} setState={setCommunication} required={false} />
+        <NumberInput min={1} max={5} name='Check In' state={checkIn} setState={setCheckIn} required={false} />
+        <NumberInput min={1} max={5} name='Cleanliness' state={cleanliness} setState={setCleanliness} required={false} />
+      </div>
     </Form>
   )
 };

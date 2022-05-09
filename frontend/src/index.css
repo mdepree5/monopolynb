@@ -17,6 +17,7 @@ button{
   color: inherit; font: inherit;
   padding: 0.5em; cursor: pointer; 
 }
+textarea { resize: none; }
 
 /* div{ margin: 0; } */
 

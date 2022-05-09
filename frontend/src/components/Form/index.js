@@ -47,7 +47,7 @@ export const FormInput = ({ type, name, state, setState }) => {
   ) 
 }
 
-export const NumberInput = ({ min, name, state, setState }) => {
+export const NumberInput = ({ min, max, name, state, setState }) => {
   const formatName = name.toLowerCase().split(' ').join('-');
 
   return (
@@ -56,6 +56,7 @@ export const NumberInput = ({ min, name, state, setState }) => {
     <input 
       className='inputField'
       min={min}
+      max={max}
       type='number'
       id={formatName} 
       value={state}

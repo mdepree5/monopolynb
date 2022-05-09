@@ -48,14 +48,14 @@ const ReviewEditForm = ({review, closeModal}) => {
 
   return (
     <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={'Update'} >
-        <ul>
-        <li><label htmlFor='content'>Content</label></li>
-        <li><textarea 
-          id='content'
-          value={content}
-          onChange={e => setContent(e.target.value)}
-          placeholder='Content'/></li>
-      </ul>
+        <div className='form-input'>
+          <label htmlFor='content'>Content</label>
+          <textarea 
+            id='content'
+            value={content}
+            onChange={e => setContent(e.target.value)}
+            placeholder='Content'/>
+      </div>
       <NumberInput min={1} name='Rating' state={rating} setState={setRating} required={false} />
       <NumberInput min={1} name='Communication' state={communication} setState={setCommunication} required={false} />
       <NumberInput min={1} name='Check In' state={checkIn} setState={setCheckIn} required={false} />
