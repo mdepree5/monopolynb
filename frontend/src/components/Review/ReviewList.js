@@ -37,8 +37,7 @@ const ReviewDetail = ({review}) => {
           </>)}
         </div>
       </div>
-      <div style={{width:'95%', margin: 0 }} className="line"></div>  
-      {belongsToUser && (<div style={{width:'110px', marginRight: '10px'}} className="line"></div>  )}
+      <div style={{width:'93%', margin: 0 }} className="line"></div>  
   </>
 )
 }

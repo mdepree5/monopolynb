@@ -37,6 +37,8 @@
 }
 
 .review-detail{
+  display: flex; flex-direction: row;
+  justify-content: space-between;
   width: 95%;
   border-radius: 0.5em;
   padding: 0.5em;
@@ -71,4 +73,6 @@
   .review-meter-container{ flex-direction: column; }
   .review-meter-container > *{ margin-bottom: 1em; }
   .review-header > h2{ font-size: 1.2em; }
+  .review-detail{ flex-direction: column; }
+  .review-list-left > *{ padding-bottom: 0.5em; }
 }
