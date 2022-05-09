@@ -47,9 +47,11 @@ const ReviewList = ({reviews}) => {
 
   return (
     <div className='review-list-container'>
-      {reviews.map(review => (
+      {reviews.length ? reviews.map(review => (
         <ReviewDetail key={review.id} review={review} />
-      ))}
+      )) : 
+      <div>No reviews yet!</div>
+      }
     </div>
   )
 }

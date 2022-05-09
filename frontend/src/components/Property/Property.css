@@ -20,7 +20,6 @@
   border: solid black 0.1em; border-radius: 0.5em;
   padding: 1em; padding-bottom: 0;
   margin-top: 1em; margin-bottom: 1em;
-  min-height: calc(100vh - 8em);
 }
 
 .property-page > * { width: 90%; margin-left: auto; margin-right: auto; }
@@ -67,12 +66,12 @@
 
 .property-color-profile{
   border: 0.1em solid black; border-radius: 0.5em;
-  min-height: 4em; width: 15em; 
+  min-height: 4em; width: 100%; 
 }
 
 .card-image{
-  /* height: 8em; width: 14em; */
-  height: 50%; width: 100%;
+  min-height: 50%; max-height: 50%; 
+  min-width: 90%; max-width: 90%;
   border: 0.1em solid black; border-radius: 0.5em;
   opacity: 80%;
   object-fit: cover;

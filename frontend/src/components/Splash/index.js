@@ -10,7 +10,7 @@ const Splash = () => (
       <h1>Where would you like to stay?</h1>
       <br />
       <NavLink id='splash-button-white' to='/properties'>
-          Where the dice land
+        <div>Where the dice land</div>
       </NavLink> 
     </div>
   </div>
