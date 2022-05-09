@@ -59,7 +59,7 @@ const Navigation = () => {
       <div id='left-nav'>
         <NavLink className='row-list' exact to="/">
           <img id='home-icon' src='https://monopolynb.s3.amazonaws.com/favicon.png' alt='home-icon' />
-          Monopolynb
+          <div>Monopolynb</div>
         </NavLink>
       </div>
 

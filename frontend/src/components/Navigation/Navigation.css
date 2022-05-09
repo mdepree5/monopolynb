@@ -73,6 +73,6 @@
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 @media (max-width: 700px) {
   .nav-bar{ padding-left: 1em; padding-right: 1em; }
-  #left-nav a { display: none; }
+  #left-nav div { display: none; }
   /* #left-nav{ justify-content: center; } */
 }
