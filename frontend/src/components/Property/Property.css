@@ -109,7 +109,10 @@
   /* #properties-container{ width: 75%; } */
   .property-color-profile { height: 30%; width: 100%; }
   .property-card { height: 30%; width: 100%; }
-  .card-image{ width: 90%; }
+  .card-image{ 
+    min-width: 20em; max-width: 20em;
+    min-height: 14em; max-height: 14em;
+  }
 }
 
 @media (max-width: 700px) {
