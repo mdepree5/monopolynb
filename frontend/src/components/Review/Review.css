@@ -70,4 +70,5 @@
 @media (max-width: 700px) {
   .review-meter-container{ flex-direction: column; }
   .review-meter-container > *{ margin-bottom: 1em; }
+  .review-header > h2{ font-size: 1.2em; }
 }

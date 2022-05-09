@@ -112,10 +112,11 @@
 }
 
 @media (max-width: 700px) {
-  /* .property-page{ width: 80%; } */
-  .property-page{ width: 40%; }
+  .property-page{ width: 70%; }
   .property-header{ flex-direction: column; }
   .property-header-left{ align-items: center; }
+  .property-header-left > h1{ font-size: 1.5em; }
+  .property-header-left > h3{ font-size: 1em; }
   .property-header-right{ align-items: center; }
 }
 
