@@ -3,6 +3,7 @@
 .user-splash{
   width: 70%; margin-left: auto; margin-right: auto;
   margin-top: 1em; margin-bottom: 1em;
+  text-align: center;
 }
 
 .white-filler-box{ height: 32em; }
