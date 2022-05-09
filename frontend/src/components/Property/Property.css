@@ -15,6 +15,7 @@
 /* todo             Property Page                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 .property-page{
+  display: flex; flex-direction: column; align-items: center;
   width: 90%; margin-right: auto; margin-left: auto;
   border: solid black 0.1em; border-radius: 0.5em;
   padding: 1em; padding-bottom: 0;
@@ -34,6 +35,7 @@
 }
 
 .property-header{
+  display: flex; flex-direction: row; align-items: center;
   box-shadow: 0 0.05em 0.3em rgb(70, 70, 70);
   border: solid black 0.1em; border-radius: 0.5em;
   padding: 1em;
@@ -105,17 +107,15 @@
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 @media (max-width: 850px){
   /* #properties-container{ width: 75%; } */
-  .property-color-profile {
-    /* display: none; */
-    
-    height: 30%; width: 100%;
-  }
-  .property-card {
-    height: 30%; width: 100%;
-  }
-  .card-image{
-    width: 90%;
-  }
+  .property-color-profile { height: 30%; width: 100%; }
+  .property-card { height: 30%; width: 100%; }
+  .card-image{ width: 90%; }
+}
+
+@media (max-width: 700px) {
+  /* .property-page{ width: 80%; } */
+  .property-page{ width: 40%; }
+  .property-header{ flex-direction: column; }
 }
 
 @media (min-width: 850px) and (max-width: 1250px){

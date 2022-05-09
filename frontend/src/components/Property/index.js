@@ -32,13 +32,13 @@ const PropertyPage = () => {
   if(property?.price > 150) propertyColor = 'blue';
 
   return (
-    <div className='property-page col-list'>
+    <div className='property-page'>
       <div className='property-card-image' id={propertyColor} />
 
       <PropertyHeader property={property}/>
         <div style={{width:'75%'}} className="line"/>
-      {/* <Image propertyId={propertyId}/>
-        <div style={{width:'75%'}} className="line"/> */}
+      <Image propertyId={propertyId}/>
+        <div style={{width:'75%'}} className="line"/>
       <Review propertyId={propertyId} />
         {/* <div className='filler-box' style={{backgroundColor:'white'}}/> */}
     </div>
@@ -51,7 +51,7 @@ const PropertyHeader = ({property}) => {
   const sessionUser = useSelector(state => state?.session?.user);
 
   return (
-    <div className='property-header row-list'>
+    <div className='property-header'>
       
         <div className='property-header-left'>
           <h1>{property?.title}</h1>

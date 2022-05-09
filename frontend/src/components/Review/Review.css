@@ -12,7 +12,7 @@
 .review-star{ margin-right: 0.5em; }
 
 .review-meter-container{
-  display: flex; flex-direction: row; justify-content: space-evenly;
+  display: flex; flex-direction: row; align-items: center; justify-content: space-evenly;
   margin-top: 1em; border-top: 0.1em solid black; padding-top: 1em;
   width: 100%;
 }
@@ -60,6 +60,14 @@
 }
 
 
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Media                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
 @media (max-width: 1050px){
   .review-data-line{ flex-direction: column; align-items: center; }
+}
+
+@media (max-width: 700px) {
+  .review-meter-container{ flex-direction: column; }
+  .review-meter-container > *{ margin-bottom: 1em; }
 }
