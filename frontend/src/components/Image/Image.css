@@ -18,3 +18,14 @@
 
 .property-image:hover{ border-radius: 1.5em; }
 
+
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Media                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+@media (max-width: 700px) {
+  .property-image{ 
+    height: 9em; width: 13.5em;
+    margin-bottom: 1.2em;
+  }
+  .image-container{ padding-bottom: 0; }
+}
