@@ -4,16 +4,21 @@
 .form-button{
   background-color: #e3e3e3; border: solid black 0.05em; border-radius: 2em;
   padding: 0.5em; margin: 0.5em;
+  margin-top: 1em; margin-bottom: 1em;
 }
 /* .form-button:hover{ box-shadow: 0 0.05em 1em #b5e4f2; } */
 
 .form-errors, .state-errors{
   display: flex; flex-direction: column; align-items: flex-start;
-  padding-top: 1em; font-size: 0.75em;
+  font-size: 0.75em;
   color: #ff8b94;
 }
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
 /* todo             Form Input                   */
 /* todo ——————————————————————————————————————————————————————————————————————————————— */
-.form-input{ padding: 0; margin: 0; }
+.form-input, .number-input{
+  padding: 0; margin: 0; 
+  display: flex; flex-direction: column;
+  margin-bottom: 0.5em;
+}
 

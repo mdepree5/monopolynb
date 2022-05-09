@@ -73,12 +73,12 @@ const PropertyForm = ({edit, property, closeModal}) => {
   useEffect(()=> {
     const errors = [];
     if(!title) errors.push('What is your property called? We\'d love to know!');
-    if(numberOfBeds < 1 || numberOfBeds > 1000) errors.push('Please list between 1 and 1000 beds for your property.');
-    if(price < 10 || price > 3000) errors.push('Please provide a price between $10 and $3,000 dollars for your property.');
-    if(address?.length < 3) errors.push('Please provide an address for your property.');
-    if(city?.length < 2) errors.push('Please provide a city for your property.');
-    if(state?.length < 2) errors.push('Please provide a state for your property.');
-    if(zipcode?.length !== 5) errors.push('Please provide a zipcode for your property.');
+    if(numberOfBeds < 1 || numberOfBeds > 1000) errors.push('Please list between 1 and 1000 beds.');
+    if(price < 10 || price > 3000) errors.push('Please provide a price between $10 and $3,000 dollars.');
+    if(address?.length < 3) errors.push('Please provide an address.');
+    if(city?.length < 2) errors.push('Please provide a city.');
+    if(state?.length < 2) errors.push('Please provide a state.');
+    if(zipcode?.length !== 5) errors.push('Please provide a zipcode.');
   
     setValidationErrors(errors);
   }, [title, numberOfBeds, price, address, city, state, zipcode])
@@ -87,7 +87,7 @@ const PropertyForm = ({edit, property, closeModal}) => {
 
   return (
     <Form onSub={handleSubmit} validationErrors={validationErrors} errors={errors} buttonName={edit ? 'Update' : 'Host Your Property!'} >
-      <div className={edit ? '' : 'create-property-form-modal'}>
+      <div className={edit ? 'edit-property-form-modal' : 'create-property-form-modal'}>
         <div>
           <FormInput name='Title' state={title} setState={setTitle} />
           <NumberInput min={1} name='Number Of Beds' state={numberOfBeds} setState={setNumberOfBeds} />
@@ -98,11 +98,13 @@ const PropertyForm = ({edit, property, closeModal}) => {
           <FormInput name='Zipcode' state={zipcode} setState={setZipcode} />
           
           {/* <FormInput name='Image' state={cardImages} setState={setCardImages} /> */}
-          <label htmlFor='images'>Image(s)</label>
-          <input style={{cursor:'pointer'}} type='file' accept='image/*'
-            multiple
-            id='images'
-            onChange={e => setCardImages(e.target.files)}/>
+          <div className='form-input'>
+            <label htmlFor='images'>Image(s)</label>
+            <input style={{cursor:'pointer'}} type='file' accept='image/*'
+              multiple
+              id='images'
+              onChange={e => setCardImages(e.target.files)}/>
+          </div>
 
         </div>
         <div id='property-create-form-home-icon-container' >

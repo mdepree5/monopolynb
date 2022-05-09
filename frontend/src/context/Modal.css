@@ -41,3 +41,19 @@
   border-radius: 20px;
   box-shadow: 0 1px 10px white;
 }
+
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+/* todo             Media                   */
+/* todo ——————————————————————————————————————————————————————————————————————————————— */
+@media (max-width: 850px){
+  #modal-content{ width: 75%; }
+}
+
+@media (max-width: 700px) {
+  .property-page{ width: 70%; }
+  .property-header{ flex-direction: column; }
+  .property-header-left{ align-items: center; }
+  .property-header-left > h1{ font-size: 1.5em; }
+  .property-header-left > h3{ font-size: 1em; }
+  .property-header-right{ align-items: center; }
+}

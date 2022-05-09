@@ -88,6 +88,11 @@
   display: flex; flex-direction: row;
   justify-content: space-between;
 }
+.edit-property-form-modal{ 
+  display: flex; flex-direction: column-reverse;
+  justify-content: space-between;
+  width: 100%;
+}
 
 .create-property-form-modal input { width: 90%; }
 .create-property-form-modal > *{ width: 50%; }
@@ -114,6 +119,10 @@
   .property-header-left > h1{ font-size: 1.5em; }
   .property-header-left > h3{ font-size: 1em; }
   .property-header-right{ align-items: center; }
+  
+  .edit-property-form-modal, .create-property-form-modal{ flex-direction: column-reverse; align-items: center; }
+  .edit-property-form-modal > *, .create-property-form-modal > *{ width: 90%; }
+  #property-create-form-home-icon{ height: 4em; width: 4em; }
 }
 
 @media (min-width: 850px) and (max-width: 1250px){
