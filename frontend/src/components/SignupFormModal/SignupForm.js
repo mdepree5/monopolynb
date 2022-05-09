@@ -3,7 +3,7 @@ import {signup}  from '../../store/session';
 import { useDispatch } from 'react-redux';
 import {Form, FormInput} from '../Form';
 
-function SignupFormPage() {
+function SignupFormPage({closeModal}) {
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState('');
@@ -15,15 +15,16 @@ function SignupFormPage() {
   const [errors, setErrors] = useState([]);
   const [validationErrors, setValidationErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]); 
-      return dispatch(signup({ email, username, firstName, lastName, password }))
+      await dispatch(signup({ email, username, firstName, lastName, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
         });
+      return closeModal();
     }
     return setErrors(['Confirm Password field must be the same as the Password field']);
   };

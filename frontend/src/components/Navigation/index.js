@@ -30,24 +30,24 @@ const Navigation = () => {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    toggleDropdown(false);
     return history.replace('/');
   };
 
+  const closeDropdown = e => toggleDropdown(false);
+
   const sessionLinks = sessionUser ? (
     <>
-      <PropertyFormModal />
-      {/* <div> • </div> */}
-      <button><NavLink to={`/users/${sessionUser.id}`}>My Page</NavLink></button>
-      {/* <div> • </div> */}
+      <PropertyFormModal toggleDropdown={toggleDropdown} />
+      <NavLink to={`/users/${sessionUser.id}`} onClick={closeDropdown}>My Page</NavLink>
       <button onClick={logout}>Log Out</button>
+      
     </>
   ) : (
     <>
-      <DemoLogin/>
-      {/* <div> • </div> */}
-      <LoginFormModal />
-      {/* <div> • </div> */}
-      <SignupFormModal />
+      <DemoLogin toggleDropdown={()=>toggleDropdown(false)} />
+      <LoginFormModal toggleDropdown={()=>toggleDropdown(false)} />
+      <SignupFormModal toggleDropdown={()=>toggleDropdown(false)} />
     </>
   );
 
@@ -71,7 +71,7 @@ const Navigation = () => {
       <div id='right-nav'>
         <Hamburger toggled={dropdown} toggle={toggleDropdown} />
         {dropdown && <div className='dropdown-background' onClick={()=> toggleDropdown(false)} >
-          <div className={`dropdown-content dropdown-${navStatus}`}>
+          <div className={`dropdown-content dropdown-${navStatus}`} >
             {sessionLinks}
           </div>
         </div>}

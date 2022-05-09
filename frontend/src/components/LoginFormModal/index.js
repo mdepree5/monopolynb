@@ -3,8 +3,13 @@ import { Modal } from '../../context/Modal';
 import LoginForm from './LoginForm';
 // todo ——————————————————————————————————————————————————————————————————————————————————
 
-function LoginFormModal() {
+function LoginFormModal({toggleDropdown=null}) {
   const [showModal, setShowModal] = useState(false);
+
+  const closeModal = () => {
+    setShowModal(false);
+    return toggleDropdown(false);
+  }
 
   return (
     <>
@@ -14,8 +19,8 @@ function LoginFormModal() {
       }
       }>Log In</button>
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
-          <LoginForm closeModal={() => setShowModal(false)}/>
+        <Modal onClose={closeModal}>
+          <LoginForm closeModal={closeModal}/>
         </Modal>
       )}
     </>
